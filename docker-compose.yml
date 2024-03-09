@@ -1,0 +1,201 @@
+version: '3.9'
+
+services:
+
+  mq-producer:
+    container_name: mq-producer
+    image: mq-producer
+    privileged: true
+    tty: true
+    restart: always
+    networks:
+      kytos_network:
+        ipv4_address: 192.168.0.2
+    ports:
+      - 6653:6653
+      - 8181:8181
+    volumes:
+      - ./scripts:/scripts
+      - ./etc/kytos:/etc/kytos
+      - ./kytos/logs/mq-producer:/var/log/kytos
+    env_file: 
+      - .env
+    environment:
+      MONGODB_CONNSTRING: ${MONGODB_CONNSTRING}
+      MONGO_HOST_SEEDS: ${MONGO_HOST_SEEDS}
+      MONGO_INITDB_ROOT_USERNAME: ${ROOT_DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${ROOT_DB_PASS}
+      MONGO_USERNAME: 'mq_producer_user'
+      MONGO_PASSWORD: 'mq_producer_pwd'
+      MONGO_DBNAME: 'mq_producer'
+      # 
+    depends_on:
+      - mongo-ready
+    entrypoint: ["/scripts/kytos-start.sh"]
+
+
+  mq-consumer:
+    container_name: mq-consumer
+    image: mq-consumer
+    privileged: true
+    tty: true
+    restart: always
+    networks:
+      kytos_network:
+        ipv4_address: 192.168.0.3
+    ports:
+      - 6656:6653
+      - 8484:8181
+    volumes:
+      - ./scripts:/scripts
+      - ./etc/kytos:/etc/kytos
+      - ./amlight/logs/mq-consumer:/var/log/kytos
+    env_file: 
+      - .env
+    environment:
+      MONGODB_CONNSTRING: ${MONGODB_CONNSTRING}
+      MONGO_HOST_SEEDS: ${MONGO_HOST_SEEDS}
+      MONGO_INITDB_ROOT_USERNAME: ${ROOT_DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${ROOT_DB_PASS}
+      MONGO_USERNAME: 'mq_consumer_user'
+      MONGO_PASSWORD: 'mq_consumer_pwd'
+      MONGO_DBNAME: 'mq_consumer'
+    depends_on:
+      - mongo-ready
+    entrypoint: ["/scripts/kytos-start.sh"]
+
+  mongo1t:
+    container_name: mongo1t
+    image: mongo-db
+    restart: always
+    networks:
+      kytos_network:
+        ipv4_address: 192.168.0.6
+    ports:
+      - 27027:27027
+    volumes:
+      - ./os_base/mongo_base:/mongo_base
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0", "--port", "27027" ]
+    env_file:
+      - .env
+    environment:
+      MONGODB_CONNSTRING: ${MONGODB_CONNSTRING}
+      MONGO_HOST_SEEDS: ${MONGO_HOST_SEEDS}
+      MONGO_INIT_ROOT_USERNAME: ${ROOT_DB_USER}
+      MONGO_INIT_ROOT_PASSWORD: ${ROOT_DB_PASS}
+      MONGO_DBNAME: ${ROOT_DB}
+
+  mongo2t:
+    container_name: mongo2t
+    image: mongo-db
+    restart: always
+    networks:
+      kytos_network:
+        ipv4_address: 192.168.0.7
+    ports:
+      - 27028:27028
+    volumes:
+      - ./os_base/mongo_base:/mongo_base
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0", "--port", "27028" ]
+    env_file:
+      - .env
+    environment:
+      MONGODB_CONNSTRING: ${MONGODB_CONNSTRING}
+      MONGO_HOST_SEEDS: ${MONGO_HOST_SEEDS}
+      MONGO_INIT_ROOT_USERNAME: ${ROOT_DB_USER}
+      MONGO_INIT_ROOT_PASSWORD: ${ROOT_DB_PASS}
+      MONGO_DBNAME: ${ROOT_DB}
+
+  mongo3t:
+    container_name: mongo3t
+    image: mongo-db
+    restart: always
+    networks:
+      kytos_network:
+        ipv4_address: 192.168.0.8
+    ports:
+      - 27029:27029
+    volumes:
+      - ./os_base/mongo_base:/mongo_base
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0", "--port", "27029" ]
+    env_file:
+      - .env
+    environment:
+      MONGODB_CONNSTRING: ${MONGODB_CONNSTRING}
+      MONGO_HOST_SEEDS: ${MONGO_HOST_SEEDS}
+      MONGO_INIT_ROOT_USERNAME: ${ROOT_DB_USER}
+      MONGO_INIT_ROOT_PASSWORD: ${ROOT_DB_PASS}
+      MONGO_DBNAME: ${ROOT_DB}
+
+  mongo-setup:
+    container_name: mongo-rs-init
+    image: mongo-db
+    restart: on-failure
+    networks:
+      kytos_network:
+        ipv4_address: 192.168.0.9
+    volumes:
+      - ./scripts:/scripts
+    entrypoint: ["/scripts/rs-init.sh"]
+    env_file:
+      - .env
+    environment:
+      MONGODB_CONNSTRING: ${MONGODB_CONNSTRING}
+      MONGO_HOST_SEEDS: ${MONGO_HOST_SEEDS}
+      MONGO_INIT_ROOT_USERNAME: ${ROOT_DB_USER}
+      MONGO_INIT_ROOT_PASSWORD: ${ROOT_DB_PASS}
+      MONGO_DBNAME: ${ROOT_DB}
+    depends_on:
+      - mongo1t
+      - mongo2t
+      - mongo3t
+
+  mongo-ready:
+    container_name: mongo-test-ready
+    image: mongo-db
+    restart: on-failure
+    networks:
+      kytos_network:
+        ipv4_address: 192.168.0.10
+    volumes:
+      - ./scripts:/scripts
+    entrypoint: ["/scripts/rs-add.sh"]
+    env_file:
+      - .env
+    environment:
+      MONGODB_CONNSTRING: ${MONGODB_CONNSTRING}
+      MONGO_HOST_SEEDS: ${MONGO_HOST_SEEDS}
+      MONGO_INIT_ROOT_USERNAME: ${ROOT_DB_USER}
+      MONGO_INIT_ROOT_PASSWORD: ${ROOT_DB_PASS}
+      MONGO_DBNAME: ${ROOT_DB}
+    depends_on:
+      - mongo-setup
+
+  rabbitmq3:
+    container_name: "rabbitmq"
+    image: rabbit-mq
+    hostname: "rabbitmq-host"
+    networks:
+      kytos_network:
+        ipv4_address: 192.168.0.12
+    ports:
+      # AMQP protocol port
+      - '5672:5672'
+      # HTTP management UI
+      - '15672:15672'
+    env_file:
+      - .env
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+
+networks:
+  kytos_network:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.0.0/24
+          gateway: 192.168.0.1
+
+volumes:
+  persistent:

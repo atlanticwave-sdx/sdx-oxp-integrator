@@ -1,0 +1,3 @@
+mongo --host "mongo1t:27027,mongo2t:27028" -u "mq_producer_user" -p "mq_producer_pwd" --authenticationDatabase "mq_producer"
+
+

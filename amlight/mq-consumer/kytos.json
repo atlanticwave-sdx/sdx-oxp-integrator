@@ -1,0 +1,11 @@
+{
+  "author": "kytos",
+  "username": "kytos",
+  "name": "mq_consumer",
+  "description": "Message Queue consumer NApp",
+  "version": "2024.0.1",
+  "napp_dependencies": [""],
+  "license": "MIT",
+  "tags": [],
+  "url": "https://github.com/kytos/mq_consumer.git"
+}
