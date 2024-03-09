@@ -1,0 +1,11 @@
+{
+  "author": "kytos",
+  "username": "kytos",
+  "name": "mq_producer",
+  "description": "Message Queue producer NApp",
+  "version": "2024.0.1",
+  "napp_dependencies": [""],
+  "license": "MIT",
+  "tags": [],
+  "url": "https://github.com/kytos/mq_producer.git"
+}
