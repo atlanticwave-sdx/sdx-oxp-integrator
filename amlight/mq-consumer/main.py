@@ -3,6 +3,9 @@
 
 NApp to consume messages from rabittmq.
 """
+import asyncio
+from aio_pika import connect
+from aio_pika.abc import AbstractIncomingMessage
 import pathlib
 import time
 import traceback

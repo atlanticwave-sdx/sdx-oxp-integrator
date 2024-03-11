@@ -3,6 +3,8 @@
 
 NApp to provision circuits from user request.
 """
+import asyncio
+from aio_pika import Message, connect
 import pathlib
 import time
 import traceback

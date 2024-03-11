@@ -4,7 +4,13 @@
 #
 #    pip-compile --output-file=requirements/run.txt requirements/run.in
 #
+aio-pika==9.4.0
+    # via -r requirements/run.in
+aiormq==6.8.0
+    # via aio-pika
 apscheduler==3.8.0
+    # via -r requirements/run.in
+asyncio==3.4.3
     # via -r requirements/run.in
 attrs==21.4.0
     # via glom
@@ -21,7 +27,13 @@ face==20.1.1
 glom==20.11.0
     # via -r requirements/run.in
 idna==3.3
-    # via requests
+    # via
+    #   requests
+    #   yarl
+multidict==6.0.5
+    # via yarl
+pamqp==3.3.0
+    # via aiormq
 pytz==2021.3
     # via
     #   apscheduler
@@ -34,6 +46,10 @@ tzlocal==2.1
     # via apscheduler
 urllib3==1.26.7
     # via requests
+yarl==1.9.4
+    # via
+    #   aio-pika
+    #   aiormq
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
