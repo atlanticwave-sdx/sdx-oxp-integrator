@@ -48,6 +48,22 @@ mq_consumer.createUser(
   }
 )
 
+topology_events = db.getSiblingDB('topology_events')
+use topology_events
+topology_events.createUser(
+  {
+    user: "topology_events_user",
+    pwd: "topology_events_pwd",
+    roles: [
+        {
+          role: "readWrite",
+          db: "topology_events"
+        }
+    ]
+  }
+)
+
+
 exit
 EOF
 

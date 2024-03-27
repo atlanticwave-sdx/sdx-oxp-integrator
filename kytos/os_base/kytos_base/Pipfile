@@ -1,0 +1,52 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+apispec="==5.1.1"
+click="==8.1.3"
+clickclick="==20.10.2"
+connexion="==2.14.1"
+dictpath="==0.1.3"
+dnspython="==1.16.0"
+eventlet="==0.30.2"
+flask="==2.1.2"
+greenlet="==1.1.2"
+gunicorn="==20.1.0"
+idna="==3.2"
+iniconfig="==1.1.1"
+jinja2="==3.1.2"
+jsonschema="==4.0.1"
+openapi-core="==0.14.2"
+openapi-schema-validator="==0.1.5"
+openapi-spec-validator="==0.3.1"
+packaging="==21.3"
+pika="==1.2.0"
+pluggy="==1.0.0"
+py="==1.11.0"
+pyparsing="==3.0.6"
+pytz="==2023.3"
+pymongo="==4.3.3"
+python-dotenv="==1.0.0"
+PyYAML="==5.4.1"
+requests="==2.26.0"
+setuptools="==41.6.0"
+six="==1.16.0"
+swagger-ui-bundle="==0.0.9"
+urllib3="==1.26.16"
+Werkzeug="==2.2.3"
+
+
+[dev-packages]
+pytest="==7.2.1"
+pytest-cov="==4.0.0"
+pytest-asyncio="==0.20.3"
+yala="==3.2.0"
+tox="==3.28.0"
+typing-extensions="==4.7.1"
+flask_testing="==0.8.1"
+
+
+[requires]
+python_version = "3.9"
