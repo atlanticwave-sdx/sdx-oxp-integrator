@@ -2,41 +2,9 @@ version: '3.9'
 
 services:
 
-  mq-producer:
-    container_name: mq-producer
-    image: mq-producer
-    privileged: true
-    tty: true
-    restart: always
-    networks:
-      kytos_network:
-        ipv4_address: 192.168.0.2
-    ports:
-      - 6653:6653
-      - 8181:8181
-    volumes:
-      - ./scripts:/scripts
-      - ./etc/kytos:/etc/kytos
-      - ./kytos/logs/mq-producer:/var/log/kytos
-    env_file: 
-      - .env
-    environment:
-      MONGODB_CONNSTRING: ${MONGODB_CONNSTRING}
-      MONGO_HOST_SEEDS: ${MONGO_HOST_SEEDS}
-      MONGO_INITDB_ROOT_USERNAME: ${ROOT_DB_USER}
-      MONGO_INITDB_ROOT_PASSWORD: ${ROOT_DB_PASS}
-      MONGO_USERNAME: 'mq_producer_user'
-      MONGO_PASSWORD: 'mq_producer_pwd'
-      MONGO_DBNAME: 'mq_producer'
-      # 
-    depends_on:
-      - mongo-ready
-    entrypoint: ["/scripts/kytos-start.sh"]
-
-
-  topology-events:
-    container_name: topology-events
-    image: topology-events
+  listen-events:
+    container_name: listen-events
+    image: listen-events
     privileged: true
     tty: true
     restart: always
@@ -44,8 +12,8 @@ services:
       kytos_network:
         ipv4_address: 192.168.0.3
     ports:
-      - 6656:6653
-      - 8484:8181
+      - 6653:6653
+      - 8181:8181
     volumes:
       - ./scripts:/scripts
       - ./etc/kytos:/etc/kytos

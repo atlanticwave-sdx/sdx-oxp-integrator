@@ -4,6 +4,7 @@
 NApp to listen and broadcast events.
 """
 import os
+import shelve
 import requests
 from napps.kytos.listen_events import settings # pylint: disable=E0401
 from kytos.core import KytosNApp, log, rest
@@ -30,19 +31,13 @@ class Main(KytosNApp):
         self.event_info = {}  # pylint: disable=W0201
         self.shelve_loaded = False  # pylint: disable=W0201
         self.version_control = False  # pylint: disable=W0201
-        OXPO_ID = int(os.environ.get("OXPO_ID"))
+        OXPO_ID = os.environ.get("OXPO_ID")
 
     def execute(self):
         """Execute once when the napp is running."""
-        if self._lock.locked():
-            return
-        log.debug("Starting consistency routine")
-        with self._lock:
-            self.execute_consistency()
-        log.debug("Finished consistency routine")
         self.load_shelve()
 
-   def shutdown(self):
+    def shutdown(self):
         """Run when your NApp is unloaded.
 
         If you have some cleanup procedure, insert it here.
@@ -57,7 +52,6 @@ class Main(KytosNApp):
                 events_shelve['events'] = []
                 events_shelve.close()
                 self.shelve_loaded = True  # pylint: disable=W0201
-                open_shelve.close()
 
     @listen_to(
             "kytos/topology.link_*",
@@ -87,12 +81,11 @@ class Main(KytosNApp):
                 return {"event": "not action event"}
             # open the event shelve
             with shelve.open("events_shelve") as log_events:
-                events_data =
-                        {
-                            "type": event_type,
-                            "timestamp": event.timestamp,
-                            "name": event.name,
-                            "dpid": dpid
+                events_data = {
+                        "type": event_type,
+                        "timestamp": event.timestamp,
+                        "name": event.name,
+                        "dpid": dpid
                         }
                 shelve_events.append(events_data)
                 log_events['events'] = shelve_events
