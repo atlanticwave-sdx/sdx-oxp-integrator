@@ -2,9 +2,9 @@ version: '3.9'
 
 services:
 
-  mq-producer:
-    container_name: mq-producer
-    image: mq-producer
+  amlight:
+    container_name: amlight
+    image: amlight
     privileged: true
     tty: true
     restart: always
@@ -16,8 +16,6 @@ services:
       - 8181:8181
     volumes:
       - ./scripts:/scripts
-      - ./etc/kytos:/etc/kytos
-      - ./kytos/logs/mq-producer:/var/log/kytos
     env_file: 
       - .env
     environment:
@@ -25,18 +23,28 @@ services:
       MONGO_HOST_SEEDS: ${MONGO_HOST_SEEDS}
       MONGO_INITDB_ROOT_USERNAME: ${ROOT_DB_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${ROOT_DB_PASS}
-      MONGO_USERNAME: 'mq_producer_user'
-      MONGO_PASSWORD: 'mq_producer_pwd'
-      MONGO_DBNAME: 'mq_producer'
+      MONGO_USERNAME: 'amlight_user'
+      MONGO_PASSWORD: 'amlight_pwd'
+      MONGO_DBNAME: 'amlight'
+      MODEL_VERSION: ${MODEL_VERSION}
+      OXPO_ID: 1
+      OXPOS: ${SDX_OXPOS}
+      OXPO_NAMES: ${SDX_OXPO_NAMES}
+      OXPO_URLS: ${SDX_OXPO_URLS}
       # 
+      SDXTOPOLOGY_VALIDATOR: ${SDX_TOPOLOGY_VALIDATOR}
+      SDXLC_URLS: ${SDX_LC_URLS}
+      KYTOS_PROVISION: ${KYTOS_PROVISION}
+      KYTOS_TOPOLOGY: ${KYTOS_TOPOLOGY}
+      KYTOSSDX_TOPOLOGY: ${KYTOS_SDX_TOPOLOGY}
+      KYTOSSDX_VERSION_CONTROL: ${KYTOS_SDX_VERSION_CONTROL}
     depends_on:
       - mongo-ready
-    entrypoint: ["/scripts/kytos-start.sh"]
+    entrypoint: ["/scripts/amlight.sh"]
 
-
-  mq-consumer:
-    container_name: mq-consumer
-    image: mq-consumer
+  sax:
+    container_name: sax
+    image: sax
     privileged: true
     tty: true
     restart: always
@@ -44,12 +52,10 @@ services:
       kytos_network:
         ipv4_address: 192.168.0.3
     ports:
-      - 6656:6653
-      - 8484:8181
+      - 6654:6653
+      - 8282:8181
     volumes:
       - ./scripts:/scripts
-      - ./etc/kytos:/etc/kytos
-      - ./amlight/logs/mq-consumer:/var/log/kytos
     env_file: 
       - .env
     environment:
@@ -57,12 +63,92 @@ services:
       MONGO_HOST_SEEDS: ${MONGO_HOST_SEEDS}
       MONGO_INITDB_ROOT_USERNAME: ${ROOT_DB_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${ROOT_DB_PASS}
-      MONGO_USERNAME: 'mq_consumer_user'
-      MONGO_PASSWORD: 'mq_consumer_pwd'
-      MONGO_DBNAME: 'mq_consumer'
+      MONGO_USERNAME: 'sax_user'
+      MONGO_PASSWORD: 'sax_pwd'
+      MONGO_DBNAME: 'sax'
+      MODEL_VERSION: ${MODEL_VERSION}
+      OXPO_ID: 2
+      OXPOS: ${SDX_OXPOS}
+      OXPO_NAMES: ${SDX_OXPO_NAMES}
+      OXPO_URLS: ${SDX_OXPO_URLS}
+      # 
+      SDXTOPOLOGY_VALIDATOR: ${SDX_TOPOLOGY_VALIDATOR}
+      SDXLC_URLS: ${SDX_LC_URLS}
+      KYTOS_PROVISION: ${KYTOS_PROVISION}
+      KYTOS_TOPOLOGY: ${KYTOS_TOPOLOGY}
+      KYTOSSDX_TOPOLOGY: ${KYTOS_SDX_TOPOLOGY}
+      KYTOSSDX_VERSION_CONTROL: ${KYTOS_SDX_VERSION_CONTROL}
     depends_on:
       - mongo-ready
-    entrypoint: ["/scripts/kytos-start.sh"]
+    entrypoint: ["/scripts/sax.sh"]
+
+  tenet:
+    container_name: tenet
+    image: tenet
+    privileged: true
+    restart: always
+    tty: true
+    networks:
+      kytos_network:
+        ipv4_address: 192.168.0.4
+    ports:
+      - 6655:6653
+      - 8383:8181
+    volumes:
+      - ./scripts:/scripts
+    env_file: 
+      - .env
+    environment:
+      MONGODB_CONNSTRING: ${MONGODB_CONNSTRING}
+      MONGO_HOST_SEEDS: ${MONGO_HOST_SEEDS}
+      MONGO_INITDB_ROOT_USERNAME: ${ROOT_DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${ROOT_DB_PASS}
+      MONGO_USERNAME: 'tenet_user'
+      MONGO_PASSWORD: 'tenet_pwd'
+      MONGO_DBNAME: 'tenet'
+      MODEL_VERSION: ${MODEL_VERSION}
+      OXPO_ID: 3
+      OXPOS: ${SDX_OXPOS}
+      OXPO_NAMES: ${SDX_OXPO_NAMES}
+      OXPO_URLS: ${SDX_OXPO_URLS}
+      # 
+      SDXTOPOLOGY_VALIDATOR: ${SDX_TOPOLOGY_VALIDATOR}
+      SDXLC_URLS: ${SDX_LC_URLS}
+      KYTOS_PROVISION: ${KYTOS_PROVISION}
+      KYTOS_TOPOLOGY: ${KYTOS_TOPOLOGY}
+      KYTOSSDX_TOPOLOGY: ${KYTOS_SDX_TOPOLOGY}
+      KYTOSSDX_VERSION_CONTROL: ${KYTOS_SDX_VERSION_CONTROL}
+    depends_on:
+      - mongo-ready
+    entrypoint: ["/scripts/tenet.sh"]
+
+  listen-events:
+    container_name: listen-events
+    image: listen-events
+    privileged: true
+    tty: true
+    restart: always
+    networks:
+      kytos_network:
+        ipv4_address: 192.168.0.5
+    ports:
+      - 6656:6653
+      - 8484:8181
+    volumes:
+      - ./scripts:/scripts
+    env_file: 
+      - .env
+    environment:
+      MONGODB_CONNSTRING: ${MONGODB_CONNSTRING}
+      MONGO_HOST_SEEDS: ${MONGO_HOST_SEEDS}
+      MONGO_INITDB_ROOT_USERNAME: ${ROOT_DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${ROOT_DB_PASS}
+      MONGO_USERNAME: 'topology_events_user'
+      MONGO_PASSWORD: 'topology_events_pwd'
+      MONGO_DBNAME: 'topology_events'
+    depends_on:
+      - mongo-ready
+    entrypoint: ["/scripts/listen-events.sh"]
 
   mongo1t:
     container_name: mongo1t
@@ -74,7 +160,7 @@ services:
     ports:
       - 27027:27027
     volumes:
-      - ./os_base/mongo_base:/mongo_base
+      - ./os-base/mongo-base:/mongo_base
     entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0", "--port", "27027" ]
     env_file:
       - .env
@@ -95,7 +181,7 @@ services:
     ports:
       - 27028:27028
     volumes:
-      - ./os_base/mongo_base:/mongo_base
+      - ./os-base/mongo-base:/mongo_base
     entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0", "--port", "27028" ]
     env_file:
       - .env
@@ -116,7 +202,7 @@ services:
     ports:
       - 27029:27029
     volumes:
-      - ./os_base/mongo_base:/mongo_base
+      - ./os-base/mongo-base:/mongo_base
     entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0", "--port", "27029" ]
     env_file:
       - .env
@@ -171,6 +257,21 @@ services:
     depends_on:
       - mongo-setup
 
+  mininet:
+    container_name: mininet
+    image: mininet
+    privileged: true
+    tty: true
+    networks:
+      kytos_network:
+        ipv4_address: 192.168.0.11
+    volumes:
+      - /lib/modules:/lib/modules
+    depends_on:
+      - amlight
+      - sax
+      - tenet
+
   rabbitmq3:
     container_name: "rabbitmq"
     image: rabbit-mq
@@ -188,6 +289,35 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+
+  nginx:
+    container_name: nginx
+    image: nginx
+    restart: always
+    networks:
+      kytos_network:
+        ipv4_address: 192.168.0.13
+    ports:
+      - 80:8080
+    volumes:
+      - ./os-base/nginx-base:/validator
+    environment:
+      SWAGGER_JSON: /validator/validator.json
+
+  validator:
+    container_name: validator
+    image: validator
+    privileged: true
+    tty: true
+    restart: always
+    networks:
+      kytos_network:
+        ipv4_address: 192.168.0.14
+    ports:
+      - 8000:8000
+    volumes:
+      - ./scripts:/scripts
+    entrypoint: [ "gunicorn", "validator.app:app", "-b", "0.0.0.0:8000" ]
 
 networks:
   kytos_network:

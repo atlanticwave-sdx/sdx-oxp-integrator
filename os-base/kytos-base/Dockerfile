@@ -1,4 +1,4 @@
-FROM amlight/kytos:latest
+FROM amlight/kytos:2023.1
 
 # LABEL about the custom image
 LABEL maintainer="lmarinve@fiu.edu"

@@ -1,0 +1,4 @@
+[submodule "kytos/topology_events"]
+	path = kytos/topology_events
+	url = https://github.com/lmarinve/topology_events.git
+	branch = topology_events
