@@ -2,6 +2,20 @@ version: '3.9'
 
 services:
 
+  nginx:
+    container_name: nginx
+    image: nginx
+    restart: always
+    networks:
+      kytos_network:
+        ipv4_address: 192.168.0.2
+    ports:
+      - 80:8080
+    volumes:
+      - ./os-base/nginx-base:/validator
+    environment:
+      SWAGGER_JSON: /validator/validator.json
+
   listen-events:
     container_name: listen-events
     image: listen-events
@@ -41,7 +55,7 @@ services:
     ports:
       - 27027:27027
     volumes:
-      - ./os_base/mongo_base:/mongo_base
+      - ./os-base/mongo-base:/mongo_base
     entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0", "--port", "27027" ]
     env_file:
       - .env
@@ -62,7 +76,7 @@ services:
     ports:
       - 27028:27028
     volumes:
-      - ./os_base/mongo_base:/mongo_base
+      - ./os-base/mongo-base:/mongo_base
     entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0", "--port", "27028" ]
     env_file:
       - .env
@@ -83,7 +97,7 @@ services:
     ports:
       - 27029:27029
     volumes:
-      - ./os_base/mongo_base:/mongo_base
+      - ./os-base/mongo-base:/mongo_base
     entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0", "--port", "27029" ]
     env_file:
       - .env
