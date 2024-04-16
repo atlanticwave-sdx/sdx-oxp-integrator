@@ -35,6 +35,10 @@ class Main(KytosNApp):
 
     def execute(self):
         """Execute once when the napp is running."""
+        HASH = "################"
+        log.info(HASH)
+        log.info(f"{HASH} Execute once when the napp is running {HASH}")
+        log.info(HASH)
         self.load_shelve()
 
     def shutdown(self):
@@ -112,6 +116,7 @@ class Main(KytosNApp):
     @rest("v1/shelve/events", methods=["GET"])
     def get_shelve_events(self, _request: Request) -> JSONResponse:
         """return events shelve"""
+        log.info(f"{HASH} get shelve events {HASH}")
         with shelve.open("events_shelve") as open_shelve:
             events = open_shelve['events']
         open_shelve.close()
