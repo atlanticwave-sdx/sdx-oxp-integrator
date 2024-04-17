@@ -38,8 +38,6 @@ class Main(KytosNApp):  # pylint: disable=R0904
         self.shelve_loaded = False  # pylint: disable=W0201
         self.version_control = False  # pylint: disable=W0201
         OXPO_ID = int(os.environ.get("OXPO_ID"))
-        sdx_lc_urls_str = os.environ.get("SDXLC_URLS")
-        self.sdxlc_url = sdx_lc_urls_str.split(",")[OXPO_ID]
         oxpo_names_str = os.environ.get("OXPO_NAMES")
         self.oxpo_name = oxpo_names_str.split(",")[OXPO_ID]
         oxpo_urls_str = os.environ.get("OXPO_URLS")
@@ -81,20 +79,6 @@ class Main(KytosNApp):  # pylint: disable=R0904
                 kytos_topology_url, timeout=10).json()
         result = kytos_topology["topology"]
         return result
-
-    def post_sdx_lc(self, event_type=None):
-        """ return the status from post sdx topology to sdx lc"""
-        sdxlc_url = self.sdxlc_url
-        post_topology = requests.post(
-                sdxlc_url,
-                timeout=60,
-                json=self.sdx_topology)
-        if post_topology.status_code == 200:
-            if event_type is not None:
-                return {"result": self.sdx_topology,
-                        "status_code": post_topology.status_code}
-        return {"result": post_topology.json(),
-                "status_code": post_topology.status_code}
 
     def validate_sdx_topology(self):
         """ return 200 if validated topology following the SDX data model"""
@@ -171,8 +155,9 @@ class Main(KytosNApp):  # pylint: disable=R0904
             if evaluate_topology["status_code"] == 200:
                 self.kytos2sdx = topology_updated.get("kytos2sdx", {})
                 self.sdx2kytos = topology_updated.get("sdx2kytos", {})
-                result = self.post_sdx_lc(event_type)
-                return result
+
+                return {"result": self.sdx_topology,
+                        "status_code": evaluate_topology["status_code"]}
             with shelve.open("events_shelve") as log_events:
                 shelve_events = log_events['events']
                 shelve_events.append(
