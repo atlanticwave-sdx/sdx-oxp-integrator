@@ -291,9 +291,9 @@ services:
     ports:
       - 80:8080
     volumes:
-      - ./os-base/nginx-base:/topology
+      - ./os-base/nginx-base:/oxpoapi
     environment:
-      SWAGGER_JSON: /topology/validator.json
+      SWAGGER_JSON: /oxpoapi/oxpoapi.json
       DEFAULT_TOPOLOGY: ${DEFAULT_TOPOLOGY}
       DEFAULT_CONNECTION: ${DEFAULT_CONNECTION}
       DEFAULT_URL: ${DEFAULT_URL}
