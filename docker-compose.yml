@@ -33,11 +33,8 @@ services:
       OXPO_URLS: ${SDX_OXPO_URLS}
       # 
       SDXTOPOLOGY_VALIDATOR: ${SDX_TOPOLOGY_VALIDATOR}
-      SDXLC_URLS: ${SDX_LC_URLS}
-      KYTOS_PROVISION: ${KYTOS_PROVISION}
       KYTOS_TOPOLOGY: ${KYTOS_TOPOLOGY}
       KYTOSSDX_TOPOLOGY: ${KYTOS_SDX_TOPOLOGY}
-      KYTOSSDX_VERSION_CONTROL: ${KYTOS_SDX_VERSION_CONTROL}
     depends_on:
       - mongo-ready
     entrypoint: ["/scripts/amlight.sh"]
@@ -73,11 +70,8 @@ services:
       OXPO_URLS: ${SDX_OXPO_URLS}
       # 
       SDXTOPOLOGY_VALIDATOR: ${SDX_TOPOLOGY_VALIDATOR}
-      SDXLC_URLS: ${SDX_LC_URLS}
-      KYTOS_PROVISION: ${KYTOS_PROVISION}
       KYTOS_TOPOLOGY: ${KYTOS_TOPOLOGY}
       KYTOSSDX_TOPOLOGY: ${KYTOS_SDX_TOPOLOGY}
-      KYTOSSDX_VERSION_CONTROL: ${KYTOS_SDX_VERSION_CONTROL}
     depends_on:
       - mongo-ready
     entrypoint: ["/scripts/sax.sh"]
@@ -113,11 +107,8 @@ services:
       OXPO_URLS: ${SDX_OXPO_URLS}
       # 
       SDXTOPOLOGY_VALIDATOR: ${SDX_TOPOLOGY_VALIDATOR}
-      SDXLC_URLS: ${SDX_LC_URLS}
-      KYTOS_PROVISION: ${KYTOS_PROVISION}
       KYTOS_TOPOLOGY: ${KYTOS_TOPOLOGY}
       KYTOSSDX_TOPOLOGY: ${KYTOS_SDX_TOPOLOGY}
-      KYTOSSDX_VERSION_CONTROL: ${KYTOS_SDX_VERSION_CONTROL}
     depends_on:
       - mongo-ready
     entrypoint: ["/scripts/tenet.sh"]
@@ -300,9 +291,23 @@ services:
     ports:
       - 80:8080
     volumes:
-      - ./os-base/nginx-base:/validator
+      - ./os-base/nginx-base:/oxpoapi
     environment:
-      SWAGGER_JSON: /validator/validator.json
+      SWAGGER_JSON: /oxpoapi/oxpoapi.json
+      DEFAULT_TOPOLOGY: ${DEFAULT_TOPOLOGY}
+      DEFAULT_CONNECTION: ${DEFAULT_CONNECTION}
+      DEFAULT_URL: ${DEFAULT_URL}
+      TOPOLOGY_PATH: ${TOPOLOGY_PATH}
+      CONNECTION_PATH: ${CONNECTION_PATH}
+      TOPOLOGY_1: ${TOPOLOGY_1}
+      TOPOLOGY_2: ${TOPOLOGY_2}
+      TOPOLOGY_3: ${TOPOLOGY_3}
+      CONNECTION_1: ${CONNECTION_1}
+      CONNECTION_2: ${CONNECTION_2}
+      CONNECTION_3: ${CONNECTION_3}
+      URL_1: ${URL_1}
+      URL_2: ${URL_2}
+      URL_3: ${URL_3}
 
   validator:
     container_name: validator

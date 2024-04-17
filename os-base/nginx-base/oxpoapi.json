@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "SDX TOPOLOGY Validator",
-    "description": "SDX Topology validation",
+    "title": "Oxpo Api Wrapper",
+    "description": "The wrapper abstracts the complexities of direct API calls and offers a consistent method to interact with different OXPO services",
     "version": "1.0.0",
     "contact": {
       "email": "lmarinve@fiu.edu"
@@ -62,8 +62,8 @@
         "tags": [
           "topology"
         ],
-        "summary": "Get Amlight SDX Topology",
-        "description": "Get Amlight SDX topology",
+        "summary": "Get Ampath SDX Topology",
+        "description": "Get Ampath SDX topology",
         "responses": {
           "200": {
             "description": "Successful response",
