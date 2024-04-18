@@ -113,34 +113,6 @@ services:
       - mongo-ready
     entrypoint: ["/scripts/tenet.sh"]
 
-  listen-events:
-    container_name: listen-events
-    image: listen-events
-    privileged: true
-    tty: true
-    restart: always
-    networks:
-      kytos_network:
-        ipv4_address: 192.168.0.5
-    ports:
-      - 6656:6653
-      - 8484:8181
-    volumes:
-      - ./scripts:/scripts
-    env_file: 
-      - .env
-    environment:
-      MONGODB_CONNSTRING: ${MONGODB_CONNSTRING}
-      MONGO_HOST_SEEDS: ${MONGO_HOST_SEEDS}
-      MONGO_INITDB_ROOT_USERNAME: ${ROOT_DB_USER}
-      MONGO_INITDB_ROOT_PASSWORD: ${ROOT_DB_PASS}
-      MONGO_USERNAME: 'topology_events_user'
-      MONGO_PASSWORD: 'topology_events_pwd'
-      MONGO_DBNAME: 'topology_events'
-    depends_on:
-      - mongo-ready
-    entrypoint: ["/scripts/listen-events.sh"]
-
   mongo1t:
     container_name: mongo1t
     image: mongo-db
@@ -262,24 +234,6 @@ services:
       - amlight
       - sax
       - tenet
-
-  rabbitmq3:
-    container_name: "rabbitmq"
-    image: rabbit-mq
-    hostname: "rabbitmq-host"
-    networks:
-      kytos_network:
-        ipv4_address: 192.168.0.12
-    ports:
-      # AMQP protocol port
-      - '5672:5672'
-      # HTTP management UI
-      - '15672:15672'
-    env_file:
-      - .env
-    environment:
-      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
-      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
 
   nginx:
     container_name: nginx
