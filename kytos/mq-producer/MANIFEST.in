@@ -1,2 +1,0 @@
-include kytos.json
-recursive-include requirements * 
