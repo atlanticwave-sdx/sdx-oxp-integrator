@@ -137,11 +137,6 @@ class ParseConvertTopology:
         else:
             sdx_port["mtu"] = 1500
 
-        if "port_name" in interface["metadata"]:
-            sdx_port["short_name"] = interface["metadata"]["port_name"]
-        else:
-            sdx_port["short_name"] = interface["name"]
-
         if "sdx_nni" in interface["metadata"]:
             sdx_port["nni"] = "urn:sdx:link:" + interface["metadata"]["sdx_nni"]
 
@@ -194,7 +189,7 @@ class ParseConvertTopology:
 
         sdx_node["id"] = f"urn:sdx:node:{self.oxp_url}:%s" % sdx_node["name"]
 
-        sdx_node["location"] = {"address": "", "latitude": "", "longitude": "", "iso3166_2_lvl4": ""}
+        sdx_node["location"] = {"address": "", "latitude": "", "longitude": "", "iso3166_2_lvl4": "US-XX"}
         if "address" in kytos_node["metadata"]:
             sdx_node["location"]["address"] = kytos_node["metadata"]["address"]
         if "lat" in kytos_node["metadata"]:
@@ -273,7 +268,7 @@ class ParseConvertTopology:
                     "services": services,
                     "label_range": ["1-100"],
                     "nni": "sdx_nni:",
-                    "mtu": 0
+                    "mtu": 64
                 },
                 {
                     "id": self.get_sdx_port_urn(switch_b, interface_b),
@@ -285,7 +280,7 @@ class ParseConvertTopology:
                     "services": services,
                     "label_range": ["1-100"],
                     "nni": "sdx_nni:",
-                    "mtu": 0
+                    "mtu": 64
                 },
         ]
         sdx_link["type"] = "intra"

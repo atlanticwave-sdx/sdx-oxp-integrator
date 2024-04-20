@@ -3,6 +3,7 @@
 HEADERS = {"Content-type": "application/json"}
 ADMIN_EVENTS = [
         "version/control.initialize",
+        "version/control.get",
         "kytos/topology.switch.enabled",
         "kytos/topology.switch.disabled",
         "kytos/topology.switch.metadata.added",
