@@ -54,14 +54,6 @@ RUN git config --global url."https://github.com".insteadOf git://github.com
 
 WORKDIR /
 
-RUN wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | apt-key add -
-RUN apt update
-RUN apt-get install gnupg2
-RUN wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | apt-key add -
-RUN echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/5.0 main" | tee /etc/apt/sources.list.d/mongodb-org-5.0.list
-RUN apt update
-RUN apt-get install -y mongodb-org-shell
-
 RUN apt install python3-pip --assume-yes
 RUN apt-get purge --assume-yes --auto-remove -o APT::AutoRemove::RecommendsImportant=false && \
 rm -rf /var/lib/apt/lists/*
