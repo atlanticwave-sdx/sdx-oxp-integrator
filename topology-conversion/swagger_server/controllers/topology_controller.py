@@ -1,18 +1,10 @@
 import requests
 import logging
 import connexion
-import uvicorn
 from flask import render_template
-from convert_topology import ParseConvertTopology
+from topology-conversion.controllers.convert_topology import ParseConvertTopology
 
-log = logging.getLogger(__name__)
-
-app = connexion.App(__name__, specification_dir="./")
-app.add_api("swagger.yaml")
-
-@app.route("/")
-def home():
-    return render_template("home.html")
+logger = logging.getLogger(__name__)
 
 def get_kytos_topology():
     kytos_topology_url = "http://67.17.206.221:8181/api/kytos/topology/v3/"
@@ -36,18 +28,19 @@ def convert_topology():
             ).parse_convert_topology()
         return {"result": topology_converted, "status_code": 200}
     except Exception as err:
-        log.info("validation Error, status code 401:", err)
+        logger.info("validation Error, status code 401:", err)
         return {"result": "Validation Error", "status_code": 401}
+
 '''
 def validate_sdx_topology():
     try:
-        sdx_topology_validator = "http://67.17.206.221:8181/validator/v1/validate"
+        sdx_topology_validator = "http://localhost:8000/validator/v1/validate"
         response = requests.post(
                 sdx_topology_validator,
                 json={},
                 timeout=10)
     except ValueError as exception:
-        log.info("validate topology result %s %s", exception, 401)
+        logger.info("validate topology result %s %s", exception, 401)
         raise HTTPException(
                 401,
                 detail=f"Path is not valid: {exception}"
@@ -55,6 +48,3 @@ def validate_sdx_topology():
     result = response.json()
     return {"result": result, "status_code": response.status_code}
 '''
-        
-if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)        
