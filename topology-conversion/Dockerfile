@@ -3,8 +3,8 @@ FROM flask-base
 
 # set work directory
 
-WORKDIR /
 RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 COPY ./topology-conversion/ /usr/src/app
 
 EXPOSE 8000

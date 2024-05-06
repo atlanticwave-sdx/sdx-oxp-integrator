@@ -266,20 +266,21 @@ services:
       URL_2: ${URL_2}
       URL_3: ${URL_3}
 
-  validator:
-    container_name: validator
-    image: validator
+
+  topology-conversion:
+    container_name: topology-conversion
+    image: topology-conversion
     privileged: true
     tty: true
     restart: always
     networks:
       kytos_network:
-        ipv4_address: 192.168.0.14
+        ipv4_address: 192.168.0.15
     ports:
       - 8000:8000
-    volumes:
-      - ./scripts:/scripts
-    entrypoint: [ "gunicorn", "validator.app:app", "-b", "0.0.0.0:8000" ]
+    env_file:
+      - .env
+    entrypoint: [ "python3", "-m", "swagger_server" ]
 
 networks:
   kytos_network:

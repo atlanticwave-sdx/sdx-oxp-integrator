@@ -1,14 +1,8 @@
-import requests
-import logging
 import connexion
-import uvicorn
-from flask import render_template
-from convert_topology import ParseConvertTopology
+# import uvicorn
 
-logger = logging.getLogger(__name__)
-
-app = connexion.App(__name__, specification_dir="./")
-app.add_api("swagger.yaml")
+# app = connexion.App(__name__, specification_dir="./")
+# app.add_api("swagger.yaml")
 
 # Run swagger service
 def main():
