@@ -32,3 +32,4 @@ RUN rm -rf /var/lib/apt/lists/*
 WORKDIR /
 RUN pip install connexion[swagger-ui,uvicorn]
 RUN pip install requests
+RUN pip install pytz

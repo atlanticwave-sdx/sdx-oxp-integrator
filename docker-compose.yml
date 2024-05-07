@@ -26,10 +26,6 @@ services:
       MONGO_USERNAME: ${AMPATH_MONGO_USERNAME}
       MONGO_PASSWORD: ${AMPATH_MONGO_PASSWORD}
       MONGO_DBNAME: ${AMPATH_MONGO_DBNAME}
-      MODEL_VERSION: ${MODEL_VERSION}
-      OXPO_NAME: ${AMPATH_OXPO_NAME}
-      OXPO_URL: ${AMPATH_OXPO_URL}
-      # 
     depends_on:
       - mongo-ready
     entrypoint: ["/scripts/amlight.sh"]
@@ -58,9 +54,6 @@ services:
       MONGO_USERNAME: ${SAX_MONGO_USERNAME}
       MONGO_PASSWORD: ${SAX_MONGO_PASSWORD}
       MONGO_DBNAME: ${SAX_MONGO_DBNAME}
-      MODEL_VERSION: ${MODEL_VERSION}
-      OXPO_NAME: ${SAX_OXPO_NAME}
-      OXPO_URL: ${SAX_OXPO_URL}
       # 
     depends_on:
       - mongo-ready
@@ -90,10 +83,6 @@ services:
       MONGO_USERNAME: ${TENET_MONGO_USERNAME}
       MONGO_PASSWORD: ${TENET_MONGO_PASSWORD}
       MONGO_DBNAME: ${TENET_MONGO_DBNAME}
-      MODEL_VERSION: ${MODEL_VERSION}
-      OXPO_NAME: ${TENET_OXPO_NAME}
-      OXPO_URL: ${TENET_OXPO_URL}
-      # 
     depends_on:
       - mongo-ready
     entrypoint: ["/scripts/tenet.sh"]
@@ -260,6 +249,9 @@ services:
     env_file:
       - .env
     environment:
+      MODEL_VERSION: ${MODEL_VERSION}
+      OXPO_NAME: ${AMPATH_OXPO_NAME}
+      OXPO_URL: ${AMPATH_OXPO_URL}
       SDX_TOPOLOGY_VALIDATOR: ${SDX_TOPOLOGY_VALIDATOR}
       OXP_TOPOLOGY_URL: ${AMPATH_OXPO_TOPOLOGY_URL}
     entrypoint: [ "python3", "-m", "uvicorn", "run:app", "--host", "0.0.0.0", "--port", "8000" ]
@@ -279,6 +271,9 @@ services:
     env_file:
       - .env
     environment:
+      MODEL_VERSION: ${MODEL_VERSION}
+      OXPO_NAME: ${SAX_OXPO_NAME}
+      OXPO_URL: ${SAX_OXPO_URL}
       SDX_TOPOLOGY_VALIDATOR: ${SDX_TOPOLOGY_VALIDATOR}
       OXP_TOPOLOGY_URL: ${SAX_OXPO_TOPOLOGY_URL}
     entrypoint: [ "python3", "-m", "uvicorn", "run:app", "--host", "0.0.0.0", "--port", "8000" ]
@@ -298,6 +293,9 @@ services:
     env_file:
       - .env
     environment:
+      MODEL_VERSION: ${MODEL_VERSION}
+      OXPO_NAME: ${TENET_OXPO_NAME}
+      OXPO_URL: ${TENET_OXPO_URL}
       SDX_TOPOLOGY_VALIDATOR: ${SDX_TOPOLOGY_VALIDATOR}
       OXP_TOPOLOGY_URL: ${TENET_OXPO_TOPOLOGY_URL}
     entrypoint: [ "python3", "-m", "uvicorn", "run:app", "--host", "0.0.0.0", "--port", "8000" ]
