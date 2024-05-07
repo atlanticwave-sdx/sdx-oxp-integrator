@@ -1,13 +1,14 @@
 import requests
 import logging
-import connexion
+import os
 from controllers.convert_topology import ParseConvertTopology
 
 logger = logging.getLogger(__name__)
+OXP_TOPOLOGY_URL = os.environ.get("OXP_TOPOLOGY_URL")
+SDX_TOPOLOGY_VALIDATOR = os.environ.get("SDX_TOPOLOGY_VAIDATOR")
 
 def get_kytos_topology():
-    kytos_topology_url = "http://67.17.206.221:8181/api/kytos/topology/v3/"
-    response = requests.get(kytos_topology_url)
+    response = requests.get(OXP_TOPOLOGY_URL)
     if response.status_code == 200:
         kytos_topology = response.json()
         result = kytos_topology["topology"]
@@ -33,9 +34,8 @@ def convert_topology():
 '''
 def validate_sdx_topology():
     try:
-        sdx_topology_validator = "http://localhost:8000/validator/v1/validate"
         response = requests.post(
-                sdx_topology_validator,
+                SDX_TOPOLOGY_VALIDATOR,
                 json={},
                 timeout=10)
     except ValueError as exception:

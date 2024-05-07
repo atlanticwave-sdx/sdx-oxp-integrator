@@ -5,8 +5,9 @@ info:
   version: 1.0.0
 
 servers:
-  - url: /api
-  - url: http://0.0.0.0:8000/api
+  - url: /
+  - url: http://0.0.0.0:8000
+  - url: http://67.17.206.221:8000
 
 paths:
   /topology:
