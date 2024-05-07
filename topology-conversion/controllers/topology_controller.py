@@ -1,8 +1,7 @@
 import requests
 import logging
 import connexion
-from flask import render_template
-from swagger_server.controllers.convert_topology import ParseConvertTopology
+from controllers.convert_topology import ParseConvertTopology
 
 logger = logging.getLogger(__name__)
 

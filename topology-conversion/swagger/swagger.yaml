@@ -29,7 +29,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-      x-openapi-router-controller: swagger_server.controllers.topology_controller
+      x-openapi-router-controller: controllers.topology_controller
 
 components:
   schemas:

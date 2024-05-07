@@ -1,5 +1,5 @@
 # pull os base image
-FROM flask-base
+FROM async-base
 
 # set work directory
 
@@ -10,5 +10,4 @@ COPY ./topology-conversion/ /usr/src/app
 EXPOSE 8000
 
 ENTRYPOINT ["python3"]
-CMD ["-m", "swagger_server"]
-# CMD ["-m", "uvicorn", "swagger_server.app:asgi_app", "--host", "0.0.0.0", "--port", "80800"]
+CMD ["-m", "uvicorn", "run:app", "--host", "0.0.0.0", "--port", "8000"]
