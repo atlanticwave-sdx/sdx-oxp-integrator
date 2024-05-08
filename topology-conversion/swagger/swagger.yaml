@@ -6,8 +6,7 @@ info:
 
 servers:
   - url: /
-  - url: http://0.0.0.0:8000
-  - url: http://67.17.206.221:8000
+  - url: http://0.0.0.0
 
 paths:
   /topology:

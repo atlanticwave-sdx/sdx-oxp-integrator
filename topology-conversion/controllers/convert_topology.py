@@ -409,6 +409,4 @@ class ParseConvertTopology:
         topology["links"] = self.get_sdx_links()
         topology["links"] += self.create_inter_oxp_link_entries()
         topology["services"] = ["l2vpn-ptp"]
-        topology["kytos2sdx"] = self.kytos2sdx
-        topology["sdx2kytos"] = self.sdx2kytos
         return topology

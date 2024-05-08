@@ -32,7 +32,8 @@ def convert_topology():
             oxp_name=OXPO_NAME,
             oxp_url=OXPO_URL,
             ).parse_convert_topology()
-        return {"result": topology_converted, "status_code": 200}
+        return topology_converted
+        # return {"result": topology_converted, "status_code": 200}
     except Exception as err:
         logger.info("validation Error, status code 401:", err)
         return {"result": "Validation Error", "status_code": 401}
