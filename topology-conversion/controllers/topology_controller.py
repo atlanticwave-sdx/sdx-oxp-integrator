@@ -1,8 +1,12 @@
+import connexion
 import requests
 import logging
 import os
+from typing import Dict
 from controllers.convert_topology import ParseConvertTopology
-from controllers.utils import get_timestamp
+from util import get_timestamp
+from models.error_message import ErrorMessage  # noqa: E501
+from models.topology import Topology  # noqa: E501
 
 logger = logging.getLogger(__name__)
 OXP_TOPOLOGY_URL = os.environ.get("OXP_TOPOLOGY_URL")
@@ -24,6 +28,7 @@ def get_kytos_topology():
 
 def convert_topology():
     try:
+
         topology_converted = ParseConvertTopology(
             topology=get_kytos_topology(),
             version= 1,
@@ -38,19 +43,3 @@ def convert_topology():
         logger.info("validation Error, status code 401:", err)
         return {"result": "Validation Error", "status_code": 401}
 
-'''
-def validate_sdx_topology():
-    try:
-        response = requests.post(
-                SDX_TOPOLOGY_VALIDATOR,
-                json={},
-                timeout=10)
-    except ValueError as exception:
-        logger.info("validate topology result %s %s", exception, 401)
-        raise HTTPException(
-                401,
-                detail=f"Path is not valid: {exception}"
-            ) from exception
-    result = response.json()
-    return {"result": result, "status_code": response.status_code}
-'''
