@@ -33,3 +33,4 @@ WORKDIR /
 RUN pip install connexion[swagger-ui,uvicorn]
 RUN pip install requests
 RUN pip install pytz
+RUN pip install six

@@ -4,7 +4,7 @@ from datetime import datetime
 
 import pytz
 import six
-from openapi_server import typing_utils
+from utils import typing_utils
 
 
 def get_timestamp(timestamp=None):

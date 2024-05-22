@@ -1,45 +1,62 @@
-import connexion
-import requests
+""" topology controller """
 import logging
 import os
-from typing import Dict
-from controllers.convert_topology import ParseConvertTopology
-from util import get_timestamp
+
+import requests
 from models.error_message import ErrorMessage  # noqa: E501
 from models.topology import Topology  # noqa: E501
+from utils.util import get_timestamp
+
+from controllers.convert_topology import ParseConvertTopology
 
 logger = logging.getLogger(__name__)
 OXP_TOPOLOGY_URL = os.environ.get("OXP_TOPOLOGY_URL")
 SDX_TOPOLOGY_VALIDATOR = os.environ.get("SDX_TOPOLOGY_VAIDATOR")
-MODEL_VERSION = os.environ.get("MODEL_VERSION")
-OXPO_NAME = os.environ.get("OXPO_NAME")
+
+topology_class = Topology()
+topology_class.model_version = os.environ.get("MODEL_VERSION")
+topology_class.name = os.environ.get("OXPO_NAME")
+topology_class.version = 0
 OXPO_URL = os.environ.get("OXPO_URL")
 
 
 def get_kytos_topology():
+    """ getting kytos topology """
     response = requests.get(OXP_TOPOLOGY_URL)
     if response.status_code == 200:
         kytos_topology = response.json()
         result = kytos_topology["topology"]
-        logger.info("get_kytos_topology result:", result)
+        logger.info("get_kytos_topology result: {result}")
         return result
-    else:
-        print("Failed to retrieve data. Status code:", response.status_code)
+    return {"error:": "Failed to retrieve data",
+            "status_code:": response.status_code}
+
 
 def convert_topology():
+    """ converting kytos to sdx topology """
     try:
+        topology_attrs = vars(Topology())
+        print("######################")
+        print("## convert topology ##")
+        print("######################")
+        print(list(item for item in topology_attrs.items()))
+        print(topology_class.topology_id)
+        print(topology_class.name)
+        print(topology_class.version)
+        print(topology_class.model_version)
+        print(topology_class.time_stamp)
+        print(topology_class.nodes)
+        print(topology_class.links)
 
         topology_converted = ParseConvertTopology(
             topology=get_kytos_topology(),
-            version= 1,
+            version=topology_class.version,
             timestamp=get_timestamp(),
-            model_version=MODEL_VERSION,
-            oxp_name=OXPO_NAME,
+            model_version=topology_class.model_version,
+            oxp_name=topology_class.name,
             oxp_url=OXPO_URL,
-            ).parse_convert_topology()
+        ).parse_convert_topology()
         return topology_converted
-        # return {"result": topology_converted, "status_code": 200}
     except Exception as err:
-        logger.info("validation Error, status code 401:", err)
-        return {"result": "Validation Error", "status_code": 401}
-
+        logger.info("validation Error, status code 401:{err}")
+        return {"result": "Validation Error {err}", "status_code": 401}

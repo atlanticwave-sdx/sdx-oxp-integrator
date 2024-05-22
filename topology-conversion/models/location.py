@@ -1,12 +1,10 @@
+""" location model """
 # coding: utf-8
 
 from __future__ import absolute_import
-from datetime import date, datetime  # noqa: F401
 
-from typing import List, Dict  # noqa: F401
-
-from openapi_server.models.base_model_ import Model
-from openapi_server import util
+from utils import util
+from models.base_model_ import Model
 
 
 class Location(Model):
@@ -25,16 +23,12 @@ class Location(Model):
         :param longitude: The longitude of this Location.  # noqa: E501
         :type longitude: float
         """
-        self.openapi_types = {
-            'address': str,
-            'latitude': float,
-            'longitude': float
-        }
+        self.openapi_types = {"address": str, "latitude": float, "longitude": float}
 
         self.attribute_map = {
-            'address': 'address',
-            'latitude': 'latitude',
-            'longitude': 'longitude'
+            "address": "address",
+            "latitude": "latitude",
+            "longitude": "longitude",
         }
 
         self._address = address
@@ -42,7 +36,7 @@ class Location(Model):
         self._longitude = longitude
 
     @classmethod
-    def from_dict(cls, dikt) -> 'Location':
+    def from_dict(cls, dikt) -> "Location":
         """Returns the dict as a model
 
         :param dikt: A dict.
@@ -71,7 +65,9 @@ class Location(Model):
         :type address: str
         """
         if address is None:
-            raise ValueError("Invalid value for `address`, must not be `None`")  # noqa: E501
+            raise ValueError(
+                "Invalid value for `address`, must not be `None`"
+            )  # noqa: E501
 
         self._address = address
 
@@ -94,11 +90,17 @@ class Location(Model):
         :type latitude: float
         """
         if latitude is None:
-            raise ValueError("Invalid value for `latitude`, must not be `None`")  # noqa: E501
+            raise ValueError(
+                "Invalid value for `latitude`, must not be `None`"
+            )  # noqa: E501
         if latitude is not None and latitude > 90.0:  # noqa: E501
-            raise ValueError("Invalid value for `latitude`, must be a value less than or equal to `90.0`")  # noqa: E501
+            raise ValueError(
+                "Invalid value for `latitude`, must be a value less than or equal to `90.0`"
+            )  # noqa: E501
         if latitude is not None and latitude < -90.0:  # noqa: E501
-            raise ValueError("Invalid value for `latitude`, must be a value greater than or equal to `-90.0`")  # noqa: E501
+            raise ValueError(
+                "Invalid value for `latitude`, must be a value greater than or equal to `-90.0`"
+            )  # noqa: E501
 
         self._latitude = latitude
 
@@ -121,10 +123,16 @@ class Location(Model):
         :type longitude: float
         """
         if longitude is None:
-            raise ValueError("Invalid value for `longitude`, must not be `None`")  # noqa: E501
+            raise ValueError(
+                "Invalid value for `longitude`, must not be `None`"
+            )  # noqa: E501
         if longitude is not None and longitude > 90.0:  # noqa: E501
-            raise ValueError("Invalid value for `longitude`, must be a value less than or equal to `90.0`")  # noqa: E501
+            raise ValueError(
+                "Invalid value for `longitude`, must be a value less than or equal to `90.0`"
+            )  # noqa: E501
         if longitude is not None and longitude < -90.0:  # noqa: E501
-            raise ValueError("Invalid value for `longitude`, must be a value greater than or equal to `-90.0`")  # noqa: E501
+            raise ValueError(
+                "Invalid value for `longitude`, must be a value greater than or equal to `-90.0`"
+            )  # noqa: E501
 
         self._longitude = longitude
