@@ -28,16 +28,10 @@ The function named 'get_validator_schema' that takes a single parameter, which i
 
 The function named 'validate' that takes two parameters: data and schema.  
 The first parameter 'data' takes json data as input and the second parameter takes the schema as input, which is returned by the function 'get_validator_schema'.  
-This function validates the given data against the provided JSON schema and returns the result of the validation.
+This function validates the given data against the provided JSON schema and returns the result of the validation.  
 
+Note: Make sure that 'validator.yaml' file is present in the current directory.     
 
-
-
-Example of usage:  
-openapi_spec = load_openapi_schema('test.yaml')  
-resolved_openapi_spec = resolve_references(openapi_spec)  
-validator_schema = get_validator_schema(resolved_openapi_spec)  
-validation_result = validate(request_data, validator_schema)  
-
-
-
+Example of usage:      
+validator_schema = get_validator_schema(resolve_references(load_openapi_schema(yaml_spec_file)))  
+validation_result = validate(data, validator_schema)  
