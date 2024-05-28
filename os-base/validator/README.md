@@ -20,7 +20,7 @@ The module "sdx-topology-validator" consists of functions 'load_openapi_schema',
 
 Import the module "sdx-topology-validator" and all the functions it consists.
 
-The function named 'load_openapi_schema' that takes a single parameter 'file_path', which is the yaml file which consists of OpenAPI specification and returns 'openapi_spec' the loaded YAML content as a dictionary.
+The function named 'load_openapi_schema' that takes a single parameter 'file_path', which is the yaml_spec_file which consists of OpenAPI specification and returns 'openapi_spec' the loaded YAML content as a dictionary.
 
 The function named 'resolve_references' that takes a single parameter 'openapi_spec', resolves any JSON references in the OpenAPI specification, ensuring that all $ref fields are fully expanded.
 
