@@ -1,90 +1,43 @@
-# validator
+# sdx_topology_validator
 
-Install Python Virtualenv
+## Introduction
 
-$ sudo apt-get update
+This Validates the topology against the given OpenAPI specification. 
 
-$ sudo apt-get install python3-venv
+## Installation Steps
 
+pip install sdx-topology-validator
 
-Activate the new virtual environment in the validator directory
+This installs the module "sdx-topology-validator".
 
-// Change to validator directory
+### Prerequisites
 
-$ cd validator
+All the Prerequisite pip modules like PyYAML, jsonschema, jsonref will be automatically installed when you run the above command "pip install sdx-topology-validator".
 
-// Create the virtual environment
+## Usage
 
-$ python3.9 -m venv venvalidator
+The module "sdx-topology-validator" consists of functions 'load_openapi_schema', 'resolve_references', 'get_validator_schema', 'validate'.
 
-// Activate the virtual environment
+Import the module "sdx-topology-validator" and all the functions it consists.
 
-$ source venvactivator/bin/activate
+The function named 'load_openapi_schema' that takes a single parameter 'file_path', which is the yaml file which consists of OpenAPI specification and returns 'openapi_spec' the loaded YAML content as a dictionary.
 
-//Install Python dependencies
+The function named 'resolve_references' that takes a single parameter 'openapi_spec', resolves any JSON references in the OpenAPI specification, ensuring that all $ref fields are fully expanded.
 
-$ pip3 install -r requirements.txt
+The function named 'get_validator_schema' that takes a single parameter, which is the value returned by the function 'resolve_references'.   This function extracts and returns the JSON schema used for validating the request body of the /validator endpoint from the OpenAPI specification.
 
-Verify if it works by running
-
-$ python3 app.py
-
-
-# Linux configuration
-
-Run Gunicorn WSGI server to serve the Flask Application
-
-$ gunicorn -b 0.0.0.0:8000 app:app . 
-
-Gunicorn is running (Ctrl + C to exit gunicorn)!
-
-
-Use systemd to manage Gunicorn
-
-
-create a validator.service file in the /etc/systemd/system folder
-
-$ sudo vim /etc/systemd/system/validator.service
-
-
-Then add this into the file:
-
-
-[Unit]
-
-Description=Gunicorn instance for validation app
-
-After=network.target
-
-[Service]
-
-User=admin
-
-Group=www-data
-
-WorkingDirectory=/home/admin/validator
-
-ExecStart=/home/admin/validator/venvalidator/bin/gunicorn -b 0.0.0.0:8000 app:app
-
-Restart=always
-
-[Install]
-
-WantedBy=multi-user.target
+The function named 'validate' that takes two parameters: data and schema.  
+The first parameter 'data' takes json data as input and the second parameter takes the schema as input, which is returned by the function 'get_validator_schema'.  
+This function validates the given data against the provided JSON schema and returns the result of the validation.
 
 
 
-Then enable the service
 
-$ sudo systemctl daemon-reload
-$ sudo systemctl start validator
-$ sudo systemctl status validator
-$ sudo systemctl enable validator
-
-
-Before run the test be sure to change the ip address
-$ vim ./tests/topology_params.json
+Example of usage:  
+openapi_spec = load_openapi_schema('test.yaml')  
+resolved_openapi_spec = resolve_references(openapi_spec)  
+validator_schema = get_validator_schema(resolved_openapi_spec)  
+validation_result = validate(request_data, validator_schema)  
 
 
-Finally run the tests
-$ python3 -m pytest
+
