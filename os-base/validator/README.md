@@ -29,7 +29,7 @@ The function named 'get_validator_schema' that takes a single parameter, which i
 The function named 'validate' that take one parameter: data.  
 The first parameter 'data' takes json data as input and validates the given data against the provided JSON schema and returns the result of the validation.     
 
-Note: Make sure that 'validator.yaml' the yaml_spec_file is present in the current directory, where you are validating the json data.  
+Note: 'validator.yaml' the yaml_spec_file is packaged with 'sdx-topology-validator' module, so no need of having it from the user side.  
 
 Example of usage:    
 from sdx_topology_validator import validate      
