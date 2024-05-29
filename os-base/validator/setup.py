@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="sdx_topology_validator",
-    version="1.0.0",
+    version="1.1.0",
     author="Sai Krishna Voruganti",
     author_email="saikrishnavoruganti@gmail.com",
     description="Validates the converted topology against the given OpenAPI specifications",
