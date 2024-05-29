@@ -1,0 +1,133 @@
+openapi: 3.0.0
+info:
+  title: Convert Topology API
+  description: This API converts network topology data retrieved from a Kytos SDN controller into a format suitable for SDX (Software Defined Exchange).
+  version: 1.0.0
+
+servers:
+  - url: /
+  - url: http://0.0.0.0
+
+paths:
+  /topology:
+    get:
+      tags:
+        - Topology
+      summary: Retrieve converted network topology
+      description: Fetches and converts the topology from a Kytos SDN controller, providing a transformed view suitable for SDX operations.
+      operationId: convert_topology
+      responses:
+        '200':
+          description: Successfully retrieved and converted network topology.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConvertedTopology'
+        '401':
+          description: Validation error in the conversion process.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-openapi-router-controller: controllers.topology_controller
+
+components:
+  schemas:
+    ConvertedTopology:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            nodes:
+              type: array
+              items:
+                $ref: '#/components/schemas/Node'
+            links:
+              type: array
+              items:
+                $ref: '#/components/schemas/Link'
+            services:
+              type: array
+              items:
+                type: string
+        status_code:
+          type: integer
+          example: 200
+
+    Node:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        location:
+          type: object
+          properties:
+            address:
+              type: string
+            latitude:
+              type: number
+            longitude:
+              type: number
+            iso3166_2_lvl4:
+              type: string
+        ports:
+          type: array
+          items:
+            $ref: '#/components/schemas/Port'
+
+    Link:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        ports:
+          type: array
+          items:
+            $ref: '#/components/schemas/Port'
+
+    Port:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        node:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+        state:
+          type: string
+        mtu:
+          type: integer
+        label_range:
+          type: array
+          items:
+            type: string
+        services:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              vlan_range:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: integer
+
+    Error:
+      type: object
+      properties:
+        result:
+          type: string
+        status_code:
+          type: integer
+          example: 401

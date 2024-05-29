@@ -30,7 +30,9 @@ RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 
 WORKDIR /
-RUN pip install connexion[swagger-ui,uvicorn]
-RUN pip install requests
-RUN pip install pytz
-RUN pip install six
+# RUN pip install connexion[swagger-ui,uvicorn]
+# RUN pip install requests
+# RUN pip install pytz
+# RUN pip install six
+COPY ./os-base/async-base/requirements.txt requirements.txt
+RUN pip install -r requirements.txt

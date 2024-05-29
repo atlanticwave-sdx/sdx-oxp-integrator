@@ -1,6 +1,7 @@
 """ topology controller """
 import logging
 import os
+from sdx_topology_validator import validate
 
 import requests
 from models.error_message import ErrorMessage  # noqa: E501
@@ -11,18 +12,18 @@ from controllers.convert_topology import ParseConvertTopology
 
 logger = logging.getLogger(__name__)
 OXP_TOPOLOGY_URL = os.environ.get("OXP_TOPOLOGY_URL")
-SDX_TOPOLOGY_VALIDATOR = os.environ.get("SDX_TOPOLOGY_VAIDATOR")
 
 topology_class = Topology()
 topology_class.model_version = os.environ.get("MODEL_VERSION")
 topology_class.name = os.environ.get("OXPO_NAME")
-topology_class.version = 0
-OXPO_URL = os.environ.get("OXPO_URL")
+topology_class.version = 1
+topology_class.topology_id = os.environ.get("OXPO_URL")
+timestamp = get_timestamp()
 
 
 def get_kytos_topology():
     """ getting kytos topology """
-    response = requests.get(OXP_TOPOLOGY_URL)
+    response = requests.get(OXP_TOPOLOGY_URL, timeout=10)
     if response.status_code == 200:
         kytos_topology = response.json()
         result = kytos_topology["topology"]
@@ -35,28 +36,24 @@ def get_kytos_topology():
 def convert_topology():
     """ converting kytos to sdx topology """
     try:
-        topology_attrs = vars(Topology())
         print("######################")
         print("## convert topology ##")
         print("######################")
-        print(list(item for item in topology_attrs.items()))
-        print(topology_class.topology_id)
-        print(topology_class.name)
-        print(topology_class.version)
-        print(topology_class.model_version)
-        print(topology_class.time_stamp)
-        print(topology_class.nodes)
-        print(topology_class.links)
 
         topology_converted = ParseConvertTopology(
             topology=get_kytos_topology(),
             version=topology_class.version,
-            timestamp=get_timestamp(),
+            timestamp=timestamp,
             model_version=topology_class.model_version,
             oxp_name=topology_class.name,
-            oxp_url=OXPO_URL,
+            oxp_url=topology_class.topology_id,
         ).parse_convert_topology()
-        return topology_converted
-    except Exception as err:
+        validation_result = validate(topology_converted)
+        print(validation_result)
+        if validation_result.status_code == "200":
+            return topology_converted
+        return validation_result
+    except Exception as err:  # pylint: disable=broad-except
         logger.info("validation Error, status code 401:{err}")
-        return {"result": "Validation Error {err}", "status_code": 401}
+        result = {"Validation Error": err, "status_code": 401}
+        return result
