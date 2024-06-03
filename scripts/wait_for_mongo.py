@@ -1,8 +1,9 @@
 import os
 import sys
 import time
+
 from pymongo import MongoClient
-from pymongo.errors import OperationFailure, AutoReconnect
+from pymongo.errors import AutoReconnect, OperationFailure
 
 
 def mongo_client(

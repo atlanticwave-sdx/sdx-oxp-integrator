@@ -1,13 +1,14 @@
 """
 Topology validation test
 """
-import os
 import json
+import os
+
 import requests
 
 
 def test_name_required():
-    """ test should_fail_due_to_missing_name_attribute_on_payload """
+    """test should_fail_due_to_missing_name_attribute_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -31,7 +32,7 @@ def test_name_required():
 
 
 def test_additional_properties():
-    """ test should_fail_due_to_additional_properties_on_payload """
+    """test should_fail_due_to_additional_properties_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -53,12 +54,14 @@ def test_additional_properties():
     response = requests.post(url=url, data=request_data, headers=headers)
     json_response = response.json()
     assert response.status_code == 400
-    assert "Additional properties are not allowed ('active' was unexpected)" \
+    assert (
+        "Additional properties are not allowed ('active' was unexpected)"
         in json_response["error_message"]
+    )
 
 
 def test_id_pattern():
-    """ test should_fail_due_to_invalid_id_on_payload """
+    """test should_fail_due_to_invalid_id_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -85,7 +88,7 @@ def test_id_pattern():
 
 
 def test_name_pattern():
-    """ test should_fail_due_to_invalid_name_on_payload """
+    """test should_fail_due_to_invalid_name_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -112,7 +115,7 @@ def test_name_pattern():
 
 
 def test_version_type():
-    """ test should_fail_due_to_invalid_version_type_on_payload """
+    """test should_fail_due_to_invalid_version_type_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -137,7 +140,7 @@ def test_version_type():
 
 
 def test_time():
-    """ test should_fail_due_to_invalid_date_time_on_payload """
+    """test should_fail_due_to_invalid_date_time_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -158,12 +161,13 @@ def test_time():
     response = requests.post(url=url, data=request_data, headers=headers)
     json_response = response.json()
     assert response.status_code == 400
-    assert "'2021-12-31 21:19:40Z' is not a 'date-time'" in \
-        json_response["error_message"]
+    assert (
+        "'2021-12-31 21:19:40Z' is not a 'date-time'" in json_response["error_message"]
+    )
 
 
 def test_node_required():
-    """ test should_fail_due_to_missing_nodes_attribute_on_payload """
+    """test should_fail_due_to_missing_nodes_attribute_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -187,7 +191,7 @@ def test_node_required():
 
 
 def test_empty_node_array():
-    """ test should_fail_due_to_empty_node_array_on_payload """
+    """test should_fail_due_to_empty_node_array_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -213,7 +217,7 @@ def test_empty_node_array():
 
 
 def test_node_additional_properties():
-    """ test should_fail_due_to_additional_properties_on_payload """
+    """test should_fail_due_to_additional_properties_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -237,12 +241,14 @@ def test_node_additional_properties():
     response = requests.post(url=url, data=request_data, headers=headers)
     json_response = response.json()
     assert response.status_code == 400
-    assert "Additional properties are not allowed ('active_node' was unexpected)" \
+    assert (
+        "Additional properties are not allowed ('active_node' was unexpected)"
         in json_response["error_message"]
+    )
 
 
 def test_node_id_pattern():
-    """ test should_fail_due_to_invalid_id_on_payload """
+    """test should_fail_due_to_invalid_id_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -250,7 +256,7 @@ def test_node_id_pattern():
         json_file.close()
     url = json_data["url"]
     headers = json_data["headers"]
-    json_data["nodes"][0]["id"] = 'sdx:node:amlight.net:Ampath1'
+    json_data["nodes"][0]["id"] = "sdx:node:amlight.net:Ampath1"
     payload = {
         "id": json_data["id"],
         "name": json_data["name"],
@@ -270,7 +276,7 @@ def test_node_id_pattern():
 
 
 def test_node_name_required():
-    """ test should_fail_due_to_missing_name_attribute_on_payload """
+    """test should_fail_due_to_missing_name_attribute_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -279,7 +285,7 @@ def test_node_name_required():
     url = json_data["url"]
     headers = json_data["headers"]
     node = json_data["nodes"][0]
-    del node['name']
+    del node["name"]
     json_data["nodes"][0] = node
     payload = {
         "id": json_data["id"],
@@ -298,7 +304,7 @@ def test_node_name_required():
 
 
 def test_node_name_pattern():
-    """ test should_fail_due_to_invalid_name_on_payload """
+    """test should_fail_due_to_invalid_name_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -306,7 +312,7 @@ def test_node_name_pattern():
         json_file.close()
     url = json_data["url"]
     headers = json_data["headers"]
-    json_data["nodes"][0]["name"] = 'Ampath1$'
+    json_data["nodes"][0]["name"] = "Ampath1$"
     payload = {
         "id": json_data["id"],
         "name": json_data["name"],
@@ -325,7 +331,7 @@ def test_node_name_pattern():
 
 
 def test_empty_node_port_array():
-    """ test should_fail_due_to_empty_node_port_array_on_payload """
+    """test should_fail_due_to_empty_node_port_array_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -351,7 +357,7 @@ def test_empty_node_port_array():
 
 
 def test_node_port_additional_properties():
-    """ test should_fail_due_to_additional_properties_on_payload """
+    """test should_fail_due_to_additional_properties_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -375,12 +381,14 @@ def test_node_port_additional_properties():
     response = requests.post(url=url, data=request_data, headers=headers)
     json_response = response.json()
     assert response.status_code == 400
-    assert "Additional properties are not allowed ('active_node_port' was unexpected)" \
+    assert (
+        "Additional properties are not allowed ('active_node_port' was unexpected)"
         in json_response["error_message"]
+    )
 
 
 def test_node_port_id_pattern():
-    """ test should_fail_due_to_invalid_id_on_payload """
+    """test should_fail_due_to_invalid_id_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -388,7 +396,7 @@ def test_node_port_id_pattern():
         json_file.close()
     url = json_data["url"]
     headers = json_data["headers"]
-    json_data["nodes"][0]["ports"][0]["id"] = 'sdx:port:amlight.net:Ampath1:1'
+    json_data["nodes"][0]["ports"][0]["id"] = "sdx:port:amlight.net:Ampath1:1"
     payload = {
         "id": json_data["id"],
         "name": json_data["name"],
@@ -408,7 +416,7 @@ def test_node_port_id_pattern():
 
 
 def test_node_port_name_required():
-    """ test should_fail_due_to_missing_name_attribute_on_payload """
+    """test should_fail_due_to_missing_name_attribute_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -417,7 +425,7 @@ def test_node_port_name_required():
     url = json_data["url"]
     headers = json_data["headers"]
     node_port = json_data["nodes"][0]["ports"][0]
-    del node_port['name']
+    del node_port["name"]
     json_data["nodes"][0]["ports"][0] = node_port
     payload = {
         "id": json_data["id"],
@@ -436,7 +444,7 @@ def test_node_port_name_required():
 
 
 def test_node_port_name_pattern():
-    """ test should_fail_due_to_invalid_name_on_payload """
+    """test should_fail_due_to_invalid_name_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -444,7 +452,7 @@ def test_node_port_name_pattern():
         json_file.close()
     url = json_data["url"]
     headers = json_data["headers"]
-    json_data["nodes"][0]["ports"][0]["name"] = 'Ampath1$'
+    json_data["nodes"][0]["ports"][0]["name"] = "Ampath1$"
     payload = {
         "id": json_data["id"],
         "name": json_data["name"],
@@ -463,7 +471,7 @@ def test_node_port_name_pattern():
 
 
 def test_node_port_type_pattern():
-    """ test should_fail_due_to_invalid_type_on_payload """
+    """test should_fail_due_to_invalid_type_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -486,12 +494,14 @@ def test_node_port_type_pattern():
     json_response = response.json()
     assert response.status_code == 400
     message = "'200GE' is not one of "
-    message += "['100FE', '1GE', '10GE', '25GE', '40GE', '50GE', '100GE', '400GE', 'Other']"
+    message += (
+        "['100FE', '1GE', '10GE', '25GE', '40GE', '50GE', '100GE', '400GE', 'Other']"
+    )
     assert message in json_response["error_message"]
 
 
 def test_node_port_status_pattern():
-    """ test should_fail_due_to_invalid_status_on_payload """
+    """test should_fail_due_to_invalid_status_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -518,7 +528,7 @@ def test_node_port_status_pattern():
 
 
 def test_node_port_state_pattern():
-    """ test should_fail_due_to_invalid_state_on_payload """
+    """test should_fail_due_to_invalid_state_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -545,7 +555,7 @@ def test_node_port_state_pattern():
 
 
 def test_empty_link_array():
-    """ test should_fail_due_to_empty_link_array_on_payload """
+    """test should_fail_due_to_empty_link_array_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -571,7 +581,7 @@ def test_empty_link_array():
 
 
 def test_link_additional_properties():
-    """ test should_fail_due_to_additional_properties_on_payload """
+    """test should_fail_due_to_additional_properties_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -595,12 +605,14 @@ def test_link_additional_properties():
     response = requests.post(url=url, data=request_data, headers=headers)
     json_response = response.json()
     assert response.status_code == 400
-    assert "Additional properties are not allowed ('active_link' was unexpected)" \
+    assert (
+        "Additional properties are not allowed ('active_link' was unexpected)"
         in json_response["error_message"]
+    )
 
 
 def test_link_id_pattern():
-    """ test should_fail_due_to_invalid_id_on_payload """
+    """test should_fail_due_to_invalid_id_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -608,7 +620,7 @@ def test_link_id_pattern():
         json_file.close()
     url = json_data["url"]
     headers = json_data["headers"]
-    json_data["links"][0]["id"] = 'sdx:link:amlight.net:Ampath3/2_Ampath1/2'
+    json_data["links"][0]["id"] = "sdx:link:amlight.net:Ampath3/2_Ampath1/2"
     payload = {
         "id": json_data["id"],
         "name": json_data["name"],
@@ -628,7 +640,7 @@ def test_link_id_pattern():
 
 
 def test_link_name_required():
-    """ test should_fail_due_to_missing_name_attribute_on_payload """
+    """test should_fail_due_to_missing_name_attribute_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -637,7 +649,7 @@ def test_link_name_required():
     url = json_data["url"]
     headers = json_data["headers"]
     link = json_data["links"][0]
-    del link['name']
+    del link["name"]
     json_data["links"][0] = link
     payload = {
         "id": json_data["id"],
@@ -656,7 +668,7 @@ def test_link_name_required():
 
 
 def test_link_name_pattern():
-    """ test should_fail_due_to_invalid_name_on_payload """
+    """test should_fail_due_to_invalid_name_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -664,7 +676,7 @@ def test_link_name_pattern():
         json_file.close()
     url = json_data["url"]
     headers = json_data["headers"]
-    json_data["links"][0]["name"] = 'Ampath1$'
+    json_data["links"][0]["name"] = "Ampath1$"
     payload = {
         "id": json_data["id"],
         "name": json_data["name"],
@@ -683,7 +695,7 @@ def test_link_name_pattern():
 
 
 def test_empty_link_port_array():
-    """ test should_fail_due_to_empty_link_port_array_on_payload """
+    """test should_fail_due_to_empty_link_port_array_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -709,7 +721,7 @@ def test_empty_link_port_array():
 
 
 def test_link_port_pattern():
-    """ test should_fail_due_to_invalid_port_pattern_on_payload """
+    """test should_fail_due_to_invalid_port_pattern_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -717,7 +729,7 @@ def test_link_port_pattern():
         json_file.close()
     url = json_data["url"]
     headers = json_data["headers"]
-    json_data["links"][0]["ports"][0] = 'sdx:port:amlight.net:Ampath1:1'
+    json_data["links"][0]["ports"][0] = "sdx:port:amlight.net:Ampath1:1"
     payload = {
         "id": json_data["id"],
         "name": json_data["name"],
@@ -737,7 +749,7 @@ def test_link_port_pattern():
 
 
 def test_link_type_pattern():
-    """ test should_fail_due_to_invalid_type_on_payload """
+    """test should_fail_due_to_invalid_type_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -765,7 +777,7 @@ def test_link_type_pattern():
 
 
 def test_link_bandwidth_out_range():
-    """ test should_fail_due_to_bandwidth_out_of_range_on_payload """
+    """test should_fail_due_to_bandwidth_out_of_range_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -792,7 +804,7 @@ def test_link_bandwidth_out_range():
 
 
 def test_link_residual_out_range():
-    """ test should_fail_due_to_residual_out_of_range_on_payload """
+    """test should_fail_due_to_residual_out_of_range_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -819,7 +831,7 @@ def test_link_residual_out_range():
 
 
 def test_link_latency_out_range():
-    """ test should_fail_due_to_latency_out_of_range_on_payload """
+    """test should_fail_due_to_latency_out_of_range_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -846,7 +858,7 @@ def test_link_latency_out_range():
 
 
 def test_link_packet_loss_out_range():
-    """ test should_fail_due_to_bandwidth_out_of_range_on_payload """
+    """test should_fail_due_to_bandwidth_out_of_range_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -873,7 +885,7 @@ def test_link_packet_loss_out_range():
 
 
 def test_link_status_pattern():
-    """ test should_fail_due_to_invalid_status_on_payload """
+    """test should_fail_due_to_invalid_status_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
@@ -900,7 +912,7 @@ def test_link_status_pattern():
 
 
 def test_state_pattern():
-    """ test should_fail_due_to_invalid_state_on_payload """
+    """test should_fail_due_to_invalid_state_on_payload"""
     actual_dir = os.getcwd()
     topology_params = actual_dir + "/tests/topology_params.json"
     with open(topology_params, encoding="utf8") as json_file:
