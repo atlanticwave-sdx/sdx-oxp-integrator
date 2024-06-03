@@ -3,8 +3,8 @@
 
 from __future__ import absolute_import
 
-from utils import util
 from models.base_model_ import Model
+from utils import util
 
 
 class Location(Model):

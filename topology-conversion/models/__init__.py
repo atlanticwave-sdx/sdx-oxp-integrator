@@ -3,6 +3,7 @@
 
 # flake8: noqa
 from __future__ import absolute_import
+
 # import models into model package
 from models.error_message import ErrorMessage
 from models.link import Link

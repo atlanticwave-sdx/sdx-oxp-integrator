@@ -4,8 +4,8 @@ from __future__ import absolute_import
 
 import re  # noqa: E501
 
-from utils import util
 from models.base_model_ import Model
+from utils import util
 
 
 class Port(Model):

@@ -7,11 +7,10 @@ import re
 from datetime import datetime  # noqa: F401
 from typing import Dict, List  # noqa: F401
 
-from utils import util
-
 from models.base_model_ import Model
 from models.link import Link  # noqa: E501
 from models.node import Node  # noqa: E501
+from utils import util
 
 
 class Topology(Model):
