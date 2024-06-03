@@ -1,21 +1,21 @@
 """ SDX Topology Validator """
 import os
-from flask import Flask, request, jsonify, current_app
+
+from flask import Flask, current_app, jsonify, request
 from openapi_core import create_spec
-from openapi_core.validation.request.validators import RequestValidator
 from openapi_core.contrib.flask import FlaskOpenAPIRequest
+from openapi_core.validation.request.validators import RequestValidator
 from openapi_spec_validator import validate_spec
 from openapi_spec_validator.readers import read_from_filename
-from werkzeug.exceptions import (BadRequest)
-
+from werkzeug.exceptions import BadRequest
 
 app = Flask(__name__)
 
 
-@app.route('/validator/v1/validate', methods=['POST'])
+@app.route("/validator/v1/validate", methods=["POST"])
 def validate():
-    """ validate the sdx topology """
-    yml_file = os.path.join(current_app.root_path, 'validator.yml')
+    """validate the sdx topology"""
+    yml_file = os.path.join(current_app.root_path, "validator.yml")
     spec_dict, spec_url = read_from_filename(yml_file)
     try:
         spec_error = validate_spec(spec_dict)
@@ -47,14 +47,12 @@ def validate():
                 "error_schema_path": list(schema_errors.schema_path),
             }
         else:
-            error_response = {
-                    "Error_response": errors
-                }
-        print('############ error_response ####################')
+            error_response = {"Error_response": errors}
+        print("############ error_response ####################")
         print(error_response)
         return jsonify(error_response), 400
     return jsonify(data), 200
 
 
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8000)
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0", port=8000)
