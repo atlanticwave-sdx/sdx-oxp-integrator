@@ -24,3 +24,24 @@ def test_ampath_topology(ampath_topology):
     ).parse_convert_topology()
     validated_topology = validate(converted_topology)
     assert validated_topology["status_code"] == 200
+
+
+def test_ampath_name(ampath_topology):
+    """test kytos ampath data conversion"""
+    model_version = os.environ.get("MODEL_VERSION")
+    name = "This is a wrong name"
+    version = 1
+    topology_id = os.environ.get("OXPO_URL")
+    timestamp = get_timestamp()
+    converted_topology = ParseConvertTopology(
+        topology=ampath_topology,
+        version=version,
+        timestamp=timestamp,
+        model_version=model_version,
+        oxp_name=name,
+        oxp_url=topology_id,
+    ).parse_convert_topology()
+    validated_topology = validate(converted_topology)
+    print(validated_topology)
+    print(converted_topology)
+    assert validated_topology["status_code"] == 400
