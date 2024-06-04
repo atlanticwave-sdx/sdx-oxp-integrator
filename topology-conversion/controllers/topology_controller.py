@@ -17,7 +17,7 @@ topology_class = Topology()
 topology_class.model_version = os.environ.get("MODEL_VERSION")
 topology_class.name = os.environ.get("OXPO_NAME")
 topology_class.version = 1
-topology_class.topology_id = os.environ.get("OXPO_URL")
+topology_class.topology_id = "urn:sdx:topology:" + os.environ.get("OXPO_URL")
 timestamp = get_timestamp()
 
 
@@ -29,11 +29,16 @@ def get_oxp_topology():
         result = oxp_topology["topology"]
         logger.info("get_oxp_topology result: {result}")
         return result
-    return {"error:": "Failed to retrieve data", "status_code:": response.status_code}
+    return {
+            "error:": "Failed to retrieve data",
+            "status_code:": response.status_code}
 
 
 def convert_topology():
     """converting kytos to sdx topology"""
+    logger.info("#####################################")
+    logger.info("######### convert topology ##########")
+    logger.info("#####################################")
     try:
         topology = get_oxp_topology()
         converted_topology = ParseConvertTopology(
@@ -45,9 +50,13 @@ def convert_topology():
             oxp_url=topology_class.topology_id,
         ).parse_convert_topology()
         validated_topology = validate(converted_topology)
-        if validated_topology.status_code == "200":
-            return converted_topology
-        return validated_topology
+        logger.info("#####################################")
+        logger.info("######### validated_topology ##########")
+        logger.info(f"######### {validated_topology} ##########")
+        logger.info("#####################################")
+        # if validated_topology.status_code == "200":
+        return converted_topology
+        # return validated_topology
     except Exception as err:  # pylint: disable=broad-except
         logger.info("convert_topology Error, status code 401:{err}")
         result = {"convert_topology Error": err, "status_code": 401}
