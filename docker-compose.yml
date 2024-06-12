@@ -222,18 +222,21 @@ services:
       - ./os-base/nginx-base:/oxpoapi
     environment:
       SWAGGER_JSON: /oxpoapi/oxpoapi.json
-      DEFAULT_TOPOLOGY: ${DEFAULT_TOPOLOGY}
-      DEFAULT_CONNECTION: ${DEFAULT_CONNECTION}
-      DEFAULT_URL: ${DEFAULT_URL}
       TOPOLOGY_1: ${TOPOLOGY_1}
       TOPOLOGY_2: ${TOPOLOGY_2}
       TOPOLOGY_3: ${TOPOLOGY_3}
       CONNECTION_1: ${CONNECTION_1}
       CONNECTION_2: ${CONNECTION_2}
       CONNECTION_3: ${CONNECTION_3}
+      SWITCH_ENABLE_1: ${SWITCH_ENABLE_1}
+      SWITCH_ENABLE_2: ${SWITCH_ENABLE_2}
+      SWITCH_ENABLE_3: ${SWITCH_ENABLE_3}
       URL_1: ${URL_1}
       URL_2: ${URL_2}
       URL_3: ${URL_3}
+      AMPATH_OXPO_URL: ${AMPATH_OXPO_URL}
+      SAX_OXPO_URL: ${SAX_OXPO_URL}
+      TENET_OXPO_URL: ${TENET_OXPO_URL}
 
   ampath-topology-conversion:
     container_name: ampath-topology-conversion

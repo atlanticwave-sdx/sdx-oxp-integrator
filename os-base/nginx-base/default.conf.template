@@ -13,6 +13,7 @@
   map $request_method $access_control_max_age {
     OPTIONS 1728000; # 20 days
   }
+
   server_tokens off; # Hide Nginx version
 
   server {
@@ -41,36 +42,46 @@
       include templates/embedding.conf;
     }
 
-    location $DEFAULT_TOPOLOGY {
-      proxy_pass      $DEFAULT_URL$DEFAULT_TOPOLOGY;
-    }
+    location $TOPOLOGY_1
+	{
+		rewrite ^/topology(.*)$ /topology break;
+		proxy_pass $URL_1/topology;
+	}
 
-    location $TOPOLOGY_1 {
-      proxy_pass      $URL_1$DEFAULT_TOPOLOGY;
-    }
+    location $TOPOLOGY_2
+	{
+		rewrite ^/topology(.*)$ /topology break;
+		proxy_pass $URL_2/topology;
+	}
 
-    location $TOPOLOGY_2 {
-      proxy_pass      $URL_2$DEFAULT_TOPOLOGY;
-    }
+    location $TOPOLOGY_3
+	{
+		rewrite ^/topology(.*)$ /topology break;
+		proxy_pass $URL_3/topology;
+	}
 
-    location $TOPOLOGY_3 {
-      proxy_pass      $URL_3$DEFAULT_TOPOLOGY;
-    }
+    location $SWITCH_ENABLE_1
+	{
+		rewrite ^/switch/enable(.*)$ /switch/enable/$arg_dpid break;
+		proxy_pass $URL_1/switch/enable;
+	}
 
-    location $DEFAULT_CONNECTION {
-      proxy_pass      $DEFAULT_URL$DEFAULT_CONNECTION;
-    }
+    location $CONNECTION_1
+	{
+		rewrite ^/connection(.*)$ /connection break;
+      		proxy_pass $URL_1/connection;
+	}
 
-    location $CONNECTION_1 {
-      proxy_pass      $URL_1$DEFAULT_CONNECTION;
-    }
+    location $CONNECTION_2
+	{
+		rewrite ^/connection(.*)$ /connection break;
+      		proxy_pass $URL_2/connection;
+	}
 
-    location $CONNECTION_2 {
-      proxy_pass      $URL_2$DEFAULT_CONNECTION;
-    }
-
-    location $CONNECTION_3 {
-      proxy_pass      $URL_3$DEFAULT_CONNECTION;
-    }
+    location $CONNECTION_3
+	{
+		rewrite ^/connection(.*)$ /connection break;
+      		proxy_pass $URL_3/connection;
+	}
 
   }

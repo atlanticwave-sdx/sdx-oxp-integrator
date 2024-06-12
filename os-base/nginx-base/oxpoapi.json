@@ -43,13 +43,21 @@
     }
   ],
   "paths": {
-    "/topology": {
+    "/topology/{url}": {
       "get": {
         "tags": [
           "topology"
         ],
         "summary": "Get SDX Topology",
         "description": "Get SDX topology",
+	"parameters": [
+	  {
+		"in": "path",
+          	"name": "url",
+            	"type": "string",
+          	"required": true
+	  }
+	],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -60,47 +68,27 @@
         }
       }
     },
-    "/topology/1": {
+    "/switch/enable/{url}/{dpid}": {
       "get": {
         "tags": [
-          "topology"
+          "switch"
         ],
-        "summary": "Get Ampath SDX Topology",
-        "description": "Get Ampath SDX topology",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
-            }
-          }
-        }
-      }
-    },
-    "/topology/2": {
-      "get": {
-        "tags": [
-          "topology"
-        ],
-        "summary": "Get SAX SDX Topology",
-        "description": "Get SAX SDX topology",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
-            }
-          }
-        }
-      }
-    },
-    "/topology/3": {
-      "get": {
-        "tags": [
-          "topology"
-        ],
-        "summary": "Get Tenet SDX Topology",
-        "description": "Get Tenet SDX topology",
+        "summary": "Switch Enable",
+        "description": "Switch Enable",
+	"parameters": [
+	  {
+		"in": "path",
+          	"name": "url",
+            	"type": "string",
+          	"required": true
+	  },
+	  {
+		"in": "path",
+          	"name": "dpid",
+            	"type": "string",
+          	"required": true
+	  }
+	],
         "responses": {
           "200": {
             "description": "Successful response",
