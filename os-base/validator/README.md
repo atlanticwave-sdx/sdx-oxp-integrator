@@ -27,7 +27,7 @@ The function named 'resolve_references' that takes a single parameter 'openapi_s
 The function named 'get_validator_schema' that takes a single parameter, which is the value returned by the function 'resolve_references'.   This function extracts and returns the JSON schema used for validating the request body of the /validator endpoint from the OpenAPI specification.  
 
 The function named 'validate' that take one parameter: data.  
-The first parameter 'data' takes json data as input and validates the given data against the provided JSON schema and returns the result of the validation.     
+The parameter 'data' takes json data as input and validates the given data against the provided JSON schema and returns the result of the validation.     
 
 Note: 'validator.yaml' the yaml_spec_file is packaged with 'sdx-topology-validator' module, so no need of having it from the user side.  
 
