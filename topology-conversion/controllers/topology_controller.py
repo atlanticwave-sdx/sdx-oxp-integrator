@@ -52,7 +52,7 @@ def convert_topology():
         validated_topology = validate(converted_topology)
         logger.info("#####################################")
         logger.info("######### validated_topology ##########")
-        logger.info(f"######### {validated_topology} ##########")
+        logger.info("######### %s ##########", validated_topology)
         logger.info("#####################################")
         # if validated_topology.status_code == "200":
         return converted_topology
@@ -61,3 +61,12 @@ def convert_topology():
         logger.info("convert_topology Error, status code 401:{err}")
         result = {"convert_topology Error": err, "status_code": 401}
         return result
+
+
+def get_switch_enable(dp_id):
+    """getting switch enable"""
+    logger.info("#####################################")
+    logger.info("######### switch enable ##########")
+    logger.info("######### %s ##########", dp_id)
+    logger.info("#####################################")
+    return dp_id

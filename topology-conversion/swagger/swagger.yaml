@@ -30,20 +30,25 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       x-openapi-router-controller: controllers.topology_controller
-  /switch/enable/{dpid}:
+  /switch/enable/{dpId}:
     get:
       tags:
         - Topology
       summary: Retrieve converted network topology
       description: Fetches and converts the topology from a Kytos SDN controller, providing a transformed view suitable for SDX operations.
-      operationId: convert_topology
+      parameters:
+        - in: path
+          name: dpId
+          schema:
+            type: string
+          required: true
+          description: Numeric ID of the Switch
+      operationId: get_switch_enable
       responses:
         '200':
           description: Successfully retrieved and converted network topology.
           content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ConvertedTopology'
+            application/json: {}
         '401':
           description: Validation error in the conversion process.
           content:

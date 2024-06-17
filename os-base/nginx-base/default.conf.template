@@ -60,22 +60,24 @@
 		proxy_pass $URL_3/topology;
 	}
 
-    location $SWITCH_ENABLE_1
-	{
-		rewrite ^/switch/enable(.*)$ /switch/enable/1 break;
-		proxy_pass $URL_1/switch/enable/1;
-	}
+    location ~ ^/switch/enable/ampath.net/(.*)$ {
+        # set $dpid $2;
+        # rewrite ^/switch/enable(.*)$ /switch/enable/$dpid break;
+        # rewrite ^/switch/enable(.*) http://$URL_1/switch/enable/$2 redirect;
+        rewrite ^ http://$URL_1/switch/enable/$arg_dpid last;
+        proxy_pass http://$URL_1/switch/enable/$arg_dpid;
+    }
 
     location $SWITCH_ENABLE_2
 	{
-		rewrite ^/switch/enable(.*)$ /switch/enable/$arg_dpid break;
-		proxy_pass $URL_2/switch/enable;
+		rewrite ^/switch/enable(.*)$ /switch/enable/1 break;
+		proxy_pass $URL_2/switch/enable/1;
 	}
 
     location $SWITCH_ENABLE_3
 	{
-		rewrite ^/switch/enable(.*)$ /switch/enable/$arg_dpid break;
-		proxy_pass $URL_3/switch/enable;
+		rewrite ^/switch/enable(.*)$ /switch/enable/1 break;
+		proxy_pass $URL_3/switch/enable/1;
 	}
 
     location $CONNECTION_1
