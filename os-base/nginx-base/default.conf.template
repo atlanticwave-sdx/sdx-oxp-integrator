@@ -62,8 +62,20 @@
 
     location $SWITCH_ENABLE_1
 	{
+		rewrite ^/switch/enable(.*)$ /switch/enable/1 break;
+		proxy_pass $URL_1/switch/enable/1;
+	}
+
+    location $SWITCH_ENABLE_2
+	{
 		rewrite ^/switch/enable(.*)$ /switch/enable/$arg_dpid break;
-		proxy_pass $URL_1/switch/enable;
+		proxy_pass $URL_2/switch/enable;
+	}
+
+    location $SWITCH_ENABLE_3
+	{
+		rewrite ^/switch/enable(.*)$ /switch/enable/$arg_dpid break;
+		proxy_pass $URL_3/switch/enable;
 	}
 
     location $CONNECTION_1

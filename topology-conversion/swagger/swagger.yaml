@@ -30,7 +30,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       x-openapi-router-controller: controllers.topology_controller
-  /switch/enable:
+  /switch/enable/{dpid}:
     get:
       tags:
         - Topology
