@@ -68,7 +68,7 @@
         }
       }
     },
-    "/switch/enable/{url}/{dpid}": {
+    "/{url}{dpid}": {
       "get": {
         "tags": [
           "switch"
