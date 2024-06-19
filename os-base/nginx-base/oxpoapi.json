@@ -68,13 +68,13 @@
         }
       }
     },
-    "/{url}{dpid}": {
+    "/{url}{command}": {
       "get": {
         "tags": [
           "switch"
         ],
-        "summary": "Switch Enable",
-        "description": "Switch Enable",
+        "summary": "Operation Command",
+        "description": "Operation Command",
 	"parameters": [
 	  {
 		"in": "path",
@@ -84,7 +84,7 @@
 	  },
 	  {
 		"in": "path",
-          	"name": "dpid",
+          	"name": "command",
             	"type": "string",
           	"required": true
 	  }

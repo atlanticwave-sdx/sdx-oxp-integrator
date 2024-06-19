@@ -14,15 +14,6 @@
     OPTIONS 1728000; # 20 days
   }
 
-  #http {
-   #   log_format custom '$remote_addr - $remote_user [$time_local] "$request" '
-    #                  '$status $body_bytes_sent "$http_referer" '
-     #                 '"$http_user_agent" "$arg_dpid"';
-#
- #    # other configuration
-  #}
-
-
   server_tokens off; # Hide Nginx version
 
   server {
@@ -69,27 +60,22 @@
 		proxy_pass $URL_3/topology;
 	}
 
-    location ~ ^/switch/enable/ampath.net/(.*)$ {
-        # set $dpid $2;
-        # rewrite ^/switch/enable(.*)$ /switch/enable/$dpid break;
-        # rewrite ^/switch/enable(.*) http://$URL_1/switch/enable/$2 redirect;
-        rewrite ^ http://$URL_1/switch/enable/$arg_dpid last;
-        proxy_pass http://$URL_1/switch/enable/$arg_dpid;
-    }
-
-    # Apply the custom log format to the access log
-   # access_log /var/log/nginx/access.log custom;
-
-    location ~* /sax.net(.*)
+    location ~* $COMMAND_1
 	{
-		rewrite /sax.net(.*) $1 break;
-		proxy_pass http://192.168.0.16:8000;
+		rewrite $COMMAND_1 $1 break;
+		proxy_pass $URL_1;
 	}
 
-    location $SWITCH_ENABLE_3
+    location ~* $COMMAND_2
 	{
-		rewrite ^/switch/enable(.*)$ /switch/enable/1 break;
-		proxy_pass $URL_3/switch/enable/1;
+		rewrite $COMMAND_2 $1 break;
+		proxy_pass $URL_2;
+	}
+
+    location ~* $COMMAND_3
+	{
+		rewrite $COMMAND_3 $1 break;
+		proxy_pass $URL_3;
 	}
 
     location $CONNECTION_1

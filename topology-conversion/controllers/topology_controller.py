@@ -69,4 +69,13 @@ def get_switch_enable(dp_id):
     logger.info("######### switch enable ##########")
     logger.info("######### %s ##########", dp_id)
     logger.info("#####################################")
-    return dp_id
+    return f"switch/enable/{dp_id}"
+
+
+def get_switch_disable(dp_id):
+    """getting switch disable"""
+    logger.info("#####################################")
+    logger.info("######### switch disable ##########")
+    logger.info("######### %s ##########", dp_id)
+    logger.info("#####################################")
+    return f"switch/disable/{dp_id}"
