@@ -5,7 +5,11 @@ from jsonschema.exceptions import ValidationError
 import importlib.resources as pkg_resources
 
 def load_openapi_schema():
-    with pkg_resources.open_text(__name__, 'validator.yaml') as file:
+    # Adjust the package name to the actual package where the resource is located
+    package_name = 'sdx_topology_validator'
+    resource_name = 'validator.yaml'
+    
+    with pkg_resources.open_text(package_name, resource_name) as file:
         openapi_spec = yaml.safe_load(file)
     return openapi_spec
 

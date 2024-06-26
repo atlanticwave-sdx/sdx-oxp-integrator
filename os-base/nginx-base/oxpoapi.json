@@ -3,12 +3,15 @@
   "info": {
     "title": "Oxpo Api Wrapper",
     "description": "The wrapper abstracts the complexities of direct API calls and offers a consistent method to interact with different OXPO services",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "contact": {
       "email": "lmarinve@fiu.edu"
     }
   },
   "servers": [
+    {
+      "url": "http://0.0.0.0"
+    },
     {
       "url": "http://67.17.206.221"
     },
@@ -18,20 +21,28 @@
   ],
   "tags": [
     {
-      "name": "topology",
-      "description": "Everything about your domain topology",
+      "name": "/sdx/topology",
+      "description": "Get the SDX converted Topology",
       "externalDocs": {
         "description": "Find out more",
         "url": "https://www.atlanticwave-sdx.net"
       }
     },
     {
-      "name": "node",
-      "description": "everything about a node in your domain"
+      "name": "/switch/enable/all",
+      "description": "switch operation: enable, dpId: all"
     },
     {
-      "name": "link",
-      "description": "everything about a link in your domain"
+      "name": "/switch/enable/aa:00:00:00:00:00:00:01",
+      "description": "switch operation: enable, dpId: aa:00:00:00:00:00:00:01"
+    },
+    {
+      "name": "/link/enable/all",
+      "description": "link operation: enable, dpId: all"
+    },
+    {
+      "name": "/link/enable/aa:00:00:00:00:00:00:01",
+      "description": "link operation: enable, dpId: aa:00:00:00:00:00:00:01"
     },
     {
       "name": "user",
@@ -43,64 +54,27 @@
     }
   ],
   "paths": {
-    "/topology": {
+    "/{url}{command}": {
       "get": {
         "tags": [
-          "topology"
+          "url: ampath.net, command: /sdx/topology"
         ],
-        "summary": "Get SDX Topology",
-        "description": "Get SDX topology",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
-            }
-          }
-        }
-      }
-    },
-    "/topology/1": {
-      "get": {
-        "tags": [
-          "topology"
-        ],
-        "summary": "Get Ampath SDX Topology",
-        "description": "Get Ampath SDX topology",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
-            }
-          }
-        }
-      }
-    },
-    "/topology/2": {
-      "get": {
-        "tags": [
-          "topology"
-        ],
-        "summary": "Get SAX SDX Topology",
-        "description": "Get SAX SDX topology",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
-            }
-          }
-        }
-      }
-    },
-    "/topology/3": {
-      "get": {
-        "tags": [
-          "topology"
-        ],
-        "summary": "Get Tenet SDX Topology",
-        "description": "Get Tenet SDX topology",
+        "summary": "Operation Command",
+        "description": "Operation Command",
+	"parameters": [
+	  {
+		"in": "path",
+          	"name": "url",
+            	"type": "string",
+          	"required": true
+	  },
+	  {
+		"in": "path",
+          	"name": "command",
+            	"type": "string",
+          	"required": true
+	  }
+	],
         "responses": {
           "200": {
             "description": "Successful response",

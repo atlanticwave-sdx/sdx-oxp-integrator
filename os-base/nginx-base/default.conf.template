@@ -13,6 +13,7 @@
   map $request_method $access_control_max_age {
     OPTIONS 1728000; # 20 days
   }
+
   server_tokens off; # Hide Nginx version
 
   server {
@@ -41,36 +42,22 @@
       include templates/embedding.conf;
     }
 
-    location $DEFAULT_TOPOLOGY {
-      proxy_pass      $DEFAULT_URL$DEFAULT_TOPOLOGY;
-    }
+    location ~* $COMMAND_1
+	{
+		rewrite $COMMAND_1 $1 break;
+		proxy_pass $URL_1;
+	}
 
-    location $TOPOLOGY_1 {
-      proxy_pass      $URL_1$DEFAULT_TOPOLOGY;
-    }
+    location ~* $COMMAND_2
+	{
+		rewrite $COMMAND_2 $1 break;
+		proxy_pass $URL_2;
+	}
 
-    location $TOPOLOGY_2 {
-      proxy_pass      $URL_2$DEFAULT_TOPOLOGY;
-    }
-
-    location $TOPOLOGY_3 {
-      proxy_pass      $URL_3$DEFAULT_TOPOLOGY;
-    }
-
-    location $DEFAULT_CONNECTION {
-      proxy_pass      $DEFAULT_URL$DEFAULT_CONNECTION;
-    }
-
-    location $CONNECTION_1 {
-      proxy_pass      $URL_1$DEFAULT_CONNECTION;
-    }
-
-    location $CONNECTION_2 {
-      proxy_pass      $URL_2$DEFAULT_CONNECTION;
-    }
-
-    location $CONNECTION_3 {
-      proxy_pass      $URL_3$DEFAULT_CONNECTION;
-    }
+    location ~* $COMMAND_3
+	{
+		rewrite $COMMAND_3 $1 break;
+		proxy_pass $URL_3;
+	}
 
   }

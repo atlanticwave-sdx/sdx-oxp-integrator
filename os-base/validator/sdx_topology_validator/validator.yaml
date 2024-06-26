@@ -74,20 +74,23 @@ paths:
               properties:
                   id:
                     type: string
-                    pattern: '^((urn:sdx:topology:)[A-Za-z0-9_.:-]*$)'
+                    pattern: '^urn:sdx:topology:[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
                   name:
                     type: string
                     minLength: 3
                     maxLength: 30
-                    pattern: '^[A-Za-z0-9_.-]*$'
+                    pattern: '^[A-Za-z0-9.,-_/]*$'
                   version:
                     type: integer
                     format: int64
                   model_version:
                     type: string
+                    pattern: '^2\.0\.0$'
                   timestamp:
                     type: string
-                    format: date-time
+                    pattern: '^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])T([01]\d|2[0-3]):([0-5]\d):([0-5]\d)Z$'
+                    #pattern: '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$'
+                    #format: date-time
                   nodes:
                     type: array
                     minItems: 1
@@ -232,12 +235,12 @@ components:
       properties:
         id:
           type: string
-          pattern: '^((urn:sdx:node:)[A-Za-z0-9_.\:/-]*$)'
+          pattern: '^urn:sdx:node:[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}:[a-zA-Z0-9.,\-_\/]{1,30}$'
         name:
           type: string
           minLength: 3
           maxLength: 30
-          pattern: '^[A-Za-z0-9_.-]*$'
+          pattern: '^[a-zA-Z0-9.,\-_\/]{1,30}$' 
         location:
           $ref: '#/components/schemas/location'
         ports:
@@ -245,6 +248,12 @@ components:
           minItems: 1
           items:
             $ref: '#/components/schemas/port'
+        status:
+          type: string
+          enum: [up, down, error]
+        state:
+          type: string
+          enum: [enabled, disabled, maintenance]
     links: #validation part
       type: object
       required:
@@ -252,19 +261,17 @@ components:
         - name
         - ports
         - bandwidth
-        - type
+        #- type
         - status
         - state
       additionalProperties: false
       properties:
         id:
           type: string
-          pattern: '^((urn:sdx:link:)[A-Za-z0-9_.\:/-]*$)'
+          pattern: '^urn:sdx:link:[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}:[a-zA-Z0-9.,\-_\/]{1,30}+$'
         name:
           type: string
-          minLength: 3
-          maxLength: 30
-          pattern: '^[A-Za-z0-9_./\:-]*$'
+          pattern: '^[a-zA-Z0-9.,\-_\/]{1,30}$' 
         ports:
           type: array
           minItems: 1
@@ -272,7 +279,7 @@ components:
             $ref: '#/components/schemas/port'
         type:
           type: string
-          enum: ['intra','inter']
+          enum: ['intra']
         bandwidth:
           type: number
           minimum: 1250
@@ -312,35 +319,33 @@ components:
       properties:
         id:
           type: string
-          pattern: '^((urn:sdx:port:)[A-Za-z0-9_.\:/-]*$)'
+          pattern: '^urn:sdx:port:[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}:[a-zA-Z0-9.,\-_\/]{1,30}:[a-zA-Z0-9.,\-_\/]{1,30}$'                  
         name:
           type: string
           minLength: 3
           maxLength: 30
-          pattern: '^[A-Za-z0-9_.\:/-]*$'
+          pattern: '^[a-zA-Z0-9.,\-_\/]{1,30}$'
         node:
           type: string
-          pattern: '^((urn:sdx:node:)[A-Za-z0-9_.\:/-]*$)'
+          pattern: '^urn:sdx:node:[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}:[a-zA-Z0-9.,\-_\/]{1,30}$'
         type:
           type: string
           enum: ['100FE','1GE','10GE','25GE','40GE','50GE','100GE','400GE','Other']
         mtu:
           type: integer
-          format: int32
-        short_name:
-          type: string
+          #format: int32
+          minimum: 1500
+          maximum: 10000
+          default: 1500
         nni:
           type: string
+          pattern: '^(urn:sdx:link:[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}:[a-zA-Z0-9.,\-_\/]{1,30})?$|^$'
         status:
           type: string
           enum: ['up','down','error']
         state:
           type: string
-          enum: ['enabled','disabled']
-        label_range:
-          type: array
-          items:
-            type: string
+          enum: ['enabled','disabled','maintenance']
         services:
           items:
               type: object
@@ -361,17 +366,19 @@ components:
         - address
         - latitude
         - longitude
+        - iso3166_2_lvl4
       properties:
         address:
           type: string
+          pattern: '^[\x00-\x7F]{1,255}$'
         latitude:
-          type: number
-          minimum: -90.0
-          maximum: 90.0
+          type: number  
+          minimum: -90.0  
+          maximum: 90.0 
         longitude:
-          type: number
-          minimum: -90.0
-          maximum: 90.0
+          type: number  
+          minimum: -90.0  
+          maximum: 90.0 
         iso3166_2_lvl4:
           type: string
           minLength: 5

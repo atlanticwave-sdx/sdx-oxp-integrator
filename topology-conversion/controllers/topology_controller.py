@@ -52,7 +52,7 @@ def convert_topology():
         validated_topology = validate(converted_topology)
         logger.info("#####################################")
         logger.info("######### validated_topology ##########")
-        logger.info(f"######### {validated_topology} ##########")
+        logger.info("######### %s ##########", validated_topology)
         logger.info("#####################################")
         # if validated_topology.status_code == "200":
         return converted_topology
