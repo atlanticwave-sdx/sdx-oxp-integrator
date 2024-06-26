@@ -3,12 +3,15 @@
   "info": {
     "title": "Oxpo Api Wrapper",
     "description": "The wrapper abstracts the complexities of direct API calls and offers a consistent method to interact with different OXPO services",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "contact": {
       "email": "lmarinve@fiu.edu"
     }
   },
   "servers": [
+    {
+      "url": "http://0.0.0.0"
+    },
     {
       "url": "http://67.17.206.221"
     },
@@ -26,12 +29,20 @@
       }
     },
     {
-      "name": "/switch/operation/dpId",
-      "description": "operation: enable | disable, dpId: aa:00:00:00:00:00:00:01 | all"
+      "name": "/switch/enable/all",
+      "description": "switch operation: enable, dpId: all"
     },
     {
-      "name": "/link/operation/dpId",
-      "description": "operation: enable | disable, dpId: aa:00:00:00:00:00:00:01 | all"
+      "name": "/switch/enable/aa:00:00:00:00:00:00:01",
+      "description": "switch operation: enable, dpId: aa:00:00:00:00:00:00:01"
+    },
+    {
+      "name": "/link/enable/all",
+      "description": "link operation: enable, dpId: all"
+    },
+    {
+      "name": "/link/enable/aa:00:00:00:00:00:00:01",
+      "description": "link operation: enable, dpId: aa:00:00:00:00:00:00:01"
     },
     {
       "name": "user",

@@ -35,10 +35,6 @@ def post_topology_object(topology_object):
 
 def get_switch_enable(dp_id):
     """getting switch enable"""
-    print("#####################################")
-    print("######### switch enable ##########")
-    print("######### %s ##########", dp_id)
-    print("#####################################")
     if dp_id == "all":
         switches = get_topology_object("switches")
         if "switches" in switches:
@@ -47,14 +43,27 @@ def get_switch_enable(dp_id):
                 topology_object = "switches/" + dp_id + "/enable"
                 switch_enable = post_topology_object(topology_object)
                 print(switch_enable)
+    else:
+        topology_object = "switches/" + dp_id + "/enable"
+        switch_enable = post_topology_object(topology_object)
+        print(switch_enable)
 
     return f"switch/enable/{dp_id}"
 
 
 def get_switch_disable(dp_id):
     """getting switch disable"""
-    print("#####################################")
-    print("######### switch disable ##########")
-    print("######### %s ##########", dp_id)
-    print("#####################################")
+    if dp_id == "all":
+        switches = get_topology_object("switches")
+        if "switches" in switches:
+            for key in switches["switches"].keys():
+                dp_id = switches["switches"][key]["id"]
+                topology_object = "switches/" + dp_id + "/disable"
+                switch_disable = post_topology_object(topology_object)
+                print(switch_disable)
+    else:
+        topology_object = "switches/" + dp_id + "/disable"
+        switch_disable = post_topology_object(topology_object)
+        print(switch_disable)
+
     return f"switch/disable/{dp_id}"
