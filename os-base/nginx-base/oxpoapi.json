@@ -18,20 +18,20 @@
   ],
   "tags": [
     {
-      "name": "topology",
-      "description": "Everything about your domain topology",
+      "name": "/sdx/topology",
+      "description": "Get the SDX converted Topology",
       "externalDocs": {
         "description": "Find out more",
         "url": "https://www.atlanticwave-sdx.net"
       }
     },
     {
-      "name": "node",
-      "description": "everything about a node in your domain"
+      "name": "/switch/operation/dpId",
+      "description": "operation: enable | disable, dpId: aa:00:00:00:00:00:00:01 | all"
     },
     {
-      "name": "link",
-      "description": "everything about a link in your domain"
+      "name": "/link/operation/dpId",
+      "description": "operation: enable | disable, dpId: aa:00:00:00:00:00:00:01 | all"
     },
     {
       "name": "user",
@@ -43,35 +43,10 @@
     }
   ],
   "paths": {
-    "/topology/{url}": {
-      "get": {
-        "tags": [
-          "topology"
-        ],
-        "summary": "Get SDX Topology",
-        "description": "Get SDX topology",
-	"parameters": [
-	  {
-		"in": "path",
-          	"name": "url",
-            	"type": "string",
-          	"required": true
-	  }
-	],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
-            }
-          }
-        }
-      }
-    },
     "/{url}{command}": {
       "get": {
         "tags": [
-          "switch"
+          "url: ampath.net, command: /sdx/topology"
         ],
         "summary": "Operation Command",
         "description": "Operation Command",

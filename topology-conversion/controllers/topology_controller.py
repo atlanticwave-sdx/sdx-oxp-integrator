@@ -61,21 +61,3 @@ def convert_topology():
         logger.info("convert_topology Error, status code 401:{err}")
         result = {"convert_topology Error": err, "status_code": 401}
         return result
-
-
-def get_switch_enable(dp_id):
-    """getting switch enable"""
-    logger.info("#####################################")
-    logger.info("######### switch enable ##########")
-    logger.info("######### %s ##########", dp_id)
-    logger.info("#####################################")
-    return f"switch/enable/{dp_id}"
-
-
-def get_switch_disable(dp_id):
-    """getting switch disable"""
-    logger.info("#####################################")
-    logger.info("######### switch disable ##########")
-    logger.info("######### %s ##########", dp_id)
-    logger.info("#####################################")
-    return f"switch/disable/{dp_id}"

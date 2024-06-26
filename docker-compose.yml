@@ -222,12 +222,6 @@ services:
       - ./os-base/nginx-base:/oxpoapi
     environment:
       SWAGGER_JSON: /oxpoapi/oxpoapi.json
-      TOPOLOGY_1: ${TOPOLOGY_1}
-      TOPOLOGY_2: ${TOPOLOGY_2}
-      TOPOLOGY_3: ${TOPOLOGY_3}
-      CONNECTION_1: ${CONNECTION_1}
-      CONNECTION_2: ${CONNECTION_2}
-      CONNECTION_3: ${CONNECTION_3}
       COMMAND_1: ${COMMAND_1}
       COMMAND_2: ${COMMAND_2}
       COMMAND_3: ${COMMAND_3}

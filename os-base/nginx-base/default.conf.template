@@ -42,24 +42,6 @@
       include templates/embedding.conf;
     }
 
-    location $TOPOLOGY_1
-	{
-		rewrite ^/topology(.*)$ /topology break;
-		proxy_pass $URL_1/topology;
-	}
-
-    location $TOPOLOGY_2
-	{
-		rewrite ^/topology(.*)$ /topology break;
-		proxy_pass $URL_2/topology;
-	}
-
-    location $TOPOLOGY_3
-	{
-		rewrite ^/topology(.*)$ /topology break;
-		proxy_pass $URL_3/topology;
-	}
-
     location ~* $COMMAND_1
 	{
 		rewrite $COMMAND_1 $1 break;
@@ -76,24 +58,6 @@
 	{
 		rewrite $COMMAND_3 $1 break;
 		proxy_pass $URL_3;
-	}
-
-    location $CONNECTION_1
-	{
-		rewrite ^/connection(.*)$ /connection break;
-      		proxy_pass $URL_1/connection;
-	}
-
-    location $CONNECTION_2
-	{
-		rewrite ^/connection(.*)$ /connection break;
-      		proxy_pass $URL_2/connection;
-	}
-
-    location $CONNECTION_3
-	{
-		rewrite ^/connection(.*)$ /connection break;
-      		proxy_pass $URL_3/connection;
 	}
 
   }

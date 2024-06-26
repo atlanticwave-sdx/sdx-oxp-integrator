@@ -2,14 +2,14 @@ openapi: 3.0.0
 info:
   title: Convert Topology API
   description: This API converts network topology data retrieved from a Kytos SDN controller into a format suitable for SDX (Software Defined Exchange).
-  version: 1.0.0
+  version: 2.0.0
 
 servers:
   - url: /
   - url: http://0.0.0.0
 
 paths:
-  /topology:
+  /sdx/topology:
     get:
       tags:
         - Topology
@@ -55,7 +55,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-      x-openapi-router-controller: controllers.topology_controller
+      x-openapi-router-controller: controllers.operational_controller
   /switch/disable/{dpId}:
     get:
       tags:
@@ -81,7 +81,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-      x-openapi-router-controller: controllers.topology_controller
+      x-openapi-router-controller: controllers.operational_controller
 
 
 
