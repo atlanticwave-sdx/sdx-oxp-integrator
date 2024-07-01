@@ -83,6 +83,27 @@ For runnning `pytest`:
 $ pytest
 ```  
 
+### Integration Test
+
+```
+OXP Layer test: 
+```
+
+Using the hand crafted inputs (OXP Test Input) to the OXP topology/provisioning system interface (Rest API, etc) to validate the end-to-end services in the data plane.  
+
+FIU input: the vlan ranges on the two ports on an inter-domain link should be the same (pre-agreed upon by the admin). 
+
+(1) need a validation check when adding topologies on this; 
+(2) vlan translation happens in a domain. vlan assignment becomes simpler after the path is obtained.
+(3) A manual configuration example over 3 domains (2 inter-domain links) 
+
+Amlight domain
+
+
+
+
+
+
 <!-- References -->  
 
 [tox]: https://tox.wiki/en/latest/
