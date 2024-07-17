@@ -9,7 +9,9 @@ WORKDIR /root
 
 COPY ./os-base/mininet/start_mininet.sh /
 COPY ./os-base/mininet/link-hosts.py /
+COPY ./os-base/mininet/link-old-hosts.py /
 RUN chmod +x /start_mininet.sh
 RUN chmod 775 /link-hosts.py
+RUN chmod 775 /link-old-hosts.py
 
 ENTRYPOINT ["/start_mininet.sh"]

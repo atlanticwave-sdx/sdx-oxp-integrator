@@ -32,14 +32,20 @@ def custom_topo(amlight_ctlr, sax_ctlr, tenet_ctlr):
     )
     TenetController.start()
 
-    tenet_sw1 = net.addSwitch("Novi05", listenPort=6701, dpid="dd00000000000005")
-    tenet_sw2 = net.addSwitch("Novi06", listenPort=6702, dpid="dd00000000000006")
+    tenet_sw1 = net.addSwitch("Tenet01", listenPort=6701, dpid="cc00000000000006")
+    tenet_sw2 = net.addSwitch("Tenet02", listenPort=6702, dpid="cc00000000000007")
+    tenet_sw3 = net.addSwitch("Tenet03", listenPort=6703, dpid="cc00000000000008")
 
-    net.addLink(tenet_sw1, tenet_sw2, port1=8, port2=8)
+    net.addLink(tenet_sw1, tenet_sw2, port1=1, port2=1)
+    net.addLink(tenet_sw1, tenet_sw3, port1=2, port2=2)
 
-    h3 = net.addHost("INT03", mac="00:00:00:00:00:03")
+    h6 = net.addHost("h6", mac="00:00:00:00:00:06")
+    h7 = net.addHost("h7", mac="00:00:00:00:00:07")
+    h8 = net.addHost("h8", mac="00:00:00:00:00:08")
 
-    net.addLink(h3, tenet_sw2, port1=22, port2=22)
+    net.addLink(h6, tenet_sw1, port1=1, port2=50)
+    net.addLink(h7, tenet_sw2, port1=1, port2=50)
+    net.addLink(h8, tenet_sw3, port1=1, port2=50)
 
     # ************************************************ TENET OXP - End ************************************************
 
@@ -49,10 +55,16 @@ def custom_topo(amlight_ctlr, sax_ctlr, tenet_ctlr):
     )
     SaxController.start()
 
-    sax_sw1 = net.addSwitch("Novi03", listenPort=6801, dpid="cc00000000000003")
-    sax_sw2 = net.addSwitch("Novi04", listenPort=6802, dpid="cc00000000000004")
+    sax_sw1 = net.addSwitch("Sax01", listenPort=6801, dpid="dd00000000000004")
+    sax_sw2 = net.addSwitch("Sax02", listenPort=6802, dpid="dd00000000000005")
 
-    net.addLink(sax_sw1, sax_sw2, port1=6, port2=6)
+    net.addLink(sax_sw1, sax_sw2, port1=1, port2=1)
+
+    h4 = net.addHost("h4", mac="00:00:00:00:00:04")
+    h5 = net.addHost("h5", mac="00:00:00:00:00:05")
+
+    net.addLink(h4, sax_sw1, port1=1, port2=50)
+    net.addLink(h5, sax_sw2, port1=1, port2=50)
 
     # ************************************************ SAX OXP - End ************************************************
 
@@ -62,37 +74,43 @@ def custom_topo(amlight_ctlr, sax_ctlr, tenet_ctlr):
     )
     AmLightController.start()
 
-    ampath_sw1 = net.addSwitch("Novi01", listenPort=6601, dpid="aa00000000000001")
-    ampath_sw2 = net.addSwitch("Novi02", listenPort=6602, dpid="aa00000000000002")
+    Ampath1 = net.addSwitch("Ampath1", listenPort=6601, dpid="aa00000000000001")
+    Ampath2 = net.addSwitch("Ampath2", listenPort=6602, dpid="aa00000000000002")
+    Ampath3 = net.addSwitch("Ampath3", listenPort=6603, dpid="aa00000000000003")
 
-    net.addLink(ampath_sw1, ampath_sw2, port1=2, port2=2)
+    net.addLink(Ampath1, Ampath2, port1=1, port2=1)
+    net.addLink(Ampath1, Ampath3, port1=2, port2=2)
+    net.addLink(Ampath2, Ampath3, port1=3, port2=3)
 
-    h1 = net.addHost("INT01", mac="00:00:00:00:00:01")
-    h2 = net.addHost("INT02", mac="00:00:00:00:00:02")
+    h1 = net.addHost("h1", mac="00:00:00:00:00:01")
+    h2 = net.addHost("h2", mac="00:00:00:00:00:02")
+    h3 = net.addHost("h3", mac="00:00:00:00:00:03")
 
-    net.addLink(h1, ampath_sw1, port1=15, port2=15)
-    net.addLink(h2, ampath_sw1, port1=16, port2=16)
+    net.addLink(h1, Ampath1, port1=1, port2=50)
+    net.addLink(h2, Ampath2, port1=1, port2=50)
+    net.addLink(h3, Ampath3, port1=1, port2=50)
 
     # ********************************************* AmLight OXP - End ************************************************
 
     # ********************************************** Inter-OXP links ***********************************************
 
-    net.addLink(ampath_sw1, tenet_sw1, port1=1, port2=1)
-    net.addLink(ampath_sw2, tenet_sw1, port1=3, port2=3)
-    net.addLink(ampath_sw2, sax_sw1, port1=4, port2=4)
-    net.addLink(sax_sw2, tenet_sw1, port1=7, port2=7)
+    net.addLink(Ampath1, sax_sw1, port1=40, port2=40)
+    net.addLink(Ampath2, sax_sw2, port1=40, port2=40)
 
-    # Connect Ampath switches to AmLight controller
-    ampath_sw1.start([AmLightController])
-    ampath_sw2.start([AmLightController])
+    net.addLink(tenet_sw1, sax_sw1, port1=41, port2=41)
+    net.addLink(tenet_sw2, sax_sw2, port1=41, port2=41)
 
-    # Connect Sax switches to Sax controller
+    # Connect AmLight switches to AmLight controller
+    Ampath1.start([AmLightController])
+    Ampath2.start([AmLightController])
+    Ampath3.start([AmLightController])
+
     sax_sw1.start([SaxController])
     sax_sw2.start([SaxController])
 
-    # Connect Tenet switches to Tenet controller
     tenet_sw1.start([TenetController])
     tenet_sw2.start([TenetController])
+    tenet_sw3.start([TenetController])
 
     net.build()
     CLI(net)
@@ -109,17 +127,3 @@ if __name__ == "__main__":
     tenet_ctlr = sys.argv[3] if len(sys.argv) > 3 else "192.168.0.4"
     custom_topo(amlight_ctlr, sax_ctlr, tenet_ctlr)
     Cleanup.cleanup()
-#!/usr/bin/python
-"""
-
-Changing to use two controller for the SDX environment
-
-SAX will be one switch and it will have its own controller
-TENET will be one switch and it will have its own controller
-AmLight will have multiple switches and it will have its own controller
-
-Custom topology for AmLight/AMPATH
-@author: Italo Valcy <italo@amlight.net>
-@author: Renata Frez <renata.frez@rnp.br>
-
-"""
