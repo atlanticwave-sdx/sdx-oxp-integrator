@@ -99,7 +99,7 @@ FIU input: the vlan ranges on the two ports on an inter-domain link should be th
 
 Amlight domain
 
-
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/sdxlab11.png?raw=true)
 
 
 
