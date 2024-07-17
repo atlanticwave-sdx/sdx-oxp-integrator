@@ -95,9 +95,12 @@ FIU input: the vlan ranges on the two ports on an inter-domain link should be th
 
 (1) need a validation check when adding topologies on this; 
 (2) vlan translation happens in a domain. vlan assignment becomes simpler after the path is obtained.
-(3) A manual configuration example over 3 domains (2 inter-domain links) 
+(3) A manual configuration example over 3 domains (4 inter-domain links) 
 
-Amlight domain
+AMPATH domain
+SAX Domain
+TENET Domain
+
 
 ![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/24-update-readme/sdxlab11.png?raw=true)
 ![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/sdxlab11.png?raw=true)
