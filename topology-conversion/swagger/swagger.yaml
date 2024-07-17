@@ -82,6 +82,58 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       x-openapi-router-controller: controllers.operational_controller
+  /link/enable/{dpId}:
+    get:
+      tags:
+        - Link
+      summary: Enable a Link passing its dpid
+      description: Enable a Link passing its dpid
+      parameters:
+        - in: path
+          name: dpId
+          schema:
+            type: string
+          required: true
+          description: dpId of the Link
+      operationId: get_link_enable
+      responses:
+        '200':
+          description: Successfully enable a Link passing its dpId.
+          content:
+            application/json: {}
+        '401':
+          description: Validation error in the Link enable process.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-openapi-router-controller: controllers.operational_controller
+  /link/disable/{dpId}:
+    get:
+      tags:
+        - Link
+      summary: Disable a link passing its dpid
+      description: Disable a link passing its dpid
+      parameters:
+        - in: path
+          name: dpId
+          schema:
+            type: string
+          required: true
+          description: dpId of the Link
+      operationId: get_link_disable
+      responses:
+        '200':
+          description: Successfully disable a Link passing its dpId.
+          content:
+            application/json: {}
+        '401':
+          description: Validation error in the Link disable process.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-openapi-router-controller: controllers.operational_controller
 
 
 
