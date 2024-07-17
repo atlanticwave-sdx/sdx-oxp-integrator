@@ -17,6 +17,12 @@
     },
     {
       "url": "http://190.103.184.194"
+    },
+    {
+      "url": "http://190.103.184.197"
+    },
+    {
+      "url": "http://190.103.184.198"
     }
   ],
   "tags": [
@@ -66,13 +72,15 @@
 		"in": "path",
           	"name": "url",
             	"type": "string",
-          	"required": true
+          	"required": true,
+		"allowReserved": true
 	  },
 	  {
 		"in": "path",
           	"name": "command",
             	"type": "string",
-          	"required": true
+          	"required": true,
+		"allowReserved": true
 	  }
 	],
         "responses": {

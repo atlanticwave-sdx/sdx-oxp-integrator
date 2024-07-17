@@ -1,6 +1,8 @@
 """ Operational events controller """
+import json
 import os
 import requests
+OXPO_LINK = os.environ.get("OXPO_LINK")
 OXP_TOPOLOGY_URL = os.environ.get("OXP_TOPOLOGY_URL")
 
 
@@ -20,86 +22,71 @@ def get_operational_event():
 def get_topology_object(topology_object):
     """getting topology object"""
     url = OXP_TOPOLOGY_URL + topology_object
-    print("############################################")
-    print("######### get_topology_object #############")
-    print("######### %s #############", url)
-    print("############################################")
     response = requests.get(url, timeout=10)
     return response.json()
 
 
-def post_topology_object(topology_object):
+def post_topology_object(url, topology_object):
     """getting topology object"""
-    url = OXP_TOPOLOGY_URL + topology_object
-    response = requests.post(url, timeout=10)
-    print("############################################")
-    print("######### post_topology_object #############")
-    print("######### %s #############", url)
-    print("############################################")
-    print(response.json())
-    print(response.status_code)
+    oxp_url = OXP_TOPOLOGY_URL + url
+    response = requests.post(oxp_url, json=topology_object, timeout=10)
     return response.json()
+
+
+def json_reader(json_name):
+    """Read and return json_file"""
+    actual_dir = os.getcwd()
+    json_data = actual_dir + "/" + json_name
+    with open(json_data, encoding="utf8") as json_file:
+        data = json.load(json_file)
+        json_file.close()
+    return data
 
 
 def get_switch_enable(dp_id):
     """getting switch enable"""
+    topology_object = {}
     if dp_id == "all":
         switches = get_topology_object("switches")
-        print("############################################")
-        print("######### switches #############")
-        print("######### %s #############", switches)
-        print("############################################")
         if "switches" in switches:
             for key in switches["switches"].keys():
                 dp_id = switches["switches"][key]["id"]
-                topology_object = "switches/" + dp_id + "/enable"
-                switch_enable = post_topology_object(topology_object)
-                print(switch_enable)
+                url = "switches/" + dp_id + "/enable"
+                post_topology_object(url, topology_object)
     else:
-        topology_object = "switches/" + dp_id + "/enable"
-        switch_enable = post_topology_object(topology_object)
-        print(switch_enable)
-
+        url = "switches/" + dp_id + "/enable"
+        post_topology_object(url, topology_object)
     return f"switch/enable/{dp_id}"
 
 
 def get_switch_disable(dp_id):
     """getting switch disable"""
+    topology_object = {}
     if dp_id == "all":
         switches = get_topology_object("switches")
         if "switches" in switches:
             for key in switches["switches"].keys():
                 dp_id = switches["switches"][key]["id"]
-                topology_object = "switches/" + dp_id + "/disable"
-                switch_disable = post_topology_object(topology_object)
-                print(switch_disable)
+                url = "switches/" + dp_id + "/disable"
+                post_topology_object(url, topology_object)
     else:
-        topology_object = "switches/" + dp_id + "/disable"
-        switch_disable = post_topology_object(topology_object)
-        print(switch_disable)
-
+        url = "switches/" + dp_id + "/disable"
+        post_topology_object(url, topology_object)
     return f"switch/disable/{dp_id}"
 
 
 def get_link_enable(dp_id):
     """getting link enable"""
     if dp_id == "all":
-        links = get_topology_object("links")
-        print("############################################")
-        print("######### links #############")
-        print("######### %s #############", links)
-        print("############################################")
-        if "links" in links:
-            for key in links["links"].keys():
-                dp_id = links["links"][key]["id"]
-                topology_object = "links/" + dp_id + "/enable"
-                link_enable = post_topology_object(topology_object)
-                print(link_enable)
+        links = json_reader(OXPO_LINK)
+        for dpid, topology_object in links.items():
+            print(dpid, topology_object)
+            url = "interfaces/"+dpid+"/metadata"
+            post_topology_object(url, topology_object)
     else:
-        topology_object = "links/" + dp_id + "/enable"
-        link_enable = post_topology_object(topology_object)
-        print(link_enable)
-
+        url = "links/" + dp_id + "/enable"
+        topology_object = {}
+        post_topology_object(url, topology_object)
     return f"link/enable/{dp_id}"
 
 
@@ -110,10 +97,10 @@ def get_link_disable(dp_id):
         if "links" in links:
             for key in links["links"].keys():
                 dp_id = links["links"][key]["id"]
-                topology_object = "links/" + dp_id + "/disable"
-                link_disable = post_topology_object(topology_object)
-                print(link_disable)
+                url = "links/" + dp_id + "/disable"
+                topology_object = {}
+                post_topology_object(url, topology_object)
     else:
-        topology_object = "links/" + dp_id + "/disable"
-        link_disable = post_topology_object(topology_object)
-        print(link_disable)
+        url = "links/" + dp_id + "/disable"
+        topology_object = {}
+        post_topology_object(url, topology_object)
