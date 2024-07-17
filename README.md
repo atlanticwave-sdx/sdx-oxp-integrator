@@ -110,13 +110,13 @@ Test commands and curl scripts for this integration test can be found at http://
 
 On the swagger server, hit the blue GET button, followed by the TRY IT OUT bottom
 
-![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/scripts/getbutton.png?raw=true)
-![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/scripts/tryitout.png?raw=true)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/24-update-readme/scripts/getbutton.png?raw=true)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/24-update-readme/scripts/tryitout.png?raw=true)
 
 Then  a command line with two boxes is enable:
 
 
-![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/scripts/commandline.png?raw=true)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/24-update-readme/scripts/commandline.png?raw=true)
 
 - Ensure Kytos is operational in the Ampath OXPO server and a topology has been created.
 - **URL:** `ampath.net`
@@ -152,4 +152,4 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Fsdx%2Ftopology' -H 'accept: ap
 A `200 OK` API status is expected from all three OXPO servers. Any other status indicates that the environment is not pre-initialized to work with Kytos and further troubleshooting is needed before continuing.
 
 
-![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/scripts/sdxlab11.png?raw=true)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/24-update-readme/scripts/sdxlab11.png?raw=true)
