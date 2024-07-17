@@ -102,7 +102,7 @@ A Docker Compose environment instantiates three Kytos OXPO servers: Amlight, SAX
 ##### Test Steps
 Test commands and curl scripts for this integration test can be found at http://67.17.206.221/.
 
-![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/scripts/swaggerserver.png?raw=true)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/24-update-readme/scripts/swaggerserver.png?raw=true)
 
 ###### Specific Tests Include:
 
@@ -146,6 +146,66 @@ curl -X 'GET' 'http://67.17.206.221/sax.net%2Fsdx%2Ftopology' -H 'accept: applic
 
 ```sh
 curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Fsdx%2Ftopology' -H 'accept: application/json'
+```  
+
+# Enable all switches 
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/24-update-readme/scripts/switchenable.png?raw=true)
+
+**Get all switches enable on Ampath OXPO**
+
+- **URL:** `ampath.net`
+- **Command:** `/switch/enable/all`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/ampath.net%2Fswitch%2Fenable%2Fall' -H 'accept: application/json'
+```  
+
+**Get all switches enable on SAX OXPO**
+
+- **URL:** `sax.net`
+- **Command:** `/switch/enable/all`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/sax.net%2Fswitch%2Fenable%2Fall' -H 'accept: application/json'
+```  
+
+**Get all switches enable on TENET OXPO**
+
+- **URL:** `tenet.ac.za`
+- **Command:** `/switch/enable/all`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Fswitch%2Fenable%2Fall' -H 'accept: application/json'
+```  
+
+# Enable all Links 
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/24-update-readme/scripts/linkenable.png?raw=true)
+
+**Get all Links enable on Ampath OXPO**
+
+- **URL:** `ampath.net`
+- **Command:** `/link/enable/all`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/ampath.net%2Flink%2Fenable%2Fall' -H 'accept: application/json'
+```  
+
+**Get all Links enable on SAX OXPO**
+
+- **URL:** `sax.net`
+- **Command:** `/link/enable/all`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/sax.net%2Flink%2Fenable%2Fall' -H 'accept: application/json'
+```  
+
+**Get all Links enable on TENET OXPO**
+
+- **URL:** `tenet.ac.za`
+- **Command:** `/links/enable/all`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Flink%2Fenable%2Fall' -H 'accept: application/json'
 ```  
 
 **Expected Outcome**
