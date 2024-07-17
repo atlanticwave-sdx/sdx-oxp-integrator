@@ -1,115 +1,155 @@
-# sdx-oxp-integrator
+# SDX-OXP-Integrator
 
-Designed to simplify interactions with various OXPO (Open eXchange Point Operator) APIs by providing a unified and simplified programming interface. The wrapper abstracts the complexities of direct API calls and offers a consistent method to interact with different OXPO services, enhancing code readability and maintainability.
+The `sdx-oxp-integrator` is designed to simplify interactions with various OXPO (Open eXchange Point Operator) APIs by providing a streamlined programming interface. This integrator abstracts the complexities of direct API calls and offers a consistent method to interact with different OXPO services, enhancing code readability and maintainability.
 
 ## Key Features
 
-## Unified API Calls
+### Unified API Calls
 Standardize the way applications communicate with different OXPOs, regardless of their underlying API differences.
 
-## Error Handling
-Robust error handling mechanisms are built in to manage API response variability and ensure reliable application behavior.
+### Error Handling
+Robust error handling mechanisms are built-in to manage API response variability and ensure reliable application behavior.
 
-## Authentication Management
+### Authentication Management
 Handles all aspects of authentication automatically, from token generation to renewal, ensuring seamless access to OXPO services.
 
-## Response Parsing
+### Response Parsing
 Automatically parses responses into user-friendly formats, reducing the need for repetitive parsing logic in the main application code.
 
-## Extensibility
+### Extensibility
 Easily extendible to accommodate new endpoints or changes in existing OXPO API specifications.
 
-## Logging and Monitoring
-Integrated logging for debugging and monitoring API interactions, facilitating easier troubleshooting and performance tracking.  
+### Logging and Monitoring
+Integrated logging for debugging and monitoring API interactions, facilitating easier troubleshooting and performance tracking.
 
+## Getting Started
 
-## Running oxpo-api-wrapper  
-### Configuration  
-Copy the provided `.env` file, and adjust it according to your environment.  
-### Building the container images  
-We have several container images. Need to run the shell script files `1_build_kytos.sh` and `2_build_oxpos.sh` to build all container images. For running the scripts, from the project root directory, do:  
+### Configuration
+Copy the provided `.env` file and adjust it according to your environment.
 
-```console
+### Building the Container Images
+We have several container images. To build all container images, run the shell script files `1_build_kytos.sh` and `2_build_oxpos.sh`. From the project root directory, execute:
+
+```sh
 $ ./1_build_kytos.sh
 $ ./2_build_oxpos.sh
 ```  
 
-### Running with Docker Compose (recommended)  
-A `docker-compose.yml` is provided for bringing up amlight, sax, tenet, ampath-topology-conversion, sax-topology-conversion, tenet-topology-conversion, MongoDB, mininet and nginx instance.  
-To start/stop oxpo-api-wrapper, from the project root directory, do:  
+## Running with Docker Compose (Recommended)
+A `docker-compose.yml` is provided for bringing up Ampath, SAX, Tenet, ampath-topology-conversion, sax-topology-conversion, tenet-topology-conversion, MongoDB, Mininet, and an Nginx instance. To start/stop the `sdx-oxp-integrator`, from the project root directory, run:
 
-```console
-$ docker compose up 
+```sh
+$ docker compose up
 $ docker compose down
 ```  
 
-Navigate to http://localhost for testing the API.  
+### Navigate to http://localhost for testing the API.
 
-## Running the unit tests for topology-conversion  
-Before runnning the tests, make sure you are in the `topology-conversion` directory.  
+## Running Unit Tests for Topology Conversion
 
-### With tox  
+# With Tox
 
-You will need Docker installed and running. You will also need [tox]
-and [tox-docker].  
+You will need Docker installed and running. You will also need Tox and Tox-Docker. To activate a virtual environment, install the requirements, Tox, and Tox-Docker, run the script `piptst.sh`:
 
-For activating a virtual environment, installing the requirements, tox and tox-docker, run the script `piptst.sh`: 
-
-```
+```sh
 $ ./piptst.sh
 ```  
 
-Once you have `tox` and `tox-docker` installed, you can run tests:
+# With Pytest
 
-```console
-$ tox
-```  
+If you prefer to avoid Tox and run Pytest directly, ensure Docker Compose is up. Set the required environment variables by running:
 
-### With pytest  
-If you want to avoid tox and run [pytest] directly, that is possible too. You will need to have docker compose up.  
-
-Some environment variables are expected to be set for the tests to work as expected, for setting the required environment variables do:  
-```
+```sh
 $ . export.sh
 ```  
 
-For activating a virtual environment and installing the requirements, run the script `piptst.sh`:  
-```
+To activate a virtual environment and install the requirements, run the script `piptst.sh`:
+
+```sh
 $ ./piptst.sh
 ```  
 
-For runnning `pytest`:  
-```
+Then, run Pytest:
+
+```sh
 $ pytest
 ```  
 
-### Integration Test
+## Integration Tests
 
-```
-OXP Layer test: 
-```
+### OXP Layer Test
+Using hand-crafted inputs (OXP Test Input) to the OXP topology/provisioning system interface (REST API) to validate end-to-end services in the data plane.
 
-Using the hand crafted inputs (OXP Test Input) to the OXP topology/provisioning system interface (Rest API, etc) to validate the end-to-end services in the data plane.  
+#### FIU Input
+The VLAN ranges on the two ports on an inter-domain link should be the same (pre-agreed upon by the admin). Validation checks are needed when adding topologies, and VLAN translation happens within a domain, simplifying VLAN assignment after the path is obtained.
 
-FIU input: the vlan ranges on the two ports on an inter-domain link should be the same (pre-agreed upon by the admin). 
+### Middleware Layer Test
+Using the AW-SDX Service data model (Service Test Input in JSON format) to the SDX-Controller service endpoint to validate if the middleware can satisfy the service request and generate the necessary breakdowns for the mock OXP systems.
 
-(1) need a validation check when adding topologies on this; 
-(2) vlan translation happens in a domain. vlan assignment becomes simpler after the path is obtained.
-(3) A manual configuration example over 3 domains (4 inter-domain links) 
+### UI Layer Test
+Using the Meican GUI to validate if it can generate the service data model as the input to the mock SD-Controller.
 
-AMPATH domain
-SAX Domain
-TENET Domain
+### Cross-layer Integration Tests
+These tests play a crucial role in validating the functionality and interoperability of the AtlanticWave-SDX 2.0 system, focusing on interaction between the middleware and OXP systems.
+
+#### Integration Test 1 - Middleware-OXP Cross-layer Test
+The supported OXP system needs to publish the converted OXP topology to SDX-LC and update the topology via the `sdx-oxp-integrator` APIs. 
+SDX-LC publishes this information into the SDX Message Queue, where it is received by the SDX Controller.
+
+##### Precondition
+A Docker Compose environment instantiates three Kytos OXPO servers: Amlight, SAX, and Tenet, and three SDX-LC servers: Amlight-LC, Sax-LC, and Tenet-LC. An SDX topology validator server and a MongoDB cluster are configured for communication.
+
+##### Test Steps
+Test commands and curl scripts for this integration test can be found at http://67.17.206.221/.
+
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/scripts/swaggerserver.png?raw=true)
+
+###### Specific Tests Include:
+
+**Get Ampath OXPO Converted SDX Topology**
+
+On the swagger server, hit the blue GET button, followed by the TRY IT OUT bottom
+
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/scripts/getbutton.png?raw=true)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/scripts/tryitout.png?raw=true)
+
+Then  a command line with two boxes is enable:
 
 
-![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/24-update-readme/sdxlab11.png?raw=true)
-![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/sdxlab11.png?raw=true)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/scripts/commandline.png?raw=true)
+
+- Ensure Kytos is operational in the Ampath OXPO server and a topology has been created.
+- **URL:** `ampath.net`
+- **Command:** `/sdx/topology`
+
+When the command is executed, a curl script command is provided to execute it from anywhere in a command prompt
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/ampath.net%2Fsdx%2Ftopology' -H 'accept: application/json'
+```  
+
+**Get SAX OXPO Converted SDX Topology**
+
+- Validate functionality in the SAX OXP.
+- **URL:** `sax.net`
+- **Command:** `/sdx/topology`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/sax.net%2Fsdx%2Ftopology' -H 'accept: application/json'
+```  
+
+**Get TENET OXPO Converted SDX Topology**
+
+- Verify the presence of a well-established topology in the Tenet OXP.
+- **URL:** `tenet.ac.za`
+- **Command:** `/sdx/topology`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Fsdx%2Ftopology' -H 'accept: application/json'
+```  
+
+**Expected Outcome**
+A `200 OK` API status is expected from all three OXPO servers. Any other status indicates that the environment is not pre-initialized to work with Kytos and further troubleshooting is needed before continuing.
 
 
-
-
-<!-- References -->  
-
-[tox]: https://tox.wiki/en/latest/
-[tox-docker]: https://tox-docker.readthedocs.io/
-[pytest]: https://docs.pytest.org/
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/scripts/sdxlab11.png?raw=true)
