@@ -171,7 +171,7 @@ class ParseConvertTopology:
             raise ValueError(f"Switch {switch_id} not found on the topology")
         if "node_name" in switch["metadata"]:
             return switch["metadata"]["node_name"][:30]
-        if len(switch["data_path"]) <= 30:
+        if len(switch["data_path"]) <= 30
             return switch["data_path"]
         return switch["dpid"].replace(":", "-")
 
