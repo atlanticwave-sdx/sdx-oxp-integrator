@@ -1,399 +1,197 @@
 {
-  "topology": {
-    "switches": {
-      "cc:00:00:00:00:00:00:07": {
-        "id": "cc:00:00:00:00:00:00:07",
-        "name": "cc:00:00:00:00:00:00:07",
-        "dpid": "cc:00:00:00:00:00:00:07",
-        "connection": "192.168.0.11:48184",
-        "ofp_version": "0x04",
-        "type": "switch",
-        "manufacturer": "Nicira, Inc.",
-        "serial": "None",
-        "hardware": "Open vSwitch",
-        "software": "2.10.1",
-        "data_path": "Tenet02",
-        "interfaces": {
-          "cc:00:00:00:00:00:00:07:41": {
-            "id": "cc:00:00:00:00:00:00:07:41",
-            "name": "Tenet02-eth41",
-            "port_number": 41,
-            "mac": "d2:18:78:16:49:88",
-            "switch": "cc:00:00:00:00:00:00:07",
-            "type": "interface",
-            "nni": false,
-            "uni": true,
-            "speed": 1250000000,
-            "metadata": {
-              "sdx_nni": "sax.net:Sax02:41"
-            },
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": ""
-          },
-          "cc:00:00:00:00:00:00:07:4294967294": {
-            "id": "cc:00:00:00:00:00:00:07:4294967294",
-            "name": "Tenet02",
-            "port_number": 4294967294,
-            "mac": "5e:61:04:01:79:42",
-            "switch": "cc:00:00:00:00:00:00:07",
-            "type": "interface",
-            "nni": false,
-            "uni": true,
-            "speed": 0,
-            "metadata": {},
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": ""
-          },
-          "cc:00:00:00:00:00:00:07:1": {
-            "id": "cc:00:00:00:00:00:00:07:1",
-            "name": "Tenet02-eth1",
-            "port_number": 1,
-            "mac": "f6:0a:c2:13:17:14",
-            "switch": "cc:00:00:00:00:00:00:07",
-            "type": "interface",
-            "nni": true,
-            "uni": false,
-            "speed": 1250000000,
-            "metadata": {},
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": "fd3ae2cfbcc2901c17aa7a5a836e714f0d4ec7e135f8ac0ccd84c1f00a97fd84"
-          },
-          "cc:00:00:00:00:00:00:07:50": {
-            "id": "cc:00:00:00:00:00:00:07:50",
-            "name": "Tenet02-eth50",
-            "port_number": 50,
-            "mac": "e2:ff:26:62:36:33",
-            "switch": "cc:00:00:00:00:00:00:07",
-            "type": "interface",
-            "nni": false,
-            "uni": true,
-            "speed": 1250000000,
-            "metadata": {},
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": ""
-          }
-        },
-        "metadata": {
-          "lat": "-26",
-          "lng": "28",
-          "address": "Johanesburgo",
-          "iso3166_2_lvl4": "ZA-GP"
-        },
-        "active": true,
-        "enabled": true,
-        "status": "UP",
-        "status_reason": []
+  "name": "Tenet-OXP",
+  "id": "urn:sdx:topology:urn:sdx:topology:tenet.ac.za",
+  "version": 1,
+  "timestamp": "2024-07-29T16:28:37Z",
+  "model_version": "2.0.0",
+  "nodes": [
+    {
+      "name": "Novi06",
+      "id": "urn:sdx:node:urn:sdx:topology:tenet.ac.za:Novi06",
+      "location": {
+        "address": "",
+        "latitude": 0,
+        "longitude": -30,
+        "iso3166_2_lvl4": "",
+        "private": []
       },
-      "cc:00:00:00:00:00:00:08": {
-        "id": "cc:00:00:00:00:00:00:08",
-        "name": "cc:00:00:00:00:00:00:08",
-        "dpid": "cc:00:00:00:00:00:00:08",
-        "connection": "192.168.0.11:48186",
-        "ofp_version": "0x04",
-        "type": "switch",
-        "manufacturer": "Nicira, Inc.",
-        "serial": "None",
-        "hardware": "Open vSwitch",
-        "software": "2.10.1",
-        "data_path": "Tenet03",
-        "interfaces": {
-          "cc:00:00:00:00:00:00:08:4294967294": {
-            "id": "cc:00:00:00:00:00:00:08:4294967294",
-            "name": "Tenet03",
-            "port_number": 4294967294,
-            "mac": "8a:e5:7d:c5:5a:43",
-            "switch": "cc:00:00:00:00:00:00:08",
-            "type": "interface",
-            "nni": false,
-            "uni": true,
-            "speed": 0,
-            "metadata": {},
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": ""
+      "ports": [
+        {
+          "id": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi06:22",
+          "name": "Novi06-eth22",
+          "node": "urn:sdx:node:urn:sdx:topology:tenet.ac.za:Novi06",
+          "type": "10GE",
+          "status": "up",
+          "state": "disabled",
+          "mtu": 1500,
+          "nni": "",
+          "services": {
+            "l2vpn-ptp": {
+              "vlan_range": [
+                [
+                  1,
+                  4095
+                ]
+              ]
+            }
           },
-          "cc:00:00:00:00:00:00:08:2": {
-            "id": "cc:00:00:00:00:00:00:08:2",
-            "name": "Tenet03-eth2",
-            "port_number": 2,
-            "mac": "e2:c3:30:02:e7:eb",
-            "switch": "cc:00:00:00:00:00:00:08",
-            "type": "interface",
-            "nni": true,
-            "uni": false,
-            "speed": 1250000000,
-            "metadata": {},
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": "90a5a09638a5a116323554ed3a95dfc82d725afc404ed6fd1af69a6ef5bbeb77"
-          },
-          "cc:00:00:00:00:00:00:08:50": {
-            "id": "cc:00:00:00:00:00:00:08:50",
-            "name": "Tenet03-eth50",
-            "port_number": 50,
-            "mac": "2a:7d:dc:57:b3:f3",
-            "switch": "cc:00:00:00:00:00:00:08",
-            "type": "interface",
-            "nni": false,
-            "uni": true,
-            "speed": 1250000000,
-            "metadata": {},
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": ""
-          }
+          "private": [
+            "status"
+          ]
         },
-        "metadata": {
-          "lat": "-33",
-          "lng": "27",
-          "address": "EastLondon",
-          "iso3166_2_lvl4": "ZA-EC"
-        },
-        "active": true,
-        "enabled": true,
-        "status": "UP",
-        "status_reason": []
-      },
-      "cc:00:00:00:00:00:00:06": {
-        "id": "cc:00:00:00:00:00:00:06",
-        "name": "cc:00:00:00:00:00:00:06",
-        "dpid": "cc:00:00:00:00:00:00:06",
-        "connection": "192.168.0.11:48196",
-        "ofp_version": "0x04",
-        "type": "switch",
-        "manufacturer": "Nicira, Inc.",
-        "serial": "None",
-        "hardware": "Open vSwitch",
-        "software": "2.10.1",
-        "data_path": "Tenet01",
-        "interfaces": {
-          "cc:00:00:00:00:00:00:06:41": {
-            "id": "cc:00:00:00:00:00:00:06:41",
-            "name": "Tenet01-eth41",
-            "port_number": 41,
-            "mac": "22:9a:26:c4:a2:79",
-            "switch": "cc:00:00:00:00:00:00:06",
-            "type": "interface",
-            "nni": false,
-            "uni": true,
-            "speed": 1250000000,
-            "metadata": {
-              "sdx_nni": "sax.net:Sax01:41"
-            },
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": ""
+        {
+          "id": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi06:8",
+          "name": "Novi06-eth8",
+          "node": "urn:sdx:node:urn:sdx:topology:tenet.ac.za:Novi06",
+          "type": "10GE",
+          "status": "up",
+          "state": "disabled",
+          "mtu": 1500,
+          "nni": "",
+          "services": {
+            "l2vpn-ptp": {
+              "vlan_range": [
+                [
+                  1,
+                  4095
+                ]
+              ]
+            }
           },
-          "cc:00:00:00:00:00:00:06:4294967294": {
-            "id": "cc:00:00:00:00:00:00:06:4294967294",
-            "name": "Tenet01",
-            "port_number": 4294967294,
-            "mac": "52:3c:9d:f0:54:43",
-            "switch": "cc:00:00:00:00:00:00:06",
-            "type": "interface",
-            "nni": false,
-            "uni": true,
-            "speed": 0,
-            "metadata": {},
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": ""
-          },
-          "cc:00:00:00:00:00:00:06:1": {
-            "id": "cc:00:00:00:00:00:00:06:1",
-            "name": "Tenet01-eth1",
-            "port_number": 1,
-            "mac": "ea:00:83:f0:b6:61",
-            "switch": "cc:00:00:00:00:00:00:06",
-            "type": "interface",
-            "nni": true,
-            "uni": false,
-            "speed": 1250000000,
-            "metadata": {},
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": "fd3ae2cfbcc2901c17aa7a5a836e714f0d4ec7e135f8ac0ccd84c1f00a97fd84"
-          },
-          "cc:00:00:00:00:00:00:06:2": {
-            "id": "cc:00:00:00:00:00:00:06:2",
-            "name": "Tenet01-eth2",
-            "port_number": 2,
-            "mac": "f2:f4:c2:d8:6e:92",
-            "switch": "cc:00:00:00:00:00:00:06",
-            "type": "interface",
-            "nni": true,
-            "uni": false,
-            "speed": 1250000000,
-            "metadata": {},
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": "90a5a09638a5a116323554ed3a95dfc82d725afc404ed6fd1af69a6ef5bbeb77"
-          },
-          "cc:00:00:00:00:00:00:06:50": {
-            "id": "cc:00:00:00:00:00:00:06:50",
-            "name": "Tenet01-eth50",
-            "port_number": 50,
-            "mac": "6e:51:46:80:ae:fb",
-            "switch": "cc:00:00:00:00:00:00:06",
-            "type": "interface",
-            "nni": false,
-            "uni": true,
-            "speed": 1250000000,
-            "metadata": {},
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": ""
-          }
-        },
-        "metadata": {
-          "lat": "-33",
-          "lng": "18",
-          "address": "CapeTown",
-          "iso3166_2_lvl4": "ZA-WC"
-        },
-        "active": true,
-        "enabled": true,
-        "status": "UP",
-        "status_reason": []
-      }
+          "private": [
+            "status"
+          ]
+        }
+      ],
+      "status": "up",
+      "state": "enabled"
     },
-    "links": {
-      "fd3ae2cfbcc2901c17aa7a5a836e714f0d4ec7e135f8ac0ccd84c1f00a97fd84": {
-        "id": "fd3ae2cfbcc2901c17aa7a5a836e714f0d4ec7e135f8ac0ccd84c1f00a97fd84",
-        "endpoint_a": {
-          "id": "cc:00:00:00:00:00:00:07:1",
-          "name": "Tenet02-eth1",
-          "port_number": 1,
-          "mac": "f6:0a:c2:13:17:14",
-          "switch": "cc:00:00:00:00:00:00:07",
-          "type": "interface",
-          "nni": true,
-          "uni": false,
-          "speed": 1250000000,
-          "metadata": {},
-          "lldp": true,
-          "active": true,
-          "enabled": true,
-          "status": "UP",
-          "status_reason": [],
-          "link": "fd3ae2cfbcc2901c17aa7a5a836e714f0d4ec7e135f8ac0ccd84c1f00a97fd84"
-        },
-        "endpoint_b": {
-          "id": "cc:00:00:00:00:00:00:06:1",
-          "name": "Tenet01-eth1",
-          "port_number": 1,
-          "mac": "ea:00:83:f0:b6:61",
-          "switch": "cc:00:00:00:00:00:00:06",
-          "type": "interface",
-          "nni": true,
-          "uni": false,
-          "speed": 1250000000,
-          "metadata": {},
-          "lldp": true,
-          "active": true,
-          "enabled": true,
-          "status": "UP",
-          "status_reason": [],
-          "link": "fd3ae2cfbcc2901c17aa7a5a836e714f0d4ec7e135f8ac0ccd84c1f00a97fd84"
-        },
-        "metadata": {
-          "last_status_change": 1716941511.4196386,
-          "last_status_is_active": true,
-          "notified_up_at": "2024-05-29T00:12:01.516142+00:00"
-        },
-        "active": true,
-        "enabled": true,
-        "status": "UP",
-        "status_reason": []
+    {
+      "name": "Novi05",
+      "id": "urn:sdx:node:urn:sdx:topology:tenet.ac.za:Novi05",
+      "location": {
+        "address": "",
+        "latitude": 0,
+        "longitude": -20,
+        "iso3166_2_lvl4": "",
+        "private": []
       },
-      "90a5a09638a5a116323554ed3a95dfc82d725afc404ed6fd1af69a6ef5bbeb77": {
-        "id": "90a5a09638a5a116323554ed3a95dfc82d725afc404ed6fd1af69a6ef5bbeb77",
-        "endpoint_a": {
-          "id": "cc:00:00:00:00:00:00:08:2",
-          "name": "Tenet03-eth2",
-          "port_number": 2,
-          "mac": "e2:c3:30:02:e7:eb",
-          "switch": "cc:00:00:00:00:00:00:08",
-          "type": "interface",
-          "nni": true,
-          "uni": false,
-          "speed": 1250000000,
-          "metadata": {},
-          "lldp": true,
-          "active": true,
-          "enabled": true,
-          "status": "UP",
-          "status_reason": [],
-          "link": "90a5a09638a5a116323554ed3a95dfc82d725afc404ed6fd1af69a6ef5bbeb77"
+      "ports": [
+        {
+          "id": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:8",
+          "name": "Novi05-eth8",
+          "node": "urn:sdx:node:urn:sdx:topology:tenet.ac.za:Novi05",
+          "type": "10GE",
+          "status": "up",
+          "state": "disabled",
+          "mtu": 1500,
+          "nni": "",
+          "services": {
+            "l2vpn-ptp": {
+              "vlan_range": [
+                [
+                  1,
+                  4095
+                ]
+              ]
+            }
+          },
+          "private": [
+            "status"
+          ]
         },
-        "endpoint_b": {
-          "id": "cc:00:00:00:00:00:00:06:2",
-          "name": "Tenet01-eth2",
-          "port_number": 2,
-          "mac": "f2:f4:c2:d8:6e:92",
-          "switch": "cc:00:00:00:00:00:00:06",
-          "type": "interface",
-          "nni": true,
-          "uni": false,
-          "speed": 1250000000,
-          "metadata": {},
-          "lldp": true,
-          "active": true,
-          "enabled": true,
-          "status": "UP",
-          "status_reason": [],
-          "link": "90a5a09638a5a116323554ed3a95dfc82d725afc404ed6fd1af69a6ef5bbeb77"
+        {
+          "id": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:1",
+          "name": "Novi05-eth1",
+          "node": "urn:sdx:node:urn:sdx:topology:tenet.ac.za:Novi05",
+          "type": "10GE",
+          "status": "up",
+          "state": "disabled",
+          "mtu": 1500,
+          "nni": "",
+          "services": {
+            "l2vpn-ptp": {
+              "vlan_range": [
+                [
+                  1,
+                  4095
+                ]
+              ]
+            }
+          },
+          "private": [
+            "status"
+          ]
         },
-        "metadata": {
-          "last_status_change": 1716941511.432529,
-          "last_status_is_active": true,
-          "notified_up_at": "2024-05-29T00:12:01.552988+00:00"
+        {
+          "id": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:7",
+          "name": "Novi05-eth7",
+          "node": "urn:sdx:node:urn:sdx:topology:tenet.ac.za:Novi05",
+          "type": "10GE",
+          "status": "up",
+          "state": "disabled",
+          "mtu": 1500,
+          "nni": "urn:sdx:port:sax.net:Novi04:7",
+          "services": {
+            "l2vpn-ptp": {
+              "vlan_range": [
+                [
+                  1,
+                  4095
+                ]
+              ]
+            }
+          },
+          "private": [
+            "status"
+          ]
         },
-        "active": true,
-        "enabled": true,
-        "status": "UP",
-        "status_reason": []
-      }
+        {
+          "id": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:3",
+          "name": "Novi05-eth3",
+          "node": "urn:sdx:node:urn:sdx:topology:tenet.ac.za:Novi05",
+          "type": "10GE",
+          "status": "up",
+          "state": "disabled",
+          "mtu": 1500,
+          "nni": "",
+          "services": {
+            "l2vpn-ptp": {
+              "vlan_range": [
+                [
+                  1,
+                  4095
+                ]
+              ]
+            }
+          },
+          "private": [
+            "status"
+          ]
+        }
+      ],
+      "status": "up",
+      "state": "enabled"
     }
+  ],
+  "links": [],
+  "services": [
+    "l2vpn-ptp"
+  ],
+  "kytos2sdx": {
+    "dd:00:00:00:00:00:00:06:22": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi06:22",
+    "dd:00:00:00:00:00:00:06:8": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi06:8",
+    "dd:00:00:00:00:00:00:05:8": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:8",
+    "dd:00:00:00:00:00:00:05:1": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:1",
+    "dd:00:00:00:00:00:00:05:7": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:7",
+    "dd:00:00:00:00:00:00:05:3": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:3"
+  },
+  "sdx2kytos": {
+    "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi06:22": "dd:00:00:00:00:00:00:06:22",
+    "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi06:8": "dd:00:00:00:00:00:00:06:8",
+    "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:8": "dd:00:00:00:00:00:00:05:8",
+    "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:1": "dd:00:00:00:00:00:00:05:1",
+    "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:7": "dd:00:00:00:00:00:00:05:7",
+    "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:3": "dd:00:00:00:00:00:00:05:3"
   }
 }

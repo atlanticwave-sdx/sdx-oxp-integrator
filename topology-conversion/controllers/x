@@ -104,7 +104,7 @@ class ParseConvertTopology:
         switch_b = kytos_link["endpoint_b"]["id"][:23]
         node_swa = self.get_kytos_node_name(switch_a)
         node_swb = self.get_kytos_node_name(switch_b)
-        return f"{node_swa}__{interface_a}__{node_swb}__{interface_b}"
+        return f"{node_swa}/{interface_a}_{node_swb}/{interface_b}"
 
     def get_port_urn(self, interface: dict) -> str:
         """function to generate the full urn address for a node"""
@@ -171,7 +171,7 @@ class ParseConvertTopology:
             raise ValueError(f"Switch {switch_id} not found on the topology")
         if "node_name" in switch["metadata"]:
             return switch["metadata"]["node_name"][:30]
-        if len(switch["data_path"]) <= 30:
+        if len(switch["data_path"]) <= 30
             return switch["data_path"]
         return switch["dpid"].replace(":", "-")
 
