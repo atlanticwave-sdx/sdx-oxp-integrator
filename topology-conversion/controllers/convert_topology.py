@@ -103,28 +103,7 @@ class ParseConvertTopology:
         """Function to obtain the state."""
         return "enabled" if state else "disabled"
 
-<<<<<<< HEAD
-    def get_kytos_link_label(self, kytos_link: dict) -> str:
-        """Return the kytos link label"""
-        if "endpoint_a" not in kytos_link or "endpoint_b" not in kytos_link:
-            raise ValueError(f"Invalid Kytos link: {kytos_link}")
-        link_name = kytos_link["metadata"].get("link_name")
-        if link_name:
-            link_name = re.sub(r'\s+', '_', link_name)
-            link_name = re.sub('[^A-Za-z0-9_.,/-]', '', link_name)
-            return link_name[:30]
-        interface_a = int(kytos_link["endpoint_a"]["id"][24:])
-        switch_a = kytos_link["endpoint_a"]["id"][:23]
-        interface_b = int(kytos_link["endpoint_b"]["id"][24:])
-        switch_b = kytos_link["endpoint_b"]["id"][:23]
-        node_swa = self.get_kytos_node_name(switch_a)
-        node_swb = self.get_kytos_node_name(switch_b)
-        return f"{node_swa}__{interface_a}__{node_swb}__{interface_b}"
-
-    def get_port_urn(self, interface: dict) -> str:
-=======
     def get_port_urn(self, switch: str, interface) -> str:
->>>>>>> b666b7f (implementing version control #30)
         """function to generate the full urn address for a node"""
 
         if not isinstance(interface, str) and not isinstance(interface, int):
