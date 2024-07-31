@@ -16,7 +16,7 @@ class ParseConvertTopology:
         self.model_version = args["model_version"]
         self.oxp_name = args["oxp_name"]
         self.oxp_url = args["oxp_url"]
-        self.topology_id = args["topology_id"]
+        # self.oxp_urls_list = args['oxp_urls_list']
         # mapping from Kytos to SDX and vice-versa
         self.kytos2sdx = {}
         self.sdx2kytos = {}
@@ -395,8 +395,7 @@ class ParseConvertTopology:
         """function get_sdx_topology"""
         topology = {}
         topology["name"] = self.oxp_name
-        # topology["id"] = f"urn:sdx:topology:{self.oxp_url}"
-        topology["id"] = self.topology_id
+        topology["id"] = f"urn:sdx:topology:{self.oxp_url}"
         topology["version"] = self.version
         topology["timestamp"] = self.timestamp
         topology["model_version"] = self.model_version

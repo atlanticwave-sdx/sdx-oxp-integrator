@@ -34,4 +34,4 @@ watchfiles==0.21.0
 websockets==12.0
 werkzeug==3.0.3
 connexion[swagger-ui,uvicorn]
-sdx-topology-validator==1.1.5
+sdx-topology-validator==1.1.6

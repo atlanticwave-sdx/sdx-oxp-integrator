@@ -1,482 +1,222 @@
 {
-    "switches": {
-      "aa:00:00:00:00:00:00:03": {
-        "id": "aa:00:00:00:00:00:00:03",
-        "name": "aa:00:00:00:00:00:00:03",
-        "dpid": "aa:00:00:00:00:00:00:03",
-        "connection": "192.168.0.11:55776",
-        "ofp_version": "0x04",
-        "type": "switch",
-        "manufacturer": "Nicira, Inc.",
-        "serial": "None",
-        "hardware": "Open vSwitch",
-        "software": "2.10.1",
-        "data_path": "Ampath3",
-        "interfaces": {
-          "aa:00:00:00:00:00:00:03:4294967294": {
-            "id": "aa:00:00:00:00:00:00:03:4294967294",
-            "name": "Ampath3",
-            "port_number": 4294967294,
-            "mac": "da:a7:76:ec:e8:42",
-            "switch": "aa:00:00:00:00:00:00:03",
-            "type": "interface",
-            "nni": false,
-            "uni": true,
-            "speed": 0,
-            "metadata": {},
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": ""
-          },
-          "aa:00:00:00:00:00:00:03:2": {
-            "id": "aa:00:00:00:00:00:00:03:2",
-            "name": "Ampath3-eth2",
-            "port_number": 2,
-            "mac": "aa:4e:d9:e3:16:a1",
-            "switch": "aa:00:00:00:00:00:00:03",
-            "type": "interface",
-            "nni": true,
-            "uni": false,
-            "speed": 1250000000,
-            "metadata": {},
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": "2547e1a4e514b06cc9e346e20d0dbd199da83340e78031d632ce398edc5c0453"
-          },
-          "aa:00:00:00:00:00:00:03:50": {
-            "id": "aa:00:00:00:00:00:00:03:50",
-            "name": "Ampath3-eth50",
-            "port_number": 50,
-            "mac": "82:34:9a:58:36:b0",
-            "switch": "aa:00:00:00:00:00:00:03",
-            "type": "interface",
-            "nni": false,
-            "uni": true,
-            "speed": 1250000000,
-            "metadata": {},
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": ""
-          },
-          "aa:00:00:00:00:00:00:03:3": {
-            "id": "aa:00:00:00:00:00:00:03:3",
-            "name": "Ampath3-eth3",
-            "port_number": 3,
-            "mac": "4e:1c:33:40:37:db",
-            "switch": "aa:00:00:00:00:00:00:03",
-            "type": "interface",
-            "nni": true,
-            "uni": false,
-            "speed": 1250000000,
-            "metadata": {},
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": "4b7b34ca81ef25f18b453f6ea2f4ed328d9db4beba0e6b2eeab3dd2441f3b36b"
-          }
-        },
-        "metadata": {
-          "lat": "30.27",
-          "lng": "-81.68",
-          "address": "Jacksonville",
-          "iso3166_2_lvl4": "US-FL"
-        },
-        "active": true,
-        "enabled": true,
-        "status": "UP",
-        "status_reason": []
+  "name": "Ampath-OXP",
+  "id": "urn:sdx:topology:urn:sdx:topology:ampath.net",
+  "version": 1,
+  "timestamp": "2024-07-29T16:28:37Z",
+  "model_version": "2.0.0",
+  "nodes": [
+    {
+      "name": "Novi01",
+      "id": "urn:sdx:node:urn:sdx:topology:ampath.net:Novi01",
+      "location": {
+        "address": "",
+        "latitude": 0,
+        "longitude": -30,
+        "iso3166_2_lvl4": "",
+        "private": []
       },
-      "aa:00:00:00:00:00:00:02": {
-        "id": "aa:00:00:00:00:00:00:02",
-        "name": "aa:00:00:00:00:00:00:02",
-        "dpid": "aa:00:00:00:00:00:00:02",
-        "connection": "192.168.0.11:55778",
-        "ofp_version": "0x04",
-        "type": "switch",
-        "manufacturer": "Nicira, Inc.",
-        "serial": "None",
-        "hardware": "Open vSwitch",
-        "software": "2.10.1",
-        "data_path": "Ampath2",
-        "interfaces": {
-          "aa:00:00:00:00:00:00:02:4294967294": {
-            "id": "aa:00:00:00:00:00:00:02:4294967294",
-            "name": "Ampath2",
-            "port_number": 4294967294,
-            "mac": "5e:9f:4e:ca:ce:47",
-            "switch": "aa:00:00:00:00:00:00:02",
-            "type": "interface",
-            "nni": false,
-            "uni": true,
-            "speed": 0,
-            "metadata": {},
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": ""
+      "ports": [
+        {
+          "id": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:15",
+          "name": "Novi01-eth15",
+          "node": "urn:sdx:node:urn:sdx:topology:ampath.net:Novi01",
+          "type": "10GE",
+          "status": "up",
+          "state": "disabled",
+          "mtu": 1500,
+          "nni": "",
+          "services": {
+            "l2vpn-ptp": {
+              "vlan_range": [
+                [
+                  1,
+                  4095
+                ]
+              ]
+            }
           },
-          "aa:00:00:00:00:00:00:02:1": {
-            "id": "aa:00:00:00:00:00:00:02:1",
-            "name": "Ampath2-eth1",
-            "port_number": 1,
-            "mac": "36:0c:11:bd:e9:40",
-            "switch": "aa:00:00:00:00:00:00:02",
-            "type": "interface",
-            "nni": true,
-            "uni": false,
-            "speed": 1250000000,
-            "metadata": {},
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": "4cc24894f8996177a380169523ebdb3f19cdd5527d4a2e8f1bcba668f3f98e22"
-          },
-          "aa:00:00:00:00:00:00:02:50": {
-            "id": "aa:00:00:00:00:00:00:02:50",
-            "name": "Ampath2-eth50",
-            "port_number": 50,
-            "mac": "56:f9:19:e5:9c:62",
-            "switch": "aa:00:00:00:00:00:00:02",
-            "type": "interface",
-            "nni": false,
-            "uni": true,
-            "speed": 1250000000,
-            "metadata": {},
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": ""
-          },
-          "aa:00:00:00:00:00:00:02:40": {
-            "id": "aa:00:00:00:00:00:00:02:40",
-            "name": "Ampath2-eth40",
-            "port_number": 40,
-            "mac": "ea:a0:8c:6c:5a:f3",
-            "switch": "aa:00:00:00:00:00:00:02",
-            "type": "interface",
-            "nni": false,
-            "uni": true,
-            "speed": 1250000000,
-            "metadata": {
-              "sdx_nni": "sax.net:Sax02:40"
-            },
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": ""
-          },
-          "aa:00:00:00:00:00:00:02:3": {
-            "id": "aa:00:00:00:00:00:00:02:3",
-            "name": "Ampath2-eth3",
-            "port_number": 3,
-            "mac": "86:27:a7:0f:b4:b7",
-            "switch": "aa:00:00:00:00:00:00:02",
-            "type": "interface",
-            "nni": true,
-            "uni": false,
-            "speed": 1250000000,
-            "metadata": {},
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": "4b7b34ca81ef25f18b453f6ea2f4ed328d9db4beba0e6b2eeab3dd2441f3b36b"
-          }
+          "private": [
+            "status"
+          ]
         },
-        "metadata": {
-          "lat": "26.38",
-          "lng": "-80.11",
-          "address": "BocaRaton",
-          "iso3166_2_lvl4": "US-FL"
+        {
+          "id": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:16",
+          "name": "Novi01-eth16",
+          "node": "urn:sdx:node:urn:sdx:topology:ampath.net:Novi01",
+          "type": "10GE",
+          "status": "up",
+          "state": "disabled",
+          "mtu": 1500,
+          "nni": "",
+          "services": {
+            "l2vpn-ptp": {
+              "vlan_range": [
+                [
+                  1,
+                  4095
+                ]
+              ]
+            }
+          },
+          "private": [
+            "status"
+          ]
         },
-        "active": true,
-        "enabled": true,
-        "status": "UP",
-        "status_reason": []
-      },
-      "aa:00:00:00:00:00:00:01": {
-        "id": "aa:00:00:00:00:00:00:01",
-        "name": "aa:00:00:00:00:00:00:01",
-        "dpid": "aa:00:00:00:00:00:00:01",
-        "connection": "192.168.0.11:55782",
-        "ofp_version": "0x04",
-        "type": "switch",
-        "manufacturer": "Nicira, Inc.",
-        "serial": "None",
-        "hardware": "Open vSwitch",
-        "software": "2.10.1",
-        "data_path": "Ampath1",
-        "interfaces": {
-          "aa:00:00:00:00:00:00:01:4294967294": {
-            "id": "aa:00:00:00:00:00:00:01:4294967294",
-            "name": "Ampath1",
-            "port_number": 4294967294,
-            "mac": "8a:a1:85:e3:33:45",
-            "switch": "aa:00:00:00:00:00:00:01",
-            "type": "interface",
-            "nni": false,
-            "uni": true,
-            "speed": 0,
-            "metadata": {},
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": ""
+        {
+          "id": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:1",
+          "name": "Novi01-eth1",
+          "node": "urn:sdx:node:urn:sdx:topology:ampath.net:Novi01",
+          "type": "10GE",
+          "status": "up",
+          "state": "disabled",
+          "mtu": 1500,
+          "nni": "urn:sdx:port:tenet.ac.za:Novi05:1",
+          "services": {
+            "l2vpn-ptp": {
+              "vlan_range": [
+                [
+                  1,
+                  4095
+                ]
+              ]
+            }
           },
-          "aa:00:00:00:00:00:00:01:1": {
-            "id": "aa:00:00:00:00:00:00:01:1",
-            "name": "Ampath1-eth1",
-            "port_number": 1,
-            "mac": "96:27:86:25:f5:85",
-            "switch": "aa:00:00:00:00:00:00:01",
-            "type": "interface",
-            "nni": true,
-            "uni": false,
-            "speed": 1250000000,
-            "metadata": {},
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": "4cc24894f8996177a380169523ebdb3f19cdd5527d4a2e8f1bcba668f3f98e22"
-          },
-          "aa:00:00:00:00:00:00:01:40": {
-            "id": "aa:00:00:00:00:00:00:01:40",
-            "name": "Ampath1-eth40",
-            "port_number": 40,
-            "mac": "ea:2f:d3:b3:dc:62",
-            "switch": "aa:00:00:00:00:00:00:01",
-            "type": "interface",
-            "nni": false,
-            "uni": true,
-            "speed": 1250000000,
-            "metadata": {
-              "sdx_nni": "sax.net:Sax01:40"
-            },
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": ""
-          },
-          "aa:00:00:00:00:00:00:01:50": {
-            "id": "aa:00:00:00:00:00:00:01:50",
-            "name": "Ampath1-eth50",
-            "port_number": 50,
-            "mac": "82:7e:ec:30:b1:5e",
-            "switch": "aa:00:00:00:00:00:00:01",
-            "type": "interface",
-            "nni": false,
-            "uni": true,
-            "speed": 1250000000,
-            "metadata": {},
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": ""
-          },
-          "aa:00:00:00:00:00:00:01:2": {
-            "id": "aa:00:00:00:00:00:00:01:2",
-            "name": "Ampath1-eth2",
-            "port_number": 2,
-            "mac": "62:57:ed:f0:9e:f0",
-            "switch": "aa:00:00:00:00:00:00:01",
-            "type": "interface",
-            "nni": true,
-            "uni": false,
-            "speed": 1250000000,
-            "metadata": {},
-            "lldp": true,
-            "active": true,
-            "enabled": true,
-            "status": "UP",
-            "status_reason": [],
-            "link": "2547e1a4e514b06cc9e346e20d0dbd199da83340e78031d632ce398edc5c0453"
-          }
+          "private": [
+            "status"
+          ]
         },
-        "metadata": {
-          "lat": "25.77",
-          "lng": "-80.19",
-          "address": "Miami",
-          "iso3166_2_lvl4": "US-FL"
-        },
-        "active": true,
-        "enabled": true,
-        "status": "UP",
-        "status_reason": []
-      }
+        {
+          "id": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:2",
+          "name": "Novi01-eth2",
+          "node": "urn:sdx:node:urn:sdx:topology:ampath.net:Novi01",
+          "type": "10GE",
+          "status": "up",
+          "state": "disabled",
+          "mtu": 1500,
+          "nni": "",
+          "services": {
+            "l2vpn-ptp": {
+              "vlan_range": [
+                [
+                  1,
+                  4095
+                ]
+              ]
+            }
+          },
+          "private": [
+            "status"
+          ]
+        }
+      ],
+      "status": "up",
+      "state": "enabled"
     },
-    "links": {
-      "2547e1a4e514b06cc9e346e20d0dbd199da83340e78031d632ce398edc5c0453": {
-        "id": "2547e1a4e514b06cc9e346e20d0dbd199da83340e78031d632ce398edc5c0453",
-        "endpoint_a": {
-          "id": "aa:00:00:00:00:00:00:03:2",
-          "name": "Ampath3-eth2",
-          "port_number": 2,
-          "mac": "aa:4e:d9:e3:16:a1",
-          "switch": "aa:00:00:00:00:00:00:03",
-          "type": "interface",
-          "nni": true,
-          "uni": false,
-          "speed": 1250000000,
-          "metadata": {},
-          "lldp": true,
-          "active": true,
-          "enabled": true,
-          "status": "UP",
-          "status_reason": [],
-          "link": "2547e1a4e514b06cc9e346e20d0dbd199da83340e78031d632ce398edc5c0453"
-        },
-        "endpoint_b": {
-          "id": "aa:00:00:00:00:00:00:01:2",
-          "name": "Ampath1-eth2",
-          "port_number": 2,
-          "mac": "62:57:ed:f0:9e:f0",
-          "switch": "aa:00:00:00:00:00:00:01",
-          "type": "interface",
-          "nni": true,
-          "uni": false,
-          "speed": 1250000000,
-          "metadata": {},
-          "lldp": true,
-          "active": true,
-          "enabled": true,
-          "status": "UP",
-          "status_reason": [],
-          "link": "2547e1a4e514b06cc9e346e20d0dbd199da83340e78031d632ce398edc5c0453"
-        },
-        "metadata": {
-          "last_status_change": 1716941510.5636735,
-          "last_status_is_active": true,
-          "notified_up_at": "2024-05-29T00:12:00.602311+00:00"
-        },
-        "active": true,
-        "enabled": true,
-        "status": "UP",
-        "status_reason": []
+    {
+      "name": "Novi02",
+      "id": "urn:sdx:node:urn:sdx:topology:ampath.net:Novi02",
+      "location": {
+        "address": "",
+        "latitude": 0,
+        "longitude": -20,
+        "iso3166_2_lvl4": "",
+        "private": []
       },
-      "4cc24894f8996177a380169523ebdb3f19cdd5527d4a2e8f1bcba668f3f98e22": {
-        "id": "4cc24894f8996177a380169523ebdb3f19cdd5527d4a2e8f1bcba668f3f98e22",
-        "endpoint_a": {
-          "id": "aa:00:00:00:00:00:00:02:1",
-          "name": "Ampath2-eth1",
-          "port_number": 1,
-          "mac": "36:0c:11:bd:e9:40",
-          "switch": "aa:00:00:00:00:00:00:02",
-          "type": "interface",
-          "nni": true,
-          "uni": false,
-          "speed": 1250000000,
-          "metadata": {},
-          "lldp": true,
-          "active": true,
-          "enabled": true,
-          "status": "UP",
-          "status_reason": [],
-          "link": "4cc24894f8996177a380169523ebdb3f19cdd5527d4a2e8f1bcba668f3f98e22"
+      "ports": [
+        {
+          "id": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi02:4",
+          "name": "Novi02-eth4",
+          "node": "urn:sdx:node:urn:sdx:topology:ampath.net:Novi02",
+          "type": "10GE",
+          "status": "up",
+          "state": "disabled",
+          "mtu": 1500,
+          "nni": "urn:sdx:port:sax.net:Novi03:4",
+          "services": {
+            "l2vpn-ptp": {
+              "vlan_range": [
+                [
+                  1,
+                  4095
+                ]
+              ]
+            }
+          },
+          "private": [
+            "status"
+          ]
         },
-        "endpoint_b": {
-          "id": "aa:00:00:00:00:00:00:01:1",
-          "name": "Ampath1-eth1",
-          "port_number": 1,
-          "mac": "96:27:86:25:f5:85",
-          "switch": "aa:00:00:00:00:00:00:01",
-          "type": "interface",
-          "nni": true,
-          "uni": false,
-          "speed": 1250000000,
-          "metadata": {},
-          "lldp": true,
-          "active": true,
-          "enabled": true,
-          "status": "UP",
-          "status_reason": [],
-          "link": "4cc24894f8996177a380169523ebdb3f19cdd5527d4a2e8f1bcba668f3f98e22"
+        {
+          "id": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi02:2",
+          "name": "Novi02-eth2",
+          "node": "urn:sdx:node:urn:sdx:topology:ampath.net:Novi02",
+          "type": "10GE",
+          "status": "up",
+          "state": "disabled",
+          "mtu": 1500,
+          "nni": "",
+          "services": {
+            "l2vpn-ptp": {
+              "vlan_range": [
+                [
+                  1,
+                  4095
+                ]
+              ]
+            }
+          },
+          "private": [
+            "status"
+          ]
         },
-        "metadata": {
-          "last_status_change": 1716941510.6022627,
-          "last_status_is_active": true,
-          "notified_up_at": "2024-05-29T00:12:00.637363+00:00"
-        },
-        "active": true,
-        "enabled": true,
-        "status": "UP",
-        "status_reason": []
-      },
-      "4b7b34ca81ef25f18b453f6ea2f4ed328d9db4beba0e6b2eeab3dd2441f3b36b": {
-        "id": "4b7b34ca81ef25f18b453f6ea2f4ed328d9db4beba0e6b2eeab3dd2441f3b36b",
-        "endpoint_a": {
-          "id": "aa:00:00:00:00:00:00:03:3",
-          "name": "Ampath3-eth3",
-          "port_number": 3,
-          "mac": "4e:1c:33:40:37:db",
-          "switch": "aa:00:00:00:00:00:00:03",
-          "type": "interface",
-          "nni": true,
-          "uni": false,
-          "speed": 1250000000,
-          "metadata": {},
-          "lldp": true,
-          "active": true,
-          "enabled": true,
-          "status": "UP",
-          "status_reason": [],
-          "link": "4b7b34ca81ef25f18b453f6ea2f4ed328d9db4beba0e6b2eeab3dd2441f3b36b"
-        },
-        "endpoint_b": {
-          "id": "aa:00:00:00:00:00:00:02:3",
-          "name": "Ampath2-eth3",
-          "port_number": 3,
-          "mac": "86:27:a7:0f:b4:b7",
-          "switch": "aa:00:00:00:00:00:00:02",
-          "type": "interface",
-          "nni": true,
-          "uni": false,
-          "speed": 1250000000,
-          "metadata": {},
-          "lldp": true,
-          "active": true,
-          "enabled": true,
-          "status": "UP",
-          "status_reason": [],
-          "link": "4b7b34ca81ef25f18b453f6ea2f4ed328d9db4beba0e6b2eeab3dd2441f3b36b"
-        },
-        "metadata": {
-          "last_status_change": 1716941510.6455107,
-          "last_status_is_active": true,
-          "notified_up_at": "2024-05-29T00:12:00.720700+00:00"
-        },
-        "active": true,
-        "enabled": true,
-        "status": "UP",
-        "status_reason": []
-      }
+        {
+          "id": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi02:3",
+          "name": "Novi02-eth3",
+          "node": "urn:sdx:node:urn:sdx:topology:ampath.net:Novi02",
+          "type": "10GE",
+          "status": "up",
+          "state": "disabled",
+          "mtu": 1500,
+          "nni": "urn:sdx:port:tenet.ac.za:Novi05:3",
+          "services": {
+            "l2vpn-ptp": {
+              "vlan_range": [
+                [
+                  1,
+                  4095
+                ]
+              ]
+            }
+          },
+          "private": [
+            "status"
+          ]
+        }
+      ],
+      "status": "up",
+      "state": "enabled"
     }
+  ],
+  "links": [],
+  "services": [
+    "l2vpn-ptp"
+  ],
+  "kytos2sdx": {
+    "aa:00:00:00:00:00:00:01:15": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:15",
+    "aa:00:00:00:00:00:00:01:16": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:16",
+    "aa:00:00:00:00:00:00:01:1": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:1",
+    "aa:00:00:00:00:00:00:01:2": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:2",
+    "aa:00:00:00:00:00:00:02:4": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi02:4",
+    "aa:00:00:00:00:00:00:02:2": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi02:2",
+    "aa:00:00:00:00:00:00:02:3": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi02:3"
+  },
+  "sdx2kytos": {
+    "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:15": "aa:00:00:00:00:00:00:01:15",
+    "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:16": "aa:00:00:00:00:00:00:01:16",
+    "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:1": "aa:00:00:00:00:00:00:01:1",
+    "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:2": "aa:00:00:00:00:00:00:01:2",
+    "urn:sdx:port:urn:sdx:topology:ampath.net:Novi02:4": "aa:00:00:00:00:00:00:02:4",
+    "urn:sdx:port:urn:sdx:topology:ampath.net:Novi02:2": "aa:00:00:00:00:00:00:02:2",
+    "urn:sdx:port:urn:sdx:topology:ampath.net:Novi02:3": "aa:00:00:00:00:00:00:02:3"
+  }
 }
-
