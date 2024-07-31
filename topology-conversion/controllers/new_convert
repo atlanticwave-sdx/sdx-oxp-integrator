@@ -14,6 +14,7 @@ class ParseConvertTopology:
         self.timestamp = args["timestamp"]
         self.oxp_name = args["oxp_name"]
         self.oxp_url = args["oxp_url"]
+        self.topology_id = args["topology_id"]
         self.model_version = "2.0.0"
         # mapping from Kytos to SDX and vice-versa
         self.kytos2sdx = {}
@@ -171,7 +172,7 @@ class ParseConvertTopology:
             raise ValueError(f"Switch {switch_id} not found on the topology")
         if "node_name" in switch["metadata"]:
             return switch["metadata"]["node_name"][:30]
-        if len(switch["data_path"]) <= 30
+        if len(switch["data_path"]) <= 30:
             return switch["data_path"]
         return switch["dpid"].replace(":", "-")
 
@@ -260,7 +261,8 @@ class ParseConvertTopology:
         """function get_sdx_topology"""
         topology = {}
         topology["name"] = self.oxp_name
-        topology["id"] = f"urn:sdx:topology:{self.oxp_url}"
+        # topology["id"] = f"urn:sdx:topology:{self.oxp_url}"
+        topology["id"] = self.topology_id
         topology["version"] = self.version
         topology["timestamp"] = self.timestamp
         topology["model_version"] = self.model_version

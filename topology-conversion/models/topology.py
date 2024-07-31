@@ -26,6 +26,7 @@ class Topology(Model):
         version=None,
         model_version=None,
         time_stamp=None,
+        oxpo_url=None,
         nodes=None,
         links=None,
     ):  # noqa: E501
@@ -52,6 +53,7 @@ class Topology(Model):
             "version": int,
             "model_version": str,
             "time_stamp": datetime,
+            "oxpo_url": str,
             "nodes": List[Node],
             "links": List[Link],
         }
@@ -62,6 +64,7 @@ class Topology(Model):
             "version": "version",
             "model_version": "model_version",
             "time_stamp": "time_stamp",
+            "oxpo_url": "oxpo_url",
             "nodes": "nodes",
             "links": "links",
         }
@@ -71,6 +74,7 @@ class Topology(Model):
         self._version = version
         self._model_version = model_version
         self._time_stamp = time_stamp
+        self._oxpo_url = oxpo_url
         self._nodes = nodes
         self._links = links
 
@@ -227,6 +231,31 @@ class Topology(Model):
             )  # noqa: E501
 
         self._time_stamp = time_stamp
+
+    @property
+    def oxpo_url(self):
+        """Gets the oxpo_url of this Topology.
+
+
+        :return: The oxpo_url of this Topology.
+        :rtype: str
+        """
+        return self._oxpo_url
+
+    @oxpo_url.setter
+    def oxpo_url(self, oxpo_url):
+        """Sets the oxpo_url of this Topology.
+
+
+        :param oxpo_url: The oxpo_url of this Topology.
+        :type oxpo_url: str
+        """
+        if oxpo_url is None:
+            raise ValueError(
+                "Invalid value for `oxpo_url`, must not be `None`"
+            )  # noqa: E501
+
+        self._oxpo_url = oxpo_url
 
     @property
     def nodes(self):

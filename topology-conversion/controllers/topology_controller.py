@@ -18,6 +18,7 @@ topology_class.model_version = os.environ.get("MODEL_VERSION")
 topology_class.name = os.environ.get("OXPO_NAME")
 topology_class.version = 1
 topology_class.topology_id = "urn:sdx:topology:" + os.environ.get("OXPO_URL")
+topology_class.oxpo_url = os.environ.get("OXPO_URL")
 timestamp = get_timestamp()
 
 
@@ -36,9 +37,6 @@ def get_oxp_topology():
 
 def convert_topology():
     """converting kytos to sdx topology"""
-    logger.info("#####################################")
-    logger.info("######### convert topology ##########")
-    logger.info("#####################################")
     try:
         topology = get_oxp_topology()
         converted_topology = ParseConvertTopology(
@@ -47,16 +45,22 @@ def convert_topology():
             timestamp=timestamp,
             model_version=topology_class.model_version,
             oxp_name=topology_class.name,
-            oxp_url=topology_class.topology_id,
+            oxp_url=topology_class.oxpo_url,
+            topology_id=topology_class.topology_id,
         ).parse_convert_topology()
-        validated_topology = validate(converted_topology)
-        logger.info("#####################################")
-        logger.info("######### validated_topology ##########")
-        logger.info("######### %s ##########", validated_topology)
-        logger.info("#####################################")
-        # if validated_topology.status_code == "200":
+        if not converted_topology["nodes"]:
+            converted_topology["validation_error"] = "No nodes to validate topology"
+        elif not converted_topology["links"]:
+                converted_topology["validation_error"] = "No links to validate topology"
+        else:
+            validated_topology = validate(converted_topology)
+            converted_topology["validation_error"] = validated_topology
+            # if validated_topology["status_code"] == "200":
+            topology_class.nodes = converted_topology["nodes"]
+            topology_class.links = converted_topology["links"]
+            topology_class.version += 1
+            converted_topology["version"] = topology_class.version
         return converted_topology
-        # return validated_topology
     except Exception as err:  # pylint: disable=broad-except
         logger.info("convert_topology Error, status code 401:{err}")
         result = {"convert_topology Error": err, "status_code": 401}
