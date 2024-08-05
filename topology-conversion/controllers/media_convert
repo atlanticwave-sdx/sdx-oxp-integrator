@@ -3,8 +3,8 @@ Main class of kytos/sdx_topology Kytos Network Application.
 
 SDX API
 """
-import secrets
 
+from controllers.operational_controller import get_oxp_links
 
 class ParseConvertTopology:
     """Parse Topology  class of kytos/sdx_topology NApp."""
@@ -25,12 +25,7 @@ class ParseConvertTopology:
         """return parse_args["topology"]["switches"] values"""
         return self.kytos_topology["switches"].values()
 
-    def get_kytos_links(self) -> dict:
-        """return parse_args["topology"]["links"] values"""
-        return self.kytos_topology["links"].values()
-
-    @staticmethod
-    def get_port_status(port_status: str) -> str:
+    def get_port_status(self, port_status: str) -> str:
         """Function to obtain the speed of a specific port in the link."""
         lower_case = {
             "UP": "up",
@@ -41,8 +36,7 @@ class ParseConvertTopology:
 
         return lower_case.get(port_status, "error")
 
-    @staticmethod
-    def get_link_port_speed(speed: str) -> int:
+    def get_link_port_speed(self, speed: str) -> int:
         """Function to obtain the speed of a specific port in the link."""
         type_to_speed = {
             "400GE": 400,
@@ -103,23 +97,6 @@ class ParseConvertTopology:
         """Function to obtain the state."""
         return "enabled" if state else "disabled"
 
-    def get_kytos_link_label(self, kytos_link: dict) -> str:
-        """Return the kytos link label"""
-        if "endpoint_a" not in kytos_link or "endpoint_b" not in kytos_link:
-            raise ValueError(f"Invalid Kytos link: {kytos_link}")
-        link_name = kytos_link["metadata"].get("link_name")
-        if link_name:
-            link_name = re.sub(r'\s+', '_', link_name)
-            link_name = re.sub('[^A-Za-z0-9_.,/-]', '', link_name)
-            return link_name[:30]
-        interface_a = int(kytos_link["endpoint_a"]["id"][24:])
-        switch_a = kytos_link["endpoint_a"]["id"][:23]
-        interface_b = int(kytos_link["endpoint_b"]["id"][24:])
-        switch_b = kytos_link["endpoint_b"]["id"][:23]
-        node_swa = self.get_kytos_node_name(switch_a)
-        node_swb = self.get_kytos_node_name(switch_b)
-        return f"{node_swa}/{interface_a}_{node_swb}/{interface_b}"
-
     def get_port_urn(self, switch: str, interface) -> str:
         """function to generate the full urn address for a node"""
 
@@ -151,18 +128,6 @@ class ParseConvertTopology:
         sdx_port["state"] = self.get_state(interface["enabled"])
 
         sdx_port["mtu"] = interface["metadata"].get("mtu", 1500)
-
-        """
-        if interface["nni"]:
-            link_label = self.get_kytos_link_label(
-                self.kytos_topology["links"].get(interface["link"])
-            )
-            sdx_port["nni"] = f"urn:sdx:link:{self.oxp_url}:{link_label}"
-        elif "sdx_nni" in interface["metadata"]:
-            sdx_port["nni"] = "urn:sdx:port:" + interface["metadata"]["sdx_nni"]
-        else:
-            sdx_port["nni"] = ""
-        """
 
         if "sdx_nni" in interface["metadata"]:
             sdx_port["nni"] = "urn:sdx:link:" + interface["metadata"]["sdx_nni"]
@@ -247,129 +212,42 @@ class ParseConvertTopology:
         and containing all the attributes for each link"""
 
         sdx_link = {}
-        link_md = kytos_link["metadata"]
-
-        interface_a = int(kytos_link["endpoint_a"]["id"].split(":")[8])
-        switch_a = ":".join(kytos_link["endpoint_a"]["id"].split(":")[0:8])
-        interface_b = int(kytos_link["endpoint_b"]["id"].split(":")[8])
-        switch_b = ":".join(kytos_link["endpoint_b"]["id"].split(":")[0:8])
-        if switch_a == switch_b:
-            return sdx_link
-
-        node_swa = self.get_kytos_nodes_names()[switch_a]
-        node_swb = self.get_kytos_nodes_names()[switch_b]
-        
-        sdx_link["name"] = f"{node_swa}/{interface_a}_{node_swb}/{interface_b}"
-        sdx_link["id"] = f"urn:sdx:link:{self.oxp_url}:%s" % sdx_link["name"]
-        sdx_link["ports"] = [
-            self.get_port_urn(kytos_link["endpoint_a"]),
-            self.get_port_urn(kytos_link["endpoint_b"]),
-        ]
+        if 'endpoint_a' in kytos_link and 'endpoint_b' in kytos_link:
+            endpoint_a_name = kytos_link['endpoint_a'].get('name', 'Unknown')
+            endpoint_a_speed = kytos_link['endpoint_a'].get('speed', 0)
+            endpoint_b_name = kytos_link['endpoint_b'].get('name', 'Unknown')
+            endpoint_b_speed = kytos_link['endpoint_b'].get('speed', 0)
+        sdx_link["name"] = endpoint_a_name + "_" + endpoint_b_name
+        id = "urn:sdx:link:" + self.oxp_url + ":"
+        id += endpoint_a_name + ":" + endpoint_b_name
+        sdx_link["id"] = id
         sdx_link["type"] = "intra"
-
-        for item in [
-            "bandwidth",
-            "residual_bandwidth",
-            "latency",
-            "packet_loss",
-            "availability",
-        ]:
-            if item in kytos_link["metadata"]:
-                sdx_link[item] = kytos_link["metadata"][item]
-            else:
-                if item in ["bandwidth"]:
-                    sdx_link[item] = self.get_link_port_speed(
-                        str(kytos_link["endpoint_a"]["speed"])
-                    )
-                elif item in ["residual_bandwidth", "availability"]:
-                    sdx_link[item] = 100
-                else:
-                    sdx_link[item] = 2
-
-        sdx_link["status"] = "up" if kytos_link["endpoint_a"]["active"] else "down"
-        sdx_link["state"] = (
-            "enabled" if kytos_link["endpoint_a"]["enabled"] else "disabled"
-        )
+        sdx_link["ports"] = kytos_link["endpoint_a"]["metadata"].get("sdx_nni")
+        if endpoint_a_speed <= endpoint_b_speed and endpoint_a_speed >= 1250000000:
+            speed = endpoint_a_speed
+        elif endpoint_b_speed >= 1250000000:
+            speed = endpoint_b_speed
+        sdx_link["bandwidth"] = self.get_link_port_speed(str(speed))
+        sdx_link["residual_bandwidth"] = 100
+        sdx_link["packet_loss"] = 0
+        sdx_link["latency"] = 2
+        sdx_link["status"] = self.get_port_status(kytos_link["status"])
+        if kytos_link["enabled"]:
+            sdx_link["state"] = "enabled"
+        else:
+            sdx_link["state"] = "disabled"
 
         return sdx_link
 
     def get_sdx_links(self):
-        """function that returns a list of Link objects based on the network's
-        devices connections to each other"""
+        """function that returns a list of Link objects based on the intra connections"""
 
         sdx_links = []
-
-        for kytos_link in self.get_kytos_links():
-            if kytos_link["enabled"]:
-                sdx_link = self.get_sdx_link(kytos_link)
-                if sdx_link:
-                    sdx_links.append(sdx_link)
-
-        return sdx_links
-
-
-    def create_inter_oxp_link_entries(self):
-        """Create entries for inter-oxp links"""
-        sdx_links = []
-        for kytos_node in self.get_kytos_nodes():
-            for kytos_interface in kytos_node["interfaces"].values():
-                sdx_nni = kytos_interface["metadata"].get("sdx_nni")
-                if not sdx_nni or self.oxp_url in sdx_nni:
-                    continue
-                sdx_link = {}
-                other_url = sdx_nni.split(":")[0]
-                other_node = sdx_nni.split(":")[:2][-1]
-                other_port = sdx_nni.split(":")[-1]
-
-                sdx_link["name"] = "nni:" + "-".join(sorted([self.oxp_url, other_url]))
-
-                sdx_link["id"] = f"urn:sdx:link:{sdx_link['name']}"
-
-                if "node_name" in kytos_node["metadata"]:
-                    kytos_node["name"] = kytos_node["metadata"]["node_name"]
-                else:
-                    kytos_node["name"] = kytos_node["data_path"]
-
-                port_id = self.get_port_urn(
-                    kytos_node["id"], kytos_interface["port_number"]
-                )
-
-                sdx_link["ports"] = [
-                    {
-                        "id": port_id,
-                        "name": kytos_interface["name"],
-                        "node": f"urn:sdx:node:{self.oxp_url}:{kytos_node['name']}",
-                        "type": "Other",
-                        "status": "up",
-                        "state": "disabled",
-                        "label_range": ["1-100"],
-                    },
-                    {
-                        "id": "urn:sdx:port:" + sdx_nni,
-                        "name": f"{other_node}:{other_port}",
-                        "node": f"urn:sdx:node:{other_url}:{other_node}",
-                        "type": "Other",
-                        "status": "up",
-                        "state": "disabled",
-                        "label_range": ["1-100"],
-                    },
-                ]
-
-                sdx_link["type"] = "intra"
-                sdx_link["bandwidth"] = self.get_link_port_speed(
-                    str(kytos_interface["speed"])
-                )
-                sdx_link["status"] = "up" if kytos_interface["active"] else "down"
-                sdx_link["state"] = (
-                    "enabled" if kytos_interface["enabled"] else "disabled"
-                )
-
-                sdx_link["availability"] = 100
-                sdx_link["residual_bandwidth"] = 100
-                sdx_link["packet_loss"] = 0
-                sdx_link["latency"] = 2
+        if "links" in self.kytos_topology:
+            for values in self.kytos_topology["links"].values():
+                sdx_link = self.get_sdx_link(values)
                 sdx_links.append(sdx_link)
-                del sdx_link
+
         return sdx_links
 
     def parse_convert_topology(self):
@@ -382,6 +260,5 @@ class ParseConvertTopology:
         topology["model_version"] = self.model_version
         topology["nodes"] = self.get_sdx_nodes()
         topology["links"] = self.get_sdx_links()
-        topology["links"] += self.create_inter_oxp_link_entries()
         topology["services"] = ["l2vpn-ptp"]
         return topology
