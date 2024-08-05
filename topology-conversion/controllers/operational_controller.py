@@ -2,6 +2,7 @@
 import json
 import os
 import requests
+
 OXPO_LINK = os.environ.get("OXPO_LINK")
 OXP_TOPOLOGY_URL = os.environ.get("OXP_TOPOLOGY_URL")
 
@@ -41,6 +42,22 @@ def json_reader(json_name):
         data = json.load(json_file)
         json_file.close()
     return data
+
+
+def get_oxp_enable_all():
+    """ getting switches, interfaces, links enable """
+    get_oxp_switch_enable("all")
+    get_oxp_interface_enable("all")
+    get_oxp_link_enable("all")
+    return get_oxp_links()
+
+
+def get_oxp_disable_all():
+    """ getting switches, interfaces, links disable """
+    get_oxp_link_disable("all")
+    get_oxp_interface_disable("all")
+    get_oxp_switch_disable("all")
+    return get_oxp_switches()
 
 
 def get_oxp_switches():
@@ -129,18 +146,33 @@ def get_oxp_interface_disable(dp_id):
     return f"interfaces/{dp_id}/disable"
 
 
+def get_oxp_links():
+    """ getting links """
+    return get_topology_object("links")
+
+
+def get_oxp_link_by_id(dp_id):
+    """ getting link by link id """
+    topology_object = "links/" + dp_id + "/metadata"
+    return get_topology_object(topology_object)
+
+
 def get_oxp_link_enable(dp_id):
     """getting link enable"""
     if dp_id == "all":
-        links = json_reader(OXPO_LINK)
-        for dpid, topology_object in links.items():
+        metadata_links = json_reader(OXPO_LINK)
+        for dpid, topology_object in metadata_links.items():
             print(dpid, topology_object)
             url = "interfaces/"+dpid+"/metadata"
             post_topology_object(url, topology_object)
+        for link in get_oxp_links()["links"].keys():
+            print(link)
+            url = "links/" + link + "/enable"
+            post_topology_object(url, {})
+
     else:
         url = "links/" + dp_id + "/enable"
-        topology_object = {}
-        post_topology_object(url, topology_object)
+        post_topology_object(url, {})
     return f"link/enable/{dp_id}"
 
 

@@ -31,6 +31,14 @@
       "description": "Get the OXP Topology"
     },
     {
+      "name": "/oxp/enable/all",
+      "description": "switch, interface, link  operation: enable all"
+    },
+    {
+      "name": "/oxp/disable/all",
+      "description": "switch, interface, link  operation: disable all"
+    },
+    {
       "name": "/oxp/switches",
       "description": "Get the OXP Switches"
     },
@@ -63,12 +71,20 @@
       "description": "interface operation: enable, Id: aa:00:00:00:00:00:00:01:1"
     },
     {
-      "name": "/oxp/link/enable/all",
-      "description": "link operation: enable, dpId: all"
+      "name": "/oxp/links",
+      "description": "Get the OXP Links"
     },
     {
-      "name": "/oxp/link/enable/aa:00:00:00:00:00:00:01",
-      "description": "link operation: enable, dpId: aa:00:00:00:00:00:00:01"
+      "name": "/oxp/link/link_id",
+      "description": "link operation: GET, link_id: xxxxxxxx"
+    },
+    {
+      "name": "/oxp/link/enable/all",
+      "description": "link operation: enable, link_id: all"
+    },
+    {
+      "name": "/oxp/link/enable/link_id",
+      "description": "link operation: enable, link_id: xxxxxxxx"
     },
     {
       "name": "/sdx/topology",
