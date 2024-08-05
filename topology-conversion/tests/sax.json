@@ -1,13 +1,13 @@
 {
   "name": "SAX-OXP",
-  "id": "urn:sdx:topology:urn:sdx:topology:sax.net",
-  "version": 1,
-  "timestamp": "2024-07-29T16:28:37Z",
+  "id": "urn:sdx:topology:sax.net",
+  "version": 2,
+  "timestamp": "2024-08-05T09:44:21Z",
   "model_version": "2.0.0",
   "nodes": [
     {
       "name": "Novi04",
-      "id": "urn:sdx:node:urn:sdx:topology:sax.net:Novi04",
+      "id": "urn:sdx:node:sax.net:Novi04",
       "location": {
         "address": "",
         "latitude": 0,
@@ -17,14 +17,14 @@
       },
       "ports": [
         {
-          "id": "urn:sdx:port:urn:sdx:topology:sax.net:Novi04:7",
+          "id": "urn:sdx:port:sax.net:Novi04:7",
           "name": "Novi04-eth7",
-          "node": "urn:sdx:node:urn:sdx:topology:sax.net:Novi04",
+          "node": "urn:sdx:node:sax.net:Novi04",
           "type": "10GE",
           "status": "up",
-          "state": "disabled",
+          "state": "enabled",
           "mtu": 1500,
-          "nni": "urn:sdx:port:tenet.ac.za:Novi05:7",
+          "nni": "urn:sdx:link:tenet.ac.za:Novi05:7",
           "services": {
             "l2vpn-ptp": {
               "vlan_range": [
@@ -34,18 +34,15 @@
                 ]
               ]
             }
-          },
-          "private": [
-            "status"
-          ]
+          }
         },
         {
-          "id": "urn:sdx:port:urn:sdx:topology:sax.net:Novi04:6",
+          "id": "urn:sdx:port:sax.net:Novi04:6",
           "name": "Novi04-eth6",
-          "node": "urn:sdx:node:urn:sdx:topology:sax.net:Novi04",
+          "node": "urn:sdx:node:sax.net:Novi04",
           "type": "10GE",
           "status": "up",
-          "state": "disabled",
+          "state": "enabled",
           "mtu": 1500,
           "nni": "",
           "services": {
@@ -57,10 +54,7 @@
                 ]
               ]
             }
-          },
-          "private": [
-            "status"
-          ]
+          }
         }
       ],
       "status": "up",
@@ -68,7 +62,7 @@
     },
     {
       "name": "Novi03",
-      "id": "urn:sdx:node:urn:sdx:topology:sax.net:Novi03",
+      "id": "urn:sdx:node:sax.net:Novi03",
       "location": {
         "address": "",
         "latitude": 0,
@@ -78,14 +72,14 @@
       },
       "ports": [
         {
-          "id": "urn:sdx:port:urn:sdx:topology:sax.net:Novi03:4",
+          "id": "urn:sdx:port:sax.net:Novi03:4",
           "name": "Novi03-eth4",
-          "node": "urn:sdx:node:urn:sdx:topology:sax.net:Novi03",
+          "node": "urn:sdx:node:sax.net:Novi03",
           "type": "10GE",
           "status": "up",
-          "state": "disabled",
+          "state": "enabled",
           "mtu": 1500,
-          "nni": "urn:sdx:port:ampath.net:Novi02:4",
+          "nni": "urn:sdx:link:ampath.net:Novi02:4",
           "services": {
             "l2vpn-ptp": {
               "vlan_range": [
@@ -95,18 +89,15 @@
                 ]
               ]
             }
-          },
-          "private": [
-            "status"
-          ]
+          }
         },
         {
-          "id": "urn:sdx:port:urn:sdx:topology:sax.net:Novi03:6",
+          "id": "urn:sdx:port:sax.net:Novi03:6",
           "name": "Novi03-eth6",
-          "node": "urn:sdx:node:urn:sdx:topology:sax.net:Novi03",
+          "node": "urn:sdx:node:sax.net:Novi03",
           "type": "10GE",
           "status": "up",
-          "state": "disabled",
+          "state": "enabled",
           "mtu": 1500,
           "nni": "",
           "services": {
@@ -118,30 +109,35 @@
                 ]
               ]
             }
-          },
-          "private": [
-            "status"
-          ]
+          }
         }
       ],
       "status": "up",
       "state": "enabled"
     }
   ],
-  "links": [],
+  "links": [
+    {
+      "name": "Novi04-eth6_Novi03-eth6",
+      "id": "urn:sdx:link:sax.net:Novi04-eth6_Novi03-eth6",
+      "type": "intra",
+      "ports": [
+        "urn:sdx:port:sax.net:Novi04:Novi04-eth6",
+        "urn:sdx:port:sax.net:Novi03:Novi03-eth6"
+      ],
+      "bandwidth": 10,
+      "residual_bandwidth": 100,
+      "packet_loss": 0,
+      "latency": 2,
+      "status": "up",
+      "state": "enabled"
+    }
+  ],
   "services": [
     "l2vpn-ptp"
   ],
-  "kytos2sdx": {
-    "cc:00:00:00:00:00:00:04:7": "urn:sdx:port:urn:sdx:topology:sax.net:Novi04:7",
-    "cc:00:00:00:00:00:00:04:6": "urn:sdx:port:urn:sdx:topology:sax.net:Novi04:6",
-    "cc:00:00:00:00:00:00:03:4": "urn:sdx:port:urn:sdx:topology:sax.net:Novi03:4",
-    "cc:00:00:00:00:00:00:03:6": "urn:sdx:port:urn:sdx:topology:sax.net:Novi03:6"
-  },
-  "sdx2kytos": {
-    "urn:sdx:port:urn:sdx:topology:sax.net:Novi04:7": "cc:00:00:00:00:00:00:04:7",
-    "urn:sdx:port:urn:sdx:topology:sax.net:Novi04:6": "cc:00:00:00:00:00:00:04:6",
-    "urn:sdx:port:urn:sdx:topology:sax.net:Novi03:4": "cc:00:00:00:00:00:00:03:4",
-    "urn:sdx:port:urn:sdx:topology:sax.net:Novi03:6": "cc:00:00:00:00:00:00:03:6"
+  "validation_error": {
+    "result": "Validation Error: '' is too short",
+    "status_code": 400
   }
 }

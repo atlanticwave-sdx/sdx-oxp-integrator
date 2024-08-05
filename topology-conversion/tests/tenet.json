@@ -1,13 +1,13 @@
 {
   "name": "Tenet-OXP",
-  "id": "urn:sdx:topology:urn:sdx:topology:tenet.ac.za",
-  "version": 1,
-  "timestamp": "2024-07-29T16:28:37Z",
+  "id": "urn:sdx:topology:tenet.ac.za",
+  "version": 2,
+  "timestamp": "2024-08-05T09:44:21Z",
   "model_version": "2.0.0",
   "nodes": [
     {
       "name": "Novi06",
-      "id": "urn:sdx:node:urn:sdx:topology:tenet.ac.za:Novi06",
+      "id": "urn:sdx:node:tenet.ac.za:Novi06",
       "location": {
         "address": "",
         "latitude": 0,
@@ -17,12 +17,12 @@
       },
       "ports": [
         {
-          "id": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi06:22",
+          "id": "urn:sdx:port:tenet.ac.za:Novi06:22",
           "name": "Novi06-eth22",
-          "node": "urn:sdx:node:urn:sdx:topology:tenet.ac.za:Novi06",
+          "node": "urn:sdx:node:tenet.ac.za:Novi06",
           "type": "10GE",
           "status": "up",
-          "state": "disabled",
+          "state": "enabled",
           "mtu": 1500,
           "nni": "",
           "services": {
@@ -34,18 +34,15 @@
                 ]
               ]
             }
-          },
-          "private": [
-            "status"
-          ]
+          }
         },
         {
-          "id": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi06:8",
+          "id": "urn:sdx:port:tenet.ac.za:Novi06:8",
           "name": "Novi06-eth8",
-          "node": "urn:sdx:node:urn:sdx:topology:tenet.ac.za:Novi06",
+          "node": "urn:sdx:node:tenet.ac.za:Novi06",
           "type": "10GE",
           "status": "up",
-          "state": "disabled",
+          "state": "enabled",
           "mtu": 1500,
           "nni": "",
           "services": {
@@ -57,10 +54,7 @@
                 ]
               ]
             }
-          },
-          "private": [
-            "status"
-          ]
+          }
         }
       ],
       "status": "up",
@@ -68,7 +62,7 @@
     },
     {
       "name": "Novi05",
-      "id": "urn:sdx:node:urn:sdx:topology:tenet.ac.za:Novi05",
+      "id": "urn:sdx:node:tenet.ac.za:Novi05",
       "location": {
         "address": "",
         "latitude": 0,
@@ -78,12 +72,12 @@
       },
       "ports": [
         {
-          "id": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:8",
+          "id": "urn:sdx:port:tenet.ac.za:Novi05:8",
           "name": "Novi05-eth8",
-          "node": "urn:sdx:node:urn:sdx:topology:tenet.ac.za:Novi05",
+          "node": "urn:sdx:node:tenet.ac.za:Novi05",
           "type": "10GE",
           "status": "up",
-          "state": "disabled",
+          "state": "enabled",
           "mtu": 1500,
           "nni": "",
           "services": {
@@ -95,18 +89,15 @@
                 ]
               ]
             }
-          },
-          "private": [
-            "status"
-          ]
+          }
         },
         {
-          "id": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:1",
+          "id": "urn:sdx:port:tenet.ac.za:Novi05:1",
           "name": "Novi05-eth1",
-          "node": "urn:sdx:node:urn:sdx:topology:tenet.ac.za:Novi05",
+          "node": "urn:sdx:node:tenet.ac.za:Novi05",
           "type": "10GE",
           "status": "up",
-          "state": "disabled",
+          "state": "enabled",
           "mtu": 1500,
           "nni": "",
           "services": {
@@ -118,20 +109,17 @@
                 ]
               ]
             }
-          },
-          "private": [
-            "status"
-          ]
+          }
         },
         {
-          "id": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:7",
+          "id": "urn:sdx:port:tenet.ac.za:Novi05:7",
           "name": "Novi05-eth7",
-          "node": "urn:sdx:node:urn:sdx:topology:tenet.ac.za:Novi05",
+          "node": "urn:sdx:node:tenet.ac.za:Novi05",
           "type": "10GE",
           "status": "up",
-          "state": "disabled",
+          "state": "enabled",
           "mtu": 1500,
-          "nni": "urn:sdx:port:sax.net:Novi04:7",
+          "nni": "urn:sdx:link:sax.net:Novi04:7",
           "services": {
             "l2vpn-ptp": {
               "vlan_range": [
@@ -141,18 +129,15 @@
                 ]
               ]
             }
-          },
-          "private": [
-            "status"
-          ]
+          }
         },
         {
-          "id": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:3",
+          "id": "urn:sdx:port:tenet.ac.za:Novi05:3",
           "name": "Novi05-eth3",
-          "node": "urn:sdx:node:urn:sdx:topology:tenet.ac.za:Novi05",
+          "node": "urn:sdx:node:tenet.ac.za:Novi05",
           "type": "10GE",
           "status": "up",
-          "state": "disabled",
+          "state": "enabled",
           "mtu": 1500,
           "nni": "",
           "services": {
@@ -164,34 +149,31 @@
                 ]
               ]
             }
-          },
-          "private": [
-            "status"
-          ]
+          }
         }
       ],
       "status": "up",
       "state": "enabled"
     }
   ],
-  "links": [],
+  "links": [
+    {
+      "name": "Novi06-eth8_Novi05-eth8",
+      "id": "urn:sdx:link:tenet.ac.za:Novi06-eth8_Novi05-eth8",
+      "type": "intra",
+      "ports": [
+        "urn:sdx:port:tenet.ac.za:Novi06:Novi06-eth8",
+        "urn:sdx:port:tenet.ac.za:Novi05:Novi05-eth8"
+      ],
+      "bandwidth": 10,
+      "residual_bandwidth": 100,
+      "packet_loss": 0,
+      "latency": 2,
+      "status": "up",
+      "state": "enabled"
+    }
+  ],
   "services": [
     "l2vpn-ptp"
-  ],
-  "kytos2sdx": {
-    "dd:00:00:00:00:00:00:06:22": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi06:22",
-    "dd:00:00:00:00:00:00:06:8": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi06:8",
-    "dd:00:00:00:00:00:00:05:8": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:8",
-    "dd:00:00:00:00:00:00:05:1": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:1",
-    "dd:00:00:00:00:00:00:05:7": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:7",
-    "dd:00:00:00:00:00:00:05:3": "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:3"
-  },
-  "sdx2kytos": {
-    "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi06:22": "dd:00:00:00:00:00:00:06:22",
-    "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi06:8": "dd:00:00:00:00:00:00:06:8",
-    "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:8": "dd:00:00:00:00:00:00:05:8",
-    "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:1": "dd:00:00:00:00:00:00:05:1",
-    "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:7": "dd:00:00:00:00:00:00:05:7",
-    "urn:sdx:port:urn:sdx:topology:tenet.ac.za:Novi05:3": "dd:00:00:00:00:00:00:05:3"
-  }
+  ]
 }
