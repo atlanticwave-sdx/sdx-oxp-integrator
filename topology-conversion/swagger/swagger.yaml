@@ -9,6 +9,333 @@ servers:
   - url: http://0.0.0.0
 
 paths:
+  /oxp/topology:
+    get:
+      tags:
+        - OXP Topology
+      summary: Retrieve OXP network topology
+      description: Fetches the topology from a SDN controller.
+      operationId: get_oxp_topology
+      responses:
+        '200':
+          description: Successfully retrieved kytos OXP network topology.
+          content:
+            application/json: {}
+        '401':
+          description: Validation error in the conversion process.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-openapi-router-controller: controllers.topology_controller
+  /oxp/enable/all:
+    get:
+      tags:
+        - OXP Switches, Interfaces, Links
+      summary: Enable OXP network switches, Interfaces, Links
+      description: Enable the switches, Interfaces, Links from a SDN controller.
+      operationId: get_oxp_enable_all
+      responses:
+        '200':
+          description: Successfully enable OXP network switches, interfaces and links.
+          content:
+            application/json: {}
+        '401':
+          description: Validation error in the conversion process.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-openapi-router-controller: controllers.operational_controller
+  /oxp/disable/all:
+    get:
+      tags:
+        - OXP Switches, Interfaces, Links
+      summary: Disable OXP network switches, Interfaces, Links
+      description: Disable the switches, Interfaces, Links from a SDN controller.
+      operationId: get_oxp_disable_all
+      responses:
+        '200':
+          description: Successfully disable OXP network switches, interfaces and links.
+          content:
+            application/json: {}
+        '401':
+          description: Validation error in the conversion process.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-openapi-router-controller: controllers.operational_controller
+  /oxp/switches:
+    get:
+      tags:
+        - OXP Switches
+      summary: Retrieve OXP network switches
+      description: Fetches the switches from a SDN controller.
+      operationId: get_oxp_switches
+      responses:
+        '200':
+          description: Successfully retrieved OXP network switches.
+          content:
+            application/json: {}
+        '401':
+          description: Validation error in the conversion process.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-openapi-router-controller: controllers.operational_controller
+  /oxp/switch/{dpId}:
+    get:
+      tags:
+        - OXP Switch by dpID
+      summary: Retrieve OXP network switch by dpID
+      description: Fetches a switch by dpID from a SDN controller.
+      operationId: get_oxp_switch_by_dpid
+      responses:
+        '200':
+          description: Successfully retrieved OXP network switch by dpid.
+          content:
+            application/json: {}
+        '401':
+          description: Validation error in the conversion process.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-openapi-router-controller: controllers.operational_controller
+  /oxp/switch/enable/{dpId}:
+    get:
+      tags:
+        - Switch
+      summary: Enable a switch passing its dpid
+      description: Enable a switch passing its dpid
+      parameters:
+        - in: path
+          name: dpId
+          schema:
+            type: string
+          required: true
+          description: dpId of the Switch
+      operationId: get_oxp_switch_enable
+      responses:
+        '200':
+          description: Successfully enable a switch passing its dpId.
+          content:
+            application/json: {}
+        '401':
+          description: Validation error in the switch enable process.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-openapi-router-controller: controllers.operational_controller
+  /oxp/switch/disable/{dpId}:
+    get:
+      tags:
+        - Switch
+      summary: Disable a switch passing its dpid
+      description: Disable a switch passing its dpid
+      parameters:
+        - in: path
+          name: dpId
+          schema:
+            type: string
+          required: true
+          description: dpId of the Switch
+      operationId: get_oxp_switch_disable
+      responses:
+        '200':
+          description: Successfully disable a switch passing its dpId.
+          content:
+            application/json: {}
+        '401':
+          description: Validation error in the switch disable process.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-openapi-router-controller: controllers.operational_controller
+  /oxp/interfaces:
+    get:
+      tags:
+        - OXP Interfaces
+      summary: Retrieve OXP network interfaces
+      description: Fetches the interfaces from a SDN controller.
+      operationId: get_oxp_interfaces
+      responses:
+        '200':
+          description: Successfully retrieved OXP network interfaces.
+          content:
+            application/json: {}
+        '401':
+          description: Validation error in the conversion process.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-openapi-router-controller: controllers.operational_controller
+  /oxp/interface/{dpId}:
+    get:
+      tags:
+        - OXP Interface by ID
+      summary: Retrieve OXP network interface by id
+      description: Fetches an interface by id from a SDN controller.
+      operationId: get_oxp_interface_by_id
+      responses:
+        '200':
+          description: Successfully retrieved OXP network interface by id.
+          content:
+            application/json: {}
+        '401':
+          description: Validation error in the conversion process.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-openapi-router-controller: controllers.operational_controller
+  /oxp/interface/enable/{dpId}:
+    get:
+      tags:
+        - Interface
+      summary: Enable an interface passing its id
+      description: Enable an interface passing its id
+      parameters:
+        - in: path
+          name: dpId
+          schema:
+            type: string
+          required: true
+          description: Id of the Interface
+      operationId: get_oxp_interface_enable
+      responses:
+        '200':
+          description: Successfully enable an interface passing its Id.
+          content:
+            application/json: {}
+        '401':
+          description: Validation error in the interface enable process.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-openapi-router-controller: controllers.operational_controller
+  /oxp/interface/disable/{dpId}:
+    get:
+      tags:
+        - Interface
+      summary: Disable an interface passing its id
+      description: Disable an interface passing its id
+      parameters:
+        - in: path
+          name: dpId
+          schema:
+            type: string
+          required: true
+          description: Id of the Interface
+      operationId: get_oxp_interface_disable
+      responses:
+        '200':
+          description: Successfully disable an interface passing its Id.
+          content:
+            application/json: {}
+        '401':
+          description: Validation error in the interface disable process.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-openapi-router-controller: controllers.operational_controller
+  /oxp/links:
+    get:
+      tags:
+        - OXP Links
+      summary: Retrieve OXP network Links
+      description: Fetches the Links from a SDN controller.
+      operationId: get_oxp_links
+      responses:
+        '200':
+          description: Successfully retrieved OXP network links.
+          content:
+            application/json: {}
+        '401':
+          description: Validation error in the conversion process.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-openapi-router-controller: controllers.operational_controller
+  /oxp/link/{dpId}:
+    get:
+      tags:
+        - OXP Link by Link ID
+      summary: Retrieve OXP network link by Link id
+      description: Fetches a link by link id from a SDN controller.
+      operationId: get_oxp_link_by_id
+      responses:
+        '200':
+          description: Successfully retrieved OXP network link by id.
+          content:
+            application/json: {}
+        '401':
+          description: Validation error in the conversion process.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-openapi-router-controller: controllers.operational_controller
+  /oxp/link/enable/{dpId}:
+    get:
+      tags:
+        - Link
+      summary: Enable a Link passing its dpid
+      description: Enable a Link passing its dpid
+      parameters:
+        - in: path
+          name: dpId
+          schema:
+            type: string
+          required: true
+          description: dpId of the Link
+      operationId: get_oxp_link_enable
+      responses:
+        '200':
+          description: Successfully enable a Link passing its dpId.
+          content:
+            application/json: {}
+        '401':
+          description: Validation error in the Link enable process.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-openapi-router-controller: controllers.operational_controller
+  /oxp/link/disable/{dpId}:
+    get:
+      tags:
+        - Link
+      summary: Disable a link passing its dpid
+      description: Disable a link passing its dpid
+      parameters:
+        - in: path
+          name: dpId
+          schema:
+            type: string
+          required: true
+          description: dpId of the Link
+      operationId: get_oxp_link_disable
+      responses:
+        '200':
+          description: Successfully disable a Link passing its dpId.
+          content:
+            application/json: {}
+        '401':
+          description: Validation error in the Link disable process.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-openapi-router-controller: controllers.operational_controller
   /sdx/topology:
     get:
       tags:
@@ -30,110 +357,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       x-openapi-router-controller: controllers.topology_controller
-  /switch/enable/{dpId}:
-    get:
-      tags:
-        - Switch
-      summary: Enable a switch passing its dpid
-      description: Enable a switch passing its dpid
-      parameters:
-        - in: path
-          name: dpId
-          schema:
-            type: string
-          required: true
-          description: dpId of the Switch
-      operationId: get_switch_enable
-      responses:
-        '200':
-          description: Successfully enable a switch passing its dpId.
-          content:
-            application/json: {}
-        '401':
-          description: Validation error in the switch enable process.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-      x-openapi-router-controller: controllers.operational_controller
-  /switch/disable/{dpId}:
-    get:
-      tags:
-        - Switch
-      summary: Disable a switch passing its dpid
-      description: Disable a switch passing its dpid
-      parameters:
-        - in: path
-          name: dpId
-          schema:
-            type: string
-          required: true
-          description: dpId of the Switch
-      operationId: get_switch_disable
-      responses:
-        '200':
-          description: Successfully disable a switch passing its dpId.
-          content:
-            application/json: {}
-        '401':
-          description: Validation error in the switch disable process.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-      x-openapi-router-controller: controllers.operational_controller
-  /link/enable/{dpId}:
-    get:
-      tags:
-        - Link
-      summary: Enable a Link passing its dpid
-      description: Enable a Link passing its dpid
-      parameters:
-        - in: path
-          name: dpId
-          schema:
-            type: string
-          required: true
-          description: dpId of the Link
-      operationId: get_link_enable
-      responses:
-        '200':
-          description: Successfully enable a Link passing its dpId.
-          content:
-            application/json: {}
-        '401':
-          description: Validation error in the Link enable process.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-      x-openapi-router-controller: controllers.operational_controller
-  /link/disable/{dpId}:
-    get:
-      tags:
-        - Link
-      summary: Disable a link passing its dpid
-      description: Disable a link passing its dpid
-      parameters:
-        - in: path
-          name: dpId
-          schema:
-            type: string
-          required: true
-          description: dpId of the Link
-      operationId: get_link_disable
-      responses:
-        '200':
-          description: Successfully disable a Link passing its dpId.
-          content:
-            application/json: {}
-        '401':
-          description: Validation error in the Link disable process.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-      x-openapi-router-controller: controllers.operational_controller
 
 
 

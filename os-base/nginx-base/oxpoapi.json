@@ -27,28 +27,72 @@
   ],
   "tags": [
     {
+      "name": "/oxp/topology",
+      "description": "Get the OXP Topology"
+    },
+    {
+      "name": "/oxp/enable/all",
+      "description": "switch, interface, link  operation: enable all"
+    },
+    {
+      "name": "/oxp/disable/all",
+      "description": "switch, interface, link  operation: disable all"
+    },
+    {
+      "name": "/oxp/switches",
+      "description": "Get the OXP Switches"
+    },
+    {
+      "name": "/oxp/switch/aa:00:00:00:00:00:00:01",
+      "description": "switch operation: GET, dpId: aa:00:00:00:00:00:00:01"
+    },
+    {
+      "name": "/oxp/switch/enable/all",
+      "description": "switch operation: enable, dpId: all"
+    },
+    {
+      "name": "/oxp/switch/enable/aa:00:00:00:00:00:00:01",
+      "description": "switch operation: enable, dpId: aa:00:00:00:00:00:00:01"
+    },
+    {
+      "name": "/oxp/interfaces",
+      "description": "Get the OXP Interfaces"
+    },
+    {
+      "name": "/oxp/interface/aa:00:00:00:00:00:00:01:1",
+      "description": "interface operation: GET, Id: aa:00:00:00:00:00:00:01:1"
+    },
+    {
+      "name": "/oxp/interface/enable/all",
+      "description": "interface operation: enable, Id: all"
+    },
+    {
+      "name": "/oxp/interface/enable/aa:00:00:00:00:00:00:01:1",
+      "description": "interface operation: enable, Id: aa:00:00:00:00:00:00:01:1"
+    },
+    {
+      "name": "/oxp/links",
+      "description": "Get the OXP Links"
+    },
+    {
+      "name": "/oxp/link/link_id",
+      "description": "link operation: GET, link_id: xxxxxxxx"
+    },
+    {
+      "name": "/oxp/link/enable/all",
+      "description": "link operation: enable, link_id: all"
+    },
+    {
+      "name": "/oxp/link/enable/link_id",
+      "description": "link operation: enable, link_id: xxxxxxxx"
+    },
+    {
       "name": "/sdx/topology",
       "description": "Get the SDX converted Topology",
       "externalDocs": {
         "description": "Find out more",
         "url": "https://www.atlanticwave-sdx.net"
       }
-    },
-    {
-      "name": "/switch/enable/all",
-      "description": "switch operation: enable, dpId: all"
-    },
-    {
-      "name": "/switch/enable/aa:00:00:00:00:00:00:01",
-      "description": "switch operation: enable, dpId: aa:00:00:00:00:00:00:01"
-    },
-    {
-      "name": "/link/enable/all",
-      "description": "link operation: enable, dpId: all"
-    },
-    {
-      "name": "/link/enable/aa:00:00:00:00:00:00:01",
-      "description": "link operation: enable, dpId: aa:00:00:00:00:00:00:01"
     },
     {
       "name": "user",

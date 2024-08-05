@@ -1,13 +1,13 @@
 {
   "name": "Ampath-OXP",
-  "id": "urn:sdx:topology:urn:sdx:topology:ampath.net",
-  "version": 1,
-  "timestamp": "2024-07-29T16:28:37Z",
+  "id": "urn:sdx:topology:ampath.net",
+  "version": 2,
+  "timestamp": "2024-08-05T09:44:21Z",
   "model_version": "2.0.0",
   "nodes": [
     {
       "name": "Novi01",
-      "id": "urn:sdx:node:urn:sdx:topology:ampath.net:Novi01",
+      "id": "urn:sdx:node:ampath.net:Novi01",
       "location": {
         "address": "",
         "latitude": 0,
@@ -17,12 +17,12 @@
       },
       "ports": [
         {
-          "id": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:15",
+          "id": "urn:sdx:port:ampath.net:Novi01:15",
           "name": "Novi01-eth15",
-          "node": "urn:sdx:node:urn:sdx:topology:ampath.net:Novi01",
+          "node": "urn:sdx:node:ampath.net:Novi01",
           "type": "10GE",
           "status": "up",
-          "state": "disabled",
+          "state": "enabled",
           "mtu": 1500,
           "nni": "",
           "services": {
@@ -34,18 +34,15 @@
                 ]
               ]
             }
-          },
-          "private": [
-            "status"
-          ]
+          }
         },
         {
-          "id": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:16",
+          "id": "urn:sdx:port:ampath.net:Novi01:16",
           "name": "Novi01-eth16",
-          "node": "urn:sdx:node:urn:sdx:topology:ampath.net:Novi01",
+          "node": "urn:sdx:node:ampath.net:Novi01",
           "type": "10GE",
           "status": "up",
-          "state": "disabled",
+          "state": "enabled",
           "mtu": 1500,
           "nni": "",
           "services": {
@@ -57,20 +54,17 @@
                 ]
               ]
             }
-          },
-          "private": [
-            "status"
-          ]
+          }
         },
         {
-          "id": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:1",
+          "id": "urn:sdx:port:ampath.net:Novi01:1",
           "name": "Novi01-eth1",
-          "node": "urn:sdx:node:urn:sdx:topology:ampath.net:Novi01",
+          "node": "urn:sdx:node:ampath.net:Novi01",
           "type": "10GE",
           "status": "up",
-          "state": "disabled",
+          "state": "enabled",
           "mtu": 1500,
-          "nni": "urn:sdx:port:tenet.ac.za:Novi05:1",
+          "nni": "urn:sdx:link:tenet.ac.za:Novi05:1",
           "services": {
             "l2vpn-ptp": {
               "vlan_range": [
@@ -80,20 +74,17 @@
                 ]
               ]
             }
-          },
-          "private": [
-            "status"
-          ]
+          }
         },
         {
-          "id": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:2",
+          "id": "urn:sdx:port:ampath.net:Novi01:2",
           "name": "Novi01-eth2",
-          "node": "urn:sdx:node:urn:sdx:topology:ampath.net:Novi01",
+          "node": "urn:sdx:node:ampath.net:Novi01",
           "type": "10GE",
           "status": "up",
-          "state": "disabled",
+          "state": "enabled",
           "mtu": 1500,
-          "nni": "",
+          "nni": "urn:sdx:link:Novi01/p2_Novi02/p2",
           "services": {
             "l2vpn-ptp": {
               "vlan_range": [
@@ -103,10 +94,7 @@
                 ]
               ]
             }
-          },
-          "private": [
-            "status"
-          ]
+          }
         }
       ],
       "status": "up",
@@ -114,7 +102,7 @@
     },
     {
       "name": "Novi02",
-      "id": "urn:sdx:node:urn:sdx:topology:ampath.net:Novi02",
+      "id": "urn:sdx:node:ampath.net:Novi02",
       "location": {
         "address": "",
         "latitude": 0,
@@ -124,14 +112,14 @@
       },
       "ports": [
         {
-          "id": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi02:4",
+          "id": "urn:sdx:port:ampath.net:Novi02:4",
           "name": "Novi02-eth4",
-          "node": "urn:sdx:node:urn:sdx:topology:ampath.net:Novi02",
+          "node": "urn:sdx:node:ampath.net:Novi02",
           "type": "10GE",
           "status": "up",
-          "state": "disabled",
+          "state": "enabled",
           "mtu": 1500,
-          "nni": "urn:sdx:port:sax.net:Novi03:4",
+          "nni": "urn:sdx:link:sax.net:Novi03:4",
           "services": {
             "l2vpn-ptp": {
               "vlan_range": [
@@ -141,20 +129,17 @@
                 ]
               ]
             }
-          },
-          "private": [
-            "status"
-          ]
+          }
         },
         {
-          "id": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi02:2",
+          "id": "urn:sdx:port:ampath.net:Novi02:2",
           "name": "Novi02-eth2",
-          "node": "urn:sdx:node:urn:sdx:topology:ampath.net:Novi02",
+          "node": "urn:sdx:node:ampath.net:Novi02",
           "type": "10GE",
           "status": "up",
-          "state": "disabled",
+          "state": "enabled",
           "mtu": 1500,
-          "nni": "",
+          "nni": "urn:sdx:link:Novi02/p2_Novi01/p2",
           "services": {
             "l2vpn-ptp": {
               "vlan_range": [
@@ -164,20 +149,17 @@
                 ]
               ]
             }
-          },
-          "private": [
-            "status"
-          ]
+          }
         },
         {
-          "id": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi02:3",
+          "id": "urn:sdx:port:ampath.net:Novi02:3",
           "name": "Novi02-eth3",
-          "node": "urn:sdx:node:urn:sdx:topology:ampath.net:Novi02",
+          "node": "urn:sdx:node:ampath.net:Novi02",
           "type": "10GE",
           "status": "up",
-          "state": "disabled",
+          "state": "enabled",
           "mtu": 1500,
-          "nni": "urn:sdx:port:tenet.ac.za:Novi05:3",
+          "nni": "urn:sdx:link:tenet.ac.za:Novi05:3",
           "services": {
             "l2vpn-ptp": {
               "vlan_range": [
@@ -187,36 +169,31 @@
                 ]
               ]
             }
-          },
-          "private": [
-            "status"
-          ]
+          }
         }
       ],
       "status": "up",
       "state": "enabled"
     }
   ],
-  "links": [],
+  "links": [
+    {
+      "name": "Novi01-eth2_Novi02-eth2",
+      "id": "urn:sdx:link:ampath.net:Novi01-eth2_Novi02-eth2",
+      "type": "intra",
+      "ports": [
+        "urn:sdx:port:ampath.net:Novi01:Novi01-eth2",
+        "urn:sdx:port:ampath.net:Novi02:Novi02-eth2"
+      ],
+      "bandwidth": 10,
+      "residual_bandwidth": 100,
+      "packet_loss": 0,
+      "latency": 2,
+      "status": "up",
+      "state": "enabled"
+    }
+  ],
   "services": [
     "l2vpn-ptp"
-  ],
-  "kytos2sdx": {
-    "aa:00:00:00:00:00:00:01:15": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:15",
-    "aa:00:00:00:00:00:00:01:16": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:16",
-    "aa:00:00:00:00:00:00:01:1": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:1",
-    "aa:00:00:00:00:00:00:01:2": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:2",
-    "aa:00:00:00:00:00:00:02:4": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi02:4",
-    "aa:00:00:00:00:00:00:02:2": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi02:2",
-    "aa:00:00:00:00:00:00:02:3": "urn:sdx:port:urn:sdx:topology:ampath.net:Novi02:3"
-  },
-  "sdx2kytos": {
-    "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:15": "aa:00:00:00:00:00:00:01:15",
-    "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:16": "aa:00:00:00:00:00:00:01:16",
-    "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:1": "aa:00:00:00:00:00:00:01:1",
-    "urn:sdx:port:urn:sdx:topology:ampath.net:Novi01:2": "aa:00:00:00:00:00:00:01:2",
-    "urn:sdx:port:urn:sdx:topology:ampath.net:Novi02:4": "aa:00:00:00:00:00:00:02:4",
-    "urn:sdx:port:urn:sdx:topology:ampath.net:Novi02:2": "aa:00:00:00:00:00:00:02:2",
-    "urn:sdx:port:urn:sdx:topology:ampath.net:Novi02:3": "aa:00:00:00:00:00:00:02:3"
-  }
+  ]
 }
