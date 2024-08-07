@@ -1,0 +1,24 @@
+{
+  "switches": {
+    "cc:00:00:00:00:00:00:03": {
+      "lat": "-3",
+      "lng": "-40",
+      "address": "Fortaleza",
+      "iso3166_2_lvl4": "BR-CE"
+    },
+    "cc:00:00:00:00:00:00:04": {
+      "lat": "-3",
+      "lng": "-20",
+      "address": "Fortaleza",
+      "iso3166_2_lvl4": "BR-CE"
+    }
+  },
+  "interfaces": {
+    "cc:00:00:00:00:00:00:03:4": {
+      "sdx_nni": "ampath.net:Novi02:4"
+    },
+    "cc:00:00:00:00:00:00:04:7": {
+      "sdx_nni": "tenet.ac.za:Novi05:7"
+    }
+  }
+}
