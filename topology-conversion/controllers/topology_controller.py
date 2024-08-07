@@ -54,8 +54,8 @@ def convert_topology():
                 converted_topology["validation_error"] = "No links to validate topology"
         else:
             validated_topology = validate(converted_topology)
-            converted_topology["validation_error"] = validated_topology
-            # if validated_topology["status_code"] == "200":
+            if validated_topology["status_code"] != "200":
+                converted_topology["validation_error"] = validated_topology
             topology_class.nodes = converted_topology["nodes"]
             topology_class.links = converted_topology["links"]
             topology_class.version += 1
