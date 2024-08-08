@@ -102,7 +102,7 @@ A Docker Compose environment instantiates three Kytos OXPO servers: Amlight, SAX
 ##### Test Steps
 Test commands and curl scripts for this integration test can be found at http://67.17.206.221/.
 
-![alt text](https://github.com/SaiKrishnaVoruganti86/readme-oxpo-api-wrapper/blob/master/photos/all_commands.png)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/36-update-readme/scripts/readme_images/all_commands.png)
 
 ###### Specific Tests Include:
 
@@ -151,7 +151,7 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Fsdx%2Ftopology' -H 'accept: ap
 ```  
 
 # Enable all switches 
-![alt text](https://github.com/SaiKrishnaVoruganti86/readme-oxpo-api-wrapper/blob/master/photos/oxp_switch_enable_all.png)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/36-update-readme/scripts/readme_images/oxp_switch_enable_all.png)
 
 **Get all switches enable on Ampath OXPO**
 
@@ -181,7 +181,7 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fswitch%2Fenable%2Fall' -
 ```  
 
 # Enable all Interfaces 
-![alt text](https://github.com/SaiKrishnaVoruganti86/readme-oxpo-api-wrapper/blob/master/photos/oxp_interface_enable_all.png)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/36-update-readme/scripts/readme_images/oxp_interface_enable_all.png)
 
 **Get all Interfaces enable on Ampath OXPO**
 
@@ -211,7 +211,7 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Finterface%2Fenable%2Fall
 ```  
 
 # Enable all Links 
-![alt text](https://github.com/SaiKrishnaVoruganti86/readme-oxpo-api-wrapper/blob/master/photos/oxp_link_enable_all.png)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/36-update-readme/scripts/readme_images/oxp_link_enable_all.png)
 
 **Get all Links enable on Ampath OXPO**
 
@@ -241,7 +241,7 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Flink%2Fenable%2Fall' -H 
 ```  
 
 # Enable all Switches, Interfaces and Links 
-![alt text](https://github.com/SaiKrishnaVoruganti86/readme-oxpo-api-wrapper/blob/master/photos/oxp_enable_all.png)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/36-update-readme/scripts/readme_images/oxp_enable_all.png)
 
 **Get all Switches, Interfaces and Links enable on Ampath OXPO**
 
@@ -271,7 +271,7 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fenable%2Fall' -H 'accept
 ```  
 
 # Disable all Switches, Interfaces and Links 
-![alt text](https://github.com/SaiKrishnaVoruganti86/readme-oxpo-api-wrapper/blob/master/photos/oxp_disable_all.png)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/36-update-readme/scripts/readme_images/oxp_disable_all.png)
 
 **Get all Switches, Interfaces and Links disable on Ampath OXPO**
 
@@ -301,7 +301,7 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fdisable%2Fall' -H 'accep
 ```  
 
 # Get all switches of an OXPO 
-![alt text](https://github.com/SaiKrishnaVoruganti86/readme-oxpo-api-wrapper/blob/master/photos/oxp_switches.png)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/36-update-readme/scripts/readme_images/oxp_switches.png)
 
 **Get all Ampath OXPO Switches**
 
@@ -331,7 +331,7 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fswitches' -H 'accept: ap
 ```  
 
 # Get all Interfaces of an OXPO 
-![alt text](https://github.com/SaiKrishnaVoruganti86/readme-oxpo-api-wrapper/blob/master/photos/oxp_Interfaces.png)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/36-update-readme/scripts/readme_images/oxp_Interfaces.png)
 
 **Get all Ampath OXPO Interfaces**
 
@@ -361,7 +361,7 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Finterfaces' -H 'accept: 
 ```  
 
 # Get all Links of an OXPO  
-![alt text](https://github.com/SaiKrishnaVoruganti86/readme-oxpo-api-wrapper/blob/master/photos/oxp_links.png)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/36-update-readme/scripts/readme_images/oxp_links.png)
 
 **Get all Ampath OXPO Links**
 
@@ -402,7 +402,7 @@ On the swagger server, hit the blue GET button, followed by the TRY IT OUT botto
 Then  a command line with two boxes is enable:
 
 
-![alt text](https://github.com/SaiKrishnaVoruganti86/readme-oxpo-api-wrapper/blob/master/photos/oxp_topology.png)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/36-update-readme/scripts/readme_images/oxp_topology.png)
 
 - **URL:** `ampath.net`
 - **Command:** `/oxp/topology`
