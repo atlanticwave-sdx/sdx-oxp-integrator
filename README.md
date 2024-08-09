@@ -120,7 +120,7 @@ When the command is executed, a curl script command is provided to execute it fr
 - Ensure Kytos is operational in the Ampath OXPO server and a topology has been created.
 - **URL:** `ampath.net`
 - **Command:** `/sdx/topology`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/ampath.net%2Fsdx%2Ftopology' -H 'accept: application/json'
 ```
@@ -134,7 +134,7 @@ The following image shows the result for this case:
 - Validate functionality in the SAX OXP.
 - **URL:** `sax.net`
 - **Command:** `/sdx/topology`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/sax.net%2Fsdx%2Ftopology' -H 'accept: application/json'
 ```  
@@ -144,7 +144,7 @@ curl -X 'GET' 'http://67.17.206.221/sax.net%2Fsdx%2Ftopology' -H 'accept: applic
 - Verify the presence of a well-established topology in the Tenet OXP.
 - **URL:** `tenet.ac.za`
 - **Command:** `/sdx/topology`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Fsdx%2Ftopology' -H 'accept: application/json'
 ```  
@@ -155,7 +155,7 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Fsdx%2Ftopology' -H 'accept: ap
 
 - **URL:** `ampath.net`
 - **Command:** `/oxp/switch/enable/all`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Fswitch%2Fenable%2Fall' -H 'accept: application/json'
 ```  
@@ -164,7 +164,7 @@ curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Fswitch%2Fenable%2Fall' -H
 
 - **URL:** `sax.net`
 - **Command:** `/oxp/switch/enable/all`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Fswitch%2Fenable%2Fall' -H 'accept: application/json'
 ```  
@@ -173,7 +173,7 @@ curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Fswitch%2Fenable%2Fall' -H 'a
 
 - **URL:** `tenet.ac.za`
 - **Command:** `/oxp/switch/enable/all`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fswitch%2Fenable%2Fall' -H 'accept: application/json'
 ```  
@@ -184,7 +184,7 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fswitch%2Fenable%2Fall' -
 
 - **URL:** `ampath.net`
 - **Command:** `/oxp/interface/enable/all`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Finterface%2Fenable%2Fall' -H 'accept: application/json'
 ```  
@@ -193,7 +193,7 @@ curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Finterface%2Fenable%2Fall'
 
 - **URL:** `sax.net`
 - **Command:** `/oxp/interface/enable/all`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Finterface%2Fenable%2Fall' -H 'accept: application/json'
 ```  
@@ -202,7 +202,7 @@ curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Finterface%2Fenable%2Fall' -H
 
 - **URL:** `tenet.ac.za`
 - **Command:** `/oxp/interface/enable/all`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Finterface%2Fenable%2Fall' -H 'accept: application/json'
 ```  
@@ -213,7 +213,7 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Finterface%2Fenable%2Fall
 
 - **URL:** `ampath.net`
 - **Command:** `/oxp/link/enable/all`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Flink%2Fenable%2Fall' -H 'accept: application/json'
 ```  
@@ -222,7 +222,7 @@ curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Flink%2Fenable%2Fall' -H '
 
 - **URL:** `sax.net`
 - **Command:** `/oxp/link/enable/all`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Flink%2Fenable%2Fall' -H 'accept: application/json'
 ```  
@@ -231,7 +231,7 @@ curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Flink%2Fenable%2Fall' -H 'acc
 
 - **URL:** `tenet.ac.za`
 - **Command:** `/oxp/link/enable/all`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Flink%2Fenable%2Fall' -H 'accept: application/json'
 ```  
@@ -242,7 +242,7 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Flink%2Fenable%2Fall' -H 
 
 - **URL:** `ampath.net`
 - **Command:** `/oxp/enable/all`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Fenable%2Fall' -H 'accept: application/json'
 ```  
@@ -251,7 +251,7 @@ curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Fenable%2Fall' -H 'accept:
 
 - **URL:** `sax.net`
 - **Command:** `/oxp/enable/all`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Fenable%2Fall' -H 'accept: application/json'
 ```  
@@ -260,7 +260,7 @@ curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Fenable%2Fall' -H 'accept: ap
 
 - **URL:** `tenet.ac.za`
 - **Command:** `/oxp/enable/all`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fenable%2Fall' -H 'accept: application/json'
 ```  
@@ -271,7 +271,7 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fenable%2Fall' -H 'accept
 
 - **URL:** `ampath.net`
 - **Command:** `/oxp/disable/all`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Fdisable%2Fall' -H 'accept: application/json'
 ```  
@@ -280,7 +280,7 @@ curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Fdisable%2Fall' -H 'accept
 
 - **URL:** `sax.net`
 - **Command:** `/oxp/disable/all`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Fdisable%2Fall' -H 'accept: application/json'
 ```  
@@ -289,7 +289,7 @@ curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Fdisable%2Fall' -H 'accept: a
 
 - **URL:** `tenet.ac.za`
 - **Command:** `/oxp/disable/all`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fdisable%2Fall' -H 'accept: application/json'
 ```  
@@ -300,7 +300,7 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fdisable%2Fall' -H 'accep
 
 - **URL:** `ampath.net`
 - **Command:** `/oxp/switches`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Fswitches' -H 'accept: application/json'
 ```  
@@ -309,7 +309,7 @@ curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Fswitches' -H 'accept: app
 
 - **URL:** `sax.net`
 - **Command:** `/oxp/switches`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Fswitches' -H 'accept: application/json'
 ```  
@@ -318,7 +318,7 @@ curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Fswitches' -H 'accept: applic
 
 - **URL:** `tenet.ac.za`
 - **Command:** `/oxp/switches`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fswitches' -H 'accept: application/json'
 ```  
@@ -329,7 +329,7 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fswitches' -H 'accept: ap
 
 - **URL:** `ampath.net`
 - **Command:** `/oxp/interfaces`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Finterfaces' -H 'accept: application/json'
 ```  
@@ -338,7 +338,7 @@ curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Finterfaces' -H 'accept: a
 
 - **URL:** `sax.net`
 - **Command:** `/oxp/interfaces`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Finterfaces' -H 'accept: application/json'
 ```  
@@ -347,7 +347,7 @@ curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Finterfaces' -H 'accept: appl
 
 - **URL:** `tenet.ac.za`
 - **Command:** `/oxp/interfaces`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Finterfaces' -H 'accept: application/json'
 ```  
@@ -358,7 +358,7 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Finterfaces' -H 'accept: 
 
 - **URL:** `ampath.net`
 - **Command:** `/oxp/links`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Flinks' -H 'accept: application/json'
 ```  
@@ -367,7 +367,7 @@ curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Flinks' -H 'accept: applic
 
 - **URL:** `sax.net`
 - **Command:** `/oxp/links`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Flinks' -H 'accept: application/json'
 ```  
@@ -376,7 +376,7 @@ curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Flinks' -H 'accept: applicati
 
 - **URL:** `tenet.ac.za`
 - **Command:** `/oxp/links`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Flinks' -H 'accept: application/json'
 ```  
@@ -387,7 +387,7 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Flinks' -H 'accept: appli
 
 - **URL:** `ampath.net`
 - **Command:** `/oxp/topology`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Ftopology' -H 'accept: application/json'
 ```  
@@ -396,7 +396,7 @@ curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Ftopology' -H 'accept: app
 
 - **URL:** `sax.net`
 - **Command:** `/oxp/topology`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Ftopology' -H 'accept: application/json'
 ```  
@@ -405,7 +405,7 @@ curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Ftopology' -H 'accept: applic
 
 - **URL:** `tenet.ac.za`
 - **Command:** `/oxp/topology`
-- **Command Prompt:**
+- **Curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Ftopology' -H 'accept: application/json'
 ```  
