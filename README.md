@@ -120,7 +120,7 @@ When the command is executed, a curl script command is provided to execute it fr
 - Ensure Kytos is operational in the Ampath OXPO server and a topology has been created.
 - **URL:** `ampath.net`
 - **Command:** `/sdx/topology`
-- **curl script command:**
+- **curl script command provided:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/ampath.net%2Fsdx%2Ftopology' -H 'accept: application/json'
 ```
@@ -134,7 +134,7 @@ The following image shows the result for this case:
 - Validate functionality in the SAX OXP.
 - **URL:** `sax.net`
 - **Command:** `/sdx/topology`
-- **curl script command provided:**
+- **curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/sax.net%2Fsdx%2Ftopology' -H 'accept: application/json'
 ```  
