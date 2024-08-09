@@ -102,9 +102,11 @@ A Docker Compose environment instantiates three Kytos OXPO servers: Amlight, SAX
 ##### Test Steps
 Test commands and curl scripts for this integration test can be found at http://67.17.206.221/.
 
-![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/scripts/swaggerserver.png?raw=true)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/36-update-readme/scripts/readme_images/all_commands.png)
 
 ###### Specific Tests Include:
+
+# Get OXPO Converted SDX Topology
 
 **Get Ampath OXPO Converted SDX Topology**
 
@@ -149,63 +151,284 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Fsdx%2Ftopology' -H 'accept: ap
 ```  
 
 # Enable all switches 
-![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/scripts/switchenable.png?raw=true)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/36-update-readme/scripts/readme_images/oxp_switch_enable_all.png)
 
 **Get all switches enable on Ampath OXPO**
 
 - **URL:** `ampath.net`
-- **Command:** `/switch/enable/all`
+- **Command:** `/oxp/switch/enable/all`
 
 ```sh
-curl -X 'GET' 'http://67.17.206.221/ampath.net%2Fswitch%2Fenable%2Fall' -H 'accept: application/json'
+curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Fswitch%2Fenable%2Fall' -H 'accept: application/json'
 ```  
 
 **Get all switches enable on SAX OXPO**
 
 - **URL:** `sax.net`
-- **Command:** `/switch/enable/all`
+- **Command:** `/oxp/switch/enable/all`
 
 ```sh
-curl -X 'GET' 'http://67.17.206.221/sax.net%2Fswitch%2Fenable%2Fall' -H 'accept: application/json'
+curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Fswitch%2Fenable%2Fall' -H 'accept: application/json'
 ```  
 
 **Get all switches enable on TENET OXPO**
 
 - **URL:** `tenet.ac.za`
-- **Command:** `/switch/enable/all`
+- **Command:** `/oxp/switch/enable/all`
 
 ```sh
-curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Fswitch%2Fenable%2Fall' -H 'accept: application/json'
+curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fswitch%2Fenable%2Fall' -H 'accept: application/json'
+```  
+
+# Enable all Interfaces 
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/36-update-readme/scripts/readme_images/oxp_interface_enable_all.png)
+
+**Get all Interfaces enable on Ampath OXPO**
+
+- **URL:** `ampath.net`
+- **Command:** `/oxp/interface/enable/all`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Finterface%2Fenable%2Fall' -H 'accept: application/json'
+```  
+
+**Get all Interfaces enable on SAX OXPO**
+
+- **URL:** `sax.net`
+- **Command:** `/oxp/interface/enable/all`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Finterface%2Fenable%2Fall' -H 'accept: application/json'
+```  
+
+**Get all Interfaces enable on TENET OXPO**
+
+- **URL:** `tenet.ac.za`
+- **Command:** `/oxp/interface/enable/all`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Finterface%2Fenable%2Fall' -H 'accept: application/json'
 ```  
 
 # Enable all Links 
-![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/scripts/linkenable.png?raw=true)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/36-update-readme/scripts/readme_images/oxp_link_enable_all.png)
 
 **Get all Links enable on Ampath OXPO**
 
 - **URL:** `ampath.net`
-- **Command:** `/link/enable/all`
+- **Command:** `/oxp/link/enable/all`
 
 ```sh
-curl -X 'GET' 'http://67.17.206.221/ampath.net%2Flink%2Fenable%2Fall' -H 'accept: application/json'
+curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Flink%2Fenable%2Fall' -H 'accept: application/json'
 ```  
 
 **Get all Links enable on SAX OXPO**
 
 - **URL:** `sax.net`
-- **Command:** `/link/enable/all`
+- **Command:** `/oxp/link/enable/all`
 
 ```sh
-curl -X 'GET' 'http://67.17.206.221/sax.net%2Flink%2Fenable%2Fall' -H 'accept: application/json'
+curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Flink%2Fenable%2Fall' -H 'accept: application/json'
 ```  
 
 **Get all Links enable on TENET OXPO**
 
 - **URL:** `tenet.ac.za`
-- **Command:** `/links/enable/all`
+- **Command:** `/oxp/link/enable/all`
 
 ```sh
-curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Flink%2Fenable%2Fall' -H 'accept: application/json'
+curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Flink%2Fenable%2Fall' -H 'accept: application/json'
+```  
+
+# Enable all Switches, Interfaces and Links 
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/36-update-readme/scripts/readme_images/oxp_enable_all.png)
+
+**Get all Switches, Interfaces and Links enable on Ampath OXPO**
+
+- **URL:** `ampath.net`
+- **Command:** `/oxp/enable/all`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Fenable%2Fall' -H 'accept: application/json'
+```  
+
+**Get all Switches, Interfaces and Links enable on SAX OXPO**
+
+- **URL:** `sax.net`
+- **Command:** `/oxp/enable/all`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Fenable%2Fall' -H 'accept: application/json'
+```  
+
+**Get all Switches, Interfaces and Links enable on TENET OXPO**
+
+- **URL:** `tenet.ac.za`
+- **Command:** `/oxp/enable/all`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fenable%2Fall' -H 'accept: application/json'
+```  
+
+# Disable all Switches, Interfaces and Links 
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/36-update-readme/scripts/readme_images/oxp_disable_all.png)
+
+**Get all Switches, Interfaces and Links disable on Ampath OXPO**
+
+- **URL:** `ampath.net`
+- **Command:** `/oxp/disable/all`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Fdisable%2Fall' -H 'accept: application/json'
+```  
+
+**Get all Switches, Interfaces and Links disable on SAX OXPO**
+
+- **URL:** `sax.net`
+- **Command:** `/oxp/disable/all`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Fdisable%2Fall' -H 'accept: application/json'
+```  
+
+**Get all Switches, Interfaces and Links disable on TENET OXPO**
+
+- **URL:** `tenet.ac.za`
+- **Command:** `/oxp/disable/all`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fdisable%2Fall' -H 'accept: application/json'
+```  
+
+# Get all switches of an OXPO 
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/36-update-readme/scripts/readme_images/oxp_switches.png)
+
+**Get all Ampath OXPO Switches**
+
+- **URL:** `ampath.net`
+- **Command:** `/oxp/switches`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Fswitches' -H 'accept: application/json'
+```  
+
+**Get all SAX OXPO Switches**
+
+- **URL:** `sax.net`
+- **Command:** `/oxp/switches`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Fswitches' -H 'accept: application/json'
+```  
+
+**Get all TENET OXPO Switches**
+
+- **URL:** `tenet.ac.za`
+- **Command:** `/oxp/switches`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fswitches' -H 'accept: application/json'
+```  
+
+# Get all Interfaces of an OXPO 
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/36-update-readme/scripts/readme_images/oxp_Interfaces.png)
+
+**Get all Ampath OXPO Interfaces**
+
+- **URL:** `ampath.net`
+- **Command:** `/oxp/interfaces`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Finterfaces' -H 'accept: application/json'
+```  
+
+**Get all SAX OXPO Interfaces**
+
+- **URL:** `sax.net`
+- **Command:** `/oxp/interfaces`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Finterfaces' -H 'accept: application/json'
+```  
+
+**Get all TENET OXPO Interfaces**
+
+- **URL:** `tenet.ac.za`
+- **Command:** `/oxp/interfaces`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Finterfaces' -H 'accept: application/json'
+```  
+
+# Get all Links of an OXPO  
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/36-update-readme/scripts/readme_images/oxp_links.png)
+
+**Get all Ampath OXPO Links**
+
+- **URL:** `ampath.net`
+- **Command:** `/oxp/links`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Flinks' -H 'accept: application/json'
+```  
+
+**Get all SAX OXPO Links**
+
+- **URL:** `sax.net`
+- **Command:** `/oxp/links`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Flinks' -H 'accept: application/json'
+```  
+
+**Get all TENET OXPO Links**
+
+- **URL:** `tenet.ac.za`
+- **Command:** `/oxp/links`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Flinks' -H 'accept: application/json'
+```  
+
+# Get OXP Topology
+
+**Get Ampath OXP Topology**
+
+On the swagger server, hit the blue GET button, followed by the TRY IT OUT bottom
+
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/scripts/getbutton.png?raw=true)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/scripts/tryitout.png?raw=true)
+
+Then  a command line with two boxes is enable:
+
+
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/36-update-readme/scripts/readme_images/oxp_topology.png)
+
+- **URL:** `ampath.net`
+- **Command:** `/oxp/topology`
+
+When the command is executed, a curl script command is provided to execute it from anywhere in a command prompt
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Ftopology' -H 'accept: application/json'
+```  
+
+**Get SAX OXP Topology**
+
+- **URL:** `sax.net`
+- **Command:** `/oxp/topology`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Ftopology' -H 'accept: application/json'
+```  
+
+**Get TENET OXP Topology**
+
+- **URL:** `tenet.ac.za`
+- **Command:** `/oxp/topology`
+
+```sh
+curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Ftopology' -H 'accept: application/json'
 ```  
 
 **Expected Outcome**
