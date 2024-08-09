@@ -32,20 +32,40 @@
       "description": "Get the OXP Topology"
     },
     {
-      "name": "/oxp/enable/all",
-      "description": "Enable all switches, interfaces, and links"
-    },
-    {
-      "name": "/oxp/disable/all",
-      "description": "Disable all switches, interfaces, and links"
-    },
-    {
       "name": "/oxp/switches",
       "description": "Get the OXP Switches"
     },
     {
+      "name": "/oxp/interfaces",
+      "description": "Get the OXP Interfaces"
+    },
+    {
+      "name": "/oxp/links",
+      "description": "Get the OXP Links"
+    },
+    {
       "name": "/oxp/switch/aa:00:00:00:00:00:00:01",
       "description": "Switch operation by dpId: GET, dpId: aa:00:00:00:00:00:00:01"
+    },
+    {
+      "name": "/oxp/interface/aa:00:00:00:00:00:00:01:1",
+      "description": "Interface operation by dpId: GET, Id: aa:00:00:00:00:00:00:01:1"
+    },
+    {
+      "name": "/oxp/link/link_id",
+      "description": "Link operation by link_id, link_id: xxxxxxxx"
+    },
+    {
+      "name": "/sdx/topology",
+      "description": "Get the SDX converted Topology",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "https://www.atlanticwave-sdx.net"
+      }
+    },
+    {
+      "name": "/oxp/enable/all",
+      "description": "Enable all switches, interfaces, and links"
     },
     {
       "name": "/oxp/switch/enable/all",
@@ -56,28 +76,12 @@
       "description": "Enable switch by dpId, dpId: aa:00:00:00:00:00:00:01"
     },
     {
-      "name": "/oxp/interfaces",
-      "description": "Get the OXP Interfaces"
-    },
-    {
-      "name": "/oxp/interface/aa:00:00:00:00:00:00:01:1",
-      "description": "Interface operation by dpId: GET, Id: aa:00:00:00:00:00:00:01:1"
-    },
-    {
       "name": "/oxp/interface/enable/all",
       "description": "Enable all interfaces"
     },
     {
       "name": "/oxp/interface/enable/aa:00:00:00:00:00:00:01:1",
       "description": "Enable Interface by dpId, Id: aa:00:00:00:00:00:00:01:1"
-    },
-    {
-      "name": "/oxp/links",
-      "description": "Get the OXP Links"
-    },
-    {
-      "name": "/oxp/link/link_id",
-      "description": "Link operation by link_id, link_id: xxxxxxxx"
     },
     {
       "name": "/oxp/link/enable/all",
@@ -88,13 +92,9 @@
       "description": "Enable link by linkId, link_id: xxxxxxxx"
     },
     {
-      "name": "/sdx/topology",
-      "description": "Get the SDX converted Topology",
-      "externalDocs": {
-        "description": "Find out more",
-        "url": "https://www.atlanticwave-sdx.net"
-      }
-    }
+      "name": "/oxp/disable/all",
+      "description": "Disable all switches, interfaces, and links"
+    },
   ],
   "paths": {
     "/{url}{command}": {

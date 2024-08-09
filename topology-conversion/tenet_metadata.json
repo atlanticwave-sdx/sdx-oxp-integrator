@@ -1,12 +1,18 @@
 {
   "switches": {
-    "dd:00:00:00:00:00:00:05": {
+    "dd:00:00:00:00:00:00:06": {
       "lat": "-33",
       "lng": "18",
       "address": "CapeTown",
       "iso3166_2_lvl4": "ZA-WC"
     },
-    "dd:00:00:00:00:00:00:06": {
+    "dd:00:00:00:00:00:00:07": {
+      "lat": "-26",
+      "lng": "28",
+      "address": "Johanesburgo",
+      "iso3166_2_lvl4": "ZA-GP"
+    },
+    "dd:00:00:00:00:00:00:08": {
       "lat": "-26",
       "lng": "28",
       "address": "Johanesburgo",
@@ -14,8 +20,17 @@
     }
   },
   "interfaces": {
-    "dd:00:00:00:00:00:00:05:7": {
-      "sdx_nni": "sax.net:Novi04:7"
+    "dd:00:00:00:00:00:00:06:1": {
+      "sdx_nni": "ampath.net:Novi01:1"
+    },
+    "dd:00:00:00:00:00:00:06:3": {
+      "sdx_nni": "ampath.net:Novi02:3"
+    },
+    "dd:00:00:00:00:00:00:06:7": {
+      "sdx_nni": "sax.net:Novi05:7"
+    },
+    "dd:00:00:00:00:00:00:07:1": {
+      "sdx_nni": "ampath.net:Novi03:1"
     }
   }
 }
