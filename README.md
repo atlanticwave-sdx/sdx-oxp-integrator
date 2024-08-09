@@ -169,7 +169,7 @@ curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Fswitch%2Fenable%2Fall' -H
 curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Fswitch%2Fenable%2Fall' -H 'accept: application/json'
 ```  
 
-Get all switches enable on TENET OXPO
+## Get all switches enable on TENET OXPO
 
 - **URL:** `tenet.ac.za`
 - **Command:** `/oxp/switch/enable/all`
@@ -227,7 +227,7 @@ curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Flink%2Fenable%2Fall' -H '
 curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Flink%2Fenable%2Fall' -H 'accept: application/json'
 ```  
 
-Get all Links enable on TENET OXPO
+## Get all Links enable on TENET OXPO
 
 - **URL:** `tenet.ac.za`
 - **Command:** `/oxp/link/enable/all`
@@ -412,6 +412,5 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Ftopology' -H 'accept: ap
 
 **Expected Outcome**
 A `200 OK` API status is expected from all three OXPO servers. Any other status indicates that the environment is not pre-initialized to work with Kytos and further troubleshooting is needed before continuing.
-
 
 ![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/scripts/commandline.png?raw=true)
