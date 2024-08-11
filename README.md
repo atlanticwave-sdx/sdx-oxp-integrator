@@ -384,7 +384,7 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Flink%2Fenable%2Fall' -H 
 
 # Disable all Switches, Interfaces and Links 
 
-## Get all Switches, Interfaces and Links disable on Ampath OXPO
+## Disable all Switches, Interfaces and Links on Ampath OXPO
 
 - **URL:** `ampath.net`
 - **Command:** `/oxp/disable/all`
