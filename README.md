@@ -97,7 +97,7 @@ The supported OXP system needs to publish the converted OXP topology to SDX-LC a
 SDX-LC publishes this information into the SDX Message Queue, where it is received by the SDX Controller.
 
 ##### Precondition
-A Docker Compose environment instantiates three Kytos OXPO servers: Amlight, SAX, and Tenet, and three SDX-LC servers: Amlight-LC, Sax-LC, and Tenet-LC. An SDX topology validator server and a MongoDB cluster are configured for communication.
+A Docker Compose environment instantiates three Kytos OXPO servers: Ampath, SAX, and Tenet, and three SDX-LC servers: Ampath-LC, Sax-LC, and Tenet-LC. An SDX topology validator server and a MongoDB cluster are configured for communication.
 
 ##### Test Steps
 Test commands and curl scripts for this integration test can be found at http://67.17.206.221/ as shown below:
@@ -113,6 +113,37 @@ When the command is executed, a curl script command is provided to execute it fr
 
 ###### Specific Tests Include:
 
+# Get OXP Topology
+
+## Get Ampath OXP Topology
+
+- **URL:** `ampath.net`
+- **Command:** `/oxp/topology`
+- **curl script command:**
+```sh
+curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Ftopology' -H 'accept: application/json'
+```  
+
+## Get SAX OXP Topology
+
+- **URL:** `sax.net`
+- **Command:** `/oxp/topology`
+- **curl script command:**
+```sh
+curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Ftopology' -H 'accept: application/json'
+```  
+
+## Get TENET OXP Topology
+
+- **URL:** `tenet.ac.za`
+- **Command:** `/oxp/topology`
+- **curl script command:**
+```sh
+curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Ftopology' -H 'accept: application/json'
+```  
+**Expected Outcome**
+A `200 OK` API status is expected from all three OXPO servers. Any other status indicates that the environment is not pre-initialized to work with Kytos and further troubleshooting is needed before continuing.
+
 # Get OXPO Converted SDX Topology
 
 ## Get Ampath OXPO Converted SDX Topology
@@ -124,7 +155,6 @@ When the command is executed, a curl script command is provided to execute it fr
 ```sh
 curl -X 'GET' 'http://67.17.206.221/ampath.net%2Fsdx%2Ftopology' -H 'accept: application/json'
 ```
-
 The following image shows the result for this case:
 
 ![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/36-update-readme/scripts/readme_images/example_sdx_topology.png)
@@ -147,6 +177,111 @@ curl -X 'GET' 'http://67.17.206.221/sax.net%2Fsdx%2Ftopology' -H 'accept: applic
 - **curl script command:**
 ```sh
 curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Fsdx%2Ftopology' -H 'accept: application/json'
+```  
+
+## Get all Switches, Interfaces and Links disable on SAX OXPO
+
+- **URL:** `sax.net`
+- **Command:** `/oxp/disable/all`
+- **curl script command:**
+```sh
+curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Fdisable%2Fall' -H 'accept: application/json'
+```  
+
+## Get all Switches, Interfaces and Links disable on TENET OXPO
+
+- **URL:** `tenet.ac.za`
+- **Command:** `/oxp/disable/all`
+- **curl script command:**
+```sh
+curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fdisable%2Fall' -H 'accept: application/json'
+```  
+
+# Get all switches of an OXPO 
+
+## Get all Ampath OXPO Switches
+
+- **URL:** `ampath.net`
+- **Command:** `/oxp/switches`
+- **curl script command:**
+```sh
+curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Fswitches' -H 'accept: application/json'
+```  
+
+## Get all SAX OXPO Switches
+
+- **URL:** `sax.net`
+- **Command:** `/oxp/switches`
+- **curl script command:**
+```sh
+curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Fswitches' -H 'accept: application/json'
+```  
+
+## Get all TENET OXPO Switches
+
+- **URL:** `tenet.ac.za`
+- **Command:** `/oxp/switches`
+- **curl script command:**
+```sh
+curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fswitches' -H 'accept: application/json'
+```  
+
+# Get all Interfaces of an OXPO 
+
+## Get all Ampath OXPO Interfaces
+
+- **URL:** `ampath.net`
+- **Command:** `/oxp/interfaces`
+- **curl script command:**
+```sh
+curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Finterfaces' -H 'accept: application/json'
+```  
+
+## Get all SAX OXPO Interfaces
+
+- **URL:** `sax.net`
+- **Command:** `/oxp/interfaces`
+- **curl script command:**
+```sh
+curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Finterfaces' -H 'accept: application/json'
+```  
+
+## Get all TENET OXPO Interfaces
+
+- **URL:** `tenet.ac.za`
+- **Command:** `/oxp/interfaces`
+- **curl script command:**
+```sh
+curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Finterfaces' -H 'accept: application/json'
+```  
+
+# Get all Links of an OXPO  
+
+## Get all Ampath OXPO Links
+
+- **URL:** `ampath.net`
+- **Command:** `/oxp/links`
+- **curl script command:**
+```sh
+curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Flinks' -H 'accept: application/json'
+```  
+
+## Get all SAX OXPO Links
+
+- **URL:** `sax.net`
+- **Command:** `/oxp/links`
+- **curl script command:**
+```sh
+curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Flinks' -H 'accept: application/json'
+```  
+
+## Get all TENET OXPO Links
+
+- **URL:** `tenet.ac.za`
+- **Command:** `/oxp/links`
+- **curl script command:**
+```sh
+curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Flinks' -H 'accept: application/json'
 ```  
 
 # Enable all switches 
@@ -275,142 +410,4 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fenable%2Fall' -H 'accept
 ```sh
 curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Fdisable%2Fall' -H 'accept: application/json'
 ```  
-
-## Get all Switches, Interfaces and Links disable on SAX OXPO
-
-- **URL:** `sax.net`
-- **Command:** `/oxp/disable/all`
-- **curl script command:**
-```sh
-curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Fdisable%2Fall' -H 'accept: application/json'
-```  
-
-## Get all Switches, Interfaces and Links disable on TENET OXPO
-
-- **URL:** `tenet.ac.za`
-- **Command:** `/oxp/disable/all`
-- **curl script command:**
-```sh
-curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fdisable%2Fall' -H 'accept: application/json'
-```  
-
-# Get all switches of an OXPO 
-
-## Get all Ampath OXPO Switches
-
-- **URL:** `ampath.net`
-- **Command:** `/oxp/switches`
-- **curl script command:**
-```sh
-curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Fswitches' -H 'accept: application/json'
-```  
-
-## Get all SAX OXPO Switches
-
-- **URL:** `sax.net`
-- **Command:** `/oxp/switches`
-- **curl script command:**
-```sh
-curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Fswitches' -H 'accept: application/json'
-```  
-
-## Get all TENET OXPO Switches
-
-- **URL:** `tenet.ac.za`
-- **Command:** `/oxp/switches`
-- **curl script command:**
-```sh
-curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fswitches' -H 'accept: application/json'
-```  
-
-# Get all Interfaces of an OXPO 
-
-## Get all Ampath OXPO Interfaces
-
-- **URL:** `ampath.net`
-- **Command:** `/oxp/interfaces`
-- **curl script command:**
-```sh
-curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Finterfaces' -H 'accept: application/json'
-```  
-
-## Get all SAX OXPO Interfaces
-
-- **URL:** `sax.net`
-- **Command:** `/oxp/interfaces`
-- **curl script command:**
-```sh
-curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Finterfaces' -H 'accept: application/json'
-```  
-
-## Get all TENET OXPO Interfaces
-
-- **URL:** `tenet.ac.za`
-- **Command:** `/oxp/interfaces`
-- **curl script command:**
-```sh
-curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Finterfaces' -H 'accept: application/json'
-```  
-
-# Get all Links of an OXPO  
-
-## Get all Ampath OXPO Links
-
-- **URL:** `ampath.net`
-- **Command:** `/oxp/links`
-- **curl script command:**
-```sh
-curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Flinks' -H 'accept: application/json'
-```  
-
-## Get all SAX OXPO Links
-
-- **URL:** `sax.net`
-- **Command:** `/oxp/links`
-- **curl script command:**
-```sh
-curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Flinks' -H 'accept: application/json'
-```  
-
-## Get all TENET OXPO Links
-
-- **URL:** `tenet.ac.za`
-- **Command:** `/oxp/links`
-- **curl script command:**
-```sh
-curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Flinks' -H 'accept: application/json'
-```  
-
-# Get OXP Topology
-
-## Get Ampath OXP Topology
-
-- **URL:** `ampath.net`
-- **Command:** `/oxp/topology`
-- **curl script command:**
-```sh
-curl -X 'GET' 'http://67.17.206.221/ampath.net%2Foxp%2Ftopology' -H 'accept: application/json'
-```  
-
-## Get SAX OXP Topology
-
-- **URL:** `sax.net`
-- **Command:** `/oxp/topology`
-- **curl script command:**
-```sh
-curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Ftopology' -H 'accept: application/json'
-```  
-
-## Get TENET OXP Topology
-
-- **URL:** `tenet.ac.za`
-- **Command:** `/oxp/topology`
-- **curl script command:**
-```sh
-curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Ftopology' -H 'accept: application/json'
-```  
-
-**Expected Outcome**
-A `200 OK` API status is expected from all three OXPO servers. Any other status indicates that the environment is not pre-initialized to work with Kytos and further troubleshooting is needed before continuing.
-
-![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/scripts/commandline.png?raw=true)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/scripts/all_commands.png?raw=true)
