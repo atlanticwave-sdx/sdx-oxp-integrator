@@ -1,17 +1,15 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Oxpo Api Wrapper",
-    "description": "The wrapper abstracts the complexities of direct API calls and offers a consistent method to interact with different OXPO services",
+    "title": "SDX OXP Integrator",
+    "description": "The sdx-oxp-integrator is designed to simplify interactions with various OXPO (Open eXchange Point Operator) APIs by providing a streamlined programming interface. This integrator abstracts the complexities of direct API calls and offers a consistent method to interact with different OXPO services, enhancing code readability and maintainability.",
     "version": "2.0.0",
     "contact": {
-      "email": "lmarinve@fiu.edu"
+      "email": "ciara@fiu.edu",
+      "url": "https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/README.md"
     }
   },
   "servers": [
-    {
-      "url": "http://0.0.0.0"
-    },
     {
       "url": "http://67.17.206.221"
     },
@@ -23,6 +21,9 @@
     },
     {
       "url": "http://190.103.184.198"
+    },
+    {
+      "url": "http://0.0.0.0"
     }
   ],
   "tags": [
@@ -31,60 +32,28 @@
       "description": "Get the OXP Topology"
     },
     {
-      "name": "/oxp/enable/all",
-      "description": "switch, interface, link  operation: enable all"
-    },
-    {
-      "name": "/oxp/disable/all",
-      "description": "switch, interface, link  operation: disable all"
-    },
-    {
       "name": "/oxp/switches",
       "description": "Get the OXP Switches"
-    },
-    {
-      "name": "/oxp/switch/aa:00:00:00:00:00:00:01",
-      "description": "switch operation: GET, dpId: aa:00:00:00:00:00:00:01"
-    },
-    {
-      "name": "/oxp/switch/enable/all",
-      "description": "switch operation: enable, dpId: all"
-    },
-    {
-      "name": "/oxp/switch/enable/aa:00:00:00:00:00:00:01",
-      "description": "switch operation: enable, dpId: aa:00:00:00:00:00:00:01"
     },
     {
       "name": "/oxp/interfaces",
       "description": "Get the OXP Interfaces"
     },
     {
-      "name": "/oxp/interface/aa:00:00:00:00:00:00:01:1",
-      "description": "interface operation: GET, Id: aa:00:00:00:00:00:00:01:1"
-    },
-    {
-      "name": "/oxp/interface/enable/all",
-      "description": "interface operation: enable, Id: all"
-    },
-    {
-      "name": "/oxp/interface/enable/aa:00:00:00:00:00:00:01:1",
-      "description": "interface operation: enable, Id: aa:00:00:00:00:00:00:01:1"
-    },
-    {
       "name": "/oxp/links",
       "description": "Get the OXP Links"
     },
     {
+      "name": "/oxp/switch/aa:00:00:00:00:00:00:01",
+      "description": "Switch operation by dpId: GET, dpId: aa:00:00:00:00:00:00:01"
+    },
+    {
+      "name": "/oxp/interface/aa:00:00:00:00:00:00:01:1",
+      "description": "Interface operation by dpId: GET, Id: aa:00:00:00:00:00:00:01:1"
+    },
+    {
       "name": "/oxp/link/link_id",
-      "description": "link operation: GET, link_id: xxxxxxxx"
-    },
-    {
-      "name": "/oxp/link/enable/all",
-      "description": "link operation: enable, link_id: all"
-    },
-    {
-      "name": "/oxp/link/enable/link_id",
-      "description": "link operation: enable, link_id: xxxxxxxx"
+      "description": "Link operation by link_id, link_id: xxxxxxxx"
     },
     {
       "name": "/sdx/topology",
@@ -95,13 +64,37 @@
       }
     },
     {
-      "name": "user",
-      "description": "Operations about user",
-      "externalDocs": {
-        "description": "Find out more about our store",
-        "url": "https://www.atlanticwave-sdx.net"
-      }
-    }
+      "name": "/oxp/enable/all",
+      "description": "Enable all switches, interfaces, and links"
+    },
+    {
+      "name": "/oxp/switch/enable/all",
+      "description": "Enable all Switches"
+    },
+    {
+      "name": "/oxp/switch/enable/aa:00:00:00:00:00:00:01",
+      "description": "Enable switch by dpId, dpId: aa:00:00:00:00:00:00:01"
+    },
+    {
+      "name": "/oxp/interface/enable/all",
+      "description": "Enable all interfaces"
+    },
+    {
+      "name": "/oxp/interface/enable/aa:00:00:00:00:00:00:01:1",
+      "description": "Enable Interface by dpId, Id: aa:00:00:00:00:00:00:01:1"
+    },
+    {
+      "name": "/oxp/link/enable/all",
+      "description": "Enable all links"
+    },
+    {
+      "name": "/oxp/link/enable/link_id",
+      "description": "Enable link by linkId, link_id: xxxxxxxx"
+    },
+    {
+      "name": "/oxp/disable/all",
+      "description": "Disable all switches, interfaces, and links"
+    },
   ],
   "paths": {
     "/{url}{command}": {
@@ -115,23 +108,33 @@
 	  {
 		"in": "path",
           	"name": "url",
-            	"type": "string",
-          	"required": true,
-		"allowReserved": true
-	  },
+		"schema": {
+			"type": "string"
+		},
+            	"required": true,
+            	"allowReserved": true,
+            	"description": "The base URL of the OXP"
+          },
 	  {
 		"in": "path",
           	"name": "command",
-            	"type": "string",
-          	"required": true,
-		"allowReserved": true
+		"schema": {
+			"type": "string"
+		},
+            	"required": true,
+            	"allowReserved": true,
+            	"description": "The command to execute"
 	  }
 	],
         "responses": {
           "200": {
             "description": "Successful response",
             "content": {
-              "application/json": {}
+              "application/json": {
+		  "schema": {
+                  "type": "object"
+		  }
+	      }
             }
           }
         }

@@ -11,17 +11,26 @@
       "lng": "-80.11",
       "address": "BocaRaton",
       "iso3166_2_lvl4": "US-FL"
+    },
+    "aa:00:00:00:00:00:00:03": {
+      "lat": "26.38",
+      "lng": "-80.11",
+      "address": "BocaRaton",
+      "iso3166_2_lvl4": "US-FL"
     }
   },
   "interfaces": {
     "aa:00:00:00:00:00:00:01:1": {
-      "sdx_nni": "tenet.ac.za:Novi05:1"
+      "sdx_nni": "tenet.ac.za:Novi06:1"
     },
     "aa:00:00:00:00:00:00:02:3": {
-      "sdx_nni": "tenet.ac.za:Novi05:3"
+      "sdx_nni": "tenet.ac.za:Novi06:3"
     },
     "aa:00:00:00:00:00:00:02:4": {
-      "sdx_nni": "sax.net:Novi03:4"
+      "sdx_nni": "sax.net:Novi04:4"
+    },
+    "aa:00:00:00:00:00:00:03:1": {
+      "sdx_nni": "tenet.ac.za:Novi07:1"
     }
   }
 }

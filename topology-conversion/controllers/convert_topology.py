@@ -161,6 +161,7 @@ class ParseConvertTopology:
         sdx_port["services"] = {
             "l2vpn-ptp": {"vlan_range": vlan_range}
         }
+        sdx_port["private"] = []
 
         return sdx_port
 
@@ -241,13 +242,15 @@ class ParseConvertTopology:
             endpoint_a_name = kytos_link['endpoint_a'].get('name', 'Unknown')
             endpoint_a_speed = kytos_link['endpoint_a'].get('speed', 0)
             endpoint_a_switch = kytos_link['endpoint_a'].get('name', '')
+            endpoint_a_port = kytos_link['endpoint_a'].get('port_number', 0)
             endpoint_b_name = kytos_link['endpoint_b'].get('name', 'Unknown')
             endpoint_b_speed = kytos_link['endpoint_b'].get('speed', 0)
             endpoint_b_switch = kytos_link['endpoint_b'].get('name', '')
+            endpoint_b_port = kytos_link['endpoint_b'].get('port_number', 0)
 
             port_prefix = f"urn:sdx:port:{self.oxp_url}:"
-            endpoint_a_port = f"{port_prefix}{endpoint_a_switch.split('-')[0]}:{endpoint_a_switch}"
-            endpoint_b_port = f"{port_prefix}{endpoint_b_switch.split('-')[0]}:{endpoint_b_switch}"
+            endpoint_a_port = f"{port_prefix}{endpoint_a_switch.split('-')[0]}:{endpoint_a_port}"
+            endpoint_b_port = f"{port_prefix}{endpoint_b_switch.split('-')[0]}:{endpoint_b_port}"
 
             sdx_link["name"] = f"{endpoint_a_name}_{endpoint_b_name}"
             sdx_link["id"] = f"urn:sdx:link:{self.oxp_url}:{endpoint_a_name}_{endpoint_b_name}"
@@ -259,6 +262,7 @@ class ParseConvertTopology:
             sdx_link["latency"] = 2
             sdx_link["status"] = self.get_port_status(kytos_link["status"])
             sdx_link["state"] = "enabled" if kytos_link["enabled"] else "disabled"
+            sdx_link["private"] = ["packet_loss"]
 
         return sdx_link
 
