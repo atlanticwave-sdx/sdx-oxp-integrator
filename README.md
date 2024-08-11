@@ -178,25 +178,6 @@ curl -X 'GET' 'http://67.17.206.221/sax.net%2Fsdx%2Ftopology' -H 'accept: applic
 ```sh
 curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Fsdx%2Ftopology' -H 'accept: application/json'
 ```  
-
-## Get all Switches, Interfaces and Links disable on SAX OXPO
-
-- **URL:** `sax.net`
-- **Command:** `/oxp/disable/all`
-- **curl script command:**
-```sh
-curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Fdisable%2Fall' -H 'accept: application/json'
-```  
-
-## Get all Switches, Interfaces and Links disable on TENET OXPO
-
-- **URL:** `tenet.ac.za`
-- **Command:** `/oxp/disable/all`
-- **curl script command:**
-```sh
-curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fdisable%2Fall' -H 'accept: application/json'
-```  
-
 # Get all switches of an OXPO 
 
 ## Get all Ampath OXPO Switches
@@ -399,6 +380,25 @@ curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Fenable%2Fall' -H 'accept: ap
 ```sh
 curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fenable%2Fall' -H 'accept: application/json'
 ```  
+
+## Get all Switches, Interfaces and Links disable on SAX OXPO
+
+- **URL:** `sax.net`
+- **Command:** `/oxp/disable/all`
+- **curl script command:**
+```sh
+curl -X 'GET' 'http://67.17.206.221/sax.net%2Foxp%2Fdisable%2Fall' -H 'accept: application/json'
+```  
+
+## Get all Switches, Interfaces and Links disable on TENET OXPO
+
+- **URL:** `tenet.ac.za`
+- **Command:** `/oxp/disable/all`
+- **curl script command:**
+```sh
+curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Foxp%2Fdisable%2Fall' -H 'accept: application/json'
+```  
+
 
 # Disable all Switches, Interfaces and Links 
 
