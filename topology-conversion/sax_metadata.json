@@ -20,7 +20,7 @@
     "cc:00:00:00:00:00:00:05:7": {
       "sdx_nni": "tenet.ac.za:Novi06:7"
     }
-  }
+  },
   "evcs": {
     "cc:00:00:00:00:00:00:04:4": {
 	    "name": "SAX_vlan_107_Ampath_Tenet",

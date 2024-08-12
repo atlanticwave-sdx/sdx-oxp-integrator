@@ -57,7 +57,7 @@
 		    "tag": {"value": 108, "tag_type": 1},
 		    "interface_id": "aa:00:00:00:00:00:00:01:1"}
     }
-  }
+  },
   "vlans": {
     "aa:00:00:00:00:00:00:01:11": {
 	    "name": "AMLIGHT_vlan_201_202_Ampath_Tenet", 

@@ -198,7 +198,7 @@ def post_oxp_evc_enable():
     """Enable Ethernet Network Connection"""
     metadata = json_reader(OXP_META_DATA)
     for dpid, connection_object in metadata.get("evcs",{}).items():
-        url = f"mef_eline/v2/evc/"
+        url = f"evc/"
         post_connection_object(url, connection_object)
     return f"evc/enable"
 

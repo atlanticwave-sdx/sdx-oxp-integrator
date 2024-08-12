@@ -336,6 +336,13 @@ paths:
       summary: Enable Ethernet Network Connection
       description: Enable Ethernet Network Connection
       operationId: post_oxp_evc_enable
+      requestBody:
+        description: placed for adding a new evc
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Connection'
+        required: false
       responses:
         '200':
           description: Successfully enable all inter domain EVC.
@@ -355,6 +362,13 @@ paths:
       summary: Enable Ethernet Network Connection Vlan Translation
       description: Enable Ethernet Network Connection Vlan Translation
       operationId: post_oxp_vlan_enable
+      requestBody:
+        description: placed for adding a new evc vlan
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Connection'
+        required: false
       responses:
         '200':
           description: Successfully enable all inter domain EVC VLAN translation.
@@ -528,6 +542,34 @@ components:
                   items:
                     type: integer
 
+    Connection:
+      type: object
+      properties:
+        name:
+          type: string
+        dynamic_backup_path:
+          type: boolean
+        uni_a:
+          type: object
+          properties:
+            tag:
+              type: object
+              properties:
+                  value:
+                    type: integer
+                  tag_type:
+                    type: integer
+        uni_z:
+          type: object
+          properties:
+            tag:
+              type: object
+              properties:
+                  value:
+                    type: integer
+                  tag_type:
+                    type: integer
+          
     Error:
       type: object
       properties:
