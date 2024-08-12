@@ -251,6 +251,7 @@ services:
       OXPO_URL: ${AMPATH_OXPO_URL}
       OXPO_METADATA: ${AMPATH_META_DATA}
       OXP_TOPOLOGY_URL: ${AMPATH_OXPO_TOPOLOGY_URL}
+      OXP_CONNECTION_URL: ${AMPATH_OXPO_CONNECTION_URL}
       OXP_TOPOLOGY_URN: ${OXP_TOPOLOGY_URN}
     entrypoint: [ "python3", "-m", "uvicorn", "run:app", "--host", "0.0.0.0", "--port", "8000" ]
 
@@ -274,6 +275,7 @@ services:
       OXPO_URL: ${SAX_OXPO_URL}
       OXPO_METADATA: ${SAX_META_DATA}
       OXP_TOPOLOGY_URL: ${SAX_OXPO_TOPOLOGY_URL}
+      OXP_CONNECTION_URL: ${SAX_OXPO_CONNECTION_URL}
       OXP_TOPOLOGY_URN: ${OXP_TOPOLOGY_URN}
     entrypoint: [ "python3", "-m", "uvicorn", "run:app", "--host", "0.0.0.0", "--port", "8000" ]
 
@@ -297,6 +299,7 @@ services:
       OXPO_URL: ${TENET_OXPO_URL}
       OXPO_METADATA: ${TENET_META_DATA}
       OXP_TOPOLOGY_URL: ${TENET_OXPO_TOPOLOGY_URL}
+      OXP_CONNECTION_URL: ${TENET_OXPO_CONNECTION_URL}
       OXP_TOPOLOGY_URN: ${OXP_TOPOLOGY_URN}
     entrypoint: [ "python3", "-m", "uvicorn", "run:app", "--host", "0.0.0.0", "--port", "8000" ]
 

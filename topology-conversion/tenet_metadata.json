@@ -32,5 +32,33 @@
     "dd:00:00:00:00:00:00:07:1": {
       "sdx_nni": "ampath.net:Novi03:1"
     }
+  },
+  "evcs": {
+    "dd:00:00:00:00:00:00:06:7": {
+	"name": "TENET_vlan_107_Ampath_Tenet",
+	"dynamic_backup_path": true,
+	"uni_a": {
+		"tag": {"value": 107, "tag_type": 1}, 
+		"interface_id": "dd:00:00:00:00:00:00:06:7"
+	},
+	"uni_z": {
+		"tag": {"value": 107, "tag_type": 1},
+	       	"interface_id": "dd:00:00:00:00:00:00:08:44"
+	}
+    }
+  },
+  "vlans": {
+    "dd:00:00:00:00:00:00:06:7": {
+	"name": "TENET_vlan_201_203_Ampath_Tenet",
+	"dynamic_backup_path": true,
+       	"uni_a": {
+		"tag": {"value": 203, "tag_type": 1},
+	       	"interface_id": "cc:00:00:00:00:00:00:06:7"
+	},
+       	"uni_z": {
+		"tag": {"value": 201, "tag_type": 1},
+	       	"interface_id": "cc:00:00:00:00:00:00:08:44"
+	}
+    }
   }
 }

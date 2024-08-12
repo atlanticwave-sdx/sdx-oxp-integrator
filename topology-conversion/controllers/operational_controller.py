@@ -5,6 +5,7 @@ import requests
 
 OXP_META_DATA = os.environ.get("OXPO_METADATA")
 OXP_TOPOLOGY_URL = os.environ.get("OXP_TOPOLOGY_URL")
+OXP_CONNECTION_URL = os.environ.get("OXP_CONNECTION_URL")
 
 
 def get_operational_event():
@@ -33,6 +34,20 @@ def post_topology_object(url, topology_object):
     return response.json()
 
 
+def get_connection_object(connection_object):
+    """Get specific connection object from OXP"""
+    url = OXP_CONNECTION_URL + connection_object
+    response = requests.get(url, timeout=10)
+    return response.json()
+
+
+def post_connection_object(url, connection_object):
+    """Post connection object to OXP"""
+    oxp_url = f"{OXP_CONNECTION_URL}{url}"
+    response = requests.post(oxp_url, json=connection_object, timeout=10)
+    return response.json()
+
+
 def json_reader(json_name):
     """Read and return JSON file"""
     actual_dir = os.getcwd()
@@ -43,19 +58,19 @@ def json_reader(json_name):
     return data
 
 
-def get_oxp_enable_all():
+def post_oxp_enable_all():
     """Enable all switches, interfaces, and links"""
-    get_oxp_switch_enable("all")
-    get_oxp_interface_enable("all")
-    get_oxp_link_enable("all")
+    post_oxp_switch_enable("all")
+    post_oxp_interface_enable("all")
+    post_oxp_link_enable("all")
     return get_oxp_links()
 
 
-def get_oxp_disable_all():
+def post_oxp_disable_all():
     """Disable all switches, interfaces, and links"""
-    get_oxp_link_disable("all")
-    get_oxp_interface_disable("all")
-    get_oxp_switch_disable("all")
+    post_oxp_link_disable("all")
+    post_oxp_interface_disable("all")
+    post_oxp_switch_disable("all")
     return get_oxp_switches()
 
 
@@ -70,7 +85,7 @@ def get_oxp_switch_by_dpid(dp_id):
     return get_topology_object(topology_object)
 
 
-def get_oxp_switch_enable(dp_id):
+def post_oxp_switch_enable(dp_id):
     """Enable switch by DPID or all switches"""
     topology_object = {}
     if dp_id == "all":
@@ -91,7 +106,7 @@ def get_oxp_switch_enable(dp_id):
     return f"switches/{dp_id}/enable"
 
 
-def get_oxp_switch_disable(dp_id):
+def post_oxp_switch_disable(dp_id):
     """Disable switch by DPID or all switches"""
     topology_object = {}
     if dp_id == "all":
@@ -117,7 +132,7 @@ def get_oxp_interface_by_id(dp_id):
     return get_topology_object(topology_object)
 
 
-def get_oxp_interface_enable(dp_id):
+def post_oxp_interface_enable(dp_id):
     """Enable interface by ID or all Interfaces"""
     topology_object = {}
     if dp_id == "all":
@@ -132,7 +147,7 @@ def get_oxp_interface_enable(dp_id):
     return f"interfaces/{dp_id}/enable"
 
 
-def get_oxp_interface_disable(dp_id):
+def post_oxp_interface_disable(dp_id):
     """Disable interface by ID or all interfaces"""
     topology_object = {}
     if dp_id == "all":
@@ -158,7 +173,7 @@ def get_oxp_link_by_id(dp_id):
     return get_topology_object(topology_object)
 
 
-def get_oxp_link_enable(dp_id):
+def post_oxp_link_enable(dp_id):
     """Enable link by ID or all links"""
     if dp_id == "all":
         metadata = json_reader(OXP_META_DATA)
@@ -174,7 +189,35 @@ def get_oxp_link_enable(dp_id):
     return f"link/enable/{dp_id}"
 
 
-def get_oxp_link_disable(dp_id):
+def get_oxp_evcs():
+    """Get all EVCs"""
+    return get_connection_object("evc")
+
+
+def post_oxp_evc_enable():
+    """Enable Ethernet Network Connection"""
+    metadata = json_reader(OXP_META_DATA)
+    for dpid, connection_object in metadata.get("evcs",{}).items():
+        url = f"evc/"
+        post_connection_object(url, connection_object)
+    return f"evc/enable"
+
+
+def post_oxp_vlan_enable():
+    """Enable Ethernet Network Connection VLAN translation"""
+    metadata = json_reader(OXP_META_DATA)
+    for dpid, connection_object in metadata.get("vlans",{}).items():
+        url = f"mef_eline/v2/evc/"
+        post_connection_object(url, connection_object)
+    return f"evc/vlan/enable"
+
+
+def post_oxp_host_enable():
+    """Enable Host Configuration"""
+    return f"host/enable"
+
+
+def post_oxp_link_disable(dp_id):
     """Disable link by ID or all links"""
     if dp_id == "all":
         links = get_topology_object("links")

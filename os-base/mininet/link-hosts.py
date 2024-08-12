@@ -78,7 +78,7 @@ def custom_topo(amlight_ctlr, sax_ctlr, tenet_ctlr):
     h2 = net.addHost("INT02", mac="00:00:00:00:00:22")
 
     net.addLink(h1, ampath_sw1, port1=11, port2=11)
-    net.addLink(h2, ampath_sw1, port1=22, port2=22)
+    net.addLink(h2, ampath_sw2, port1=22, port2=22)
 
     # ********************************************* AmLight OXP - End ************************************************
 
