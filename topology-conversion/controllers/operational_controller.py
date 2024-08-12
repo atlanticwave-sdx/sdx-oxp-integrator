@@ -174,6 +174,11 @@ def post_oxp_link_enable(dp_id):
     return f"link/enable/{dp_id}"
 
 
+def get_oxp_evcs():
+    """Get all EVCs"""
+    return get_topology_object("evc")
+
+
 def post_oxp_evc_enable():
     """Enable Ethernet Network Connection"""
     metadata = json_reader(OXP_META_DATA)
