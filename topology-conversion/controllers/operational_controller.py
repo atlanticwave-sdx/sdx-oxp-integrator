@@ -5,6 +5,7 @@ import requests
 
 OXP_META_DATA = os.environ.get("OXPO_METADATA")
 OXP_TOPOLOGY_URL = os.environ.get("OXP_TOPOLOGY_URL")
+OXP_CONNECTION_URL = os.environ.get("OXP_CONNECTION_URL")
 
 
 def get_operational_event():
@@ -30,6 +31,20 @@ def post_topology_object(url, topology_object):
     """Post topology object to OXP"""
     oxp_url = f"{OXP_TOPOLOGY_URL}{url}"
     response = requests.post(oxp_url, json=topology_object, timeout=10)
+    return response.json()
+
+
+def get_connection_object(connection_object):
+    """Get specific connection object from OXP"""
+    url = OXP_CONNECTION_URL + connection_object
+    response = requests.get(url, timeout=10)
+    return response.json()
+
+
+def post_connection_object(url, connection_object):
+    """Post connection object to OXP"""
+    oxp_url = f"{OXP_CONNECTION_URL}{url}"
+    response = requests.post(oxp_url, json=connection_object, timeout=10)
     return response.json()
 
 
@@ -176,24 +191,24 @@ def post_oxp_link_enable(dp_id):
 
 def get_oxp_evcs():
     """Get all EVCs"""
-    return get_topology_object("evc")
+    return get_connection_object("evc")
 
 
 def post_oxp_evc_enable():
     """Enable Ethernet Network Connection"""
     metadata = json_reader(OXP_META_DATA)
-    for dpid, topology_object in metadata.get("evcs",{}).items():
+    for dpid, connection_object in metadata.get("evcs",{}).items():
         url = f"mef_eline/v2/evc/"
-        post_topology_object(url, topology_object)
+        post_connection_object(url, connection_object)
     return f"evc/enable"
 
 
 def post_oxp_vlan_enable():
     """Enable Ethernet Network Connection VLAN translation"""
     metadata = json_reader(OXP_META_DATA)
-    for dpid, topology_object in metadata.get("vlans",{}).items():
+    for dpid, connection_object in metadata.get("vlans",{}).items():
         url = f"mef_eline/v2/evc/"
-        post_topology_object(url, topology_object)
+        post_connection_object(url, connection_object)
     return f"evc/vlan/enable"
 
 
