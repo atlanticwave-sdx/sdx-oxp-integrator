@@ -102,11 +102,11 @@ A Docker Compose environment instantiates three Kytos OXPO servers: Ampath, SAX,
 ##### Test Steps
 Test commands and curl scripts for this integration test can be found at http://67.17.206.221/ as shown below:
 
-![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/scripts/readme_images/all_commands.png)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/scripts/readme_images/all_commands.png)
 
 On the swagger server, hit the blue **GET** button to execute a command. A box will appear as shown below:
 
-![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/36-update-readme/scripts/readme_images/template.png)
+![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/scripts/readme_images/template.png)
 
 Hit the **TRY IT OUT** bottom and fill in the two required parameters **url** and **command**.
 When the command is executed, a curl script command is provided to execute it from anywhere in a command prompt, as well as the server response.
