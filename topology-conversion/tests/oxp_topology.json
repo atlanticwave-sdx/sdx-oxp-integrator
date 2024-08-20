@@ -1,0 +1,379 @@
+{
+  "switches": {
+    "aa:00:00:00:00:00:00:01": {
+      "id": "aa:00:00:00:00:00:00:01",
+      "name": "aa:00:00:00:00:00:00:01",
+      "dpid": "aa:00:00:00:00:00:00:01",
+      "type": "switch",
+      "data_path": "Novi01",
+      "interfaces": {
+        "aa:00:00:00:00:00:00:01:1": {
+          "id": "aa:00:00:00:00:00:00:01:1",
+          "name": "Novi01-eth1",
+          "port_number": 1,
+          "switch": "aa:00:00:00:00:00:00:01",
+          "type": "interface",
+          "nni": false,
+          "uni": true,
+          "speed": 1250000000,
+          "metadata": {
+            "sdx_nni": "tenet.ac.za:Novi06:1"
+          },
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": ""
+        },
+        "aa:00:00:00:00:00:00:01:2": {
+          "id": "aa:00:00:00:00:00:00:01:2",
+          "name": "Novi01-eth2",
+          "port_number": 2,
+          "switch": "aa:00:00:00:00:00:00:01",
+          "type": "interface",
+          "nni": true,
+          "uni": false,
+          "speed": 1250000000,
+          "metadata": {},
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": "link1"
+        },
+        "aa:00:00:00:00:00:00:01:3": {
+          "id": "aa:00:00:00:00:00:00:01:3",
+          "name": "Novi01-eth3",
+          "port_number": 3,
+          "switch": "aa:00:00:00:00:00:00:01",
+          "type": "interface",
+          "nni": true,
+          "uni": false,
+          "speed": 1250000000,
+          "metadata": {},
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": "link2"
+        }
+      },
+      "metadata": {
+        "lat": "25.77",
+        "lng": "-80.19",
+        "address": "Miami",
+        "iso3166_2_lvl4": "US-FL"
+      },
+      "active": true,
+      "enabled": true,
+      "status": "UP",
+      "status_reason": []
+    },
+    "aa:00:00:00:00:00:00:02": {
+      "id": "aa:00:00:00:00:00:00:02",
+      "name": "aa:00:00:00:00:00:00:02",
+      "dpid": "aa:00:00:00:00:00:00:02",
+      "type": "switch",
+      "data_path": "Novi02",
+      "interfaces": {
+        "aa:00:00:00:00:00:00:02:4": {
+          "id": "aa:00:00:00:00:00:00:02:4",
+          "name": "Novi02-eth4",
+          "port_number": 4,
+          "switch": "aa:00:00:00:00:00:00:02",
+          "type": "interface",
+          "nni": false,
+          "uni": true,
+          "speed": 1250000000,
+          "metadata": {
+            "sdx_nni": "sax.net:Novi04:4"
+          },
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": ""
+        },
+        "aa:00:00:00:00:00:00:02:5": {
+          "id": "aa:00:00:00:00:00:00:02:5",
+          "name": "Novi02-eth5",
+          "port_number": 5,
+          "switch": "aa:00:00:00:00:00:00:02",
+          "type": "interface",
+          "nni": true,
+          "uni": false,
+          "speed": 1250000000,
+          "metadata": {},
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": "link3"
+        },
+        "aa:00:00:00:00:00:00:02:2": {
+          "id": "aa:00:00:00:00:00:00:02:2",
+          "name": "Novi02-eth2",
+          "port_number": 2,
+          "switch": "aa:00:00:00:00:00:00:02",
+          "type": "interface",
+          "nni": true,
+          "uni": false,
+          "speed": 1250000000,
+          "metadata": {},
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": "link1"
+        },
+        "aa:00:00:00:00:00:00:02:3": {
+          "id": "aa:00:00:00:00:00:00:02:3",
+          "name": "Novi02-eth3",
+          "port_number": 3,
+          "switch": "aa:00:00:00:00:00:00:02",
+          "type": "interface",
+          "nni": false,
+          "uni": true,
+          "speed": 1250000000,
+          "metadata": {
+            "sdx_nni": "tenet.ac.za:Novi06:3"
+          },
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": ""
+        }
+      },
+      "metadata": {
+        "lat": "26.38",
+        "lng": "-80.11",
+        "address": "BocaRaton",
+        "iso3166_2_lvl4": "US-FL"
+      },
+      "active": true,
+      "enabled": true,
+      "status": "UP",
+      "status_reason": []
+    },
+    "aa:00:00:00:00:00:00:03": {
+      "id": "aa:00:00:00:00:00:00:03",
+      "name": "aa:00:00:00:00:00:00:03",
+      "dpid": "aa:00:00:00:00:00:00:03",
+      "type": "switch",
+      "data_path": "Novi03",
+      "interfaces": {
+        "aa:00:00:00:00:00:00:03:1": {
+          "id": "aa:00:00:00:00:00:00:03:1",
+          "name": "Novi03-eth1",
+          "port_number": 1,
+          "switch": "aa:00:00:00:00:00:00:03",
+          "type": "interface",
+          "nni": false,
+          "uni": true,
+          "speed": 1250000000,
+          "metadata": {
+            "sdx_nni": "tenet.ac.za:Novi07:1"
+          },
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": ""
+        },
+        "aa:00:00:00:00:00:00:03:5": {
+          "id": "aa:00:00:00:00:00:00:03:5",
+          "name": "Novi03-eth5",
+          "port_number": 5,
+          "switch": "aa:00:00:00:00:00:00:03",
+          "type": "interface",
+          "nni": true,
+          "uni": false,
+          "speed": 1250000000,
+          "metadata": {},
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": "link3"
+        },
+        "aa:00:00:00:00:00:00:03:3": {
+          "id": "aa:00:00:00:00:00:00:03:3",
+          "name": "Novi03-eth3",
+          "port_number": 3,
+          "switch": "aa:00:00:00:00:00:00:03",
+          "type": "interface",
+          "nni": true,
+          "uni": false,
+          "speed": 1250000000,
+          "metadata": {},
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": "link2"
+        }
+      },
+      "metadata": {
+        "lat": "26.38",
+        "lng": "-80.11",
+        "address": "BocaRaton",
+        "iso3166_2_lvl4": "US-FL"
+      },
+      "active": true,
+      "enabled": true,
+      "status": "UP",
+      "status_reason": []
+    }
+  },
+  "links": {
+    "link3": {
+      "id": "link3",
+      "endpoint_a": {
+        "id": "aa:00:00:00:00:00:00:03:5",
+        "name": "Novi03-eth5",
+        "port_number": 5,
+        "switch": "aa:00:00:00:00:00:00:03",
+        "type": "interface",
+        "nni": true,
+        "uni": false,
+        "speed": 1250000000,
+        "metadata": {},
+        "lldp": true,
+        "active": true,
+        "enabled": true,
+        "status": "UP",
+        "status_reason": [],
+        "link": "link3"
+      },
+      "endpoint_b": {
+        "id": "aa:00:00:00:00:00:00:02:5",
+        "name": "Novi02-eth5",
+        "port_number": 5,
+        "switch": "aa:00:00:00:00:00:00:02",
+        "type": "interface",
+        "nni": true,
+        "uni": false,
+        "speed": 1250000000,
+        "metadata": {},
+        "lldp": true,
+        "active": true,
+        "enabled": true,
+        "status": "UP",
+        "status_reason": [],
+        "link": "link3"
+      },
+      "metadata": {
+        "last_status_change": 1723479768.5077465,
+        "last_status_is_active": true,
+        "notified_up_at": "2024-08-12T16:22:58.530501+00:00"
+      },
+      "active": true,
+      "enabled": true,
+      "status": "UP",
+      "status_reason": []
+    },
+    "link1": {
+      "id": "link1",
+      "endpoint_a": {
+        "id": "aa:00:00:00:00:00:00:01:2",
+        "name": "Novi01-eth2",
+        "port_number": 2,
+        "switch": "aa:00:00:00:00:00:00:01",
+        "type": "interface",
+        "nni": true,
+        "uni": false,
+        "speed": 1250000000,
+        "metadata": {},
+        "lldp": true,
+        "active": true,
+        "enabled": true,
+        "status": "UP",
+        "status_reason": [],
+        "link": "link1"
+      },
+      "endpoint_b": {
+        "id": "aa:00:00:00:00:00:00:02:2",
+        "name": "Novi02-eth2",
+        "port_number": 2,
+        "switch": "aa:00:00:00:00:00:00:02",
+        "type": "interface",
+        "nni": true,
+        "uni": false,
+        "speed": 1250000000,
+        "metadata": {},
+        "lldp": true,
+        "active": true,
+        "enabled": true,
+        "status": "UP",
+        "status_reason": [],
+        "link": "link1"
+      },
+      "metadata": {
+        "last_status_change": 1723479768.5221398,
+        "last_status_is_active": true,
+        "notified_up_at": "2024-08-12T16:22:58.559316+00:00"
+      },
+      "active": true,
+      "enabled": true,
+      "status": "UP",
+      "status_reason": []
+    },
+    "link2": {
+      "id": "link2",
+      "endpoint_a": {
+        "id": "aa:00:00:00:00:00:00:03:3",
+        "name": "Novi03-eth3",
+        "port_number": 3,
+        "switch": "aa:00:00:00:00:00:00:03",
+        "type": "interface",
+        "nni": true,
+        "uni": false,
+        "speed": 1250000000,
+        "metadata": {},
+        "lldp": true,
+        "active": true,
+        "enabled": true,
+        "status": "UP",
+        "status_reason": [],
+        "link": "link2"
+      },
+      "endpoint_b": {
+        "id": "aa:00:00:00:00:00:00:01:3",
+        "name": "Novi01-eth3",
+        "port_number": 3,
+        "switch": "aa:00:00:00:00:00:00:01",
+        "type": "interface",
+        "nni": true,
+        "uni": false,
+        "speed": 1250000000,
+        "metadata": {},
+        "lldp": true,
+        "active": true,
+        "enabled": true,
+        "status": "UP",
+        "status_reason": [],
+        "link": "link2"
+      },
+      "metadata": {
+        "last_status_change": 1723479768.534696,
+        "last_status_is_active": true,
+        "notified_up_at": "2024-08-12T16:22:58.552880+00:00"
+      },
+      "active": true,
+      "enabled": true,
+      "status": "UP",
+      "status_reason": []
+    }
+  }
+}
