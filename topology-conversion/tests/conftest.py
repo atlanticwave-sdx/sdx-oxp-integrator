@@ -119,3 +119,4 @@ def mock_requests(mocker):
 
     mocker.patch('requests.get', side_effect=mock_get)
     mocker.patch('requests.post', side_effect=mock_post)
+

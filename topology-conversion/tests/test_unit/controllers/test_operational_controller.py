@@ -155,3 +155,4 @@ def test_post_oxp_link_disable(mock_requests):
     '''Test for method post_oxp_link_disable'''
     result = post_oxp_link_disable("link1")
     assert result == "links/link1/disable"
+

@@ -234,3 +234,4 @@ def test_parse_convert_topology(parser):
     assert topology['links'][2]['ports'] == ['urn:sdx:port:oxp_url:Novi03:3', 'urn:sdx:port:oxp_url:Novi01:3']
 
     assert topology["services"] == ["l2vpn-ptp"]
+
