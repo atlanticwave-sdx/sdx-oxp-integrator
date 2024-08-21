@@ -17,7 +17,6 @@ def ampath_topology():
         json_file.close()
     return data
 
-
 @pytest.fixture
 def oxp_topology():
     """Build oxp topology json_data"""
@@ -59,7 +58,6 @@ def mock_requests_get(mocker):
     """Fixture to mock requests.get."""
     return mocker.patch('requests.get')
 
-
 @pytest.fixture
 def mock_json_reader(mocker):
     """Fixture to mock json_reader function"""
@@ -69,21 +67,6 @@ def mock_json_reader(mocker):
         "evcs": {"evc1": {"name": "evc1"}},
         "vlans": {"vlan1": {"name": "vlan1"}}
     })
-
-'''
-
-    def mock_get(url, timeout=10):
-        response = Response()
-        response.status_code = 200
-        content = ""
-        if url == "http://mock.url/topology":
-            content = {"topology": {"switches": {}, "links": {}}}
-        if url == "http://mock.url/topology/switches":
-            content = {"switches": {}}
-        if url == "http://mock.url/connection/evc":
-            content = {"result": "success"}
-        response._content = json.dumps(content).encode('utf-8')
-        return response'''
 
 @pytest.fixture
 def mock_requests(mocker):
@@ -119,4 +102,3 @@ def mock_requests(mocker):
 
     mocker.patch('requests.get', side_effect=mock_get)
     mocker.patch('requests.post', side_effect=mock_post)
-
