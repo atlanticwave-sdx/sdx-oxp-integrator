@@ -1,27 +1,4 @@
 import pytest
-import os
-
-from unittest.mock import MagicMock
-from controllers.convert_topology import ParseConvertTopology
-from utils.util import get_timestamp
-
-@pytest.fixture
-def parser(oxp_topology):
-    model_version = os.environ.get("MODEL_VERSION")
-    name = os.environ.get("OXPO_NAME")
-    version = 1
-    topology_id = os.environ.get("OXPO_URL")
-    timestamp = get_timestamp()
-    converted_topology = ParseConvertTopology(
-        topology=oxp_topology,
-        version=version,
-        timestamp=timestamp,
-        model_version=model_version,
-        oxp_name=name,
-        oxp_url="oxp_url",
-        topology_id=topology_id
-    )
-    return converted_topology
 
 def test_get_kytos_nodes(parser):
     '''Test for method get_kytos_nodes'''
@@ -175,6 +152,7 @@ def test_get_sdx_links(parser):
 def test_parse_convert_topology(parser):
     '''Test for method parse_convert_topology'''
     topology = parser.parse_convert_topology()
+    assert topology["model_version"] == '1'
     assert topology["version"] == 1
     assert len(topology["nodes"]) == 3
 
