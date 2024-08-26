@@ -1,41 +1,64 @@
 import pytest
 
-def test_get_kytos_nodes(parser):
+@pytest.mark.parametrize("node_idx,value",
+                         [
+                             (0,"aa:00:00:00:00:00:00:01"),
+                             (1,"aa:00:00:00:00:00:00:02"),
+                             (2,"aa:00:00:00:00:00:00:03")
+                        ])
+def test_get_kytos_nodes(node_idx,value,parser):
     '''Test for method get_kytos_nodes'''
     nodes = list(parser.get_kytos_nodes())
     assert len(nodes) == 3
-    assert nodes[0]["id"] == "aa:00:00:00:00:00:00:01"
-    assert nodes[1]["id"] == "aa:00:00:00:00:00:00:02"
-    assert nodes[2]["id"] == "aa:00:00:00:00:00:00:03"
+    assert nodes[node_idx]["id"] == value
 
-def test_get_port_status(parser):
+@pytest.mark.parametrize("status,value",
+                         [
+                             ("UP","up"),
+                             ("down","down"),
+                             ("unknowm","error")
+                        ])
+def test_get_port_status(status,value,parser):
     '''Test for method get_port_status'''
-    assert parser.get_port_status("UP") == "up"
-    assert parser.get_port_status("down") == "down"
-    assert parser.get_port_status("unknown") == "error"
+    assert parser.get_port_status(status) == value
 
-
-def test_get_link_port_speed(parser):
+@pytest.mark.parametrize("speed,value",
+                         [
+                             ("100GE",100),
+                             ("50000000000",400),
+                             ("unknown",0)
+                        ])
+def test_get_link_port_speed(speed,value,parser):
     '''Test for method get_link_port_speed'''
-    assert parser.get_link_port_speed("100GE") == 100
-    assert parser.get_link_port_speed("50000000000") == 400
-    assert parser.get_link_port_speed("unknown") == 0
+    assert parser.get_link_port_speed(speed) == value
 
-def test_get_type_port_speed(parser):
+@pytest.mark.parametrize("speed,value",
+                         [
+                             ("100GE","100GE"),
+                             ("50000000000","400GE"),
+                             ("unknown","Other")
+                        ])
+def test_get_type_port_speed(speed,value,parser):
     '''Test for method get_type_port_speed'''
-    assert parser.get_type_port_speed("100GE") == "100GE"
-    assert parser.get_type_port_speed("50000000000") == "400GE"
-    assert parser.get_type_port_speed("unknown") == "Other"
+    assert parser.get_type_port_speed(speed) == value
 
-def test_get_status(parser):
+@pytest.mark.parametrize("status,value",
+                         [
+                             (True,"up"),
+                             (False,"down")
+                        ])
+def test_get_status(status,value,parser):
     '''Test for method get_status'''
-    assert parser.get_status(True) == "up"
-    assert parser.get_status(False) == "down"
+    assert parser.get_status(status) == value
 
-def test_get_state(parser):
+@pytest.mark.parametrize("state,value",
+                         [
+                             (True,"enabled"),
+                             (False,"disabled")
+                        ])
+def test_get_state(state,value,parser):
     '''Test for method get_state'''
-    assert parser.get_state(True) == "enabled"
-    assert parser.get_state(False) == "disabled"
+    assert parser.get_state(state) == value
 
 def test_get_port_urn(parser):
     '''
@@ -74,13 +97,17 @@ def test_get_ports(parser):
     assert ports[0]["mtu"] == 1500
     assert ports[0]["nni"] == ""
 
-def test_get_kytos_nodes_names(parser):
+@pytest.mark.parametrize("node,name",
+                         [
+                             ("aa:00:00:00:00:00:00:01","Novi01"),
+                             ("aa:00:00:00:00:00:00:02","Novi02"),
+                             ("aa:00:00:00:00:00:00:03","Novi03")
+                        ])
+def test_get_kytos_nodes_names(node,name,parser):
     '''Test for method get_kytos_nodes_names'''
     names = parser.get_kytos_nodes_names()
     assert len(names) == 3
-    assert names["aa:00:00:00:00:00:00:01"] == "Novi01"
-    assert names["aa:00:00:00:00:00:00:02"] == "Novi02"
-    assert names["aa:00:00:00:00:00:00:03"] == "Novi03"
+    assert names[node] == name
 
 def test_get_sdx_node(parser):
     '''Test for method get_sdx_node'''
@@ -110,13 +137,17 @@ def test_get_sdx_node(parser):
     assert node["status"] == "up"
     assert node["state"] == "enabled"
 
-def test_get_sdx_nodes(parser):
+@pytest.mark.parametrize("node_idx,value",
+                         [
+                             (0,"urn:sdx:node:oxp_url:Novi01"),
+                             (1,"urn:sdx:node:oxp_url:Novi02"),
+                             (2,"urn:sdx:node:oxp_url:Novi03")
+                        ])
+def test_get_sdx_nodes(node_idx,value,parser):
     '''Test for method get_sdx_nodes'''
     nodes = parser.get_sdx_nodes()
     assert len(nodes) == 3
-    assert nodes[0]["id"] == "urn:sdx:node:oxp_url:Novi01"
-    assert nodes[1]["id"] == "urn:sdx:node:oxp_url:Novi02"
-    assert nodes[2]["id"] == "urn:sdx:node:oxp_url:Novi03"
+    assert nodes[node_idx]["id"] == value
 
 def test_get_sdx_link(parser):
     '''Test for method get_sdx_link'''
@@ -141,13 +172,17 @@ def test_get_sdx_link(parser):
     assert link["bandwidth"] == 100
     assert link["ports"] == ['urn:sdx:port:oxp_url:Node1:1', 'urn:sdx:port:oxp_url:Node2:2']
 
-def test_get_sdx_links(parser):
+@pytest.mark.parametrize("link_idx,value",
+                         [
+                             (0,"Novi03-eth5_Novi02-eth5"),
+                             (1,"Novi01-eth2_Novi02-eth2"),
+                             (2,"Novi03-eth3_Novi01-eth3")
+                        ])
+def test_get_sdx_links(link_idx,value,parser):
     '''Test for method get_sdx_links'''
     links = parser.get_sdx_links()
     assert len(links) == 3
-    assert links[0]["name"] == "Novi03-eth5_Novi02-eth5"
-    assert links[1]["name"] == "Novi01-eth2_Novi02-eth2"
-    assert links[2]["name"] == "Novi03-eth3_Novi01-eth3"
+    assert links[link_idx]["name"] == value
 
 def test_parse_convert_topology(parser):
     '''Test for method parse_convert_topology'''
