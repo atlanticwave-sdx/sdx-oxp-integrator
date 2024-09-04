@@ -42,6 +42,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r topology-conversion/requirements.txt
 
+      - name: Install Ruff
+        run: |
+          pip install ruff
+        
       - name: Lint with ruff
         run: ruff check $(git ls-files "*.py")
 
