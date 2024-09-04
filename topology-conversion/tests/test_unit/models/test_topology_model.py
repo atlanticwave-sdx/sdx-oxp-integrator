@@ -3,14 +3,7 @@ from utils.util import get_timestamp
 from models.topology import Topology
 from models.node import Node
 from models.link import Link
-'''
-# Mock implementations of Node and Link if they are not available
-class Node:
-    pass
 
-class Link:
-    pass
-'''
 def test_topology_initialization():
     """Test the initialization of the Topology class."""
     topology = Topology(
