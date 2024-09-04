@@ -1,0 +1,12 @@
+[project.optional-dependencies]
+test = [
+    "pytest >= 7.1.2",
+    "pytest-cov >= 3.0.0",
+    "jsonschema >= 4.19.0",
+    "jsonref >= 1.1.0",
+]
+lint = [
+    "ruff == 0.1.11",
+    "black == 24.*",
+    "isort == 5.*",
+]
