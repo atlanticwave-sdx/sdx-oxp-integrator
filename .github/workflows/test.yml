@@ -51,6 +51,10 @@ jobs:
           ruff check $(git ls-files "*.py") || true
           cat linting_report.txt
 
+      - name: Print current working directory
+        run: |
+          echo "Current directory: $(pwd)"
+    
       - name: Run tests
         run: |
           # Run tests and collect coverage data.
