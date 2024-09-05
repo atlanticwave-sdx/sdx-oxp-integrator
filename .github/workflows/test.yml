@@ -41,7 +41,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r topology-conversion/requirements.txt
-          python -m pip install coverage ruff flit
+          python -m pip install coverage ruff
         
       - name: Lint with ruff
         run: 
@@ -49,8 +49,13 @@ jobs:
           
       - name: Run tests
         run: |
-          python -m pytest
+          coverage run -m pytest
           python -m coverage lcov -o coverage.lcov
+      
+      - name: Check coverage.lcov file
+        run: |
+          ls -l coverage.lcov
+          cat coverage.lcov
           
       - name: Send coverage data to coveralls.io
         uses: coverallsapp/github-action@v2
