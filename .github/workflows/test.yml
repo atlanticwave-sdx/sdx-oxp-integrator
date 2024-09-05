@@ -5,10 +5,10 @@ name: Test
 on:
   push:
     branches:
-      - main
+      - fix-error-test
   pull_request:
     branches:
-      - main
+      - fix-error-test
 
 permissions:
   contents: read
