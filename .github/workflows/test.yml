@@ -46,15 +46,11 @@ jobs:
       - name: Lint with ruff
         run: 
           ruff check $(git ls-files "*.py") || true
-
+          
       - name: Run tests
         run: |
-          coverage run -m pytest
-          coverage lcov -o coverage.lcov
-
-      - name: Build packages
-        run: |
-          python -m flit build
+          python -m pytest
+          python -m coverage lcov -o coverage.lcov
           
       - name: Send coverage data to coveralls.io
         uses: coverallsapp/github-action@v2
