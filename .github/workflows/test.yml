@@ -52,11 +52,6 @@ jobs:
           coverage run -m pytest
           python -m coverage lcov -o coverage.lcov
       
-      - name: Check coverage.lcov file
-        run: |
-          ls -l coverage.lcov
-          cat coverage.lcov
-          
       - name: Send coverage data to coveralls.io
         uses: coverallsapp/github-action@v2
         with:
