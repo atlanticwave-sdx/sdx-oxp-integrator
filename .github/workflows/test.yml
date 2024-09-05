@@ -51,22 +51,20 @@ jobs:
           ruff check $(git ls-files "*.py") || true
           cat linting_report.txt
 
-      - name: Print current working directory
+      - name: Install coverage tool
         run: |
-          echo "Current directory: $(pwd)"
-    
-      - name: Run tests
-        run: |
-          # Run tests and collect coverage data.
-          python -m pytest
-          # Generate LCOV format coverage data for coveralls.
-          python -m coverage lcov -o coverage.lcov
+          pip install coverage
 
-      - name: Build packages
+      - name: Run tests and collect coverage
         run: |
-          python -m flit build
-
-      - name: Send coverage data to coveralls.io
+          # Run tests with coverage
+          coverage run -m pytest
+  
+      - name: Generate LCOV format coverage data for coveralls.
+        run: |
+          coverage lcov -o coverage.lcov
+  
+      - name: Upload coverage data to Coveralls
         uses: coverallsapp/github-action@v2
         with:
           flag-name: run-${{ join(matrix.*, '-') }}
