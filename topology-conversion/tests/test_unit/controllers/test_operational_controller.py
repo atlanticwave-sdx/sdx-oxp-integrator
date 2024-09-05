@@ -58,7 +58,7 @@ def test_post_connection_object(mock_requests):
 
 def test_post_oxp_enable_all(mock_requests):
     '''Test for method post_oxp_enable_all'''
-    with patch('controllers.operational_controller.OXP_META_DATA', './ampath_metadata.json'), \
+    with patch('controllers.operational_controller.OXP_META_DATA', 'topology-conversion/ampath_metadata.json'), \
         patch('controllers.operational_controller.OXP_TOPOLOGY_URL', 'http://mock.url/topology/'):
         result = post_oxp_enable_all()
         assert result == {"links": {}}

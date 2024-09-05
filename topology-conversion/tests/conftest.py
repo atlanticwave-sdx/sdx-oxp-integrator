@@ -11,7 +11,7 @@ from utils.util import get_timestamp
 def ampath_topology():
     """Build ampath topology json_data"""
     actual_dir = os.getcwd()
-    ampath_data = actual_dir + "/tests/ampath.json"
+    ampath_data = actual_dir + "/topology-conversion/tests/ampath.json"
     with open(ampath_data, encoding="utf8") as json_file:
         data = json.load(json_file)
         json_file.close()
@@ -21,7 +21,7 @@ def ampath_topology():
 def oxp_topology():
     """Build oxp topology json_data"""
     actual_dir = os.getcwd()
-    ampath_data = actual_dir + "/tests/oxp_topology.json"
+    ampath_data = actual_dir + "/topology-conversion/tests/oxp_topology.json"
     with open(ampath_data, encoding="utf8") as json_file:
         data = json.load(json_file)
         json_file.close()
