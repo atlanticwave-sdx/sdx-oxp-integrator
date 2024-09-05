@@ -37,23 +37,15 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install dependencies
+      - name: Install tools
         run: |
           python -m pip install --upgrade pip
           pip install -r topology-conversion/requirements.txt
-
-      - name: Install Ruff
-        run: |
-          pip install ruff
+          python -m pip install coverage ruff
         
       - name: Lint with ruff
         run: 
           ruff check $(git ls-files "*.py") || true
-          cat linting_report.txt
-
-      - name: Install coverage tool
-        run: |
-          pip install coverage
 
       - name: Run tests and collect coverage
         run: |
@@ -62,7 +54,7 @@ jobs:
   
       - name: Generate LCOV format coverage data for coveralls.
         run: |
-          coverage lcov -o coverage.lcov
+          python -m coverage lcov -o coverage.lcov
   
       - name: Upload coverage data to Coveralls
         uses: coverallsapp/github-action@v2
@@ -70,7 +62,7 @@ jobs:
           flag-name: run-${{ join(matrix.*, '-') }}
           file: coverage.lcov
           parallel: true
-
+  
   finalize:
     name: finalize
     needs: test
