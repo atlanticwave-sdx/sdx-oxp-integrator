@@ -1,5 +1,7 @@
 # SDX-OXP-Integrator
 
+[![integrator-ci-badge]][integrator-ci] [![integrator-cov-badge]][integrator-cov]
+
 The `sdx-oxp-integrator` is designed to simplify interactions with various OXPO (Open eXchange Point Operator) APIs by providing a streamlined programming interface. This integrator abstracts the complexities of direct API calls and offers a consistent method to interact with different OXPO services, enhancing code readability and maintainability.
 
 ## Key Features
@@ -499,3 +501,12 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Fdisable%2Fall' -H 'accept: app
 ```  
 
 ![alt text](https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/scripts/readme_images/oxp_topology.png?raw=true)
+
+
+<!-- URLs -->
+
+[integrator-ci-badge]: https://github.com/atlanticwave-sdx/sdx-oxp-integrator/actions/workflows/test.yml/badge.svg
+[integrator-ci]: https://github.com/atlanticwave-sdx/sdx-oxp-integrator/actions/workflows/test.yml
+
+[integrator-cov-badge]: https://coveralls.io/repos/github/atlanticwave-sdx/sdx-oxp-integrator/badge.svg?branch=main (Coverage Status)
+[integrator-cov]: https://coveralls.io/github/atlanticwave-sdx/sdx-oxp-integrator?branch=main
