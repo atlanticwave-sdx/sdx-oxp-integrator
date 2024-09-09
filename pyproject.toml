@@ -1,2 +1,2 @@
 [tool.coverage.run]
-omit = ["tests/*"]
+omit = ["topology-conversion/tests/*"]
