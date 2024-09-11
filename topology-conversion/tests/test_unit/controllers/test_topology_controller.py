@@ -22,6 +22,17 @@ def test_get_oxp_topology_success(mock_requests_get):
     assert result == {"nodes": [], "links": []}
     mock_requests_get.assert_called_once_with("http://mock-url", timeout=10)
 
+def test_get_oxp_topology_empty_json(mock_requests_get):
+    """Test handling of empty JSON response from OXP topology."""
+    mock_response = MagicMock()
+    mock_response.status_code = 200
+    mock_response.json.return_value = {}  # Empty JSON response
+    mock_requests_get.return_value = mock_response
+
+    result = get_oxp_topology()
+    assert result == {}  # Expecting empty result since the response does not contain 'topology'
+    mock_requests_get.assert_called_once_with("http://mock-url", timeout=10)
+
 @pytest.mark.xfail
 def test_get_oxp_topology_failure(mock_requests_get):
     """Test handling of request failure in get_oxp_topology.
@@ -110,5 +121,17 @@ def test_convert_topology_exception(mock_requests_get, mock_parse_convert_topolo
     result = convert_topology()
     assert result == {
         "convert_topology Error": "Unexpected error",
+        "status_code": 401
+    }
+
+def test_convert_topology_parsing_exception(mock_requests_get, mock_parse_convert_topology):
+    """Test conversion function handling of parsing exceptions."""
+    mock_response = MagicMock()
+    mock_requests_get.return_value = mock_response
+    mock_parse_convert_topology.side_effect = Exception("Parsing error")
+
+    result = convert_topology()
+    assert result == {
+        "convert_topology Error": "Parsing error",
         "status_code": 401
     }
