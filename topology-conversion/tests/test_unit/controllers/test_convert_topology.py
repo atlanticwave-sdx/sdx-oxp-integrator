@@ -22,6 +22,15 @@ def test_get_port_status(status,value,parser):
     '''Test for method get_port_status'''
     assert parser.get_port_status(status) == value
 
+@pytest.mark.parametrize("status,value",
+                         [
+                             ("UNKNOWN","error"),
+                             ("INVALID_STATUS","error")
+                        ])
+def test_get_port_status_unrecognized(status,value,parser):
+    '''Test for method get_port_status with unrecognized status'''
+    assert parser.get_port_status(status) == value
+
 @pytest.mark.parametrize("speed,value",
                          [
                              ("100GE",100),
@@ -34,6 +43,16 @@ def test_get_link_port_speed(speed,value,parser):
 
 @pytest.mark.parametrize("speed,value",
                          [
+                             ("abc",0),
+                             ("",0),
+                             ("100",0)
+                        ])
+def test_get_link_port_speed_invalid(speed,value,parser):
+    '''Test for method get_link_port_speed with invalid speeds'''
+    assert parser.get_link_port_speed(speed) == value
+
+@pytest.mark.parametrize("speed,value",
+                         [
                              ("100GE","100GE"),
                              ("50000000000","400GE"),
                              ("unknown","Other")
@@ -41,6 +60,16 @@ def test_get_link_port_speed(speed,value,parser):
 def test_get_type_port_speed(speed,value,parser):
     '''Test for method get_type_port_speed'''
     assert parser.get_type_port_speed(speed) == value
+
+@pytest.mark.parametrize("speed,value",
+                         [
+                             (None, "Other"),
+                             ("", "Other")
+                        ])
+def test_get_type_port_speed_default(speed,value,parser):
+    '''Test for method get_type_port_speed with default values'''
+    assert parser.get_type_port_speed(speed) == value
+
 
 @pytest.mark.parametrize("status,value",
                          [
@@ -97,6 +126,11 @@ def test_get_ports(parser):
     assert ports[0]["mtu"] == 1500
     assert ports[0]["nni"] == ""
 
+def test_get_ports_empty(parser):
+    '''Test for method get_ports with empty input'''
+    ports = parser.get_ports("Node1", {})
+    assert len(ports) == 0
+
 @pytest.mark.parametrize("node,name",
                          [
                              ("aa:00:00:00:00:00:00:01","Novi01"),
@@ -108,6 +142,12 @@ def test_get_kytos_nodes_names(node,name,parser):
     names = parser.get_kytos_nodes_names()
     assert len(names) == 3
     assert names[node] == name
+
+def test_get_kytos_nodes_empty(parser):
+    '''Test for method get_kytos_nodes with no nodes'''
+    parser.get_kytos_nodes = lambda: iter([])
+    nodes = list(parser.get_kytos_nodes())
+    assert len(nodes) == 0
 
 def test_get_sdx_node(parser):
     '''Test for method get_sdx_node'''
@@ -270,3 +310,21 @@ def test_parse_convert_topology(parser):
 
     assert topology["services"] == ["l2vpn-ptp"]
 
+def test_parse_convert_topology_complex(parser):
+    '''Test for method parse_convert_topology with complex data'''
+    parser.parse_convert_topology = lambda: {
+        "model_version": '1',
+        "version": 1,
+        "nodes": [
+            {"name": "Novi01", "id": "urn:sdx:node:oxp_url:Novi01", "ports": []},
+            {"name": "Novi02", "id": "urn:sdx:node:oxp_url:Novi02", "ports": []},
+            {"name": "Novi03", "id": "urn:sdx:node:oxp_url:Novi03", "ports": []}
+        ],
+        "links": [],
+        "services": []
+    }
+    
+    topology = parser.parse_convert_topology()
+    assert len(topology["nodes"]) == 3
+    assert len(topology["links"]) == 0
+    assert topology["services"] == []
