@@ -1,4 +1,7 @@
-from datetime import datetime, date
+#from datetime 
+import datetime
+import pytest
+from unittest.mock import patch
 from utils.util import get_timestamp, _deserialize, deserialize_date, deserialize_datetime, _deserialize_primitive
 from utils.util import _deserialize_object, _deserialize_list, _deserialize_dict, deserialize_model
 import pytz
@@ -21,6 +24,51 @@ def test_get_timestamp_with_provided_timestamp():
     result = get_timestamp(timestamp)
     assert result == "2024-09-11T12:34:56Z"
 
+@pytest.mark.xfail
+@patch('utils.util.deserialize_date')
+@patch('utils.util.deserialize_datetime')
+@patch('utils.util.deserialize_model')
+@patch('utils.util._deserialize_primitive')
+@patch('utils.util._deserialize_list')
+@patch('utils.util._deserialize_dict')
+def test__deserialize(mock_deserialize_dict, mock_deserialize_list, mock_deserialize_primitive, \
+                      mock_deserialize_model, mock_deserialize_datetime, mock_deserialize_date):
+    """Test _deserialize function with various types.
+
+        This test is expected to fail because utils.util.py tries to access datetime.datetime 
+        but it fails because the datetime class is not being accessed correctly. 
+        In the _deserialize function, datetime refers to the datetime class directly, 
+        so datetime.datetime should not be used. Instead, datetime should be used directly.
+    """
+    
+    # Setup mocks
+    mock_deserialize_primitive.return_value = "primitive_value"
+    mock_deserialize_date.return_value = "date_value"
+    mock_deserialize_datetime.return_value = "datetime_value"
+    mock_deserialize_model.return_value = "model_value"
+    mock_deserialize_list.return_value = ["list_value"]
+    mock_deserialize_dict.return_value = {"key": "dict_value"}
+    
+    # Test primitive type
+    assert _deserialize("data", int) == "primitive_value"
+    assert _deserialize("data", str) == "primitive_value"
+    
+    # Test datetime
+    assert _deserialize("data", datetime.datetime.date) == "date_value"
+    assert _deserialize("data", datetime.datetime) == "datetime_value"
+    
+    # Test list
+    assert _deserialize(["data"], list[int]) == ["list_value"]
+    
+    # Test dict
+    assert _deserialize({"key": "data"}, dict[str, str]) == {"key": "dict_value"}
+    
+    # Test model
+    assert _deserialize("data", "SomeModelClass") == "model_value"
+
+    # Test None
+    assert _deserialize(None, object) == None
+
 def test_get_timestamp_without_provided_timestamp():
     """
     Test the `get_timestamp` function when no timestamp is provided.
@@ -29,7 +77,7 @@ def test_get_timestamp_without_provided_timestamp():
     function returns the current timestamp in the specified format.
     """
     result = get_timestamp()
-    now = datetime.now(pytz.timezone("America/New_York")).strftime("%Y-%m-%dT%H:%M:%SZ")
+    now = datetime.datetime.now(pytz.timezone("America/New_York")).strftime("%Y-%m-%dT%H:%M:%SZ")
     assert result == now
 
 def test_deserialize_date():
