@@ -1,2 +1,4 @@
 [tool.coverage.run]
+branch = true
 omit = ["topology-conversion/tests/*","os-base/validator/tests/*"]
+relative_files = true
