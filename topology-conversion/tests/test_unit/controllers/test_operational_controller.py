@@ -189,8 +189,6 @@ def test_post_oxp_link_disable(mock_requests):
     result = post_oxp_link_disable("link1")
     assert result == "links/link1/disable"
 
-#from unittest.mock import patch, MagicMock
-
 def test_post_oxp_link_disable_all(mock_requests):
     '''Test for post_oxp_link_disable with "all" parameter to ensure all links are disabled'''
     mock_links = {
