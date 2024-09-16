@@ -508,5 +508,5 @@ curl -X 'GET' 'http://67.17.206.221/tenet.ac.za%2Fdisable%2Fall' -H 'accept: app
 [integrator-ci-badge]: https://github.com/atlanticwave-sdx/sdx-oxp-integrator/actions/workflows/test.yml/badge.svg
 [integrator-ci]: https://github.com/atlanticwave-sdx/sdx-oxp-integrator/actions/workflows/test.yml
 
-[integrator-cov-badge]: https://coveralls.io/repos/github/atlanticwave-sdx/sdx-oxp-integrator/badge.svg?1 (Coverage Status)
+[integrator-cov-badge]: https://coveralls.io/repos/github/atlanticwave-sdx/sdx-oxp-integrator/badge.svg?branch=main (Coverage Status)
 [integrator-cov]: https://coveralls.io/github/atlanticwave-sdx/sdx-oxp-integrator?branch=main
