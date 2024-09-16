@@ -1,6 +1,6 @@
 # SDX-OXP-Integrator
 
-[![integrator-ci-badge]][integrator-ci] 
+[![integrator-ci-badge]][integrator-ci] [![integrator-cov-badge]][integrator-cov]
 
 The `sdx-oxp-integrator` is designed to simplify interactions with various OXPO (Open eXchange Point Operator) APIs by providing a streamlined programming interface. This integrator abstracts the complexities of direct API calls and offers a consistent method to interact with different OXPO services, enhancing code readability and maintainability.
 
