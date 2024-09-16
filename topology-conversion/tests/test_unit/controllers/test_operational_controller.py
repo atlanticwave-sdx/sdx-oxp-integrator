@@ -1,6 +1,6 @@
-import os
-import pytest
 from unittest.mock import patch
+from unittest.mock import MagicMock
+import pytest
 
 from controllers.operational_controller import (
     get_operational_event,
@@ -8,6 +8,7 @@ from controllers.operational_controller import (
     post_topology_object,
     get_connection_object,
     post_connection_object,
+    json_reader,
     post_oxp_enable_all,
     post_oxp_disable_all,
     get_oxp_switches,
@@ -34,6 +35,13 @@ def test_get_operational_event(mock_requests):
         result = get_operational_event()
         assert result == {"switches": {}, "links": {}}
 
+def test_get_operational_event_http_error(mock_requests):
+    '''Test for get_operational_event handling HTTP errors'''
+    with patch('controllers.operational_controller.requests.get',\
+        MagicMock(return_value=MagicMock(status_code=500))):
+        result = get_operational_event()
+        assert result == {"error:": "Failed to retrieve data", "status_code:": 500}
+
 def test_get_topology_object(mock_requests):
     '''Test for method get_topology_object'''
     with patch('controllers.operational_controller.OXP_TOPOLOGY_URL', 'http://mock.url/topology/'):
@@ -43,6 +51,11 @@ def test_get_topology_object(mock_requests):
 def test_post_topology_object(mock_requests):
     '''Test for method post_topology_object'''
     result = post_topology_object("switches", {"data": "test"})
+    assert result == {"result": "success"}
+
+def test_post_topology_object_empty_data(mock_requests):
+    '''Test for post_topology_object with empty data'''
+    result = post_topology_object("switches", {})
     assert result == {"result": "success"}
 
 def test_get_connection_object(mock_requests):
@@ -81,15 +94,35 @@ def test_get_oxp_switch_by_dpid(mock_requests):
         result = get_oxp_switch_by_dpid("switch1")
         assert result == {"metadata": {}}
 
+def test_json_reader_file_not_found():
+    '''Test for json_reader when file does not exist'''
+    with patch('controllers.operational_controller.os.getcwd', return_value='/fake/path'):
+        with pytest.raises(FileNotFoundError):
+            json_reader('non_existent_file.json')
+
 def test_post_oxp_switch_enable(mock_requests):
     '''Test for method post_oxp_switch_enable'''
     result = post_oxp_switch_enable("switch1")
     assert result == "switches/switch1/enable"
 
+def test_post_oxp_switch_enable_all(mock_json_reader, mock_requests):
+    '''Test post_oxp_switch_enable with "all" parameter'''
+    with patch('controllers.operational_controller.get_topology_object', \
+               return_value={"switches": {"switch1": {"id": "switch1"}}}):
+        result = post_oxp_switch_enable("all")
+        assert result == "switches/switch1/enable"
+
 def test_post_oxp_switch_disable(mock_requests):
     '''Test for method post_oxp_switch_disable'''
     result = post_oxp_switch_disable("switch1")
     assert result == "switches/switch1/disable"
+
+def test_post_oxp_switch_disable_all(mock_json_reader, mock_requests):
+    '''Test post_oxp_switch_disable with "all" parameter'''
+    with patch('controllers.operational_controller.get_topology_object', \
+               return_value={"switches": {"switch1": {"id": "switch1"}}}):
+        result = post_oxp_switch_disable("all")
+        assert result == "switches/switch1/disable"
 
 def test_get_oxp_interfaces(mock_requests):
     '''Test for method get_oxp_interfaces'''
@@ -156,3 +189,29 @@ def test_post_oxp_link_disable(mock_requests):
     result = post_oxp_link_disable("link1")
     assert result == "links/link1/disable"
 
+#from unittest.mock import patch, MagicMock
+
+def test_post_oxp_link_disable_all(mock_requests):
+    '''Test for post_oxp_link_disable with "all" parameter to ensure all links are disabled'''
+    mock_links = {
+        "links": {
+            "link1": {"id": "link1"},
+            "link2": {"id": "link2"}
+        }
+    }
+    
+    with patch('controllers.operational_controller.get_topology_object', \
+               return_value=mock_links) as mock_get_topology, \
+         patch('controllers.operational_controller.post_topology_object') as mock_post_topology:
+        
+        result = post_oxp_link_disable("all")
+        
+        # Ensure get_topology_object was called with the correct parameter
+        mock_get_topology.assert_called_once_with("links")
+        
+        # Ensure post_topology_object was called for each link with the correct URL and data
+        mock_post_topology.assert_any_call("links/link1/disable", {})
+        mock_post_topology.assert_any_call("links/link2/disable", {})
+        
+        # Check the return value
+        assert result == "links/link2/disable"
