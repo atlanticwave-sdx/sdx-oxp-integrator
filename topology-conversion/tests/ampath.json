@@ -1,199 +1,503 @@
 {
-  "name": "Ampath-OXP",
-  "id": "urn:sdx:topology:ampath.net",
-  "version": 2,
-  "timestamp": "2024-08-05T09:44:21Z",
-  "model_version": "2.0.0",
-  "nodes": [
-    {
-      "name": "Novi01",
-      "id": "urn:sdx:node:ampath.net:Novi01",
-      "location": {
-        "address": "",
-        "latitude": 0,
-        "longitude": -30,
-        "iso3166_2_lvl4": "",
-        "private": []
-      },
-      "ports": [
-        {
-          "id": "urn:sdx:port:ampath.net:Novi01:15",
-          "name": "Novi01-eth15",
-          "node": "urn:sdx:node:ampath.net:Novi01",
-          "type": "10GE",
-          "status": "up",
-          "state": "enabled",
-          "mtu": 1500,
-          "nni": "",
-          "services": {
-            "l2vpn-ptp": {
-              "vlan_range": [
-                [
-                  1,
-                  4095
-                ]
-              ]
-            }
-          }
+  "switches": {
+    "aa:00:00:00:00:00:00:03": {
+      "id": "aa:00:00:00:00:00:00:03",
+      "name": "aa:00:00:00:00:00:00:03",
+      "dpid": "aa:00:00:00:00:00:00:03",
+      "connection": "192.168.0.11:45006",
+      "ofp_version": "0x04",
+      "type": "switch",
+      "manufacturer": "Nicira, Inc.",
+      "serial": "None",
+      "hardware": "Open vSwitch",
+      "software": "2.10.1",
+      "data_path": "Novi03",
+      "interfaces": {
+        "aa:00:00:00:00:00:00:03:4294967294": {
+          "id": "aa:00:00:00:00:00:00:03:4294967294",
+          "name": "Novi03",
+          "port_number": 4294967294,
+          "mac": "a6:47:aa:33:80:4e",
+          "switch": "aa:00:00:00:00:00:00:03",
+          "type": "interface",
+          "nni": false,
+          "uni": true,
+          "speed": 0,
+          "metadata": {},
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": ""
         },
-        {
-          "id": "urn:sdx:port:ampath.net:Novi01:16",
-          "name": "Novi01-eth16",
-          "node": "urn:sdx:node:ampath.net:Novi01",
-          "type": "10GE",
-          "status": "up",
-          "state": "enabled",
-          "mtu": 1500,
-          "nni": "",
-          "services": {
-            "l2vpn-ptp": {
-              "vlan_range": [
-                [
-                  1,
-                  4095
-                ]
-              ]
-            }
-          }
+        "aa:00:00:00:00:00:00:03:1": {
+          "id": "aa:00:00:00:00:00:00:03:1",
+          "name": "Novi03-eth1",
+          "port_number": 1,
+          "mac": "aa:67:78:89:f8:f4",
+          "switch": "aa:00:00:00:00:00:00:03",
+          "type": "interface",
+          "nni": false,
+          "uni": true,
+          "speed": 1250000000,
+          "metadata": {
+            "sdx_nni": "tenet.ac.za:Novi07:1"
+          },
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": ""
         },
-        {
-          "id": "urn:sdx:port:ampath.net:Novi01:1",
-          "name": "Novi01-eth1",
-          "node": "urn:sdx:node:ampath.net:Novi01",
-          "type": "10GE",
-          "status": "up",
-          "state": "enabled",
-          "mtu": 1500,
-          "nni": "urn:sdx:link:tenet.ac.za:Novi05:1",
-          "services": {
-            "l2vpn-ptp": {
-              "vlan_range": [
-                [
-                  1,
-                  4095
-                ]
-              ]
-            }
-          }
+        "aa:00:00:00:00:00:00:03:5": {
+          "id": "aa:00:00:00:00:00:00:03:5",
+          "name": "Novi03-eth5",
+          "port_number": 5,
+          "mac": "c6:04:d6:31:1c:d9",
+          "switch": "aa:00:00:00:00:00:00:03",
+          "type": "interface",
+          "nni": true,
+          "uni": false,
+          "speed": 1250000000,
+          "metadata": {},
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": "75a97ba6a4975ee4f034b2be427f7930bb1c74aa13f2c51d29d2ee4d3e7befd0"
         },
-        {
-          "id": "urn:sdx:port:ampath.net:Novi01:2",
-          "name": "Novi01-eth2",
-          "node": "urn:sdx:node:ampath.net:Novi01",
-          "type": "10GE",
-          "status": "up",
-          "state": "enabled",
-          "mtu": 1500,
-          "nni": "urn:sdx:link:Novi01/p2_Novi02/p2",
-          "services": {
-            "l2vpn-ptp": {
-              "vlan_range": [
-                [
-                  1,
-                  4095
-                ]
-              ]
-            }
-          }
+        "aa:00:00:00:00:00:00:03:3": {
+          "id": "aa:00:00:00:00:00:00:03:3",
+          "name": "Novi03-eth3",
+          "port_number": 3,
+          "mac": "8e:56:f8:6e:bd:e6",
+          "switch": "aa:00:00:00:00:00:00:03",
+          "type": "interface",
+          "nni": true,
+          "uni": false,
+          "speed": 1250000000,
+          "metadata": {},
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": "5c348eb07ab9b0af617189fa0e54f417265d7d1513ed743a88fc38f123cb8f2b"
         }
-      ],
-      "status": "up",
-      "state": "enabled"
+      },
+      "metadata": {
+        "lat": "26.38",
+        "lng": "-80.11",
+        "address": "BocaRaton",
+        "iso3166_2_lvl4": "US-FL"
+      },
+      "active": true,
+      "enabled": true,
+      "status": "UP",
+      "status_reason": []
     },
-    {
-      "name": "Novi02",
-      "id": "urn:sdx:node:ampath.net:Novi02",
-      "location": {
-        "address": "",
-        "latitude": 0,
-        "longitude": -20,
-        "iso3166_2_lvl4": "",
-        "private": []
-      },
-      "ports": [
-        {
-          "id": "urn:sdx:port:ampath.net:Novi02:4",
-          "name": "Novi02-eth4",
-          "node": "urn:sdx:node:ampath.net:Novi02",
-          "type": "10GE",
-          "status": "up",
-          "state": "enabled",
-          "mtu": 1500,
-          "nni": "urn:sdx:link:sax.net:Novi03:4",
-          "services": {
-            "l2vpn-ptp": {
-              "vlan_range": [
-                [
-                  1,
-                  4095
-                ]
-              ]
-            }
-          }
+    "aa:00:00:00:00:00:00:01": {
+      "id": "aa:00:00:00:00:00:00:01",
+      "name": "aa:00:00:00:00:00:00:01",
+      "dpid": "aa:00:00:00:00:00:00:01",
+      "connection": "192.168.0.11:45014",
+      "ofp_version": "0x04",
+      "type": "switch",
+      "manufacturer": "Nicira, Inc.",
+      "serial": "None",
+      "hardware": "Open vSwitch",
+      "software": "2.10.1",
+      "data_path": "Novi01",
+      "interfaces": {
+        "aa:00:00:00:00:00:00:01:11": {
+          "id": "aa:00:00:00:00:00:00:01:11",
+          "name": "Novi01-eth11",
+          "port_number": 11,
+          "mac": "42:bf:91:f0:48:f7",
+          "switch": "aa:00:00:00:00:00:00:01",
+          "type": "interface",
+          "nni": false,
+          "uni": true,
+          "speed": 1250000000,
+          "metadata": {},
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": ""
         },
-        {
-          "id": "urn:sdx:port:ampath.net:Novi02:2",
-          "name": "Novi02-eth2",
-          "node": "urn:sdx:node:ampath.net:Novi02",
-          "type": "10GE",
-          "status": "up",
-          "state": "enabled",
-          "mtu": 1500,
-          "nni": "urn:sdx:link:Novi02/p2_Novi01/p2",
-          "services": {
-            "l2vpn-ptp": {
-              "vlan_range": [
-                [
-                  1,
-                  4095
-                ]
-              ]
-            }
-          }
+        "aa:00:00:00:00:00:00:01:4294967294": {
+          "id": "aa:00:00:00:00:00:00:01:4294967294",
+          "name": "Novi01",
+          "port_number": 4294967294,
+          "mac": "56:73:8d:46:5a:44",
+          "switch": "aa:00:00:00:00:00:00:01",
+          "type": "interface",
+          "nni": false,
+          "uni": true,
+          "speed": 0,
+          "metadata": {},
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": ""
         },
-        {
-          "id": "urn:sdx:port:ampath.net:Novi02:3",
-          "name": "Novi02-eth3",
-          "node": "urn:sdx:node:ampath.net:Novi02",
-          "type": "10GE",
-          "status": "up",
-          "state": "enabled",
-          "mtu": 1500,
-          "nni": "urn:sdx:link:tenet.ac.za:Novi05:3",
-          "services": {
-            "l2vpn-ptp": {
-              "vlan_range": [
-                [
-                  1,
-                  4095
-                ]
-              ]
-            }
-          }
+        "aa:00:00:00:00:00:00:01:1": {
+          "id": "aa:00:00:00:00:00:00:01:1",
+          "name": "Novi01-eth1",
+          "port_number": 1,
+          "mac": "36:48:4c:79:45:6f",
+          "switch": "aa:00:00:00:00:00:00:01",
+          "type": "interface",
+          "nni": false,
+          "uni": true,
+          "speed": 1250000000,
+          "metadata": {
+            "sdx_nni": "tenet.ac.za:Novi06:1"
+          },
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": ""
+        },
+        "aa:00:00:00:00:00:00:01:2": {
+          "id": "aa:00:00:00:00:00:00:01:2",
+          "name": "Novi01-eth2",
+          "port_number": 2,
+          "mac": "46:d8:fb:47:91:ee",
+          "switch": "aa:00:00:00:00:00:00:01",
+          "type": "interface",
+          "nni": true,
+          "uni": false,
+          "speed": 1250000000,
+          "metadata": {},
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": "295dfbb2a4ffdd77907dca083795811b2f21a419670dc29f4bda05da4b750bc2"
+        },
+        "aa:00:00:00:00:00:00:01:3": {
+          "id": "aa:00:00:00:00:00:00:01:3",
+          "name": "Novi01-eth3",
+          "port_number": 3,
+          "mac": "02:07:81:03:d1:40",
+          "switch": "aa:00:00:00:00:00:00:01",
+          "type": "interface",
+          "nni": true,
+          "uni": false,
+          "speed": 1250000000,
+          "metadata": {},
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": "5c348eb07ab9b0af617189fa0e54f417265d7d1513ed743a88fc38f123cb8f2b"
         }
-      ],
-      "status": "up",
-      "state": "enabled"
+      },
+      "metadata": {
+        "lat": "25.77",
+        "lng": "-80.19",
+        "address": "Miami",
+        "iso3166_2_lvl4": "US-FL"
+      },
+      "active": true,
+      "enabled": true,
+      "status": "UP",
+      "status_reason": []
+    },
+    "aa:00:00:00:00:00:00:02": {
+      "id": "aa:00:00:00:00:00:00:02",
+      "name": "aa:00:00:00:00:00:00:02",
+      "dpid": "aa:00:00:00:00:00:00:02",
+      "connection": "192.168.0.11:45030",
+      "ofp_version": "0x04",
+      "type": "switch",
+      "manufacturer": "Nicira, Inc.",
+      "serial": "None",
+      "hardware": "Open vSwitch",
+      "software": "2.10.1",
+      "data_path": "Novi02",
+      "interfaces": {
+        "aa:00:00:00:00:00:00:02:4294967294": {
+          "id": "aa:00:00:00:00:00:00:02:4294967294",
+          "name": "Novi02",
+          "port_number": 4294967294,
+          "mac": "ea:a0:f4:1a:fd:44",
+          "switch": "aa:00:00:00:00:00:00:02",
+          "type": "interface",
+          "nni": false,
+          "uni": true,
+          "speed": 0,
+          "metadata": {},
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": ""
+        },
+        "aa:00:00:00:00:00:00:02:22": {
+          "id": "aa:00:00:00:00:00:00:02:22",
+          "name": "Novi02-eth22",
+          "port_number": 22,
+          "mac": "3e:27:f1:53:d5:eb",
+          "switch": "aa:00:00:00:00:00:00:02",
+          "type": "interface",
+          "nni": false,
+          "uni": true,
+          "speed": 1250000000,
+          "metadata": {},
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": ""
+        },
+        "aa:00:00:00:00:00:00:02:4": {
+          "id": "aa:00:00:00:00:00:00:02:4",
+          "name": "Novi02-eth4",
+          "port_number": 4,
+          "mac": "d6:f4:e3:eb:2c:f5",
+          "switch": "aa:00:00:00:00:00:00:02",
+          "type": "interface",
+          "nni": false,
+          "uni": true,
+          "speed": 1250000000,
+          "metadata": {
+            "sdx_nni": "sax.net:Novi04:4"
+          },
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": ""
+        },
+        "aa:00:00:00:00:00:00:02:5": {
+          "id": "aa:00:00:00:00:00:00:02:5",
+          "name": "Novi02-eth5",
+          "port_number": 5,
+          "mac": "7a:3f:1b:da:10:63",
+          "switch": "aa:00:00:00:00:00:00:02",
+          "type": "interface",
+          "nni": true,
+          "uni": false,
+          "speed": 1250000000,
+          "metadata": {},
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": "75a97ba6a4975ee4f034b2be427f7930bb1c74aa13f2c51d29d2ee4d3e7befd0"
+        },
+        "aa:00:00:00:00:00:00:02:2": {
+          "id": "aa:00:00:00:00:00:00:02:2",
+          "name": "Novi02-eth2",
+          "port_number": 2,
+          "mac": "12:1a:25:a4:d5:44",
+          "switch": "aa:00:00:00:00:00:00:02",
+          "type": "interface",
+          "nni": true,
+          "uni": false,
+          "speed": 1250000000,
+          "metadata": {},
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": "295dfbb2a4ffdd77907dca083795811b2f21a419670dc29f4bda05da4b750bc2"
+        },
+        "aa:00:00:00:00:00:00:02:3": {
+          "id": "aa:00:00:00:00:00:00:02:3",
+          "name": "Novi02-eth3",
+          "port_number": 3,
+          "mac": "ae:ce:a9:0a:73:71",
+          "switch": "aa:00:00:00:00:00:00:02",
+          "type": "interface",
+          "nni": false,
+          "uni": true,
+          "speed": 1250000000,
+          "metadata": {
+            "sdx_nni": "tenet.ac.za:Novi06:3"
+          },
+          "lldp": true,
+          "active": true,
+          "enabled": true,
+          "status": "UP",
+          "status_reason": [],
+          "link": ""
+        }
+      },
+      "metadata": {
+        "lat": "26.38",
+        "lng": "-80.11",
+        "address": "BocaRaton",
+        "iso3166_2_lvl4": "US-FL"
+      },
+      "active": true,
+      "enabled": true,
+      "status": "UP",
+      "status_reason": []
     }
-  ],
-  "links": [
-    {
-      "name": "Novi01-eth2_Novi02-eth2",
-      "id": "urn:sdx:link:ampath.net:Novi01-eth2_Novi02-eth2",
-      "type": "intra",
-      "ports": [
-        "urn:sdx:port:ampath.net:Novi01:Novi01-eth2",
-        "urn:sdx:port:ampath.net:Novi02:Novi02-eth2"
-      ],
-      "bandwidth": 10,
-      "residual_bandwidth": 100,
-      "packet_loss": 0,
-      "latency": 2,
-      "status": "up",
-      "state": "enabled"
+  },
+  "links": {
+    "75a97ba6a4975ee4f034b2be427f7930bb1c74aa13f2c51d29d2ee4d3e7befd0": {
+      "id": "75a97ba6a4975ee4f034b2be427f7930bb1c74aa13f2c51d29d2ee4d3e7befd0",
+      "endpoint_a": {
+        "id": "aa:00:00:00:00:00:00:03:5",
+        "name": "Novi03-eth5",
+        "port_number": 5,
+        "mac": "c6:04:d6:31:1c:d9",
+        "switch": "aa:00:00:00:00:00:00:03",
+        "type": "interface",
+        "nni": true,
+        "uni": false,
+        "speed": 1250000000,
+        "metadata": {},
+        "lldp": true,
+        "active": true,
+        "enabled": true,
+        "status": "UP",
+        "status_reason": [],
+        "link": "75a97ba6a4975ee4f034b2be427f7930bb1c74aa13f2c51d29d2ee4d3e7befd0"
+      },
+      "endpoint_b": {
+        "id": "aa:00:00:00:00:00:00:02:5",
+        "name": "Novi02-eth5",
+        "port_number": 5,
+        "mac": "7a:3f:1b:da:10:63",
+        "switch": "aa:00:00:00:00:00:00:02",
+        "type": "interface",
+        "nni": true,
+        "uni": false,
+        "speed": 1250000000,
+        "metadata": {},
+        "lldp": true,
+        "active": true,
+        "enabled": true,
+        "status": "UP",
+        "status_reason": [],
+        "link": "75a97ba6a4975ee4f034b2be427f7930bb1c74aa13f2c51d29d2ee4d3e7befd0"
+      },
+      "metadata": {
+        "last_status_change": 1723479768.5077465,
+        "last_status_is_active": true,
+        "notified_up_at": "2024-08-26T18:14:44.354559+00:00"
+      },
+      "active": true,
+      "enabled": true,
+      "status": "UP",
+      "status_reason": []
+    },
+    "295dfbb2a4ffdd77907dca083795811b2f21a419670dc29f4bda05da4b750bc2": {
+      "id": "295dfbb2a4ffdd77907dca083795811b2f21a419670dc29f4bda05da4b750bc2",
+      "endpoint_a": {
+        "id": "aa:00:00:00:00:00:00:01:2",
+        "name": "Novi01-eth2",
+        "port_number": 2,
+        "mac": "46:d8:fb:47:91:ee",
+        "switch": "aa:00:00:00:00:00:00:01",
+        "type": "interface",
+        "nni": true,
+        "uni": false,
+        "speed": 1250000000,
+        "metadata": {},
+        "lldp": true,
+        "active": true,
+        "enabled": true,
+        "status": "UP",
+        "status_reason": [],
+        "link": "295dfbb2a4ffdd77907dca083795811b2f21a419670dc29f4bda05da4b750bc2"
+      },
+      "endpoint_b": {
+        "id": "aa:00:00:00:00:00:00:02:2",
+        "name": "Novi02-eth2",
+        "port_number": 2,
+        "mac": "12:1a:25:a4:d5:44",
+        "switch": "aa:00:00:00:00:00:00:02",
+        "type": "interface",
+        "nni": true,
+        "uni": false,
+        "speed": 1250000000,
+        "metadata": {},
+        "lldp": true,
+        "active": true,
+        "enabled": true,
+        "status": "UP",
+        "status_reason": [],
+        "link": "295dfbb2a4ffdd77907dca083795811b2f21a419670dc29f4bda05da4b750bc2"
+      },
+      "metadata": {
+        "last_status_change": 1723479768.5221398,
+        "last_status_is_active": true,
+        "notified_up_at": "2024-08-26T18:14:44.377246+00:00"
+      },
+      "active": true,
+      "enabled": true,
+      "status": "UP",
+      "status_reason": []
+    },
+    "5c348eb07ab9b0af617189fa0e54f417265d7d1513ed743a88fc38f123cb8f2b": {
+      "id": "5c348eb07ab9b0af617189fa0e54f417265d7d1513ed743a88fc38f123cb8f2b",
+      "endpoint_a": {
+        "id": "aa:00:00:00:00:00:00:03:3",
+        "name": "Novi03-eth3",
+        "port_number": 3,
+        "mac": "8e:56:f8:6e:bd:e6",
+        "switch": "aa:00:00:00:00:00:00:03",
+        "type": "interface",
+        "nni": true,
+        "uni": false,
+        "speed": 1250000000,
+        "metadata": {},
+        "lldp": true,
+        "active": true,
+        "enabled": true,
+        "status": "UP",
+        "status_reason": [],
+        "link": "5c348eb07ab9b0af617189fa0e54f417265d7d1513ed743a88fc38f123cb8f2b"
+      },
+      "endpoint_b": {
+        "id": "aa:00:00:00:00:00:00:01:3",
+        "name": "Novi01-eth3",
+        "port_number": 3,
+        "mac": "02:07:81:03:d1:40",
+        "switch": "aa:00:00:00:00:00:00:01",
+        "type": "interface",
+        "nni": true,
+        "uni": false,
+        "speed": 1250000000,
+        "metadata": {},
+        "lldp": true,
+        "active": true,
+        "enabled": true,
+        "status": "UP",
+        "status_reason": [],
+        "link": "5c348eb07ab9b0af617189fa0e54f417265d7d1513ed743a88fc38f123cb8f2b"
+      },
+      "metadata": {
+        "last_status_change": 1723479768.534696,
+        "last_status_is_active": true,
+        "notified_up_at": "2024-08-26T18:14:44.356368+00:00"
+      },
+      "active": true,
+      "enabled": true,
+      "status": "UP",
+      "status_reason": []
     }
-  ],
-  "services": [
-    "l2vpn-ptp"
-  ]
+  }
 }
