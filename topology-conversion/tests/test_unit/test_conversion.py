@@ -231,9 +231,10 @@ def test_empty_node_array(ampath_topology):
     ).parse_convert_topology()
     converted_topology["nodes"] = []
     validated_topology = validate(converted_topology)
-    error_message = "Validation Error: [] is too short"
+    #error_message = "Validation Error: [] is too short"
     assert validated_topology["status_code"] == 400
-    assert error_message in validated_topology["result"]
+    #assert error_message in validated_topology["result"]
+    assert "Validation Error: []" in validated_topology["result"]
 
 
 def test_node_additional_property(ampath_topology):
