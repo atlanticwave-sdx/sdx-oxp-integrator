@@ -32,20 +32,20 @@ def custom_topo(amlight_ctlr, sax_ctlr, tenet_ctlr):
     )
     TenetController.start()
 
-    tenet_sw1 = net.addSwitch("Novi06", listenPort=6701, dpid="dd00000000000006")
-    tenet_sw2 = net.addSwitch("Novi07", listenPort=6702, dpid="dd00000000000007")
-    tenet_sw3 = net.addSwitch("Novi08", listenPort=6702, dpid="dd00000000000008")
+    tenet_sw1 = net.addSwitch("Tenet01", listenPort=6701, dpid="dd00000000000006")
+    tenet_sw2 = net.addSwitch("Tenet02", listenPort=6702, dpid="dd00000000000007")
+    tenet_sw3 = net.addSwitch("Tenet03", listenPort=6702, dpid="dd00000000000008")
 
     net.addLink(tenet_sw1, tenet_sw2, port1=1, port2=1)
     net.addLink(tenet_sw1, tenet_sw3, port1=2, port2=2)
 
-    h6 = net.addHost("INT06", mac="00:00:00:00:00:66")
-    h7 = net.addHost("INT07", mac="00:00:00:00:00:77")
-    h8 = net.addHost("INT08", mac="00:00:00:00:00:88")
+    tenet_h6 = net.addHost("h6", mac="00:00:00:00:00:66")
+    tenet_h7 = net.addHost("h7", mac="00:00:00:00:00:77")
+    tenet_h8 = net.addHost("h8", mac="00:00:00:00:00:88")
 
-    net.addLink(h6, tenet_sw1, port1=50, port2=50)
-    net.addLink(h7, tenet_sw2, port1=50, port2=50)
-    net.addLink(h8, tenet_sw3, port1=50, port2=50)
+    net.addLink(tenet_h6, tenet_sw1, port1=50, port2=50)
+    net.addLink(tenet_h7, tenet_sw2, port1=50, port2=50)
+    net.addLink(tenet_h8, tenet_sw3, port1=50, port2=50)
 
     # ************************************************ TENET OXP - End ************************************************
 
@@ -55,16 +55,16 @@ def custom_topo(amlight_ctlr, sax_ctlr, tenet_ctlr):
     )
     SaxController.start()
 
-    sax_sw1 = net.addSwitch("Novi04", listenPort=6801, dpid="cc00000000000004")
-    sax_sw2 = net.addSwitch("Novi05", listenPort=6802, dpid="cc00000000000005")
+    sax_sw1 = net.addSwitch("Sax01", listenPort=6801, dpid="cc00000000000004")
+    sax_sw2 = net.addSwitch("Sax02", listenPort=6802, dpid="cc00000000000005")
 
     net.addLink(sax_sw1, sax_sw2, port1=1, port2=1)
 
-    h4 = net.addHost("INT04", mac="00:00:00:00:00:44")
-    h5 = net.addHost("INT04", mac="00:00:00:00:00:55")
+    sax_h4 = net.addHost("h4", mac="00:00:00:00:00:44")
+    sax_h5 = net.addHost("h5", mac="00:00:00:00:00:55")
 
-    net.addLink(h4, sax_sw1, port1=50, port2=50)
-    net.addLink(h5, sax_sw2, port1=50, port2=50)
+    net.addLink(sax_h4, sax_sw1, port1=50, port2=50)
+    net.addLink(sax_h5, sax_sw2, port1=50, port2=50)
 
     # ************************************************ SAX OXP - End ************************************************
 
@@ -74,21 +74,21 @@ def custom_topo(amlight_ctlr, sax_ctlr, tenet_ctlr):
     )
     AmLightController.start()
 
-    ampath_sw1 = net.addSwitch("Novi01", listenPort=6601, dpid="aa00000000000001")
-    ampath_sw2 = net.addSwitch("Novi02", listenPort=6602, dpid="aa00000000000002")
-    ampath_sw3 = net.addSwitch("Novi03", listenPort=6603, dpid="aa00000000000003")
+    ampath_sw1 = net.addSwitch("Ampath1", listenPort=6601, dpid="aa00000000000001")
+    ampath_sw2 = net.addSwitch("Ampath2", listenPort=6602, dpid="aa00000000000002")
+    ampath_sw3 = net.addSwitch("Ampath3", listenPort=6603, dpid="aa00000000000003")
 
     net.addLink(ampath_sw1, ampath_sw2, port1=1, port2=1)
     net.addLink(ampath_sw1, ampath_sw3, port1=2, port2=2)
     net.addLink(ampath_sw2, ampath_sw3, port1=3, port2=3)
 
-    h1 = net.addHost("INT01", mac="00:00:00:00:00:11")
-    h2 = net.addHost("INT02", mac="00:00:00:00:00:22")
-    h3 = net.addHost("INT03", mac="00:00:00:00:00:33")
+    ampath_h1 = net.addHost("h1", mac="00:00:00:00:00:11")
+    ampath_h2 = net.addHost("h2", mac="00:00:00:00:00:22")
+    ampath_h3 = net.addHost("h3", mac="00:00:00:00:00:33")
 
-    net.addLink(h1, ampath_sw1, port1=50, port2=50)
-    net.addLink(h2, ampath_sw2, port1=50, port2=50)
-    net.addLink(h3, ampath_sw3, port1=50, port2=50)
+    net.addLink(ampath_h1, ampath_sw1, port1=50, port2=50)
+    net.addLink(ampath_h2, ampath_sw2, port1=50, port2=50)
+    net.addLink(ampath_h3, ampath_sw3, port1=50, port2=50)
 
     # ********************************************* AmLight OXP - End ************************************************
 
