@@ -1,0 +1,63 @@
+  types {
+    text/plain yaml;
+    text/plain yml;
+  }
+
+  gzip on;
+  gzip_static on;
+  gzip_disable "msie6";
+
+  gzip_vary on;
+  gzip_types text/plain text/css application/javascript;
+
+  map $request_method $access_control_max_age {
+    OPTIONS 1728000; # 20 days
+  }
+
+  server_tokens off; # Hide Nginx version
+
+  server {
+    listen            $PORT;
+    server_name       localhost;
+    index             index.html index.htm;
+
+    location $BASE_URL {
+      absolute_redirect off;
+      alias            /usr/share/nginx/html/;
+      expires 1d;
+
+      location ~ swagger-initializer.js {
+        expires -1;
+        include templates/cors.conf;
+      }
+
+      location ~* \.(?:json|yml|yaml)$ {
+        #SWAGGER_ROOT
+        expires -1;
+
+        include templates/cors.conf;
+      }
+
+      include templates/cors.conf;
+      include templates/embedding.conf;
+    }
+
+    location ~* $COMMAND_1
+	{
+		rewrite $COMMAND_1 $1 break;
+		proxy_pass $URL_1;
+	}
+
+    location ~* $COMMAND_2
+	{
+		rewrite $COMMAND_2 $1 break;
+		proxy_pass $URL_2;
+	}
+
+    location ~* $COMMAND_3
+	{
+		rewrite $COMMAND_3 $1 break;
+		proxy_pass $URL_3;
+	}
+
+  }

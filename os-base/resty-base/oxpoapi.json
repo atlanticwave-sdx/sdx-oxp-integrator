@@ -1,0 +1,210 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "SDX OXP Integrator",
+    "description": "The sdx-oxp-integrator is designed to simplify interactions with various OXPO (Open eXchange Point Operator) APIs by providing a streamlined programming interface. This integrator abstracts the complexities of direct API calls and offers a consistent method to interact with different OXPO services, enhancing code readability and maintainability.",
+    "version": "2.0.0",
+    "contact": {
+      "email": "ciara@fiu.edu",
+      "url": "https://github.com/atlanticwave-sdx/sdx-oxp-integrator/blob/main/README.md"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://67.17.206.221"
+    },
+    {
+      "url": "http://190.103.184.194"
+    },
+    {
+      "url": "http://190.103.184.197"
+    },
+    {
+      "url": "http://190.103.184.198"
+    },
+    {
+      "url": "http://0.0.0.0"
+    }
+  ],
+  "tags": [
+    {
+      "name": "/topology",
+      "description": "Get the OXP Topology"
+    },
+    {
+      "name": "/switches",
+      "description": "Get the OXP Switches"
+    },
+    {
+      "name": "/interfaces",
+      "description": "Get the OXP Interfaces"
+    },
+    {
+      "name": "/links",
+      "description": "Get the OXP Links"
+    },
+    {
+      "name": "/evcs",
+      "description": "Get the OXP EVCs"
+    },
+    {
+      "name": "/switch/aa:00:00:00:00:00:00:01",
+      "description": "Switch operation by dpId: GET, dpId: aa:00:00:00:00:00:00:01"
+    },
+    {
+      "name": "/interface/aa:00:00:00:00:00:00:01:1",
+      "description": "Interface operation by dpId: GET, Id: aa:00:00:00:00:00:00:01:1"
+    },
+    {
+      "name": "/link/link_id",
+      "description": "Link operation by link_id, link_id: xxxxxxxx"
+    },
+    {
+      "name": "/sdx/topology",
+      "description": "Get the SDX converted Topology",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "https://www.atlanticwave-sdx.net"
+      }
+    },
+    {
+      "name": "/enable/all",
+      "description": "Enable all switches, interfaces, and links"
+    },
+    {
+      "name": "/switch/enable/all",
+      "description": "Enable all Switches"
+    },
+    {
+      "name": "/switch/enable/aa:00:00:00:00:00:00:01",
+      "description": "Enable switch by dpId, dpId: aa:00:00:00:00:00:00:01"
+    },
+    {
+      "name": "/interface/enable/all",
+      "description": "Enable all interfaces"
+    },
+    {
+      "name": "/interface/enable/aa:00:00:00:00:00:00:01:1",
+      "description": "Enable Interface by dpId, Id: aa:00:00:00:00:00:00:01:1"
+    },
+    {
+      "name": "/link/enable/all",
+      "description": "Enable all links"
+    },
+    {
+      "name": "/link/enable/link_id",
+      "description": "Enable link by linkId, link_id: xxxxxxxx"
+    },
+    {
+      "name": "/evc/enable",
+      "description": "Enable Ethernet Virtual Connection"
+    },
+    {
+      "name": "/evc/vlan/enable",
+      "description": "Enable Ethernet Virtual Connection VLAN Translation"
+    },
+    {
+      "name": "/host/enable",
+      "description": "Enable Host configuration"
+    },
+    {
+      "name": "/disable/all",
+      "description": "Disable all switches, interfaces, and links"
+    },
+  ],
+  "paths": {
+    "/{url}{command}": {
+      "get": {
+        "tags": [
+          "url: ampath.net, command: /sdx/topology"
+        ],
+        "summary": "Operation Command",
+        "description": "Operation Command",
+	"parameters": [
+	  {
+		"in": "path",
+          	"name": "url",
+		"schema": {
+			"type": "string"
+		},
+            	"required": true,
+            	"allowReserved": true,
+            	"description": "The base URL of the OXP"
+          },
+	  {
+		"in": "path",
+          	"name": "command",
+		"schema": {
+			"type": "string"
+		},
+            	"required": true,
+            	"allowReserved": true,
+            	"description": "The command to execute"
+	  }
+	],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+		  "schema": {
+                  "type": "object"
+		  }
+	      }
+            }
+          }
+        }
+      },
+    "post": {
+        "tags": [
+          "url: ampath.net, command: /sdx/topology"
+        ],
+        "summary": "Operation Command",
+        "description": "Operation Command",
+	"parameters": [
+	  {
+		"in": "path",
+          	"name": "url",
+		"schema": {
+			"type": "string"
+		},
+            	"required": true,
+            	"allowReserved": true,
+            	"description": "The base URL of the OXP"
+          },
+	  {
+		"in": "path",
+          	"name": "command",
+		"schema": {
+			"type": "string"
+		},
+            	"required": true,
+            	"allowReserved": true,
+            	"description": "The command to execute"
+	  }
+	],
+	"requestBody": {
+        	"description": "placed for adding a new evc vlan",
+        	"content": {
+			"application/json": {
+            			"schema":
+			  		{}
+			}
+		}
+	},
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+		  "schema": {
+                  "type": "object"
+		  }
+	      }
+            }
+          }
+        }
+      }
+    }
+  }
+}
