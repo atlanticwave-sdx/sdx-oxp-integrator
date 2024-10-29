@@ -61,9 +61,9 @@ def json_reader(json_name):
 def post_oxp_enable_all():
     """Enable all switches, interfaces, and links"""
     post_oxp_switch_enable("all")
-    time.sleep(15)
+    time.sleep(5)
     post_oxp_interface_enable("all")
-    time.sleep(15)
+    time.sleep(10)
     post_oxp_link_enable("all")
     return get_oxp_links()
 
