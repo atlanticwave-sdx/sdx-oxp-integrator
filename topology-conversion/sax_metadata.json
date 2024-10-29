@@ -14,38 +14,56 @@
     }
   },
   "interfaces": {
-    "cc:00:00:00:00:00:00:04:4": {
-      "sdx_nni": "ampath.net:Novi02:4"
+    "cc:00:00:00:00:00:00:04:40": {
+      "sdx_nni": "ampath.net:Ampath1:40"
     },
-    "cc:00:00:00:00:00:00:05:7": {
-      "sdx_nni": "tenet.ac.za:Novi06:7"
+    "cc:00:00:00:00:00:00:05:40": {
+      "sdx_nni": "ampath.net:Ampath2:40"
+    },
+    "cc:00:00:00:00:00:00:04:41": {
+      "sdx_nni": "tenet.ac.za:Tenet01:41"
+    },
+    "cc:00:00:00:00:00:00:05:41": {
+      "sdx_nni": "tenet.ac.za:Tenet02:41"
     }
   },
   "evcs": {
-    "cc:00:00:00:00:00:00:04:4": {
-	    "name": "SAX_vlan_107_Ampath_Tenet",
+    "cc:00:00:00:00:00:00:04:50": {
+	    "name": "SAX_vlan_107_Ampath_Sax",
 	    "dynamic_backup_path": true,
 	    "uni_a": {
 		    "tag": {"value": 107, "tag_type": 1},
-		    "interface_id": "cc:00:00:00:00:00:00:04:4"
+		    "interface_id": "cc:00:00:00:00:00:00:04:50"
 	    },
 	    "uni_z": {
 		    "tag": {"value": 107, "tag_type": 1},
-		    "interface_id": "cc:00:00:00:00:00:00:05:7"
+		    "interface_id": "cc:00:00:00:00:00:00:05:40"
+	    }
+    },
+    "cc:00:00:00:00:00:00:05:50": {
+	    "name": "SAX_vlan_108_Sax_Tenet",
+	    "dynamic_backup_path": true,
+	    "uni_a": {
+		    "tag": {"value": 108, "tag_type": 1},
+		    "interface_id": "cc:00:00:00:00:00:00:05:50"
+	    },
+	    "uni_z": {
+		    "tag": {"value": 108, "tag_type": 1},
+		    "interface_id": "cc:00:00:00:00:00:00:05:41"
 	    }
     }
   },
   "vlans": {
-    "cc:00:00:00:00:00:00:04:4": {
-	"name": "SAX_vlan_202_203_Ampath_Tenet",
+    "cc:00:00:00:00:00:00:04:50": {
+	"name": "SAX_vlan_202_203_Ampath_Sax",
 	"dynamic_backup_path": true,
 	"uni_a": {
 		"tag": {"value": 202, "tag_type": 1},
-		"interface_id": "cc:00:00:00:00:00:00:04:4"
+		"interface_id": "cc:00:00:00:00:00:00:04:50"
 	},
 	"uni_z": {
 		"tag": {"value": 203, "tag_type": 1},
-	       	"interface_id": "cc:00:00:00:00:00:00:05:7"
+	       	"interface_id": "cc:00:00:00:00:00:00:05:40"
 	}
     }
   }

@@ -20,67 +20,83 @@
     }
   },
   "interfaces": {
-    "aa:00:00:00:00:00:00:01:1": {
-      "sdx_nni": "tenet.ac.za:Novi06:1"
+    "aa:00:00:00:00:00:00:01:40": {
+      "sdx_nni": "sax.net:Sax01:40"
     },
-    
-    "aa:00:00:00:00:00:00:02:3": {
-      "sdx_nni": "tenet.ac.za:Novi06:3"
-    },
-    "aa:00:00:00:00:00:00:02:4": {
-      "sdx_nni": "sax.net:Novi04:4"
-    },
-    "aa:00:00:00:00:00:00:03:1": {
-      "sdx_nni": "tenet.ac.za:Novi07:1"
+    "aa:00:00:00:00:00:00:02:40": {
+      "sdx_nni": "sax.net:Sax02:40"
     }
   },
   "evcs": {
-    "aa:00:00:00:00:00:00:01:11": {
-	    "name": "AMLIGHT_vlan_107_Ampath_Tenet",
+    "aa:00:00:00:00:00:00:01:50": {
+	    "name": "AMLIGHT_vlan_107_Ampath_Sax",
 	    "dynamic_backup_path": true,
 	    "uni_a": {
 		    "tag": {"value": 107, "tag_type": 1},
-		    "interface_id": "aa:00:00:00:00:00:00:01:11"
+		    "interface_id": "aa:00:00:00:00:00:00:01:50"
 	    },
 	    "uni_z": {
 		    "tag": {"value": 107, "tag_type": 1},
-		    "interface_id": "aa:00:00:00:00:00:00:02:4"}
+		    "interface_id": "aa:00:00:00:00:00:00:02:40"}
     },
-    "aa:00:00:00:00:00:00:02:22": {
-	    "name": "AMLIGHT_vlan_108_Ampath_Tenet",
+    "aa:00:00:00:00:00:00:02:50": {
+	    "name": "AMLIGHT_vlan_108_Ampath_Sax",
 	    "dynamic_backup_path": true,
 	    "uni_a": {
 		    "tag": {"value": 108, "tag_type": 1},
-		    "interface_id": "aa:00:00:00:00:00:00:02:22"
+		    "interface_id": "aa:00:00:00:00:00:00:02:50"
 	    },
 	    "uni_z": {
 		    "tag": {"value": 108, "tag_type": 1},
-		    "interface_id": "aa:00:00:00:00:00:00:01:1"}
+		    "interface_id": "aa:00:00:00:00:00:00:01:40"}
+    },
+    "aa:00:00:00:00:00:00:03:50": {
+	    "name": "AMLIGHT_vlan_109_Ampath_Sax",
+	    "dynamic_backup_path": true,
+	    "uni_a": {
+		    "tag": {"value": 109, "tag_type": 1},
+		    "interface_id": "aa:00:00:00:00:00:00:03:50"
+	    },
+	    "uni_z": {
+		    "tag": {"value": 109, "tag_type": 1},
+		    "interface_id": "aa:00:00:00:00:00:00:01:40"}
     }
   },
   "vlans": {
-    "aa:00:00:00:00:00:00:01:11": {
-	    "name": "AMLIGHT_vlan_201_202_Ampath_Tenet", 
+    "aa:00:00:00:00:00:00:01:50": {
+	    "name": "AMLIGHT_vlan_201_202_Ampath_Sax", 
 	    "dynamic_backup_path": true,
 	    "uni_a": {
 		    "tag": {"value": 201, "tag_type": 1},
-		    "interface_id": "aa:00:00:00:00:00:00:01:11"
+		    "interface_id": "aa:00:00:00:00:00:00:01:50"
 	    },
 	    "uni_z": {
 		    "tag": {"value": 202, "tag_type": 1},
-		    "interface_id": "aa:00:00:00:00:00:00:02:4"
+		    "interface_id": "aa:00:00:00:00:00:00:02:40"
 	    }
     },
-    "aa:00:00:00:00:00:00:02:22": {
-	    "name": "AMLIGHT_vlan_211_222_Ampath_Tenet", 
+    "aa:00:00:00:00:00:00:02:50": {
+	    "name": "AMLIGHT_vlan_211_212_Ampath_Sax", 
 	    "dynamic_backup_path": true,
 	    "uni_a": {
 		    "tag": {"value": 211, "tag_type": 1},
-		    "interface_id": "aa:00:00:00:00:00:00:02:22"
+		    "interface_id": "aa:00:00:00:00:00:00:02:50"
+	    },
+	    "uni_z": {
+		    "tag": {"value": 212, "tag_type": 1},
+		    "interface_id": "aa:00:00:00:00:00:00:01:40"
+	    }
+    },
+    "aa:00:00:00:00:00:00:03:50": {
+	    "name": "AMLIGHT_vlan_221_222_Ampath_Sax", 
+	    "dynamic_backup_path": true,
+	    "uni_a": {
+		    "tag": {"value": 221, "tag_type": 1},
+		    "interface_id": "aa:00:00:00:00:00:00:03:50"
 	    },
 	    "uni_z": {
 		    "tag": {"value": 222, "tag_type": 1},
-		    "interface_id": "aa:00:00:00:00:00:00:01:1"
+		    "interface_id": "aa:00:00:00:00:00:00:01:40"
 	    }
     }
   }

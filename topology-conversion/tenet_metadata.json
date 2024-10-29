@@ -20,44 +20,38 @@
     }
   },
   "interfaces": {
-    "dd:00:00:00:00:00:00:06:1": {
-      "sdx_nni": "ampath.net:Novi01:1"
+    "dd:00:00:00:00:00:00:06:41": {
+      "sdx_nni": "sax.net:Sax01:41"
     },
-    "dd:00:00:00:00:00:00:06:3": {
-      "sdx_nni": "ampath.net:Novi02:3"
-    },
-    "dd:00:00:00:00:00:00:06:7": {
-      "sdx_nni": "sax.net:Novi05:7"
-    },
-    "dd:00:00:00:00:00:00:07:1": {
-      "sdx_nni": "ampath.net:Novi03:1"
+    "dd:00:00:00:00:00:00:07:41": {
+      "sdx_nni": "sax.net:Sax02:41"
     }
   },
   "evcs": {
-    "dd:00:00:00:00:00:00:06:7": {
-	"name": "TENET_vlan_107_Ampath_Tenet",
+    "dd:00:00:00:00:00:00:06:50": {
+	"name": "TENET_vlan_107_Sax_Tenet",
 	"dynamic_backup_path": true,
 	"uni_a": {
 		"tag": {"value": 107, "tag_type": 1}, 
-		"interface_id": "dd:00:00:00:00:00:00:06:7"
+		"interface_id": "dd:00:00:00:00:00:00:06:50"
 	},
 	"uni_z": {
 		"tag": {"value": 107, "tag_type": 1},
-	       	"interface_id": "dd:00:00:00:00:00:00:08:44"
+	       	"interface_id": "dd:00:00:00:00:00:00:06:41"
 	}
     }
   },
   "vlans": {
-    "dd:00:00:00:00:00:00:06:7": {
+    "dd:00:00:00:00:00:00:07:50": {
 	"name": "TENET_vlan_201_203_Ampath_Tenet",
 	"dynamic_backup_path": true,
        	"uni_a": {
 		"tag": {"value": 203, "tag_type": 1},
-	       	"interface_id": "cc:00:00:00:00:00:00:06:7"
+	       	"interface_id": "cc:00:00:00:00:00:00:07:50"
 	},
        	"uni_z": {
 		"tag": {"value": 201, "tag_type": 1},
-	       	"interface_id": "cc:00:00:00:00:00:00:08:44"
+	       	"interface_id": "cc:00:00:00:00:00:00:07:41"
 	}
     }
   }
