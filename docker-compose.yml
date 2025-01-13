@@ -1,41 +1,22 @@
 services:
   mongo:
-    container_name: mongo
     image: mongo-db
-    restart: always
+    container_name: mongodb
+    hostname: mongodb
+    volumes:
+      - ./utils/scripts/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - mongodb-data:/data/db/
+      - mongodb-log:/var/log/mongodb/
+    env_file:
+      - .env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
     networks:
       kytos_network:
         ipv4_address: 192.168.0.6
     ports:
       - 27017:27017
-    env_file:
-      - .env
-    healthcheck:
-      test: mongosh --quiet "mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@127.0.0.1:27017/?authSource=admin" --eval 'db.runCommand("ping").ok'
-      interval: 5s
-      timeout: 5s
-      retries: 60
-
-  mongo-ready:
-    container_name: mongo-test-ready
-    image: mongo-db
-    restart: on-failure
-    networks:
-      kytos_network:
-        ipv4_address: 192.168.0.10
-    env_file:
-      - .env
-    volumes:
-      - ./utils:/utils
-    depends_on:
-      mongo:
-        condition: service_healthy
-    entrypoint: ["/utils/rs-add.sh"]
-    healthcheck:
-      test: mongosh --quiet "mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@127.0.0.1:27017/?authSource=admin" --eval 'db.runCommand("ping").ok'
-      interval: 5s
-      timeout: 5s
-      retries: 60
 
   mq1:
     image: rabbitmq:latest
@@ -65,8 +46,7 @@ services:
     volumes:
       - ./utils:/utils
     depends_on:
-      mongo-ready:
-        condition: service_healthy
+      - mongo
 
   sax:
     container_name: sax
@@ -85,8 +65,7 @@ services:
     volumes:
       - ./utils:/utils
     depends_on:
-      mongo-ready:
-        condition: service_healthy
+      - mongo
 
   tenet:
     container_name: tenet
@@ -105,8 +84,7 @@ services:
     volumes:
       - ./utils:/utils
     depends_on:
-      mongo-ready:
-        condition: service_healthy
+      - mongo
 
   mininet:
     container_name: mininet
@@ -123,19 +101,6 @@ services:
       - ampath
       - sax
       - tenet
-
-  nginx:
-    container_name: nginx
-    image: nginx
-    restart: always
-    networks:
-      kytos_network:
-        ipv4_address: 192.168.0.13
-    ports:
-      - 80:8080
-    volumes:
-      - ./os-base/nginx-base:/oxpoapi
-      - ./utils:/utils
 
   ampath-topology-conversion:
     container_name: ampath-topology-conversion
@@ -194,4 +159,9 @@ networks:
           gateway: 192.168.0.1
 
 volumes:
-  persistent:
+  mongodb-data:
+    driver: local
+    name: mongo-data
+  mongodb-log:
+    driver: local
+    name: mongo-log
