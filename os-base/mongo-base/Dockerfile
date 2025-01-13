@@ -1,4 +1,4 @@
-FROM mongo:5.0
+FROM mongo:7.0
 
 # custom label for the docker image
 LABEL version="0.1" maintainer="lmarinve@fiu.edu"
@@ -12,9 +12,3 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     iputils-ping \
     lsof \
     netcat
-
-RUN mkdir -p /data/db
-RUN mkdir -p /mongo-base/
-COPY os-base/mongo-base/ /mongo-base/
-RUN chmod 600 /mongo-base/m103-keyfile
-RUN chmod 755 /mongo-base/*.conf
