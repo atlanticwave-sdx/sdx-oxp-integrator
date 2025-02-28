@@ -149,6 +149,8 @@ class ParseConvertTopology:
                 "mtu": interface["metadata"].get("mtu", 1500),
                 "nni": f"urn:sdx:port:{interface['metadata']['sdx_nni']}" \
                 if "sdx_nni" in interface["metadata"] else ""
+                "entity": f"urn:sdx:port:{interface['metadata']['entity']}" \
+                if "sdx_entity" in interface["metadata"] else []
             }
 
         if not sdx_port["name"]:

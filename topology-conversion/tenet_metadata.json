@@ -21,16 +21,48 @@
   },
   "interfaces": {
     "dd:00:00:00:00:00:00:06:1": {
-      "sdx_nni": "ampath.net:Novi01:1"
+      "sdx_nni": "ampath.net:Novi01:1",
+      "entities":[
+                  "FIU Novi06",
+                  "Florida International Unitversity Novi06",
+                  "Miami Novi06",
+                  "florida international university Novi06",
+                  "florida national university Novi06",
+                  "florida technology university Novi06"
+      ]
     },
     "dd:00:00:00:00:00:00:06:3": {
-      "sdx_nni": "ampath.net:Novi02:3"
+      "sdx_nni": "ampath.net:Novi02:3",
+      "entities":[
+                  "MIT Novi06",
+                  "Massachusetts Institute of Technology Novi06",
+                  "Cambridge Novi06"
+               ]
     },
     "dd:00:00:00:00:00:00:06:7": {
-      "sdx_nni": "sax.net:Novi05:7"
+      "sdx_nni": "sax.net:Novi05:7",
+      "entities":[
+                  "UCLA Novi06",
+                  "University of California, Los Angeles Novi06",
+                  "Los Angeles Novi06"
+               ]
     },
     "dd:00:00:00:00:00:00:07:1": {
-      "sdx_nni": "ampath.net:Novi03:1"
+      "sdx_nni": "ampath.net:Novi03:1",
+      "entities":[
+                  "TTU Novi07",
+                  "Tennessee Tech Univ Novi07",
+                  "TN Tech University Novi07",
+                  "Cookeville Novi07"
+               ]
+    }
+  },
+  "dd:00:00:00:00:00:00:07:33": {
+      "entities":[
+	      "Duke Novi07",
+	      "Duke University Novi07",
+	      "Durham Novi07"
+               ]
     }
   },
   "evcs": {
