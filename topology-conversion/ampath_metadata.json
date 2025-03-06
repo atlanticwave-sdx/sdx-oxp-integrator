@@ -13,25 +13,78 @@
       "iso3166_2_lvl4": "US-FL"
     },
     "aa:00:00:00:00:00:00:03": {
-      "lat": "26.38",
-      "lng": "-80.11",
-      "address": "BocaRaton",
+      "lat": "30.27",
+      "lng": "-81.68",
+      "address": "Jacksonville",
       "iso3166_2_lvl4": "US-FL"
     }
   },
   "interfaces": {
     "aa:00:00:00:00:00:00:01:1": {
-      "sdx_nni": "tenet.ac.za:Novi06:1"
+      "sdx_nni": "tenet.ac.za:Novi06:1",
+      "sdx_entities":[
+	      "FIU Novi01",
+	      "Ciara Novi01",
+	      "Stocker AstroScience Center Novi01"
+               ]
     },
-    
+    "aa:00:00:00:00:00:00:01:2": {
+      "sdx_entities":[
+	      "Nursing & Health Novi01",
+	      "Public Health Novi01",
+	      "International Novi01"
+               ]
+    },
+    "aa:00:00:00:00:00:00:01:3": {
+      "sdx_entities":[
+	      "Engineering & Computing Novi01",
+	      "Herbet Werthein Novi01",
+	      "Law Novi01"
+               ]
+    },
+    "aa:00:00:00:00:00:00:01:11": {
+      "sdx_entities":[
+	      "NYU Novi01",
+	      "New York Novi01",
+	      "Int01 Novi01"
+               ]
+    },
+    "aa:00:00:00:00:00:00:02:2": {
+      "sdx_entities":[
+	      "Primera Casa Novi02",
+	      "Mango Novi02",
+	      "Graham Center Novi02"
+               ]
+    },
     "aa:00:00:00:00:00:00:02:3": {
-      "sdx_nni": "tenet.ac.za:Novi06:3"
+      "sdx_nni": "tenet.ac.za:Novi06:3",
+      "sdx_entities":[
+	      "FIU Novi02",
+	      "Ciara Novi02",
+	      "Stocker AstroScience Center Novi02"
+               ]
     },
     "aa:00:00:00:00:00:00:02:4": {
-      "sdx_nni": "sax.net:Novi04:4"
+      "sdx_nni": "sax.net:Novi04:4",
+      "sdx_entities":[
+                  "South America Novi02",
+                  "Universidad De Brazil Novi02"
+               ]
+    },
+    "aa:00:00:00:00:00:00:02:22": {
+      "sdx_entities":[
+	      "NYU Novi02",
+	      "New York Novi02",
+	      "Int01 Novi02"
+               ]
     },
     "aa:00:00:00:00:00:00:03:1": {
-      "sdx_nni": "tenet.ac.za:Novi07:1"
+      "sdx_nni": "tenet.ac.za:Novi07:1",
+      "sdx_entities":[
+                  "FIU Novi03",
+                  "WOW Novi03",
+                  "Wall of Wind Novi03"
+               ]
     }
   },
   "evcs": {

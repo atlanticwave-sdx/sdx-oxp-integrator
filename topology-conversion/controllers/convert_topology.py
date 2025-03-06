@@ -148,7 +148,8 @@ class ParseConvertTopology:
                 "state": self.get_state(interface["enabled"]),
                 "mtu": interface["metadata"].get("mtu", 1500),
                 "nni": f"urn:sdx:port:{interface['metadata']['sdx_nni']}" \
-                if "sdx_nni" in interface["metadata"] else ""
+                if "sdx_nni" in interface["metadata"] else "",
+                "entities": interface["metadata"].get("sdx_entities", [])
             }
 
         if not sdx_port["name"]:
