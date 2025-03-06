@@ -22,35 +22,35 @@
   "interfaces": {
     "aa:00:00:00:00:00:00:01:1": {
       "sdx_nni": "tenet.ac.za:Novi06:1",
-      "entities":[
+      "sdx_entities":[
 	      "FIU Novi01",
 	      "Ciara Novi01",
 	      "Stocker AstroScience Center Novi01"
                ]
     },
     "aa:00:00:00:00:00:00:01:2": {
-      "entities":[
+      "sdx_entities":[
 	      "Nursing & Health Novi01",
 	      "Public Health Novi01",
 	      "International Novi01"
                ]
     },
     "aa:00:00:00:00:00:00:01:3": {
-      "entities":[
+      "sdx_entities":[
 	      "Engineering & Computing Novi01",
 	      "Herbet Werthein Novi01",
 	      "Law Novi01"
                ]
     },
     "aa:00:00:00:00:00:00:01:11": {
-      "entities":[
+      "sdx_entities":[
 	      "NYU Novi01",
 	      "New York Novi01",
 	      "Int01 Novi01"
                ]
     },
     "aa:00:00:00:00:00:00:02:2": {
-      "entities":[
+      "sdx_entities":[
 	      "Primera Casa Novi02",
 	      "Mango Novi02",
 	      "Graham Center Novi02"
@@ -58,7 +58,7 @@
     },
     "aa:00:00:00:00:00:00:02:3": {
       "sdx_nni": "tenet.ac.za:Novi06:3",
-      "entities":[
+      "sdx_entities":[
 	      "FIU Novi02",
 	      "Ciara Novi02",
 	      "Stocker AstroScience Center Novi02"
@@ -66,13 +66,13 @@
     },
     "aa:00:00:00:00:00:00:02:4": {
       "sdx_nni": "sax.net:Novi04:4",
-      "entities":[
+      "sdx_entities":[
                   "South America Novi02",
                   "Universidad De Brazil Novi02"
                ]
     },
     "aa:00:00:00:00:00:00:02:22": {
-      "entities":[
+      "sdx_entities":[
 	      "NYU Novi02",
 	      "New York Novi02",
 	      "Int01 Novi02"
@@ -80,7 +80,7 @@
     },
     "aa:00:00:00:00:00:00:03:1": {
       "sdx_nni": "tenet.ac.za:Novi07:1",
-      "entities":[
+      "sdx_entities":[
                   "FIU Novi03",
                   "WOW Novi03",
                   "Wall of Wind Novi03"

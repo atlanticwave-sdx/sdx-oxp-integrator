@@ -16,13 +16,13 @@
   "interfaces": {
     "cc:00:00:00:00:00:00:04:4": {
       "sdx_nni": "ampath.net:Novi02:4",
-      "entities":[
+      "sdx_entities":[
                   "Sao Paulo Novi02"
                ]
     },
     "cc:00:00:00:00:00:00:05:7": {
       "sdx_nni": "tenet.ac.za:Novi06:7",
-      "entities":[
+      "sdx_entities":[
                   "France Novi06",
                   "Cern Novi06"
                ]
